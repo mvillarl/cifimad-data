@@ -1,0 +1,13 @@
+		<IfModule mod_rewrite.c>
+			RewriteEngine on
+
+			# prevent httpd from serving dotfiles (.htaccess, .svn, .git, etc.)
+			RedirectMatch 403 /\..*$
+			# if a directory or a file exists, use it directly
+			RewriteCond %{REQUEST_FILENAME} !-f
+			RewriteCond %{REQUEST_FILENAME} !-d
+			# otherwise forward it to index.php
+			RewriteRule .* index.php
+		</IfModule>
+
+#php_value error_log 	/home/strato/http/premium/rid/84/43/52828443/htdocs/data/error.log

@@ -1,0 +1,270 @@
+html, body {
+    width: 100%;
+    overflow: visible;
+    float: none;
+    position: relative;
+}
+
+.attendee-reportbadgelabels {
+    margin: auto;
+    page-break-after:auto
+}
+
+.attendee-reportbadgelabels tr    { page-break-inside:avoid; page-break-after:auto }
+.attendee-reportbadgelabels td    { page-break-inside:avoid; page-break-after:auto }
+
+.attendee-reportbadges {
+    margin: auto;
+    width: 27cm;
+    float: none;
+    position: relative;
+    top: 10pt;
+}
+
+@font-face {
+    font-family: 'Bitsumishi';
+    src: url('/fonts/bitsumishi.ttf');
+}
+
+.special {
+    color: red;
+}
+
+.badgelabel {
+    text-align: center;
+    font-family: Bitsumishi;
+    font-size: 23pt;
+    width: 10.25cm;
+    height: 1.50cm;
+    border-right: solid black 1px;
+}
+.badgelabelin {
+    width: 10.25cm;
+    height: 1.50cm;
+    white-space: nowrap;
+}
+
+.badgetype {
+    padding: 5px;
+    font-size: 10pt;
+    width: 9.50cm;
+ }
+
+.parent {
+    border: solid black 1px;
+    text-align: center;
+    font-family: Bitsumishi;
+    font-size: 20pt;
+    width: 9.50cm;
+    height: 4.50cm;
+    page-break-inside: avoid;
+}
+
+#warnings {
+    text-align: center;
+    font-size: 16pt;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: darkred;
+}
+
+.title {
+    text-align: center;
+    font-size: 16pt;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    height: 1.5cm;
+    border-bottom: darkgray solid 1px;
+}
+
+.titV {
+    color: forestgreen;
+}
+
+.titS {
+    color: darkblue;
+}
+
+.titD {
+    color: darkred;
+}
+
+.titF {
+    color: darkred;
+}
+
+.badgelabelhintV {
+    background-color: forestgreen;
+    witdh: 3px;
+}
+
+.badgelabelhintS {
+    background-color: darkblue;
+    witdh: 3px;
+}
+
+.badgelabelhintD {
+    background-color: darkred;
+    witdh: 3px;
+}
+
+.badgelabelhintF {
+    background-color: darkred;
+    border: solid orangered 2px;
+    witdh: 5px;
+}
+
+@media all {
+    .pagebreak {
+        page-break-after: always;
+        position: relative;
+        float: none;
+    }
+}
+.attendee-reportbadges thead tr th {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 8pt;
+    -webkit-print-color-adjust: exact;
+}
+
+.attendee-reportbadges tbody tr td {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-size: 8pt;
+    -webkit-print-color-adjust: exact;
+}
+
+.attendee-reportbadgesdet thead tr th {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 7pt;
+    -webkit-print-color-adjust: exact;
+}
+
+.attendee-reportbadgesdet tbody tr td {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-size: 6pt;
+    -webkit-print-color-adjust: exact;
+}
+
+.even {
+    background-color: lavender;
+}
+
+.odd {
+    background-color: #F0F0F0;
+}
+
+.c {
+    text-align: center;
+}
+
+.n {
+    text-align: right;
+    font-weight: bold;
+}
+
+.badgeV {
+    background-color: palegreen;
+}
+
+.badgeS {
+    background-color: lightblue;
+}
+
+.badgeD {
+    background-color: lightpink;
+}
+.badgeF {
+    background-color: lightcoral;
+}
+
+.gala {
+    background-color: #FB0000;
+}
+
+.cocktail {
+    background-color: #558435;
+}
+
+.valientes {
+    background-color: #8A8A8A;
+}
+
+.comidaS {
+    background-color: #FF6C6C;
+}
+.comidaD {
+    background-color: #9854CB;
+}
+
+.notconfirmed {
+    background-color: darkorange;
+}
+.modified {
+    background-color: #9854CB;
+    color: white;
+}
+
+.cancelled {
+    background-color: #darkred;
+}
+
+.logoleft {
+    float: left;
+}
+
+.logoright {
+    float: right;
+}
+
+.reportheadertxt {
+    font-weight: bold;
+    font-size: 14pt;
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+}
+
+.reportheader {
+    clear: both;
+    height: 140px;
+}
+
+.reporthoteltable thead tr th,.reporthoteltable tfoot tr th {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 11pt;
+    background-color: #4472C4;
+    color: white;
+    -webkit-print-color-adjust: exact;
+}
+
+.reporthoteltable tbody tr:nth-child(odd) {
+    background-color: #D9E1F2;
+    -webkit-print-color-adjust: exact;
+}
+
+.reporthoteltable tbody tr.notconfirmed:nth-child(odd) {
+    background-color: darkorange;
+    -webkit-print-color-adjust: exact;
+}
+
+.reporthoteltable tbody tr.cancelled:nth-child(odd) {
+    background-color: darkred;
+    -webkit-print-color-adjust: exact;
+}
+
+.reporthoteltable tbody tr.modified:nth-child(odd) {
+    background-color: #9854CB;
+    color: white;
+    -webkit-print-color-adjust: exact;
+}
+
+.reporthoteltable tbody tr td {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-size: 11pt;
+    -webkit-print-color-adjust: exact;
+}
+
+.sourceimage {
+    vertical-align: text-bottom;
+    width: 24px;
