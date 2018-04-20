@@ -5,7 +5,7 @@ define('YII_DEBUG', true);
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => $ppe? 'datatest.cifimad.es': 'data.cifimad.es',
+    'id' => $_ppe? 'datatest.cifimad.es': 'data.cifimad.es',
     'name' => 'CifiMad - Data' . ($_ppe? ' - Test': ''),
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
