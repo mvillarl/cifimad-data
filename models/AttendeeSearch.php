@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Attendee;
+use webvimark\modules\UserManagement\models\User;
 
 /**
  * AttendeeSearch represents the model behind the search form about `app\models\Attendee`.
@@ -17,11 +18,17 @@ class AttendeeSearch extends Attendee
      */
     public function rules()
     {
-        return [
-            [['id', 'idEvent', 'idMember', 'guest1Photoshoot', 'guest1Autograph', 'guest2Photoshoot', 'guest2Autograph', 'guest2Vintage', 'guest3Photoshoot', 'guest3Autograph', 'guest3Vintage', 'idSource', 'idAttendeeRoommate1', 'idAttendeeRoommate2'], 'integer'],
-            [['status', 'ticketType', 'roomType', 'dateStartLodging', 'dateEndLodging', 'remarks', 'remarksRegistration', 'remarksMeals', 'orders', 'createdAt', 'updatedAt', 'memberName'], 'safe'],
+        $ret = [
+            [['id', 'idMember', 'guest1Photoshoot', 'guest1Autograph', 'guest2Photoshoot', 'guest2Autograph', 'guest2Vintage', 'guest3Photoshoot', 'guest3Autograph', 'guest3Vintage', 'idAttendeeRoommate1', 'idAttendeeRoommate2'], 'integer'],
+            [['roomType', 'dateStartLodging', 'dateEndLodging', 'remarks', 'remarksRegistration', 'remarksMeals', 'orders', 'createdAt', 'updatedAt', 'memberName'], 'safe'],
             [['mealFridayDinner', 'mealSaturdayLunch', 'mealSaturdayDinner', 'mealSundayLunch', 'mealSundayDinner', 'isSpecial'], 'boolean'],
         ];
+	    if (!User::hasRole('desk', false)) {
+	    	$ret[0][0] = array_merge ($ret[0][0], ['idEvent', 'idSource']);
+		    $ret[1][0] = array_merge ($ret[1][0], ['status', 'ticketType'] );
+		    //echo "<pre>"; print_r($ret); die;
+	    }
+	    return $ret;
     }
 
     /**
@@ -62,8 +69,16 @@ class AttendeeSearch extends Attendee
 	    $dataProvider->sort->attributes['memberName'] = [
 		    // The tables are the ones our relation are configured to
 		    // in my case they are prefixed with "tbl_"
-		    'asc' => ['cif_members.badgeSurname' => SORT_ASC, 'cif_members.badgeName' => SORT_ASC],
-		    'desc' => ['cif_members.badgeSurname' => SORT_DESC, 'cif_members.badgeName' => SORT_DESC],
+		    //'asc' => ['cif_members.badgeSurname' => SORT_ASC, 'cif_members.badgeName' => SORT_ASC],
+		    //'desc' => ['cif_members.badgeSurname' => SORT_DESC, 'cif_members.badgeName' => SORT_DESC],
+		    'asc' => ['cif_members.badgeName' => SORT_ASC, 'cif_members.badgeSurname' => SORT_ASC],
+		    'desc' => ['cif_members.badgeName' => SORT_DESC, 'cif_members.badgeSurname' => SORT_DESC],
+	    ];
+	    $dataProvider->sort->attributes['attendeeName'] = [
+		    // The tables are the ones our relation are configured to
+		    // in my case they are prefixed with "tbl_"
+		    'asc' => ['cif_members.surname' => SORT_ASC, 'cif_members.name' => SORT_ASC],
+		    'desc' => ['cif_members.surname' => SORT_DESC, 'cif_members.name' => SORT_DESC],
 	    ];
 
         // grid filtering conditions

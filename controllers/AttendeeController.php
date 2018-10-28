@@ -7,6 +7,7 @@ use Yii;
 use app\models\Attendee;
 use app\models\AttendeeSearch;
 use webvimark\components\BaseController;
+use webvimark\modules\UserManagement\models\User;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
@@ -64,7 +65,9 @@ class AttendeeController extends BaseController
 
 	    $errors = Attendee::checkErrors($idEvent);
 
-        return $this->render('index', [
+	    $view = User::hasRole ('desk', false)? 'indexdesk': 'index';
+
+        return $this->render($view, [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'ticketTypes' => Attendee::getTicketTypes(),
@@ -88,7 +91,9 @@ class AttendeeController extends BaseController
         $model = $this->findModel($id);
         $model->setEvent($idEvent, $guests, $products);
 
-        return $this->render('view', [
+	    $view = User::hasRole ('desk', false)? 'viewdesk': 'view';
+
+        return $this->render($view, [
             'model' => $model,
         ]);
     }
