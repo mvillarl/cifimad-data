@@ -97,11 +97,12 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
 		'content' => 'app\components\AttendeeColumns::productsCol',
 	];
 	$attendeeColumns[] = [
-		'label' => 'Nº pedido/s',
+		'attribute' => 'orders',
+		//'label' => 'Nº pedido/s',
 		//'headerOptions' => ['title' => $extraProductsTitle],
 		//'contentOptions' =>  ['style' => 'white-space; nowrap;', 'nowrap' => 'true'],
 		'format'=>'raw',
-		'content' => 'app\components\AttendeeColumns::orderNumbersCol',
+		//'content' => 'app\components\AttendeeColumns::orderNumbersCol',
 	];
 	$attendeeColumns[] = ['class' => 'yii\grid\ActionColumn', 'visibleButtons' => ['update' => false, 'delete' => false] ];
 

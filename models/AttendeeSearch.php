@@ -110,8 +110,8 @@ class AttendeeSearch extends Attendee
             'cif_attendees.status' => $this->status,
             'cif_attendees.ticketType' => $this->ticketType,
             'roomType' => $this->roomType,
-	        'orders' => $this->orders,
         ]);
+	    $query->andFilterOrders($this->orders);
 
         $query/*->andFilterWhere(['like', 'remarks', $this->remarks])
             ->andFilterWhere(['like', 'remarksRegistration', $this->remarksRegistration])

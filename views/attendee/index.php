@@ -111,6 +111,7 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
                                                                ];
         $attendeeColumns[] = [
             'label' => 'Nº pedido/s',
+            'attribute' => 'orders',
             //'headerOptions' => ['title' => $extraProductsTitle],
             //'contentOptions' =>  ['style' => 'white-space; nowrap;', 'nowrap' => 'true'],
             'format'=>'raw',

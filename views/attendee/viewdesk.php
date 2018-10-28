@@ -53,6 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	foreach ($model->getExtraProductFields() as $field) $attributes[] = $field;
 	$attributes = array_merge ($attributes, [
 		'remarksRegistration:ntext',
+		'orders',
 	]);
 	?>
 	<?= DetailView::widget([

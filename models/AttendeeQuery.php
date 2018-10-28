@@ -143,4 +143,13 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 		    return $this->andWhere( 'cif_attendees.updatedAt' . $part . ' > :date', [ 'date' => $date ] );
 	    }
     }
+
+    public function andFilterOrders ($orders) {
+	    $term = trim($orders);
+	    if (strlen ($orders)) {
+		    $this->andWhere('cif_attendees.orders LIKE :orders', [':orders' => '%'.$orders.'%']);
+	    }
+	    return $this;
+
+	}
 }
