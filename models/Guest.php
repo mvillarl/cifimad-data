@@ -68,6 +68,7 @@ class Guest extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'idEvent' => 'Evento',
+            'eventName' => 'Evento',
             'name' => 'Nombre',
             'surname' => 'Apellido',
             'characterName' => 'Personaje',

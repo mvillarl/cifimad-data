@@ -69,6 +69,7 @@ class MemberController extends BaseController
     public function actionCreate()
     {
         $model = new Member();
+	    $model->setKey();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -156,6 +157,7 @@ class MemberController extends BaseController
                     $model->surname = $fieldvalues[1];
                     $model->email   = $fieldvalues[2];
                     $model->nif     = $fieldvalues[3];
+	                $model->consent = true;
                     $ok             = $model->save();
 	                $models[] = $model;
                     if ( ! $ok ) {
@@ -206,9 +208,22 @@ class MemberController extends BaseController
         if (strlen ($date) ) {
             $tdate = Yii::$app->formatter->asDatetime($date);
         }
+        $datec = Member::getLastLoadFrom('consent');
+        if (strlen ($datec) ) {
+            $tdatec = Yii::$app->formatter->asDatetime($datec);
+        }
         $qcustomers = $aq->modifiedAfter($date)->indexBy($emfield);
         $customers = $qcustomers->all();
         $ncustomers = $qcustomers->count();
+	    if ($part == 'WP') {
+	    	$qcons = WPUser::find()->usersWithConsent();
+		    //$consents = $qcons->count();
+		    Member::membersMatchConsents (Member::find()->where ('consent = false')->indexBy('email')->all(), $qcons->indexBy('user_email')->all(), $matchconsents);
+		    $consents = count ($matchconsents);
+	    } else {
+	    	$consents = 0;
+	    }
+
         Member::membersMatchCustomers(Member::find()->indexBy('email')->all(), $customers, $matching, $nomatch);
         //die('<pre>'.print_R($customers,true));
         $matchingDP = new PS2CustomerDP($matching);
@@ -228,6 +243,7 @@ class MemberController extends BaseController
         	'shop' => $shop,
             'command' => $command,
             'tdate' => $tdate,
+            'tdatec' => $tdatec,
             'ncustomers' => $ncustomers,
             'newcustomers' => $numberNoMatch,
             'existingcustomers' => $matchingDP->getTotalCount(),
@@ -238,15 +254,50 @@ class MemberController extends BaseController
             'upsertModified' => $stats['modified'],
             'upsertWithErrors' => $stats['witherrors'],
             'errors' => $errors,
+	        'consents' => $consents,
             'model' => new Member(),
         ]);
+    }
+
+    public function actionUpdateconsents() {
+	    $qcons = WPUser::find()->usersWithConsent();
+	    //$consents = $qcons->count();
+	    Member::membersMatchConsents (Member::find()->where ('consent = false')->indexBy('email')->all(), $qcons->indexBy('user_email')->all(), $matchconsents);
+	    $consents = count ($matchconsents);
+
+	    $modified = 0;
+	    $witherror = 0;
+	    $errors = [];
+	    foreach ($matchconsents as $member) {
+	    	$member->consent = true;
+		    if ($member->save() ) {
+			    $modified++;
+		    } else {
+			    //die('<pre>'.print_r($member,true));
+			    $witherror++;
+			    $errors[$member->email] = $member->errors;
+		    }
+	    }
+	    Member::setLastLoadFrom('consent');
+
+	    return $this->render( 'updateconsents', [
+			    'modified' => $modified,
+			    'witherror' => $witherror,
+			    'errors' => $errors,
+	    	]
+	    );
     }
 
     public function actionExport($onlydni = false) {
         $q = Member::find()->orderBy(['surname' => 'ASC', 'name' => 'ASC']);
         if ($onlydni == 'O') $q->where('nif IS NOT NULL');
-        if ($onlydni == 'M') $q->where('email IS NOT NULL');
-	    $q->where('status = true');
+        if ($onlydni == 'M') {
+        	$q->where('email IS NOT NULL AND consent is true');
+        }
+        if ($onlydni == 'MN') {
+        	$q->where('email IS NOT NULL AND consent is false');
+        }
+	    $q->andWhere('status = true');
         $members = $q->all();
         $filename = "SociosCifimad".date("Ymd").".xls";
         Yii::$app->response->setDownloadHeaders($filename, "application/vnd.ms-excel");
@@ -258,5 +309,31 @@ class MemberController extends BaseController
     public function actionAjaxsearch ($term) {
         $memberresult = Member::termSearch ($term);
         return Json::encode($memberresult);
+    }
+
+    public function actionSetkeys() {
+    	$num = Member::setKeys();
+	    return $this->render( 'setkeys',[
+		    'num' => $num,
+	    ] );
+    }
+
+    public function actionConsent($key, $email) {
+	    $q = Member::find()->where (['and', 'keyCheck = :key', 'email = :email'], ['key' => $key, 'email' => $email]);
+	    $members = $q->all();
+	    if (count ($members)) {
+	    	$members[0]->consent = true;
+		    $members[0]->save();
+		    $ok = true;
+	    } else {
+	    	$ok = false;
+	    }
+	    return $this->render( 'consent',[
+	    	'ok' => $ok
+	    ]);
+    }
+
+    public function getFreeAccessActions() {
+    	return ['consent'];
     }
 }

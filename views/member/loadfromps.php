@@ -47,6 +47,12 @@ $this->params['breadcrumbs'][] = $this->title;
 		<p>Aún no se han cargado datos desde <?= $shop ?>. Hay <?= $ncustomers ?> clientes en total, <?= $newcustomers ?> nuevos
 			y <?= $existingcustomers ?> existentes.</p>
 		<?php } ?>
+		<?php if (strlen ($tdatec) ) { ?>
+			<p>La última actualización de consentimientos fue el <?= $tdatec ?>. Desde entonces hay
+			<?= $consents ?> usuarios que han dado su consentimiento a recibir comunicaciones (y no se han actualizado en Data)</p>
+		<?php } else { ?>
+			<p>Aún no se han actualizado consentimientos. Hay <?= $consents ?> usuarios que han dado su consentimiento a recibir comunicaciones (y no se han actualizado en Data)</p>
+		<?php } ?>
 		<?php if ($ncustomers > 0) { ?>
 		<?= Html::a('Cargar todos', ['member/'.$command, 'filter' => 'a'], ['class' => 'btn btn-primary']) ?>
 		<?php } ?>
@@ -55,6 +61,9 @@ $this->params['breadcrumbs'][] = $this->title;
 		<?php } ?>
 		<?php if ($existingcustomers > 0) { ?>
 		<?= Html::a('Revisar existentes', ['member/'.$command, 'filter' => 'rn'], ['class' => 'btn btn-primary']) ?>
+		<?php } ?>
+		<?php if ($consents > 0) { ?>
+		<?= Html::a('Actualizar consentimientos', ['member/updateconsents'], ['class' => 'btn btn-primary']) ?>
 		<?php } ?>
 		<?php if ($filter == 'rn') { ?>
 			<h3>Clientes de la tienda que ya existen como socios</h3>

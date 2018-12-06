@@ -23,4 +23,9 @@ class WPUserQuery extends ActiveQuery {
 		if (strlen ($date)) $ret = $ret->andWhere (['>', 'wp_users.user_registered', $date]);
 		return $ret;
 	}
+
+	public function usersWithConsent() {
+		return $this->innerJoin ('wp_postmeta pm1', "pm1.meta_key = '_customer_user' AND pm1.meta_value = wp_users.id")
+				->innerJoin('wp_postmeta pm2', "pm1.post_id = pm2.post_id AND pm2.meta_key = '_wpgdprc'");
+	}
 }

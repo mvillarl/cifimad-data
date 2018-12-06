@@ -5,7 +5,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Socios CifiMad';
+$this->title = 'Datos CifiMad';
 ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">

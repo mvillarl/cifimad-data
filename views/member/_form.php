@@ -30,6 +30,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->checkbox() ?>
 
+    <?= $form->field($model, 'consent')->checkbox() ?>
+
+    <?= $form->field($model, 'keyCheck')->textInput(['readonly' => 'readonly']) ?>
+
     <?= $form->field($model, 'createdAt')->textInput( ['readonly' => 'readonly']) ?>
 
     <?= $form->field($model, 'updatedAt')->textInput( ['readonly' => 'readonly']) ?>

@@ -58,11 +58,14 @@ $config = [
                 '/member/loadfromps/<filter>' => 'member/loadfromps',
                 '/member/export/<onlydni>' => 'member/export',
                 '/member/ajaxsearch/<term>' => 'member/ajaxsearch',
+                '/member/consent/<key>/<email>' => 'member/consent',
                 '/attendee/ajaxsearch/<term>' => 'attendee/ajaxsearch',
                 '/attendee/reportbadgelabels/<afterprint>' => 'attendee/reportbadgelabels',
                 '/attendee/reportbadgelabels/<afterprint>/<showinfotickets>' => 'attendee/reportbadgelabels',
                 '/attendee/reporthotel/<aftersend>' => 'attendee/reporthotel',
                 '/attendee/reportbadges/<detailed>' => 'attendee/reportbadges',
+                '/press/export/<consent>' => 'press/export',
+                '/press/consent/<key>/<email>' => 'press/consent',
             ],
         ],
     ],
@@ -71,13 +74,17 @@ $config = [
     //'defaultRoute' => '/event/index',
     'language' => 'es-ES',
     'on beforeAction'=>function(yii\base\ActionEvent $event) {
-        if ( in_array ($event->action->uniqueId, array ('member/export') ) )
+        if ( in_array ($event->action->uniqueId, array ('member/export', 'press/export') ) )
         {
             $event->action->controller->layout = 'excelLayout.php';
         };
         if ( in_array ($event->action->uniqueId, array ('attendee/reportbadgelabels', 'attendee/reportbadges', 'attendee/reporthotel', 'attendee/reportincomes') ) )
         {
             $event->action->controller->layout = 'reportLayout.php';
+        };
+        if ( in_array ($event->action->uniqueId, array ('member/consent', 'press/consent') ) )
+        {
+            $event->action->controller->layout = 'publicLayout.php';
         };
         if ( in_array ($event->action->uniqueId, array ('member/ajaxSearch', 'attendee/ajaxSearch') ) )
         {

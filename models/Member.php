@@ -23,6 +23,8 @@ use yii\helpers\ArrayHelper;
  * @property boolean $status
  * @property string $createdAt
  * @property string $updatedAt
+ * @property string $consent
+ * @property string $keyCheck
  *
  * @property Attendee[] $cifAttendees
  * @property Event[] $idEvents
@@ -60,8 +62,9 @@ class Member extends \yii\db\ActiveRecord
             [['name', 'surname'], 'required'],
             [['createdAt', 'updatedAt'], 'safe'],
             [['name', 'surname', 'badgeName', 'badgeSurname', 'email'], 'string', 'max' => 100],
+	        [['keyCheck'], 'string', 'max' => 50],
 	        [['remarks'], 'string'],
-	        [['status'], 'boolean'],
+	        [['status', 'consent'], 'boolean'],
             [['badgeName', 'badgeSurname'], 'default', 'value' => function ($model, $attribute) {
                 return ($attribute == 'badgeName')? $model->name: $model->surname;
             }],
@@ -89,6 +92,8 @@ class Member extends \yii\db\ActiveRecord
             'phone' => 'Teléfono',
             'remarks' => 'Observaciones',
 	        'status' => 'Activo',
+	        'consent' => 'Consentimiento para enviar mails',
+	        'keyCheck' => 'Clave de verificación',
             'createdAt' => 'Fecha de creación',
             'updatedAt' => 'Fecha de modificación',
         ];
@@ -148,6 +153,17 @@ class Member extends \yii\db\ActiveRecord
         }
     }
 
+	public static function membersMatchConsents ($members, $consents, &$matchconsents) {
+		$matchconsents = [];
+		foreach ($consents as $email => $consent) {
+			if (isset ($members[$email])) {
+				$consent->idMember = $members[$email]->id;
+				$consents[$email]->idMember = $consent->idMember;
+				$matchconsents[] = $members[$email];
+			}
+		}
+	}
+
     public static function upsertMembersFromCustomers ($customerstoupsert, &$stats, &$errors) {
         $stats['total'] = 0;
         $stats['inserted'] = 0;
@@ -160,11 +176,13 @@ class Member extends \yii\db\ActiveRecord
             if (isset ($customer->idMember)) {
                 $member = Member::findOne ($customer->idMember);
             }
+            if (!strlen ($member->keyCheck)) $member->setKey();
             $member->name = $customer->firstname;
             $member->surname = $customer->lastname;
             $member->email = $customer->email;
             if (strlen ($customer->phone_mobile) ) $member->phone = $customer->phone_mobile;
             if (strlen ($customer->dni) ) $member->nif = $customer->dni;
+	        $member->consent = true; // Asumimos que un socio nuevo ha marcado casilla consentimiento
             if ($member->save() ) {
                 if (isset ($customer->idMember)) $stats['modified']++;
                 else $stats['inserted']++;
@@ -187,5 +205,19 @@ class Member extends \yii\db\ActiveRecord
         }
         return $ret;
     }
+
+    public function setKey() {
+    	$this->keyCheck = uniqid('cf');
+    }
+
+	public static function setKeys() {
+		$query = Member::find()->where('keyCheck IS NULL');
+		$members = $query->all();
+		foreach ($members as $member) {
+			$member->setKey();
+			$member->save();
+		}
+		return count ($members);
+	}
 
 }

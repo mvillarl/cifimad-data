@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Member */
+/* @var $model app\models\Press */
 
-$this->title = $model->fullname;
-$this->params['breadcrumbs'][] = ['label' => 'Socios', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Medios de prensa', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="member-view">
+<div class="press-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Borrar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => '¿Seguro que quieres borrar este socio?',
+                'confirm' => '¿Seguro que quieres borrar este medio de prensa?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,19 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
+            'sourceName',
             'name',
-            'surname',
-            'badgeName',
-            'badgeSurname',
             'email:email',
-            'nif',
-            'phone',
-            'remarks:ntext',
-            'status:boolean',
             'consent:boolean',
             'keyCheck',
-            'createdAt:datetime',
-            'updatedAt:datetime',
         ],
     ]) ?>
 
