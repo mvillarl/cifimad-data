@@ -15,6 +15,7 @@ use yii\helpers\ArrayHelper;
  * @property string $nif_passport
  * @property string $remarks
  * @property string $remarksMeals
+ * @property boolean $separateRoom
  */
 class Companion extends \yii\db\ActiveRecord
 {
@@ -38,6 +39,7 @@ class Companion extends \yii\db\ActiveRecord
             [['remarksMeals'], 'string'],
             [['name', 'surname'], 'string', 'max' => 60],
             [['nif_passport'], 'string', 'max' => 25],
+            [['separateRoom'], 'boolean'],
         ];
     }
 
@@ -54,6 +56,7 @@ class Companion extends \yii\db\ActiveRecord
             'nif_passport' => 'NIF / Pasaporte',
             'remarks' => 'Observaciones',
             'remarksMeals' => 'Observaciones comidas',
+	        'separateRoom' => '¿Habitación separada?',
         ];
     }
 

@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nif_passport',
             'remarks:ntext',
             'remarksMeals:ntext',
+            'separateRoom:boolean',
         ],
     ]) ?>
 

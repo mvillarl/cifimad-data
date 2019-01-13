@@ -24,6 +24,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'remarksMeals')->textarea(['rows' => 6]) ?>
 
+    <?= $form->field($model, 'separateRoom')->checkbox() ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Modificar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
