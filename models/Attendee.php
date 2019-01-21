@@ -540,6 +540,7 @@ class Attendee extends \yii\db\ActiveRecord
             'N' => 'Doble + niño',
             'T' => 'Triple',
             '4' => 'Triple + niño',
+            'Q' => 'Cuádruple',
             'S' => 'Suite (doble)',
             'U' => 'Suite (individual)',
         ];
@@ -691,32 +692,39 @@ class Attendee extends \yii\db\ActiveRecord
 			$single = ( ($attendee->roomType == 'I') || ($attendee->roomType == '1')  || ($attendee->roomType == 'U') );
 			$double = ( ($attendee->roomType == 'D') || ($attendee->roomType == '2') || ($attendee->roomType == 'S')  || ( ($attendee->roomType == 'N') && !strlen ($attendee->idAttendeeParent)) );
 			$triple = ($attendee->roomType == 'T') || ( ($attendee->roomType == '4') && !strlen ($attendee->idAttendeeParent) );
+			$quadruple = ($attendee->roomType == 'Q');
 			$lodgingChild = ( ($attendee->roomType == 'N') || ($attendee->roomType == '4') ) && strlen ($attendee->idAttendeeParent);
 
 			if ($lodging && $friSat && $FSDinners && $double) $incomes['doubleFSDinners']++;
 			elseif ($lodging && $friSat && $FSDinners && $single) $incomes['singleFSDinners']++;
 			elseif ($lodging && $friSat && $FSDinners && $triple) $incomes['tripleFSDinners']++;
+			elseif ($lodging && $friSat && $FSDinners && $quadruple) $incomes['quadrupleFSinners']++;
 
 			if ($lodging && $sat && $attendee->mealSaturdayDinner && $double) $incomes['doubleSDinners']++;
 			elseif ($lodging && $sat && $attendee->mealSaturdayDinner && $single) $incomes['singleSDinners']++;
 			elseif ($lodging && $sat && $attendee->mealSaturdayDinner && $triple) $incomes['tripleSDinners']++;
+			elseif ($lodging && $sat && $attendee->mealSaturdayDinner && $quadruple) $incomes['quadrupleSDinners']++;
 
 			// Días extra
 			if ($lodging && $friSat && !$FSDinners && $double) $incomes['doubleExtraDays'] += 2;
 			elseif ($lodging && $friSat && !$FSDinners && $single) $incomes['singleExtraDays'] += 2;
 			elseif ($lodging && $friSat && !$FSDinners && $triple) $incomes['tripleExtraDays'] += 2;
+			elseif ($lodging && $friSat && !$FSDinners && $quadruple) $incomes['quadrupleExtraDays'] += 2;
 
 			if ($lodging && $sat && !$attendee->mealSaturdayDinner && $double) $incomes['doubleExtraDays']++;
 			elseif ($lodging && $sat && !$attendee->mealSaturdayDinner && $single) $incomes['singleExtraDays']++;
 			elseif ($lodging && $sat && !$attendee->mealSaturdayDinner && $triple) $incomes['tripleExtraDays']++;
+			elseif ($lodging && $sat && !$attendee->mealSaturdayDinner && $quadruple) $incomes['quadrupleExtraDays']++;
 
 			if ($lodging && $thurs && $double) $incomes['doubleExtraDays']++;
 			elseif ($lodging && $thurs && $single) $incomes['singleExtraDays']++;
 			elseif ($lodging && $thurs && $triple) $incomes['tripleExtraDays']++;
+			elseif ($lodging && $thurs && $quadruple) $incomes['quadrupleExtraDays']++;
 
 			if ($lodging && $sun && $double) $incomes['doubleExtraDays']++;
 			elseif ($lodging && $sun && $single) $incomes['singleExtraDays']++;
 			elseif ($lodging && $sun && $triple) $incomes['tripleExtraDays']++;
+			elseif ($lodging && $sun && $quadruple) $incomes['quadrupleExtraDays']++;
 
 			// Cenas, comidas
 			if (!$lodging && $attendee->mealSaturdayDinner && !$attendee->freeSaturdayDinner) $incomes['saturdayDinners']++;
@@ -759,7 +767,7 @@ class Attendee extends \yii\db\ActiveRecord
 		$singleRooms = ['I', '1', 'U'];
 		$doubleRooms = ['D', '2', 'S'];
 		$tripleRooms = ['N', 'T'];
-		$cuadrupleRooms = ['4'];
+		$cuadrupleRooms = ['4', 'Q'];
 		foreach ($attendees as $attendee) {
 			if (strlen ($attendee->idAttendeeParent) && !strlen ($attendee->parentPhone)) {
 				$errors[] = 'Padre no tiene teléfono: <a href="'.Url::to(['member/update', 'id' => $attendee->memberParentId]).'">' . $attendee->getParentName() . '</a>';
