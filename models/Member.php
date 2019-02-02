@@ -211,7 +211,7 @@ class Member extends \yii\db\ActiveRecord
     }
 
 	public static function setKeys() {
-		$query = Member::find()->where('keyCheck IS NULL');
+		$query = Member::find()->where("keyCheck IS NULL OR keyCheck = ''");
 		$members = $query->all();
 		foreach ($members as $member) {
 			$member->setKey();

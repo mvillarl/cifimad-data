@@ -158,6 +158,7 @@ class MemberController extends BaseController
                     $model->email   = $fieldvalues[2];
                     $model->nif     = $fieldvalues[3];
 	                $model->consent = true;
+	                $model->setKey();
                     $ok             = $model->save();
 	                $models[] = $model;
                     if ( ! $ok ) {
