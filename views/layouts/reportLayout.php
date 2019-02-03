@@ -16,7 +16,7 @@ $this->title = 'Informe asistentes' . (strlen ($subtitle)? ' - ' . $subtitle: ''
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?= Html::csrfMetaTags() ?>
 	<title><?= Html::encode(Yii::$app->name . ' - ' . $this->title) ?></title>
-	<link rel="stylesheet" href="/css/reports.css?v1.7"/>
+	<link rel="stylesheet" href="/css/reports.css?v1.9"/>
 </head>
 <body>
 

@@ -24,6 +24,7 @@ use yii\helpers\ArrayHelper;
  * @property boolean $nif_passport
  * @property string $remarks
  * @property string $remarksMeals
+ * @property string pseudonym
  *
  * @property Event $idEvent0
  */
@@ -49,7 +50,7 @@ class Guest extends \yii\db\ActiveRecord
             [['dateArrival', 'dateDeparture'], 'safe'],
             [['hasAutograph', 'hasPhotoshoot','hasPhotoshootSpecial', 'hasAutographSpecial', 'hasVintage'], 'boolean'],
             [['name', 'surname'], 'string', 'max' => 60],
-            [['characterName'], 'string', 'max' => 100],
+            [['characterName', 'pseudonym'], 'string', 'max' => 100],
             [['nif_passport'], 'string', 'max' => 25],
 	        [['remarks'], 'string'],
 	        [['remarksMeals'], 'string'],
@@ -83,6 +84,7 @@ class Guest extends \yii\db\ActiveRecord
             'nif_passport' => 'DNI / Pasaporte',
             'remarks' => 'Observaciones',
             'remarksMeals' => 'Observaciones comidas',
+            'pseudonym' => 'Seudónimo',
         ];
     }
 

@@ -40,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'status:boolean',
             'consent:boolean',
             'keyCheck',
+            'small:boolean',
             'createdAt:datetime',
             'updatedAt:datetime',
         ],

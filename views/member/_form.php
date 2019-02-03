@@ -34,6 +34,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'keyCheck')->textInput(['readonly' => 'readonly']) ?>
 
+    <?= $form->field($model, 'small')->checkbox() ?>
+
     <?= $form->field($model, 'createdAt')->textInput( ['readonly' => 'readonly']) ?>
 
     <?= $form->field($model, 'updatedAt')->textInput( ['readonly' => 'readonly']) ?>

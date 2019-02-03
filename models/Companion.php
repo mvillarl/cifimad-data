@@ -12,10 +12,14 @@ use yii\helpers\ArrayHelper;
  * @property integer $idGuest
  * @property string $name
  * @property string $surname
+ * @property string $badgeName
+ * @property string $badgeSurname
  * @property string $nif_passport
  * @property string $remarks
  * @property string $remarksMeals
  * @property boolean $separateRoom
+ * @property boolean $excludeLodging
+ * @property boolean $excludeFridayDinner
  */
 class Companion extends \yii\db\ActiveRecord
 {
@@ -37,9 +41,9 @@ class Companion extends \yii\db\ActiveRecord
             [['idGuest'], 'integer'],
             [['remarks'], 'string'],
             [['remarksMeals'], 'string'],
-            [['name', 'surname'], 'string', 'max' => 60],
+            [['name', 'surname', 'badgeName', 'badgeSurname'], 'string', 'max' => 60],
             [['nif_passport'], 'string', 'max' => 25],
-            [['separateRoom'], 'boolean'],
+            [['separateRoom', 'excludeLodging', 'excludeFridayDinner'], 'boolean'],
         ];
     }
 
@@ -53,15 +57,23 @@ class Companion extends \yii\db\ActiveRecord
             'idGuest' => 'Invitado',
             'name' => 'Nombre',
             'surname' => 'Apellido',
+            'badgeName' => 'Nombre acreditación',
+            'badgeSurname' => 'Apellido acreditación',
             'nif_passport' => 'NIF / Pasaporte',
             'remarks' => 'Observaciones',
             'remarksMeals' => 'Observaciones comidas',
 	        'separateRoom' => '¿Habitación separada?',
+	        'excludeLodging' => 'Excluir alojamiento',
+	        'excludeFridayDinner' => 'Excluir cena viernes',
         ];
     }
 
 	public function getFullname() {
 		return $this->name . ' ' . $this->surname;
+	}
+
+	public function getFullBadgeName() {
+		return (strlen ($this->badgeName)? $this->badgeName: $this->name) . ' ' . (strlen ($this->badgeSurname)? $this->badgeSurname: $this->surname);
 	}
 
 	public static function getGuests($map = false) {

@@ -30,6 +30,10 @@ html, body {
     color: red;
 }
 
+.companion {
+    color: green;
+}
+
 .badgelabel {
     text-align: center;
     font-family: Bitsumishi;
@@ -42,6 +46,10 @@ html, body {
     width: 10.25cm;
     height: 1.50cm;
     white-space: nowrap;
+}
+
+.small {
+    font-size: 18pt;
 }
 
 .badgetype {

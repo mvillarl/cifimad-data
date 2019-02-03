@@ -18,6 +18,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'surname')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'badgeName')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'badgeSurname')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'nif_passport')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'remarks')->textarea(['rows' => 6]) ?>
@@ -25,6 +29,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'remarksMeals')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'separateRoom')->checkbox() ?>
+
+    <?= $form->field($model, 'excludeLodging')->checkbox() ?>
+
+    <?= $form->field($model, 'excludeFridayDinner')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Modificar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="attendee-reportbadgelabels">
 	<div id="warnings"></div>
 	<table class="attendee-reportbadgelabels" cellpadding="0" cellspacing="0">
-		<?php $type = ''; $long = 0; $isEspecial = false; foreach ($attendees as $attendee) { ?>
+		<?php $type = ''; $long = 0; $isEspecial = false; $isCompanion = false; foreach ($attendees as $attendee) { ?>
 			<?php
 			$longd = 1.5;
 			if ($attendee->isSpecial || $attendee->idSource == '2') $longd += 1.5;
@@ -28,6 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="attendee-reportbadgelabels">
 	<table class="attendee-reportbadgelabels" cellpadding="0" cellspacing="0">
 			<?php } else { $long += $longd; } ?>				
+			<?php if (!$isCompanion && ($attendee->idSource == 'C') ) { ?>
+				<?php $isCompanion = true; $long += 1.5; ?>
+				<tr>
+					<td colspan="2" class="title">Acompañantes</td>
+				</tr>
+			<?php } ?>
 			<?php if (!$isEspecial && ($attendee->isSpecial || $attendee->idSource == '2') ) { ?>
 				<?php $isEspecial = true; $long += 1.5; ?>
 				<tr>
@@ -42,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			<?php } ?>
 			<tr>
 				<td class="badgelabelhint<?= strlen ($type)? $type: 'F' ?>"> </td>
-				<td class="badgelabel<?php if ($attendee->isSpecial) { ?> special<?php } ?>">
+				<td class="badgelabel<?php if ($attendee->isSpecial) { ?> special<?php } ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
                 <span class="badgelabelin">
 					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
 					<?= $attendee->memberName ?></span>
@@ -66,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			<?php if ($attendee->isSpecial || ($attendee->idSource == '2') ) { ?>
 				<tr>
 					<td class="badgelabelhintF"> </td>
-					<td class="badgelabel<?php if ($attendee->isSpecial) { ?> special<?php } ?>">
+					<td class="badgelabel<?php if ($attendee->isSpecial) { ?> special<?php } ?><?php if (bin2hex ($attendee->memberSmall == 1 || $attendee->memberSmall) == '01') { ?> small<?php } ?>">
                     <span class="badgelabelin">
 					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
                     <?= $attendee->memberName ?></span></td>

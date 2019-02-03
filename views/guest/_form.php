@@ -21,6 +21,8 @@ use yii\widgets\ActiveForm;
 
 	<?= $form->field($model, 'characterName')->textInput(['maxlength' => true]) ?>
 
+	<?= $form->field($model, 'pseudonym')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'order')->textInput() ?>
 
     <?= $form->field($model, 'nif_passport')->textInput() ?>

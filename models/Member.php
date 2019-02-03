@@ -25,6 +25,7 @@ use yii\helpers\ArrayHelper;
  * @property string $updatedAt
  * @property string $consent
  * @property string $keyCheck
+ * @property string $small
  *
  * @property Attendee[] $cifAttendees
  * @property Event[] $idEvents
@@ -64,7 +65,7 @@ class Member extends \yii\db\ActiveRecord
             [['name', 'surname', 'badgeName', 'badgeSurname', 'email'], 'string', 'max' => 100],
 	        [['keyCheck'], 'string', 'max' => 50],
 	        [['remarks'], 'string'],
-	        [['status', 'consent'], 'boolean'],
+	        [['status', 'consent', 'small'], 'boolean'],
             [['badgeName', 'badgeSurname'], 'default', 'value' => function ($model, $attribute) {
                 return ($attribute == 'badgeName')? $model->name: $model->surname;
             }],
@@ -93,6 +94,7 @@ class Member extends \yii\db\ActiveRecord
             'remarks' => 'Observaciones',
 	        'status' => 'Activo',
 	        'consent' => 'Consentimiento para enviar mails',
+	        'small' => 'Acreditación en letra pequeña',
 	        'keyCheck' => 'Clave de verificación',
             'createdAt' => 'Fecha de creación',
             'updatedAt' => 'Fecha de modificación',

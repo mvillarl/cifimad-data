@@ -114,6 +114,7 @@ class Attendee extends \yii\db\ActiveRecord
     public $badgeName;
     public $badgeSurname;
 	public $nif;
+	public $memberSmall;
     //public $attendeeName;
     public $sourceName;
     public $sourceImageFile;
@@ -271,7 +272,7 @@ class Attendee extends \yii\db\ActiveRecord
             [['idEvent', 'idMember', 'ticketType', 'idSource', 'status'], 'required'],
             ['idEvent', 'default', 'value' => $this->_idEvent],
             [['idEvent', 'idMember', 'guest1Photoshoot', 'guest1PhotoshootSpecial', 'guest1Autograph', 'guest1AutographSpecial', 'guest1Vintage', 'guest2Photoshoot', 'guest2PhotoshootSpecial', 'guest2Autograph', 'guest2AutographSpecial', 'guest2Vintage', 'guest3Photoshoot', 'guest3PhotoshootSpecial', 'guest3Autograph', 'guest3AutographSpecial', 'guest3Vintage', 'guest4Photoshoot', 'guest4PhotoshootSpecial', 'guest4Autograph', 'guest4AutographSpecial', 'guest4Vintage', 'extraProduct1', 'extraProduct2', 'extraProduct3', 'extraProduct4', 'idSource', 'idAttendeeRoommate1', 'idAttendeeRoommate2', 'idAttendeeRoommate3'], 'integer'],
-            [['mealFridayDinner', 'mealSaturdayLunch', 'mealSaturdayDinner', 'mealSundayLunch', 'mealSundayDinner', 'isSpecial', 'freeLodging', 'freeSaturdayDinner'], 'boolean'],
+            [['mealFridayDinner', 'mealSaturdayLunch', 'mealSaturdayDinner', 'mealSundayLunch', 'mealSundayDinner', 'isSpecial', 'freeLodging', 'freeSaturdayDinner', 'memberSmall'], 'boolean'],
             [['dateStartLodging', 'dateEndLodging', 'createdAt', 'updatedAt', 'updatedAtHotel', 'updatedAtBadges', 'updatedAtBadgesTickets'], 'safe'],
             [['remarks', 'remarksRegistration', 'remarksMeals', 'remarksMealSaturday', 'remarksHotel', 'orders'], 'string'],
             [['status', 'ticketType', 'roomType'], 'string', 'max' => 1],

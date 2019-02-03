@@ -213,6 +213,16 @@ class AttendeeController extends BaseController
         $guests = Attendee::getGuests($idEvent);
         $extraproducts = Attendee::getProducts($idEvent);
 
+	    foreach ($guests as $guest) {
+		    $companions = $guest->getCompanions();
+		    foreach ($companions as $companion) {
+		    	$compatt = new \stdClass();
+			    $compatt->idSource = 'C';
+			    $compatt->memberName = $companion->fullBadgeName;
+			    array_unshift($attendees, $compatt);
+		    }
+	    }
+
         return $this->render('reportbadgelabels', [
             'attendees' => $attendees,
             'subtitle' => 'Etiquetas para acreditaciones',
@@ -306,10 +316,12 @@ class AttendeeController extends BaseController
 			    $attComp->attendeeName = $companion->fullname;
 			    $attComp->memberName = '';
 			    $attComp->remarksMeals = $companion->remarksMeals;
-			    if ( ($guest->dateArrival <= $friday) && ($friday <= $guest->dateDeparture) ) {
+			    if ( ($guest->dateArrival <= $friday) && ($friday <= $guest->dateDeparture) && !$companion->excludeFridayDinner) {
+				    //echo "<li>Sumo cena viernes para acompañante " . $companion->fullname;
 				    array_unshift($fridayDinner, $attComp);
 			    }
 			    if ( ($guest->dateArrival <= $saturday) && ($saturday <= $guest->dateDeparture) ) {
+			    	//echo "<li>Sumo cena sábado para acompañante " . $companion->fullname;
 				    array_unshift( $saturdayDinner, $attComp );
 			    }
 		    }

@@ -32,10 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'idGuest',
             'name',
             'surname',
+            'badgeName',
+            'badgeSurname',
             'nif_passport',
             'remarks:ntext',
             'remarksMeals:ntext',
             'separateRoom:boolean',
+            'excludeLodging:boolean',
+            'excludeFridayDinner:boolean',
         ],
     ]) ?>
 
