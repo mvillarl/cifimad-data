@@ -795,6 +795,9 @@ class Attendee extends \yii\db\ActiveRecord
 		         || (in_array ($attendee->roomType, $tripleRooms) && (!$hasRoommate1 || !$hasRoommate2) ) || (in_array ($attendee->roomType, $cuadrupleRooms) && (!$hasRoommate1 || !$hasRoommate2 || !$hasRoommate3) ) ) {
 				$errors[] = 'Datos de alojamiento inconsistentes - tipo de habitación no corresponde con compañeros: <a href="'.Url::to(['attendee/update', 'id' => $attendee->id]).'">' . $badgename . '</a>';
 			}
+			if  ( ($attendee->mealSaturdayDinner && !strlen ($attendee->remarksMealSaturday) )|| (!$attendee->mealSaturdayDinner && strlen ($attendee->remarksMealSaturday) ) ) {
+				$errors[] = 'Datos de cena de gala inconsistentes: <a href="'.Url::to(['attendee/update', 'id' => $attendee->id]).'">' . $badgename . '</a>';
+			}
 		}
 		return $errors;
 	}

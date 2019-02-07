@@ -6,6 +6,7 @@
 		<th>E-mail</th>
 		<th>DNI</th>
 		<th>Observaciones</th>
+		<th>Clave de verificación</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -16,6 +17,7 @@
 			<td><?= $member->email ?></td>
 			<td><?= $member->nif ?></td>
 			<td><?= $member->remarks ?></td>
+			<td><?= $member->keyCheck ?></td>
 		</tr>
 	<?php } ?>
 	</tbody>
