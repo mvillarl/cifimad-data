@@ -363,10 +363,11 @@ class AttendeeController extends BaseController
 	    //echo "<pre>"; print_r($saturdayDinner); echo "</pre>";
 	    foreach ($saturdayDinner as $sd) {
 		    if (!strlen ($sd->remarksMeals) && !strlen ($sd->remarksMealSaturday)) continue;
+		    /* Mejor que salga sólo lo del sábado, ya lo ponemos "mascado"
 		    if (strlen ($sd->remarksMeals) ) {
 		    	if (isset ($mealsummary['saturdayRemarks'][$sd->remarksMeals]) ) $mealsummary['saturdayRemarks'][$sd->remarksMeals]++;
 			    else $mealsummary['saturdayRemarks'][$sd->remarksMeals] = 1;
-		    }
+		    }*/
 		    if (strlen ($sd->remarksMealSaturday) ) {
 			    if ( isset ( $mealsummary['saturdayRemarks'][ $sd->remarksMealSaturday ] ) ) $mealsummary['saturdayRemarks'][$sd->remarksMealSaturday]++;
 			    else $mealsummary['saturdayRemarks'][ $sd->remarksMealSaturday ] = 1;
