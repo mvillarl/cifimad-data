@@ -117,6 +117,18 @@ $this->params['breadcrumbs'][] = $this->title;
 			<td class="badgetype"></td>
 		</tr>
 			<?php } ?>
+			<?php foreach ($blankBadges as $source) { ?>
+				<?php for ($i = 0; $i < $source->blankBadges; $i++) { ?>
+				<tr>
+					<td class="badgelabelhintF"> </td>
+					<td class="badgelabel">
+						<span class="badgelabelin">
+						<?php if (strlen ($source->imageFile) ) { ?><img src="/img/logos/<?= $source->imageFile ?>" class="sourceimage"/><?php }?>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td class="badgetype"></td>
+				</tr>
+				<?php } ?>
+			<?php } ?>
 		<?php } ?>
 	</table>
 </div>

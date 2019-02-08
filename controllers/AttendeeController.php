@@ -6,6 +6,7 @@ use app\models\Event;
 use Yii;
 use app\models\Attendee;
 use app\models\AttendeeSearch;
+use app\models\Source;
 use webvimark\components\BaseController;
 use webvimark\modules\UserManagement\models\User;
 use yii\web\NotFoundHttpException;
@@ -223,6 +224,8 @@ class AttendeeController extends BaseController
 		    }
 	    }
 
+	    $blankBadges = Source::find()->andWhere ('blankBadges > 0')->all();
+
         return $this->render('reportbadgelabels', [
             'attendees' => $attendees,
             'subtitle' => 'Etiquetas para acreditaciones',
@@ -231,6 +234,7 @@ class AttendeeController extends BaseController
             'idEvent' => $idEvent,
             'guests' => $guests,
             'extraproducts' => $extraproducts,
+	        'blankBadges' => $blankBadges,
         ]);
         
     }

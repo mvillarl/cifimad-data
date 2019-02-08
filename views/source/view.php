@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'separateList:boolean',
+            'blankBadges',
         ],
     ]) ?>
 
