@@ -214,13 +214,15 @@ class AttendeeController extends BaseController
         $guests = Attendee::getGuests($idEvent);
         $extraproducts = Attendee::getProducts($idEvent);
 
-	    foreach ($guests as $guest) {
-		    $companions = $guest->getCompanions();
-		    foreach ($companions as $companion) {
-		    	$compatt = new \stdClass();
-			    $compatt->idSource = 'C';
-			    $compatt->memberName = $companion->fullBadgeName;
-			    array_unshift($attendees, $compatt);
+	    if (!$afterprint) {
+		    foreach ( $guests as $guest ) {
+			    $companions = $guest->getCompanions();
+			    foreach ( $companions as $companion ) {
+				    $compatt             = new \stdClass();
+				    $compatt->idSource   = 'C';
+				    $compatt->memberName = $companion->fullBadgeName;
+				    array_unshift( $attendees, $compatt );
+			    }
 		    }
 	    }
 
