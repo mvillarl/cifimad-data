@@ -32,7 +32,7 @@ class AttendeeQuery extends \yii\db\ActiveQuery
     public function andFilterSearchMember ($term) {
         $term = trim($term);
         if (strlen ($term)) {
-            $this->andWhere(['or', 'cif_members.badgeName LIKE :term', 'cif_members.badgeSurname LIKE :term', 'cif_members.name LIKE :term', 'cif_members.surname LIKE :term'], [':term' => '%'.$term.'%']);
+            $this->andWhere(['or', 'cif_members.badgeName LIKE :term', 'cif_members.badgeSurname LIKE :term', 'cif_members.name LIKE :term', 'cif_members.surname LIKE :term', 'cif_members.nif LIKE :term'], [':term' => '%'.$term.'%']);
         }
         return $this;
     }
