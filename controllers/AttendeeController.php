@@ -328,6 +328,7 @@ class AttendeeController extends BaseController
 			    }
 			    if ( ($guest->dateArrival <= $saturday) && ($saturday <= $guest->dateDeparture) ) {
 			    	//echo "<li>Sumo cena sábado para acompañante " . $companion->fullname;
+				    $attComp->remarksMealSaturday = $companion->remarksMeals;
 				    array_unshift( $saturdayDinner, $attComp );
 			    }
 		    }
@@ -342,6 +343,7 @@ class AttendeeController extends BaseController
 		    }
 		    if ( ($guest->dateArrival <= $saturday) && ($saturday <= $guest->dateDeparture) ) {
 			    //echo "<li>Incluyo a " . $guest->name . " en sábado pq " . $event->dateStart . " < " . $guest->dateArrival;
+			    $attGuest->remarksMealSaturday = $guest->remarksMeals;
 			    array_unshift( $saturdayDinner, $attGuest );
 		    }
 	    }
