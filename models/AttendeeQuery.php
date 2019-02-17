@@ -37,6 +37,18 @@ class AttendeeQuery extends \yii\db\ActiveQuery
         return $this;
     }
 
+	public function andFilterRemarks ($term) {
+		$term = trim($term);
+		if (strlen ($term)) {
+			if ( ($term == '%') || ($term == '*') ) {
+				$this->andWhere ("cif_attendees.remarksRegistration IS NOT NULL AND cif_attendees.remarksRegistration <> ''");
+			} else {
+				$this->andWhere('cif_attendees.remarksRegistration LIKE :term', [':term' => '%'.$term.'%']);
+			}
+		}
+		return $this;
+	}
+
 	public function andFilterEvent ($idEvent) {
 		return $this->andWhere ('cif_attendees.idEvent = :event', ['event' => $idEvent] );
 	}

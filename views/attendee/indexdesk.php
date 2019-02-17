@@ -97,6 +97,12 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
 		'content' => 'app\components\AttendeeColumns::productsCol',
 	];
 	$attendeeColumns[] = [
+		'label' => 'Observaciones',
+		'attribute' => 'remarksRegistration',
+		'format'=>'raw',
+		'content' => 'app\components\AttendeeColumns::remarksCol',
+	];
+	$attendeeColumns[] = [
 		'attribute' => 'orders',
 		//'label' => 'Nº pedido/s',
 		//'headerOptions' => ['title' => $extraProductsTitle],

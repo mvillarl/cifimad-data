@@ -110,6 +110,12 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
                                                                    'content' => 'app\components\AttendeeColumns::productsCol',
                                                                ];
         $attendeeColumns[] = [
+            'label' => 'Observaciones',
+            'attribute' => 'remarksRegistration',
+            'format'=>'raw',
+            'content' => 'app\components\AttendeeColumns::remarksCol',
+        ];
+        $attendeeColumns[] = [
             'label' => 'Nº pedido/s',
             'attribute' => 'orders',
             //'headerOptions' => ['title' => $extraProductsTitle],
@@ -124,5 +130,6 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => $attendeeColumns,
+        //'rowOptions' => Closure::fromCallable ('app\components\AttendeeColumns::rowOptions'), // Closures sólo PHP7?
     ]); ?>
 </div>

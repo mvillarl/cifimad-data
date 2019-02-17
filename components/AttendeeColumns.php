@@ -55,4 +55,21 @@ class AttendeeColumns {
 		}
 		return $ret;
 	}
+
+	public static function remarksCol ($model, $key, $index, $col, $small = false) {
+		$ret = '';
+		if (strlen ($model->remarksRegistration) ) {
+			$color = $model->status == '0'? 'darkorange': '#00C1C1';
+			$ret = '<span style="background-color: ' . $color . ';" title="' . htmlspecialchars($model->remarksRegistration). '">' . substr($model->remarksRegistration, 0, 10) . (strlen ($model->remarksRegistration) > 10? '...': '') . '</span>';
+		}
+		return $ret;
+	}
+
+	public static function rowOptions ($model, $key, $index, $grid) {
+		$ret = [];
+		if (strlen ($model->remarksRegistration)) {
+			$ret['style'] = 'background-color: orange;';
+		}
+		return $ret;
+	}
 }

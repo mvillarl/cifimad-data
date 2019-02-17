@@ -116,7 +116,8 @@ class AttendeeSearch extends Attendee
         $query/*->andFilterWhere(['like', 'remarks', $this->remarks])
             ->andFilterWhere(['like', 'remarksRegistration', $this->remarksRegistration])
             ->andFilterWhere(['like', 'remarksMeals', $this->remarksMeals])*/
-            ->andFilterSearchMember($this->memberName);
+            ->andFilterSearchMember($this->memberName)
+	        ->andFilterRemarks ($this->remarksRegistration);
 
         return $dataProvider;
     }
