@@ -26,3 +26,4 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 web/img/logos/
+web/php.ini
