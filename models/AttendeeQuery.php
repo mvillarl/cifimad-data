@@ -137,6 +137,7 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 				
 			}
 			$this->andWhere( $whereProds );
+			$order = 'cif_members.badgeName, cif_members.badgeSurname';
 		} elseif ($detailed == 'A') {
             $this->andWhere(' cif_sources.separateList = 1');
             $order = 'cif_sources.name,cif_members.badgeName, cif_members.badgeSurname';

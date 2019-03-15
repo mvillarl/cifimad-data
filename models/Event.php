@@ -89,7 +89,7 @@ class Event extends \yii\db\ActiveRecord
         return $ret;
     }
 
-    public function load($request) {
+    public function load($request, $formName = null) {
         //print_r($request);die;
         $ret = parent::load($request);
         if($ret && $request['dateSentInfoHotelNow']) {
@@ -102,12 +102,12 @@ class Event extends \yii\db\ActiveRecord
     }
 
     public static function getIdNextEvent() {
-        $evdata = Event::find()->where(['>', 'dateStart', date ("Y-m-d")])->orderBy('dateStart' ,'ASC')->limit(1)->one();
+        $evdata = Event::find()->where(['>', 'dateStart', date ("Y-m-d")])->orderBy('dateStart')->limit(1)->one();
         return $evdata->id;
     }
 
     public static function getIdLastEvent() {
-        $evdata = Event::find()->where(['<', 'dateStart', date ("Y-m-d")])->orderBy('dateStart' ,'DESC')->limit(1)->one();
+        $evdata = Event::find()->where(['<', 'dateStart', date ("Y-m-d")])->orderBy('dateStart DESC')->limit(1)->one();
         return $evdata->id;
     }
 }

@@ -87,6 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			<th>Apellidos</th>
 			<th>DNI</th>
 			<th>Habitación</th>
+			<th>Miércoles - jueves</th>
 			<th>Jueves - viernes</th>
 			<th>Viernes - sábado</th>
 			<th>Sábado - domingo</th>
@@ -107,6 +108,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<?php if ($first) $first = false; else echo '<br/>'; ?><?= $nif ?>
 				<?php } ?></td>
 			<td><?= $attendeeroom->roomType ?></td>
+			<td class="c"><?= $attendeeroom->wednesday? 'X': '' ?></td>
 			<td class="c"><?= $attendeeroom->thursday? 'X': '' ?></td>
 			<td class="c"><?= $attendeeroom->friday? 'X': '' ?></td>
 			<td class="c"><?= $attendeeroom->saturday? 'X': '' ?></td>

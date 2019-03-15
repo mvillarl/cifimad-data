@@ -593,6 +593,7 @@ class Attendee extends \yii\db\ActiveRecord
     	// Asumimos que el evento es de viernes a domingo
 	    $ev = Event::findOne($idEvent);
 	    $friday = $ev->dateStart;
+	    $wednesday = DateFunctions::dateAdd($friday, -2);
 	    $thursday = DateFunctions::dateAdd($friday, -1);
 	    $saturday = DateFunctions::dateAdd($friday, 1);
 	    $sunday = $ev->dateEnd;
@@ -614,6 +615,7 @@ class Attendee extends \yii\db\ActiveRecord
 		    	$rooms[$roompos]->surnames[] = $attendee->surname;
 			    $rooms[$roompos]->nifs[] = $attendee->nif;
 			    $rooms[$roompos]->remarks .= ' ' . $attendee->remarksHotel;
+			    $rooms[$roompos]->wednesday |= ($attendee->dateStartLodging <= $wednesday);
 			    $rooms[$roompos]->thursday |= ($attendee->dateStartLodging <= $thursday);
 			    $rooms[$roompos]->friday |= ($attendee->dateStartLodging <= $friday) && ($attendee->dateEndLodging > $friday);
 			    $rooms[$roompos]->saturday |= ($attendee->dateStartLodging <= $saturday) && ($attendee->dateEndLodging > $saturday);
@@ -627,6 +629,7 @@ class Attendee extends \yii\db\ActiveRecord
 			    $rooms[$roomindex]->status = $attendee->status;
 			    $rooms[$roomindex]->roomType = $attendee->getRoomTypeValue();
 			    $rooms[$roomindex]->remarks = $attendee->remarksHotel;
+			    $rooms[$roomindex]->wednesday = ($attendee->dateStartLodging <= $wednesday);
 			    $rooms[$roomindex]->thursday = ($attendee->dateStartLodging <= $thursday);
 			    $rooms[$roomindex]->friday = ($attendee->dateStartLodging <= $friday) && ($attendee->dateEndLodging > $friday);
 			    $rooms[$roomindex]->saturday = ($attendee->dateStartLodging <= $saturday) && ($attendee->dateEndLodging > $saturday);

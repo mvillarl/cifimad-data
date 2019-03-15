@@ -65,8 +65,8 @@ class PressSearch extends Press
             'consent' => $this->consent,
         ]);
 
-        $query->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'cif_press.email', $this->email])
+            ->andFilterWhere(['like', 'cif_press.name', $this->name]);
 
         return $dataProvider;
     }
