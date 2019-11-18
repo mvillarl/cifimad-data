@@ -20,6 +20,8 @@ use yii\helpers\ArrayHelper;
  * @property boolean $hasPhotoshoot
  * @property boolean $hasPhotoshootSpecial
  * @property boolean $hasAutographSpecial
+ * @property boolean $hasSelfie
+ * @property boolean $hasAutographSelfieCombo
  * @property boolean $hasVintage
  * @property boolean $nif_passport
  * @property string $remarks
@@ -48,7 +50,7 @@ class Guest extends \yii\db\ActiveRecord
             [['idEvent', 'name', 'surname', 'order', 'dateArrival', 'dateDeparture'], 'required'],
             [['idEvent', 'order'], 'integer'],
             [['dateArrival', 'dateDeparture'], 'safe'],
-            [['hasAutograph', 'hasPhotoshoot','hasPhotoshootSpecial', 'hasAutographSpecial', 'hasVintage'], 'boolean'],
+            [['hasAutograph', 'hasPhotoshoot','hasPhotoshootSpecial', 'hasAutographSpecial', 'hasSelfie', 'hasAutographSelfieCombo', 'hasVintage'], 'boolean'],
             [['name', 'surname'], 'string', 'max' => 60],
             [['characterName', 'pseudonym'], 'string', 'max' => 100],
             [['nif_passport'], 'string', 'max' => 25],
@@ -80,6 +82,8 @@ class Guest extends \yii\db\ActiveRecord
             'hasPhotoshoot' => '¿Tiene foto?',
             'hasPhotoshootSpecial' => '¿Tiene foto especial?',
             'hasAutographSpecial' => '¿Tiene firma especial?',
+            'hasSelfie' => '¿Tiene selfie?',
+            'hasAutographSelfieCombo' => '¿Tiene combo firma / selfie?',
             'hasVintage' => '¿Tiene cartón vintage?',
             'nif_passport' => 'DNI / Pasaporte',
             'remarks' => 'Observaciones',

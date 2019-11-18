@@ -44,6 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'hasAutographSpecial:boolean',
             'hasPhotoshoot:boolean',
             'hasPhotoshootSpecial:boolean',
+            'hasSelfie:boolean',
+            'hasAutographSelfieCombo:boolean',
             'hasVintage:boolean',
         ],
     ]) ?>

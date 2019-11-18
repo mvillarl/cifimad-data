@@ -27,21 +27,29 @@ use app\components\DateFunctions;
  * @property integer $guest1PhotoshootSpecial
  * @property integer $guest1Autograph
  * @property integer $guest1AutographSpecial
+ * @property integer $guest1Selfie
+ * @property integer $guest1ComboAutographSelfie
  * @property integer $guest1Vintage
  * @property integer $guest2Photoshoot
  * @property integer $guest2PhotoshootSpecial
  * @property integer $guest2Autograph
  * @property integer $guest2AutographSpecial
+ * @property integer $guest2Selfie
+ * @property integer $guest2ComboAutographSelfie
  * @property integer $guest2Vintage
  * @property integer $guest3Photoshoot
  * @property integer $guest3PhotoshootSpecial
  * @property integer $guest3Autograph
  * @property integer $guest3AutographSpecial
+ * @property integer $guest3Selfie
+ * @property integer $guest3ComboAutographSelfie
  * @property integer $guest3Vintage
  * @property integer $guest4Photoshoot
  * @property integer $guest4PhotoshootSpecial
  * @property integer $guest4Autograph
  * @property integer $guest4AutographSpecial
+ * @property integer $guest4Selfie
+ * @property integer $guest4ComboAutographSelfie
  * @property integer $guest4Vintage
  * @property integer $extraProduct1
  * @property integer $extraProduct2
@@ -94,7 +102,7 @@ class Attendee extends \yii\db\ActiveRecord
 	protected $_extraProductFieldColors;
 	protected static $_colors = [
 		[],
-		['#FFC90E', '#FFFF80', 'mediumpurple', '#FF3E3E', '#FFFFD0'],
+		['#FFC90E', '#FFFF80', 'mediumpurple', '#FF3E3E', '#FFFFD0', '#00D500', '#80FF80'], // 5 y 6 repiten colores de invitado 4; ojo si hacen falta ambas cosas
 		['#00C1C1', '#93E6E6', 'palegoldenrod'],
 		['#FF8000', '#C5C5E2', 'lightpink'],
 		['#00D500', '#80FF80', 'pink'],
@@ -180,6 +188,16 @@ class Attendee extends \yii\db\ActiveRecord
 		        $this->_guestFields['guest'.$gpos.'AutographSpecial'] = 'Firma/s especial/es de ' . $guest->fullname;
 		        $this->_shortLabels['guest'.$gpos.'AutographSpecial'] = 'Firma especial ' . $guest->name;
 		        $this->_guestFieldColors['guest'.$gpos.'AutographSpecial'] = static::$_colors[$gpos][4];
+	        }
+	        if ($guest->hasSelfie) {
+		        $this->_guestFields['guest'.$gpos.'Selfie'] = 'Selfie/s de ' . $guest->fullname;
+		        $this->_shortLabels['guest'.$gpos.'Selfie'] = 'Selfie ' . $guest->name;
+		        $this->_guestFieldColors['guest'.$gpos.'Selfie'] = static::$_colors[$gpos][5];
+	        }
+	        if ($guest->hasAutographSelfieCombo) {
+		        $this->_guestFields['guest'.$gpos.'ComboAutographSelfie'] = 'Combo firma/selfie de ' . $guest->fullname;
+		        $this->_shortLabels['guest'.$gpos.'ComboAutographSelfie'] = 'Combo ' . $guest->name;
+		        $this->_guestFieldColors['guest'.$gpos.'ComboAutographSelfie'] = static::$_colors[$gpos][6];
 	        }
             if ($guest->hasVintage) {
                 $this->_guestFields['guest'.$gpos.'Vintage'] = 'Cartón/es vintage de ' . $guest->characterName;
@@ -271,15 +289,15 @@ class Attendee extends \yii\db\ActiveRecord
         return [
             [['idEvent', 'idMember', 'ticketType', 'idSource', 'status'], 'required'],
             ['idEvent', 'default', 'value' => $this->_idEvent],
-            [['idEvent', 'idMember', 'guest1Photoshoot', 'guest1PhotoshootSpecial', 'guest1Autograph', 'guest1AutographSpecial', 'guest1Vintage', 'guest2Photoshoot', 'guest2PhotoshootSpecial', 'guest2Autograph', 'guest2AutographSpecial', 'guest2Vintage', 'guest3Photoshoot', 'guest3PhotoshootSpecial', 'guest3Autograph', 'guest3AutographSpecial', 'guest3Vintage', 'guest4Photoshoot', 'guest4PhotoshootSpecial', 'guest4Autograph', 'guest4AutographSpecial', 'guest4Vintage', 'extraProduct1', 'extraProduct2', 'extraProduct3', 'extraProduct4', 'idSource', 'idAttendeeRoommate1', 'idAttendeeRoommate2', 'idAttendeeRoommate3'], 'integer'],
+            [['idEvent', 'idMember', 'guest1Photoshoot', 'guest1PhotoshootSpecial', 'guest1Autograph', 'guest1AutographSpecial', 'guest1Selfie', 'guest1ComboAutographSelfie', 'guest1Vintage', 'guest2Photoshoot', 'guest2PhotoshootSpecial', 'guest2Autograph', 'guest2AutographSpecial', 'guest2Selfie', 'guest2ComboAutographSelfie', 'guest2Vintage', 'guest3Photoshoot', 'guest3PhotoshootSpecial', 'guest3Autograph', 'guest3AutographSpecial', 'guest3Selfie', 'guest3ComboAutographSelfie', 'guest3Vintage', 'guest4Photoshoot', 'guest4PhotoshootSpecial', 'guest4Autograph', 'guest4AutographSpecial', 'guest4Selfie', 'guest4ComboAutographSelfie', 'guest4Vintage', 'extraProduct1', 'extraProduct2', 'extraProduct3', 'extraProduct4', 'idSource', 'idAttendeeRoommate1', 'idAttendeeRoommate2', 'idAttendeeRoommate3'], 'integer'],
             [['mealFridayDinner', 'mealSaturdayLunch', 'mealSaturdayDinner', 'mealSundayLunch', 'mealSundayDinner', 'isSpecial', 'freeLodging', 'freeSaturdayDinner'/*, 'memberSmall'*/], 'boolean'],
             [['dateStartLodging', 'dateEndLodging', 'createdAt', 'updatedAt', 'updatedAtHotel', 'updatedAtBadges', 'updatedAtBadgesTickets'], 'safe'],
             [['remarks', 'remarksRegistration', 'remarksMeals', 'remarksMealSaturday', 'remarksHotel', 'orders'], 'string'],
             [['status', 'ticketType', 'roomType'], 'string', 'max' => 1],
-            [['idEvent', 'idMember'], 'unique', 'targetAttribute' => ['idEvent', 'idMember'], 'message' => 'Este socio ya está incluido en este evento.', 'filter' => function($q){
+            [['idEvent', 'idMember'], 'unique', 'targetAttribute' => ['idEvent', 'idMember'], 'message' => 'Este socio ya está incluido en este evento.'/*, 'filter' => function($q){
                     $parms = $q->where;
-                    $q->where ('cif_attendees.idEvent = :idEvent AND cif_attendees.idMember = :idMember', $parms);
-            }],
+                    $q->where (['and', ['cif_attendees.idEvent' => ':idEvent'] , ['cif_attendees.idMember' => ':idMember'] ], $parms);
+            }*/],
             [['idEvent'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['idEvent' => 'id']],
             [['idMember'], 'exist', 'skipOnError' => true, 'targetClass' => Member::className(), 'targetAttribute' => ['idMember' => 'id']],
             [['idSource'], 'exist', 'skipOnError' => true, 'targetClass' => Source::className(), 'targetAttribute' => ['idSource' => 'id']],
@@ -645,6 +663,12 @@ class Attendee extends \yii\db\ActiveRecord
 
 	}
 
+	/**
+	 * @deprecated
+	 * @param $idEvent
+	 *
+	 * @return array
+	 */
 	public static function getAttendeeIncomes ($idEvent) {
 		$guests = Attendee::getGuests($idEvent);
 

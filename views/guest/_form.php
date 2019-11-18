@@ -49,6 +49,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'hasPhotoshootSpecial')->checkbox() ?>
 
+    <?= $form->field($model, 'hasSelfie')->checkbox() ?>
+
+    <?= $form->field($model, 'hasAutographSelfieCombo')->checkbox() ?>
+
     <?= $form->field($model, 'hasVintage')->checkbox() ?>
 
     <div class="form-group">

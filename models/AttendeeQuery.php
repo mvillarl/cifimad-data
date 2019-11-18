@@ -129,7 +129,7 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 			$whereProds = '';
 			for ($i = 1; $i <= $maxGuests; $i++) {
 				if (strlen ($whereProds) ) $whereProds .= ' OR ';
-				$whereProds .= 'cif_attendees.guest'.$i.'Photoshoot <> 0 OR cif_attendees.guest'.$i.'PhotoshootSpecial <> 0 OR cif_attendees.guest'.$i.'Autograph <> 0 OR cif_attendees.guest'.$i.'Vintage <> 0' ;
+				$whereProds .= 'cif_attendees.guest'.$i.'Photoshoot <> 0 OR cif_attendees.guest'.$i.'PhotoshootSpecial <> 0 OR cif_attendees.guest'.$i.'Autograph <> 0  OR cif_attendees.guest'.$i.'AutographSpecial <> 0  OR cif_attendees.guest'.$i.'Selfie <> 0  OR cif_attendees.guest'.$i.'ComboAutographSelfie <> 0 OR cif_attendees.guest'.$i.'Vintage <> 0' ;
 			}
 			for ($i = 1; $i <= $maxExtraProd; $i++) {
 				if ( strlen( $whereProds ) ) $whereProds .= ' OR ';
