@@ -44,6 +44,7 @@ AppAsset::register($this);
         if (User::canRoute('/source/index')) $menuitemsevents[] = ['label' => 'Procedencias', 'url' => '/source/index'];
         if (User::canRoute('/product/index')) $menuitemsevents[] = ['label' => 'Productos extra', 'url' => '/product/index'];
         if (User::canRoute('/press/index')) $menuitemsevents[] = ['label' => 'Prensa', 'url' => '/press/index'];
+        if (User::canRoute('/cosplayinscription/index')) $menuitemsevents[] = ['label' => 'Inscripciones cosplay', 'url' => '/cosplayinscription/index'];
         $menuitems[] = ['label' => 'Base','items' => $menuitemsevents];
     }
     if (User::canRoute('/member/index')) $menuitems[] = ['label' => 'Socios', 'url' => '/member/index'];
