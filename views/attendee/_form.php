@@ -90,10 +90,6 @@ use yii\web\JsExpression;
         'options' => ['class' => 'cfdp', 'cf_greaterthan' => 'attendee-datestartlodging']
     ]); ?>
 
-    <?= $form->field($model, 'freeLodging')->checkbox() ?>
-
-    <?= $form->field($model, 'freeSaturdayDinner')->checkbox() ?>
-
     <fieldset class="form-inline">
 
     <?= $form->field($model, 'idAttendeeRoommate1')->hiddenInput() ?>

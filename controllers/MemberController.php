@@ -159,7 +159,13 @@ class MemberController extends BaseController
                     $model->nif     = $fieldvalues[3];
 	                $model->consent = true;
 	                $model->setKey();
-                    $ok             = $model->save();
+	                // Comprobamos si ya existe; en ese caso, no grabamos
+                    // (a futuro: elegir si actualizamos datos o no)
+                    if ($model->readFromKeyFields() ) {
+                        $ok = true;
+                    } else {
+                        $ok = $model->save();
+                    }
 	                $models[] = $model;
                     if ( ! $ok ) {
                         break;

@@ -67,7 +67,7 @@ class Member extends \yii\db\ActiveRecord
 	        [['remarks'], 'string'],
 	        [['status', 'consent', 'small'], 'boolean'],
             [['badgeName', 'badgeSurname'], 'default', 'value' => function ($model, $attribute) {
-                return ($attribute == 'badgeName')? $model->name: $model->surname;
+                return Member::cleanup( ($attribute == 'badgeName')? $model->name: $model->surname );
             }],
             [['nif', 'phone'], 'string', 'max' => 25],
             [['email'], 'unique'],
@@ -222,4 +222,49 @@ class Member extends \yii\db\ActiveRecord
 		return count ($members);
 	}
 
+	public function readFromKeyFields() {
+        $query = Member::find()->where("email = :email OR nif = :nif", ['email' => $this->email, 'nif' => $this->nif]);
+        $checkmembers = $query->all();
+        if (count ($checkmembers) > 0) {
+            $ret = true;
+            $this->id = $checkmembers[0]->id;
+        } else {
+            $ret = false;
+        }
+        return $ret;
+    }
+
+    public static function cleanup ($text) {
+        $rpl = [
+            'á' => 'a',
+            'à' => 'a',
+            'Á' => 'A',
+            'À' => 'A',
+            'é' => 'e',
+            'è' => 'e',
+            'ë' => 'e',
+            'É' => 'E',
+            'È' => 'E',
+            'Ë' => 'E',
+            'í' => 'i',
+            'ì' => 'i',
+            'Í' => 'I',
+            'Ì' => 'I',
+            'ó' => 'o',
+            'ò' => 'o',
+            'Ó' => 'O',
+            'Ò' => 'O',
+            'ú' => 'u',
+            'ù' => 'u',
+            'ü' => 'u',
+            'Ú' => 'U',
+            'Ù' => 'U',
+            'Ü' => 'U',
+            'ç' => 'c',
+            'Ç' => 'C',
+            'º' => 'o',
+            'ª' => 'a',
+        ];
+        return strtr($text, $rpl);
+    }
 }

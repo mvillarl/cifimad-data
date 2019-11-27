@@ -53,11 +53,8 @@ $this->params['breadcrumbs'][] = $this->title;
 		<?php } else { ?>
 			<p>Aún no se han actualizado consentimientos. Hay <?= $consents ?> usuarios que han dado su consentimiento a recibir comunicaciones (y no se han actualizado en Data)</p>
 		<?php } ?>
-		<?php if ($ncustomers > 0) { ?>
-		<?= Html::a('Cargar todos', ['member/'.$command, 'filter' => 'a'], ['class' => 'btn btn-primary']) ?>
-		<?php } ?>
 		<?php if ($newcustomers > 0) { ?>
-		<?= Html::a('Cargar sólo nuevos', ['member/'.$command, 'filter' => 'n'], ['class' => 'btn btn-primary']) ?>
+		<?= Html::a('Cargar nuevos', ['member/'.$command, 'filter' => 'n'], ['class' => 'btn btn-primary']) ?>
 		<?php } ?>
 		<?php if ($existingcustomers > 0) { ?>
 		<?= Html::a('Revisar existentes', ['member/'.$command, 'filter' => 'rn'], ['class' => 'btn btn-primary']) ?>
