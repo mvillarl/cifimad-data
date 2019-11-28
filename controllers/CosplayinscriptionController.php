@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Event;
 use Yii;
 use app\models\CosplayInscription;
 use app\models\CosplayInscriptionSearch;
@@ -127,5 +128,42 @@ class CosplayinscriptionController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function getFreeAccessActions() {
+        return ['signup'];
+    }
+
+    public function actionSignup() {
+        $idEvent = $this->_getEventId();
+        $show = strlen ($idEvent);
+        $model = new CosplayInscription();
+        $model->idEvent = $idEvent;
+        $created = false;
+        /*echo "<li>$show";
+        echo "<li>".$model->load(Yii::$app->request->post(), '');
+        die;*/
+        if ($show && $model->load(Yii::$app->request->post(), '') && $model->save()) {
+            $created = true;
+        }
+        return $this->render('signup', [
+            'show' => $show,
+            'created' => $created,
+            'categories' => CosplayInscription::getCategories(),
+            'csrfName' => Yii::$app->request->csrfParam,
+            'csrfValue' => Yii::$app->request->getCsrfToken(),
+            ]);
+    }
+
+    protected function _getEventId() {
+        $idEvent = Event::getIdNextEvent();
+        if (!strlen ($idEvent)) $idEvent = Event::getIdLastEvent();
+        if (strlen ($idEvent)) {
+            $event = Event::findOne ($idEvent);
+            if ($event->dateEndCosplaySignup < date ('Y-m-d') ) {
+                $idEvent = null;
+            }
+        }
+        return $idEvent;
     }
 }

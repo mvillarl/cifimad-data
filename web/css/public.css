@@ -1,0 +1,41 @@
+#d-form-cosplay {
+    text-align: center;
+}
+
+#d-form-cosplay select {
+    width: 25em;
+}
+
+.submit {
+    padding: 14px 70px;
+    border: none;
+    margin: 0;
+    font-family: inherit;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: .3s;
+    -webkit-transition: .3s;
+    background: #00abc7 !important;
+    color: #fff;
+    font-size: 21px;
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background: #25a508 !important;
+}
+
+.fieldError {
+    border: 2px solid red;
+}
+
+#errors {
+    text-align: center;
+    height: 3em;
+    color: red;
+}
+
+.consent {
+    font-size: smaller;
+}

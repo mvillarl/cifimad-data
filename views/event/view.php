@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'dateEnd:date',
             'dateSentInfoHotel:datetime',
             'dateBadgesPrinted:datetime',
+            'dateEndCosplaySignup:date',
         ],
     ]) ?>
 

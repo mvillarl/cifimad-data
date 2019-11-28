@@ -82,7 +82,7 @@ $config = [
         {
             $event->action->controller->layout = 'reportLayout.php';
         };
-        if ( in_array ($event->action->uniqueId, array ('member/consent', 'press/consent') ) )
+        if ( in_array ($event->action->uniqueId, array ('member/consent', 'press/consent', 'cosplayinscription/signup') ) )
         {
             $event->action->controller->layout = 'publicLayout.php';
         };

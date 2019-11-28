@@ -38,7 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'category',
                 'value' => $model->getCategoryValue(),
             ],
-            'category',
             'characterName',
             'remarks:ntext',
         ],

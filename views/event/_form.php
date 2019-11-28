@@ -34,6 +34,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field ($model, 'dateBadgesPrinted')->label()->hint('Marca la casilla para guardar la fecha y hora actual')->textInput( ['readonly' => 'readonly']); ?>
     <?= Html::checkbox('dateBadgesPrintedNow'); ?>
 
+    <?=  $form->field($model, 'dateEndCosplaySignup')->widget(\yii\jui\DatePicker::classname(),[
+        //'dateFormat' => 'dd-MM-yyyy',
+    ]); ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Modificar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
