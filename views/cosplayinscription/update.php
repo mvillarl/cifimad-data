@@ -4,6 +4,8 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CosplayInscription */
+/* @var $events array */
+/* @var $categories array */
 
 $this->title = 'Modificar Inscripción a concurso de cosplay: ' . $model->fullname . ' - ' . $model->characterName;
 $this->params['breadcrumbs'][] = ['label' => 'Inscripciones a concurso de cosplay', 'url' => ['index']];
@@ -17,6 +19,7 @@ $this->params['breadcrumbs'][] = 'Update';
     <?= $this->render('_form', [
         'model' => $model,
         'events' => $events,
+        'categories' => $categories,
     ]) ?>
 
 </div>

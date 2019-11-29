@@ -25,6 +25,9 @@
             <span><textarea name="remarks" cols="60" rows="6"></textarea></span></p>
         <p>¿Has hecho tú mismo/a tu cosplay? ¿Has modificado una pieza existente de forma ingeniosa? ¿Has utilizado algún material o técnica exótica? ¿Has movido cielo y tierra para encontrar algún accesorio?
             ¡Usa el recuadro para contarnos cualquier cosa que creas que pueda interesar a los jueces para evaluar mejor tu trabajo!</p>
+        <p>También puedes indicarnos si tu actuación va a necesitar banda sonora. Intentaremos buscarla y tenerla preparada para agilizar el concurso.</p>
+        <p><input type="checkbox" name="hasPerformance" value="1" /> Marca la casilla si harás actuación al subir al escenario.</p>
+        <p><input type="checkbox" name="hasSoundtrack" value="1" /> Marca la casilla si traerás tu propia banda sonora.</p>
         <p class="consent"><input type="checkbox" name="consent" class="required"/> Al usar este formulario accedes al almacenamiento y gestión de tus datos por parte de esta web.</p>
         <p><input type="button" value="Enviar inscripción" class="submit" id="sendForm"/></p>
     </div>

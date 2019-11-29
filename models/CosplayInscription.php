@@ -21,6 +21,8 @@ use yii\helpers\ArrayHelper;
  * @property string|null $remarks
  * @property string $createdAt
  * @property string $updatedAt
+ * @property boolean $hasPerformance
+ * @property boolean $hasSoundtrack
  *
  * @property Event $idEvent0
  */
@@ -60,6 +62,7 @@ class CosplayInscription extends \yii\db\ActiveRecord
             [['createdAt', 'updatedAt'], 'safe'],
             [['idEvent'], 'integer'],
             [['remarks'], 'string'],
+            [['hasPerformance', 'hasSoundtrack'], 'boolean'],
             [['name', 'surname', 'email', 'characterName'], 'string', 'max' => 100],
             [['category'], 'string', 'max' => 2],
             [['idEvent'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['idEvent' => 'id']],
@@ -84,6 +87,8 @@ class CosplayInscription extends \yii\db\ActiveRecord
             'remarks' => 'Notas de elaboración',
             'createdAt' => 'Fecha de creación',
             'updatedAt' => 'Fecha de modificación',
+            'hasPerformance' => '¿Actuación?',
+            'hasSoundtrack' => '¿Banda sonora?',
         ];
     }
 
@@ -100,6 +105,15 @@ class CosplayInscription extends \yii\db\ActiveRecord
         if ($map) $events = ArrayHelper::map($events, 'id', 'name');
 
         return $events;
+    }
+
+    /**
+     * @inheritdoc
+     * @return AttendeeQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new CosplayInscriptionQuery(get_called_class());
     }
 
     public function getFullname() {

@@ -78,7 +78,7 @@ $config = [
         {
             $event->action->controller->layout = 'excelLayout.php';
         };
-        if ( in_array ($event->action->uniqueId, array ('attendee/reportbadgelabels', 'attendee/reportbadges', 'attendee/reporthotel', 'attendee/reportincomes') ) )
+        if ( in_array ($event->action->uniqueId, array ('attendee/reportbadgelabels', 'attendee/reportbadges', 'attendee/reporthotel', 'attendee/reportincomes', 'cosplayinscription/report') ) )
         {
             $event->action->controller->layout = 'reportLayout.php';
         };

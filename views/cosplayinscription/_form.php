@@ -6,6 +6,8 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\CosplayInscription */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $events array */
+/* @var $categories array */
 
 ?>
 
@@ -21,11 +23,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'category')->dropDownList($model->getCategories() ) ?>
+    <?= $form->field($model, 'category')->dropDownList($categories) ?>
 
     <?= $form->field($model, 'characterName')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'remarks')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'hasPerformance')->checkbox() ?>
+
+    <?= $form->field($model, 'hasSoundtrack')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

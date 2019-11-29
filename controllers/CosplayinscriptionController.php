@@ -43,6 +43,7 @@ class CosplayinscriptionController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'events' => CosplayInscription::getEvents(true),
+            'categories' => CosplayInscription::getCategories(),
         ]);
     }
 
@@ -75,6 +76,7 @@ class CosplayinscriptionController extends Controller
         return $this->render('create', [
             'model' => $model,
             'events' => CosplayInscription::getEvents(true),
+            'categories' => CosplayInscription::getCategories(),
         ]);
     }
 
@@ -96,6 +98,7 @@ class CosplayinscriptionController extends Controller
         return $this->render('update', [
             'model' => $model,
             'events' => CosplayInscription::getEvents(true),
+            'categories' => CosplayInscription::getCategories(),
         ]);
     }
 
@@ -135,7 +138,7 @@ class CosplayinscriptionController extends Controller
     }
 
     public function actionSignup() {
-        $idEvent = $this->_getEventId();
+        $idEvent = $this->_getEventId(true);
         $show = strlen ($idEvent);
         $model = new CosplayInscription();
         $model->idEvent = $idEvent;
@@ -155,15 +158,29 @@ class CosplayinscriptionController extends Controller
             ]);
     }
 
-    protected function _getEventId() {
+    protected function _getEventId($checkdate) {
         $idEvent = Event::getIdNextEvent();
         if (!strlen ($idEvent)) $idEvent = Event::getIdLastEvent();
         if (strlen ($idEvent)) {
             $event = Event::findOne ($idEvent);
-            if ($event->dateEndCosplaySignup < date ('Y-m-d') ) {
+            if ($checkdate && ($event->dateEndCosplaySignup < date ('Y-m-d') ) ) {
                 $idEvent = null;
             }
         }
         return $idEvent;
+    }
+
+    public function actionReport() {
+        $idEvent = $this->_getEventId(false);
+        $inscriptionsq = CosplayInscription::find()->andFilterEvent($idEvent)->orderByCat();
+        $inscriptions = $inscriptionsq->all();
+
+        return $this->render ('report', [
+            'inscriptions' => $inscriptions,
+        ]);
+    }
+
+    public function getReportTitle() {
+        return 'Inscripciones al concurso de cosplay';
     }
 }

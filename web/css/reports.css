@@ -276,3 +276,43 @@ html, body {
 .sourceimage {
     vertical-align: text-bottom;
     width: 24px;
+}
+
+.cosplay {
+    width: 80em;
+}
+.cosplay thead tr th {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 24pt;
+    background-color: #C5D9F1;
+    border: 1px solid black;
+    -webkit-print-color-adjust: exact;
+}
+
+.cosplay thead tr th.med {
+    font-size: 16pt;
+}
+.cosplay thead tr th.peq {
+    font-size: 11pt;
+}
+
+.cosplay tbody tr td {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-size: 20pt;
+    -webkit-print-color-adjust: exact;
+}
+.cosplay tbody tr td.med {
+    font-size: 16pt;
+}
+.cosplay tbody tr td.peq {
+    font-size: 11pt;
+}
+
+.cosplay thead tr.cosplaytitle th {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-size: 28pt;
+    text-align: center;
+    border: 2px solid black;
+    background-color: #C5D9F1;
+}

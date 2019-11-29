@@ -19,6 +19,12 @@ use app\components\DateFunctions;
  */
 class AttendeeController extends BaseController
 {
+    protected $_reportTitle;
+
+    public function getReportTitle() {
+        return $this->_reportTitle;
+    }
+
     /*public function __construct( $id, Module $module, array $config ) {
         parent::__construct( $id, $module, $config );
     }*/
@@ -228,9 +234,10 @@ class AttendeeController extends BaseController
 
 	    $blankBadges = Source::find()->andWhere ('blankBadges > 0')->all();
 
+	    $this->_reportTitle = 'Informe asistentes - Etiquetas para acreditaciones';
+
         return $this->render('reportbadgelabels', [
             'attendees' => $attendees,
-            'subtitle' => 'Etiquetas para acreditaciones',
             'afterprint' => $afterprint,
             'showinfotickets' => $showinfotickets,
             'idEvent' => $idEvent,
@@ -264,6 +271,7 @@ class AttendeeController extends BaseController
                 $subtitle = 'Reservas';
                 break;
         }
+        $this->_reportTitle = 'Informe asistentes - ' . $subtitle;
 	    //$view = $detailed? 'reportbadgesdet': 'reportbadges';
 	    //$subtitle = $detailed? 'Reservas - fotos, firmas, cartones': 'Reservas';
 
@@ -276,7 +284,6 @@ class AttendeeController extends BaseController
 
         return $this->render($view, [
             'attendees' => $attendees,
-            'subtitle' => $subtitle,
             'guests' => $guests,
             'extraproducts' => $extraproducts,
             'model' => $model,
@@ -382,7 +389,9 @@ class AttendeeController extends BaseController
 		    }
 	    }
 
-	    return $this->render($view, [
+        $this->_reportTitle = 'Informe asistentes - Reservas hotel';
+
+        return $this->render($view, [
 		    'attendeerooms' => $attendeerooms,
 		    'guests' => $guests,
 		    'guestsmindate' => $mindate,
@@ -399,6 +408,10 @@ class AttendeeController extends BaseController
 
     }
 
+    /**
+     * @deprecated
+     * @return string
+     */
 	public function actionReportincomes() {
 		$idEvent = $this->getCurrentEvent();
 

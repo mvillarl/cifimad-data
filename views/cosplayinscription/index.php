@@ -6,6 +6,8 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CosplayInscriptionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $events array */
+/* @var $categories array */
 
 $this->title = 'Inscripciones al concurso de cosplay';
 $this->params['breadcrumbs'][] = $this->title;
@@ -39,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             [
                 'attribute'=>'category',
-                'filter'=>$searchModel->getCategories(),
+                'filter'=>$categories,
                 'value'=>'categoryValue',
                 'format'=>'raw',
             ],

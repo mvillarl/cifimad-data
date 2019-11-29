@@ -6,7 +6,7 @@
 use yii\helpers\Html;
 //use app\assets\AppAsset;
 
-$this->title = 'Informe asistentes' . (strlen ($subtitle)? ' - ' . $subtitle: '');
+$this->title = $this->context->getReportTitle();
 //AppAsset::register($this);
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ $this->title = 'Informe asistentes' . (strlen ($subtitle)? ' - ' . $subtitle: ''
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?= Html::csrfMetaTags() ?>
 	<title><?= Html::encode(Yii::$app->name . ' - ' . $this->title) ?></title>
-	<link rel="stylesheet" href="/css/reports.css?v1.9"/>
+	<link rel="stylesheet" href="/css/reports.css?v1.10"/>
 </head>
 <body>
 
