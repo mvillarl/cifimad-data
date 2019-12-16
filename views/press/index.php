@@ -43,6 +43,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'consentName',
                 'format'=>'raw',
             ],
+            [
+                'attribute' => 'status',
+                'filter' => [
+                    '0' => 'No',
+                    '1' => 'Sí',
+                ],
+                'value' => 'statusName',
+                'format'=>'raw',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

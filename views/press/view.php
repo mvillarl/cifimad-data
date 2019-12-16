@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'email:email',
             'consent:boolean',
+            'status:boolean',
             'keyCheck',
         ],
     ]) ?>

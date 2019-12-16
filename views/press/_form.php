@@ -20,6 +20,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'consent')->checkbox() ?>
 
+    <?= $form->field($model, 'status')->checkbox() ?>
+
     <?= $form->field($model, 'keyCheck')->textInput(['readonly' => 'readonly']) ?>
 
     <div class="form-group">

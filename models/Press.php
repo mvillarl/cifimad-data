@@ -14,6 +14,7 @@ use yii\helpers\ArrayHelper;
  * @property string $email
  * @property boolean $consent
  * @property string $keyCheck
+ * @property string $status
  *
  * @property Source $idSource0
  */
@@ -36,7 +37,7 @@ class Press extends \yii\db\ActiveRecord
         return [
             [['name', 'email'], 'required'],
             [['idSource'], 'integer'],
-            [['consent'], 'boolean'],
+            [['consent', 'status'], 'boolean'],
             [['name', 'email'], 'string', 'max' => 100],
             [['keyCheck'], 'string', 'max' => 50],
             [['email'], 'unique'],
@@ -56,12 +57,17 @@ class Press extends \yii\db\ActiveRecord
             'name' => 'Nombre',
             'email' => 'Email',
             'consent' => 'Consentimiento para enviar mails',
+            'status' => 'Activo',
             'keyCheck' => 'Clave de comprobación',
         ];
     }
 
     public function getConsentName() {
     	return $this->consent? 'Sí': 'No';
+    }
+
+    public function getStatusName() {
+    	return $this->status? 'Sí': 'No';
     }
 
 	public function setKey() {
