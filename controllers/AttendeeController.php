@@ -309,7 +309,8 @@ class AttendeeController extends BaseController
 	        if ($guest->dateDeparture > $maxdate) $maxdate = $guest->dateDeparture;
 	    }
 
-	    $attendeerooms = Attendee::getAttendeeRooms( $idEvent, $aftersend, $numattendees );
+	    $attendeerooms = Attendee::getAttendeeRooms( $idEvent, $aftersend, $numattendees);
+	    $roomdays = Attendee::getRoomDays( $attendeerooms );
 
 	    $numattendees += count ($guests);
 
@@ -404,6 +405,7 @@ class AttendeeController extends BaseController
 		    'sundayLunch' => $sundayLunch,
 		    'sundayDinner' => $sundayDinner,
 		    'mealsummary' => $mealsummary,
+	        'roomdays' => $roomdays,
 	    ]);
 
     }

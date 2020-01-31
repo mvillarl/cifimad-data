@@ -54,7 +54,7 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 	}
 
 	public function andFilterLodging() {
-		return $this->andWhere("cif_attendees.roomType IS NOT NULL AND cif_attendees.status <> '3'")->orderBy('cif_members.surname, cif_members.name');
+		return $this->andWhere("cif_attendees.roomType IS NOT NULL AND cif_attendees.roomType <> '' AND cif_attendees.status <> '3'")->orderBy('cif_members.surname, cif_members.name');
 	}
 
     /*public function active()

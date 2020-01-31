@@ -6,6 +6,7 @@ use app\components\DateFunctions;
 /* @var $this yii\web\View */
 /* @var $attendeerooms [] */
 /* @var $guests app\models\Guest[] */
+/* @var $roomdays */
 
 $this->title = 'Informe - Hotel';
 $this->params['breadcrumbs'][] = ['label' => 'Asistentes', 'url' => ['index']];
@@ -115,6 +116,14 @@ $this->params['breadcrumbs'][] = $this->title;
 			<td class="c"><?= $attendeeroom->sunday? 'X': '' ?></td>
 			<td><?= nl2br ($attendeeroom->remarks) ?></td>
 		<?php } ?>
+		<tr>
+			<td colspan="4"></td>
+			<td class="c"><?= $roomdays->wednesday ?></td>
+			<td class="c"><?= $roomdays->thursday ?></td>
+			<td class="c"><?= $roomdays->friday ?></td>
+			<td class="c"><?= $roomdays->saturday ?></td>
+			<td class="c"><?= $roomdays->sunday ?></td>
+		</tr>
 		<tr>
 			<td class="n" title="Total alojados">TA: <?= $totallodged ?></td>
 			<td class="n" title="Total habitaciones">TH: <?= $totalrooms ?></td>

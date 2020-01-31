@@ -660,7 +660,25 @@ class Attendee extends \yii\db\ActiveRecord
 	    }
 
 	    return $rooms;
+	}
 
+	public static function getRoomDays ($attendeerooms) {
+		$roomdays = new \stdClass();
+		$roomdays->wednesday = 0;
+		$roomdays->thursday = 0;
+		$roomdays->friday = 0;
+		$roomdays->saturday = 0;
+		$roomdays->sunday = 0;
+
+		foreach ($attendeerooms as $attendeeroom) {
+			if ($attendeeroom->wednesday) $roomdays->wednesday++;
+			if ($attendeeroom->thursday) $roomdays->thursday++;
+			if ($attendeeroom->friday) $roomdays->friday++;
+			if ($attendeeroom->saturday) $roomdays->saturday++;
+			if ($attendeeroom->sunday) $roomdays->sunday++;
+		}
+
+		return $roomdays;
 	}
 
 	/**
