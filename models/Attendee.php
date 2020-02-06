@@ -577,8 +577,16 @@ class Attendee extends \yii\db\ActiveRecord
         return $events;
     }
 
-    public static function getSources($map = false) {
-        $sources = Source::find()->orderBy('name', 'ASC')->all();
+    public static function getSources($map = false, $value = '', $active = true) {
+        $sourcesq = Source::find();
+        if ($active) {
+            if (strlen ($value)) {
+                $sourcesq->andWhere(['or', ['status' => true], ['id' => $value]]);
+            } else {
+                $sourcesq->andWhere(['status' => true]);
+            }
+        }
+        $sources = $sourcesq->orderBy('name', 'ASC')->all();
         if ($map) $sources = ArrayHelper::map($sources, 'id', 'name');
 
         return $sources;

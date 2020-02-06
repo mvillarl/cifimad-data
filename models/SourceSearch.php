@@ -19,7 +19,8 @@ class SourceSearch extends Source
     {
         return [
             [['id'], 'integer'],
-            [['name'], 'safe'],
+            [['status'], 'boolean'],
+            [['name', 'status'], 'safe'],
         ];
     }
 
@@ -62,7 +63,8 @@ class SourceSearch extends Source
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['status' => $this->status]);
 
         return $dataProvider;
     }
