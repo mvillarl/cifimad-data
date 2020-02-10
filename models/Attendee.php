@@ -679,11 +679,13 @@ class Attendee extends \yii\db\ActiveRecord
 		$roomdays->sunday = 0;
 
 		foreach ($attendeerooms as $attendeeroom) {
-			if ($attendeeroom->wednesday) $roomdays->wednesday++;
-			if ($attendeeroom->thursday) $roomdays->thursday++;
-			if ($attendeeroom->friday) $roomdays->friday++;
-			if ($attendeeroom->saturday) $roomdays->saturday++;
-			if ($attendeeroom->sunday) $roomdays->sunday++;
+		    if ($attendeeroom->status != '2') {
+                if ($attendeeroom->wednesday) $roomdays->wednesday++;
+                if ($attendeeroom->thursday) $roomdays->thursday++;
+                if ($attendeeroom->friday) $roomdays->friday++;
+                if ($attendeeroom->saturday) $roomdays->saturday++;
+                if ($attendeeroom->sunday) $roomdays->sunday++;
+            }
 		}
 
 		return $roomdays;
