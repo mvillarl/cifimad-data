@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			<?php if ( ($attendee->isSpecial || ($attendee->idSource == '2') || ($attendee->idSource == 'C') ) && !strlen (trim ($attendee->parentName) ) ) { ?>
 				<tr>
 					<td class="badgelabelhintF"> </td>
-					<td class="badgelabel<?php if ($attendee->isSpecial) { ?> special<?php } ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if (bin2hex ($attendee->memberSmall == 1 || $attendee->memberSmall) == '01') { ?> small<?php } ?>">
+					<td class="badgelabel<?php if ($attendee->isSpecial) { ?> special<?php } ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
                     <span class="badgelabelin">
 					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
                     <?= $attendee->memberName ?></span></td>
