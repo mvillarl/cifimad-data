@@ -244,8 +244,9 @@ $this->title = 'CifiMad';
 						<div id="main-menu" class="hidden-xs">
 
 							<ul id="menu-menu-cifimad" class="nav"><li class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-home has-menu-child"><a href="https://www.cifimad.es/">Inicio</a></li>
-								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/actividades-horarios/">Agenda</a></li>
+								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/actividades-horarios/">Programa</a></li>
 								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/invitados-estrella/">Invitados</a></li>
+								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/actividades-2020/concurso-de-cosplay-3/">Cosplay</a></li>
 								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/como-llegar/">Sede</a></li>
 								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/historia/">Historia</a></li>
 								<li class=" menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1661 current_page_item menu-item-has-children active has-menu-child"><a href="https://www.cifimad.es/tienda-entradas/">Tienda</a>
@@ -266,8 +267,9 @@ $this->title = 'CifiMad';
 					<div id="mobile-menu" class="visible-xs">
 						<div class="collapse navbar-collapse">
 							<ul id="menu-menu-cifimad-1" class="nav navbar-nav"><li id="menu-item-1187" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1187"><a title="Inicio" href="https://www.cifimad.es/">Inicio</a></li>
-								<li id="menu-item-1356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1356"><a title="Agenda" href="https://www.cifimad.es/actividades-horarios/">Agenda</a></li>
+								<li id="menu-item-1356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1356"><a title="Programa" href="https://www.cifimad.es/actividades-horarios/">Programa</a></li>
 								<li id="menu-item-1919" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1919"><a title="Invitados" href="https://www.cifimad.es/invitados-estrella/">Invitados</a></li>
+								<li id="menu-item-1330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1330"><a title="Cosplay" href="https://www.cifimad.es/actividades-2020/concurso-de-cosplay-3/">Cosplay</a></li>
 								<li id="menu-item-1330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1330"><a title="Sede" href="https://www.cifimad.es/como-llegar/">Sede</a></li>
 								<li id="menu-item-1534" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1534"><a title="Historia" href="https://www.cifimad.es/historia/">Historia</a></li>
 								<li id="menu-item-1776" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1661 current_page_item menu-item-has-children menu-item-1776 active"><a title="Tienda" href="https://www.cifimad.es/tienda-entradas/">Tienda</a>

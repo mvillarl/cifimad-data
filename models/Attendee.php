@@ -577,8 +577,16 @@ class Attendee extends \yii\db\ActiveRecord
         return $events;
     }
 
-    public static function getSources($map = false) {
-        $sources = Source::find()->orderBy('name', 'ASC')->all();
+    public static function getSources($map = false, $value = '', $active = true) {
+        $sourcesq = Source::find();
+        if ($active) {
+            if (strlen ($value)) {
+                $sourcesq->andWhere(['or', ['status' => true], ['id' => $value]]);
+            } else {
+                $sourcesq->andWhere(['status' => true]);
+            }
+        }
+        $sources = $sourcesq->orderBy('name', 'ASC')->all();
         if ($map) $sources = ArrayHelper::map($sources, 'id', 'name');
 
         return $sources;
@@ -671,11 +679,13 @@ class Attendee extends \yii\db\ActiveRecord
 		$roomdays->sunday = 0;
 
 		foreach ($attendeerooms as $attendeeroom) {
-			if ($attendeeroom->wednesday) $roomdays->wednesday++;
-			if ($attendeeroom->thursday) $roomdays->thursday++;
-			if ($attendeeroom->friday) $roomdays->friday++;
-			if ($attendeeroom->saturday) $roomdays->saturday++;
-			if ($attendeeroom->sunday) $roomdays->sunday++;
+		    if ($attendeeroom->status != '2') {
+                if ($attendeeroom->wednesday) $roomdays->wednesday++;
+                if ($attendeeroom->thursday) $roomdays->thursday++;
+                if ($attendeeroom->friday) $roomdays->friday++;
+                if ($attendeeroom->saturday) $roomdays->saturday++;
+                if ($attendeeroom->sunday) $roomdays->sunday++;
+            }
 		}
 
 		return $roomdays;

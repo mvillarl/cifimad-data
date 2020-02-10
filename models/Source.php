@@ -13,6 +13,7 @@ use yii\web\UploadedFile;
  * @property string $imageFile
  * @property string $separateList
  * @property int $blankBadges
+ * @property boolean $status
  *
  * @property CifAttendees[] $cifAttendees
  */
@@ -42,6 +43,7 @@ class Source extends \yii\db\ActiveRecord
             [['separateList'], 'boolean'],
 	        [['blankBadges'], 'integer'],
 	        [['imageFileObj'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, gif'],
+            [['status'], 'boolean'],
         ];
     }
 
@@ -56,6 +58,7 @@ class Source extends \yii\db\ActiveRecord
             'imageFileObj' => 'Logo',
             'separateList' => 'Lista separada',
             'blankBadges' => 'Acreditaciones en blanco',
+            'status' => 'Activa',
         ];
     }
 
@@ -75,4 +78,8 @@ class Source extends \yii\db\ActiveRecord
 			$this->imageFileObj->saveAs('img/logos/' . $this->imageFile);
 	}
 
+    public function getStatusValue() {
+        $yesno = ['0' => 'No', '1' => 'Sí'];
+        return $yesno[$this->status];
+    }
 }

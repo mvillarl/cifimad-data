@@ -164,7 +164,7 @@ class AttendeeController extends BaseController
             return $this->render('update', [
                 'model' => $model,
                 'events' => Attendee::getEvents(true),
-                'sources' => Attendee::getSources(true),
+                'sources' => Attendee::getSources(true, $model->idSource),
             ]);
         }
     }
