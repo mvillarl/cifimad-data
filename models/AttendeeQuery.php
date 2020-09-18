@@ -3,6 +3,7 @@
 namespace app\models;
 
 use yii\db\Expression;
+use app\components\QuerySearchBuilder;
 
 /**
  * This is the ActiveQuery class for [[Attendee]].
@@ -32,7 +33,8 @@ class AttendeeQuery extends \yii\db\ActiveQuery
     public function andFilterSearchMember ($term) {
         $term = trim($term);
         if (strlen ($term)) {
-            $this->andWhere(['or', 'cif_members.badgeName LIKE :term', 'cif_members.badgeSurname LIKE :term', 'cif_members.name LIKE :term', 'cif_members.surname LIKE :term', 'cif_members.nif LIKE :term'], [':term' => '%'.$term.'%']);
+            QuerySearchBuilder::makeSearch($this, 'cif_members.badgeName,cif_members.badgeSurname,cif_members.name,cif_members.surname,cif_members.nif', $term);
+            //$this->andWhere(['or', 'cif_members.badgeName LIKE :term', 'cif_members.badgeSurname LIKE :term', 'cif_members.name LIKE :term', 'cif_members.surname LIKE :term', 'cif_members.nif LIKE :term'], [':term' => '%'.$term.'%']);
         }
         return $this;
     }
@@ -43,7 +45,8 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 			if ( ($term == '%') || ($term == '*') ) {
 				$this->andWhere ("cif_attendees.remarksRegistration IS NOT NULL AND cif_attendees.remarksRegistration <> ''");
 			} else {
-				$this->andWhere('cif_attendees.remarksRegistration LIKE :term OR cif_attendees.remarks LIKE :term OR cif_attendees.remarksMeals LIKE :term OR cif_attendees.remarksMealSaturday LIKE :term OR cif_attendees.remarksHotel LIKE :term', [':term' => '%'.$term.'%']);
+                QuerySearchBuilder::makeSearch($this, 'cif_attendees.remarksRegistration,cif_attendees.remarks,cif_attendees.remarksMeals,cif_attendees.remarksMealSaturday,cif_attendees.remarksHotel', $term);
+				//$this->andWhere('cif_attendees.remarksRegistration LIKE :term OR cif_attendees.remarks LIKE :term OR cif_attendees.remarksMeals LIKE :term OR cif_attendees.remarksMealSaturday LIKE :term OR cif_attendees.remarksHotel LIKE :term', [':term' => '%'.$term.'%']);
 			}
 		}
 		return $this;

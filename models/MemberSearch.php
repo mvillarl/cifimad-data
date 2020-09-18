@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Member;
+use app\components\QuerySearchBuilder;
 
 /**
  * MemberSearch represents the model behind the search form about `app\models\Member`.
@@ -64,11 +65,11 @@ class MemberSearch extends Member
             'updatedAt' => $this->updatedAt,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'surname', $this->surname])
-            ->andFilterWhere(['like', 'badgeName', $this->badgeName])
-            ->andFilterWhere(['like', 'badgeSurname', $this->badgeSurname])
-            ->andFilterWhere(['like', 'email', $this->email])
+        QuerySearchBuilder::makeSearch($query,'name', $this->name);
+        QuerySearchBuilder::makeSearch($query,'surname', $this->surname);
+        QuerySearchBuilder::makeSearch($query,'badgeName', $this->badgeName);
+        QuerySearchBuilder::makeSearch($query,'badgeSurname', $this->badgeSurname);
+        $query->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'nif', $this->nif])
             ->andFilterWhere(['like', 'phone', $this->phone]);
 

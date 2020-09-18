@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<td class="badgetype">
 					<?php if ($showinfotickets) { ?>
 						<?php if ($attendee->mealFridayDinner) { ?>Cena Cocktail<br/><?php } ?>
-						<?php if ($attendee->mealSaturdayDinner) { ?>Cena Gala<br/><?php } ?>
+						<?php if ($attendee->mealSaturdayDinner) { ?>Cena Gala - <?= $attendee->remarksMealSaturday ?><br/><?php } ?>
 						<?php if ($attendee->mealSundayDinner) { ?>Cena Valientes<br/><?php } ?>
 						<?php if ($attendee->mealSaturdayLunch) { ?>Comida sábado<br/><?php } ?>
 						<?php if ($attendee->mealSundayLunch) { ?>Comida domingo<br/><?php } ?>

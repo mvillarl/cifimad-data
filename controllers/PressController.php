@@ -128,7 +128,7 @@ class PressController extends BaseController
     }
 
     public function actionExport($consent = '1') {
-	    $models = Press::find()->select ('cif_press.*, cif_sources.name sourceName')->joinWith('idSource0')->where ('status = true AND consent = :consent', ['consent' => $consent])->all();
+	    $models = Press::find()->select ('cif_press.*, cif_sources.name sourceName')->joinWith('idSource0')->where ('cif_press.status = true AND consent = :consent', ['consent' => $consent])->all();
 	    $filename = "PrensaCifimad".date("Ymd").".xls";
 	    Yii::$app->response->setDownloadHeaders($filename, "application/vnd.ms-excel");
 	    return $this->render( 'export',[

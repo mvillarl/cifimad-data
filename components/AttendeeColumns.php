@@ -10,7 +10,7 @@ class AttendeeColumns {
 		$suf = $small? '10': '';
 		$content  = '<img src="/img/' . ($model->mealFridayDinner? 'tick': 'x') . $suf . '.gif" title="Cena Cocktail"/> ';
 		$content .= '<img src="/img/' . ($model->mealSaturdayLunch? 'tick': 'x') . $suf . '.gif" title="Comida sábado"/> ';
-		$content .= '<img src="/img/' . ($model->mealSaturdayDinner? 'tick': 'x') . $suf . '.gif" title="Cena de Gala"/> ';
+		$content .= '<img src="/img/' . ($model->mealSaturdayDinner? 'tick': 'x') . $suf . '.gif" title="Cena de Gala - '.$model->remarksMealSaturday.'"/> ';
 		$content .= '<img src="/img/' . ($model->mealSundayLunch? 'tick': 'x') . $suf . '.gif" title="Comida domingo"/> ';
 		$content .= '<img src="/img/' . ($model->mealSundayDinner? 'tick': 'x') . $suf . '.gif" title="Cena de los Valientes"/> ';
 		return $content;

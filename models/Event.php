@@ -105,7 +105,7 @@ class Event extends \yii\db\ActiveRecord
     }
 
     public static function getIdNextEvent() {
-        $evdata = Event::find()->where(['>', 'dateStart', date ("Y-m-d")])->orderBy('dateStart')->limit(1)->one();
+        $evdata = Event::find()->where(['>=', 'dateStart', date ("Y-m-d")])->orderBy('dateStart')->limit(1)->one();
         return $evdata->id;
     }
 
