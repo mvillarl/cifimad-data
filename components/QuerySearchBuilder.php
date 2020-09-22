@@ -8,9 +8,9 @@ class QuerySearchBuilder
 {
     public static function makeSearch (&$query, $fields, $term) {
         $terms = explode(' ', $term);
-        array_map(trim, $terms);
+        array_map('trim', $terms);
         $afields = explode(',', $fields);
-        array_map(trim, $afields);
+        array_map('trim', $afields);
 
         for ($i = 0, $ct = count($terms); $i < $ct; $i++) {
             $parms = [];
