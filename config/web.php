@@ -64,6 +64,7 @@ $config = [
                 '/attendee/reportbadgelabels/<afterprint>/<showinfotickets>' => 'attendee/reportbadgelabels',
                 '/attendee/reporthotel/<aftersend>' => 'attendee/reporthotel',
                 '/attendee/reportbadges/<detailed>' => 'attendee/reportbadges',
+                '/attendee/reportreservations/<detailed>' => 'attendee/reportreservations',
                 '/press/export/<consent>' => 'press/export',
                 '/press/consent/<key>/<email>' => 'press/consent',
             ],
@@ -78,7 +79,7 @@ $config = [
         {
             $event->action->controller->layout = 'excelLayout.php';
         };
-        if ( in_array ($event->action->uniqueId, array ('attendee/reportbadgelabels', 'attendee/reportbadges', 'attendee/reporthotel', 'attendee/reportincomes', 'cosplayinscription/report') ) )
+        if ( in_array ($event->action->uniqueId, array ('attendee/reportbadgelabels', 'attendee/reportbadges', 'attendee/reporthotel', 'attendee/reportincomes', 'attendee/reportreservations', 'cosplayinscription/report') ) )
         {
             $event->action->controller->layout = 'reportLayout.php';
         };

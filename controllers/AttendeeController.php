@@ -292,6 +292,125 @@ class AttendeeController extends BaseController
         ]);
     }
 
+    public function actionReportreservations() {
+        $idEvent = $this->getCurrentEvent();
+        $attq = Attendee::find()->andFilterEvent($idEvent)->notCanceled();
+        $attendees = $attq->all();
+
+        $fridayDinner = 0;
+        $saturdayDinner = 0;
+        $saturdayLunch = 0;
+        $sundayLunch = 0;
+        $sundayDinner = 0;
+        $lodgingSuites = 0;
+        $lodgingSingles = 0;
+        $lodgingDoubles = 0;
+        $lodgingTriples = 0;
+        $lodgingQuadruples = 0;
+        $ticketsFriday = 0;
+        $ticketsSaturday = 0;
+        $ticketsSunday = 0;
+        $ticketsWeekend = 0;
+
+        $attendeesRoomsCounted = [];
+        foreach ($attendees as $attendee) {
+            if ($attendee->mealFridayDinner) $fridayDinner++;
+            if ($attendee->mealSaturdayDinner) $saturdayDinner++;
+            if ($attendee->mealSaturdayLunch) $saturdayLunch++;
+            if ($attendee->mealSundayLunch) $sundayLunch++;
+            if ($attendee->mealSundayDinner) $sundayDinner++;
+            switch ($attendee->roomType) {
+                case 'U':
+                    $lodgingSuites++;
+                    break;
+                case 'I':
+                case '1':
+                    $lodgingSingles++;
+                    break;
+                case 'S':
+                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) ) {
+                        $lodgingSuites++;
+                        $attendeesRoomsCounted[] = $attendee->id;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
+                    }
+                case 'D':
+                case '2':
+                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) ) {
+                        $lodgingDoubles++;
+                        $attendeesRoomsCounted[] = $attendee->id;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
+                    }
+                    break;
+                case 'N':
+                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2]) ) {
+                        $lodgingDoubles++;
+                        $attendeesRoomsCounted[] = $attendee->id;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate2;
+                    }
+                    break;
+                case 'T':
+                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2]) ) {
+                        $lodgingTriples++;
+                        $attendeesRoomsCounted[] = $attendee->id;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate2;
+                    }
+                    break;
+                case '4':
+                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate3]) ) {
+                        $lodgingTriples++;
+                        $attendeesRoomsCounted[] = $attendee->id;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate2;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate3;
+                    }
+                    break;
+                case 'Q':
+                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate3]) ) {
+                        $lodgingQuadruples++;
+                        $attendeesRoomsCounted[] = $attendee->id;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate2;
+                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate3;
+                    }
+                    break;
+            }
+            switch ($attendee->ticketType) {
+                case 'V':
+                    $ticketsFriday++;
+                    break;
+                case 'S':
+                    $ticketsSaturday++;
+                    break;
+                case 'D':
+                    $ticketsSunday++;
+                    break;
+                case 'F':
+                    $ticketsWeekend++;
+                    break;
+            }
+        }
+
+        $this->_reportTitle = 'Informe reservas a ' . date('d/m/Y');
+        return $this->render('reportreservations', [
+            'fridayDinner' => $fridayDinner,
+            'saturdayDinner' => $saturdayDinner,
+            'saturdayLunch' => $saturdayLunch,
+            'sundayLunch' => $sundayLunch,
+            'sundayDinner' => $sundayDinner,
+            'lodgingSuites' => $lodgingSuites,
+            'lodgingSingles' => $lodgingSingles,
+            'lodgingDoubles' => $lodgingDoubles,
+            'lodgingTriples' => $lodgingTriples,
+            'lodgingQuadruples' => $lodgingQuadruples,
+            'ticketsFriday' => $ticketsFriday,
+            'ticketsSaturday' => $ticketsSaturday,
+            'ticketsSunday' => $ticketsSunday,
+            'ticketsWeekend' => $ticketsWeekend,
+        ]);
+    }
+
     public function actionReporthotel($aftersend = false) {
     	$meals = false;
     	if ($aftersend == 'M') {

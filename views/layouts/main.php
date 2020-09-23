@@ -63,6 +63,7 @@ AppAsset::register($this);
             //['label' => 'Informe - cenas y comidas', 'url' => '/attendee/reporthotel/M', 'linkOptions' => ['target' => 'blank'] ],
             ['label' => 'Informe - cenas y comidas', 'url' => '/attendee/reportbadges/M', 'linkOptions' => ['target' => 'blank'] ],
             //['label' => 'Informe - cuentas', 'url' => '/attendee/reportincomes', 'linkOptions' => ['target' => 'blank'] ],
+            ['label' => 'Informe - reservas', 'url' => '/attendee/reportreservations', 'linkOptions' => ['target' => 'blank'] ],
         ];
         $menuitems[] = ['label' => 'Asistentes', 'url' => '/attendee/index', 'items' => $menuitemsatt];
     }
