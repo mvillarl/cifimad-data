@@ -43,36 +43,41 @@ $this->params['breadcrumbs'][] = $this->title;
             <td><?= $sundayDinner; ?></td>
         </tr>
         <?php } ?>
-        <?php if ($lodgingSuites > 0) { ?>
         <tr>
-            <td>Suites</td>
-            <td><?= $lodgingSuites; ?></td>
-        </tr>
-        <?php } ?>
-        <?php if ($lodgingSingles > 0) { ?>
-        <tr>
-            <td>Individuales</td>
-            <td><?= $lodgingSingles; ?></td>
-        </tr>
-        <?php } ?>
-        <?php if ($lodgingDoubles > 0) { ?>
-        <tr>
-            <td>Dobles</td>
-            <td><?= $lodgingDoubles; ?></td>
-        </tr>
-        <?php } ?>
-        <?php if ($lodgingTriples > 0) { ?>
-        <tr>
-            <td>Triples</td>
-            <td><?= $lodgingTriples; ?></td>
-        </tr>
-        <?php } ?>
-        <?php if ($lodgingQuadruples > 0) { ?>
-        <tr>
-            <td>Cuádruples</td>
-            <td><?= $lodgingQuadruples; ?></td>
-        </tr>
-        <?php } ?>
+            <td>Habitaciones</td>
+            <td><?= $lodgingSuites + $lodgingSingles + $lodgingDoubles + $lodgingTriples + $lodgingQuadruples; ?><br/>
+                <table>
+                <?php if ($lodgingSuites > 0) { ?>
+                <tr>
+                    <td>Suites</td>
+                    <td><?= $lodgingSuites; ?></td>
+                </tr>
+                <?php } ?>
+                <?php if ($lodgingSingles > 0) { ?>
+                <tr>
+                    <td>Individuales</td>
+                    <td><?= $lodgingSingles; ?></td>
+                </tr>
+                <?php } ?>
+                <?php if ($lodgingDoubles > 0) { ?>
+                <tr>
+                    <td>Dobles</td>
+                    <td><?= $lodgingDoubles; ?></td>
+                </tr>
+                <?php } ?>
+                <?php if ($lodgingTriples > 0) { ?>
+                <tr>
+                    <td>Triples</td>
+                    <td><?= $lodgingTriples; ?></td>
+                </tr>
+                <?php } ?>
+                <?php if ($lodgingQuadruples > 0) { ?>
+                <tr>
+                    <td>Cuádruples</td>
+                    <td><?= $lodgingQuadruples; ?></td>
+                </tr>
+                <?php } ?>
+                </table></td>
         <tr>
             <td>Entradas</td>
             <td><?= $ticketsFriday + $ticketsSaturday + $ticketsSunday + $ticketsWeekend; ?><br/>
@@ -94,8 +99,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td>Domingo</td>
                         <td><?= $ticketsSunday ?></td>
                     </tr>
-                        <?php if ($ticketsWeekend > 0) { ?>
                     <?php } ?>
+                    <?php if ($ticketsWeekend > 0) { ?>
                     <tr>
                         <td>Fin de semana</td>
                         <td><?= $ticketsWeekend ?></td>

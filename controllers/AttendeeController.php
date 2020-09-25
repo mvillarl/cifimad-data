@@ -319,62 +319,64 @@ class AttendeeController extends BaseController
             if ($attendee->mealSaturdayLunch) $saturdayLunch++;
             if ($attendee->mealSundayLunch) $sundayLunch++;
             if ($attendee->mealSundayDinner) $sundayDinner++;
-            switch ($attendee->roomType) {
-                case 'U':
-                    $lodgingSuites++;
-                    break;
-                case 'I':
-                case '1':
-                    $lodgingSingles++;
-                    break;
-                case 'S':
-                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) ) {
+            if ($attendee->status != '2') {
+                switch ($attendee->roomType) {
+                    case 'U':
                         $lodgingSuites++;
-                        $attendeesRoomsCounted[] = $attendee->id;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
-                    }
-                case 'D':
-                case '2':
-                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) ) {
-                        $lodgingDoubles++;
-                        $attendeesRoomsCounted[] = $attendee->id;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
-                    }
-                    break;
-                case 'N':
-                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2]) ) {
-                        $lodgingDoubles++;
-                        $attendeesRoomsCounted[] = $attendee->id;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate2;
-                    }
-                    break;
-                case 'T':
-                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2]) ) {
-                        $lodgingTriples++;
-                        $attendeesRoomsCounted[] = $attendee->id;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate2;
-                    }
-                    break;
-                case '4':
-                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate3]) ) {
-                        $lodgingTriples++;
-                        $attendeesRoomsCounted[] = $attendee->id;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate2;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate3;
-                    }
-                    break;
-                case 'Q':
-                    if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate3]) ) {
-                        $lodgingQuadruples++;
-                        $attendeesRoomsCounted[] = $attendee->id;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate1;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate2;
-                        $attendeesRoomsCounted[] = $attendee->idAttendeeRoommate3;
-                    }
-                    break;
+                        break;
+                    case 'I':
+                    case '1':
+                        $lodgingSingles++;
+                        break;
+                    case 'S':
+                        if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1])) {
+                            $lodgingSuites++;
+                            $attendeesRoomsCounted[$attendee->id] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate1] = true;
+                        }
+                    case 'D':
+                    case '2':
+                        if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1])) {
+                            $lodgingDoubles++;
+                            $attendeesRoomsCounted[$attendee->id] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate1] = true;
+                        }
+                        break;
+                    case 'N':
+                        if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2])) {
+                            $lodgingDoubles++;
+                            $attendeesRoomsCounted[$attendee->id] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate1] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate2] = true;
+                        }
+                        break;
+                    case 'T':
+                        if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2])) {
+                            $lodgingTriples++;
+                            $attendeesRoomsCounted[$attendee->id] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate1] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate2] = true;
+                        }
+                        break;
+                    case '4':
+                        if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate3])) {
+                            $lodgingTriples++;
+                            $attendeesRoomsCounted[$attendee->id] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate1] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate2] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate3] = true;
+                        }
+                        break;
+                    case 'Q':
+                        if (!isset ($attendeesRoomsCounted[$attendee->id]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate1]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate2]) && !isset($attendeesRoomsCounted[$attendee->idAttendeeRoommate3])) {
+                            $lodgingQuadruples++;
+                            $attendeesRoomsCounted[$attendee->id] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate1] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate2] = true;
+                            $attendeesRoomsCounted[$attendee->idAttendeeRoommate3] = true;
+                        }
+                        break;
+                }
             }
             switch ($attendee->ticketType) {
                 case 'V':
@@ -390,6 +392,31 @@ class AttendeeController extends BaseController
                     $ticketsWeekend++;
                     break;
             }
+        }
+
+        $event   = Event::findOne( $idEvent );
+        $friday = $event->dateStart;
+        $saturday = DateFunctions::dateAdd($friday, 1);
+
+        $guests = Attendee::getGuests($idEvent);
+        foreach ($guests as $guest) {
+            $guestFridayDinner = ($guest->dateArrival <= $friday) && ($friday <= $guest->dateDeparture);
+            $guestSaturdayDinner = ($guest->dateArrival <= $saturday) && ($saturday <= $guest->dateDeparture);
+            $companions = $guest->getCompanions();
+            foreach ($companions as $companion) {
+                if ($guestFridayDinner && !$companion->excludeFridayDinner) {
+                    $fridayDinner++;
+                }
+                if ($guestSaturdayDinner) {
+                    $saturdayDinner++;
+                }
+                if (!$companion->excludeLodging && $companion->separateRoom) {
+                    $lodgingSingles++;
+                }
+            }
+            if ($guestFridayDinner) $fridayDinner++;
+            if ($guestSaturdayDinner) $saturdayDinner++;
+            $lodgingSuites++;
         }
 
         $this->_reportTitle = 'Informe reservas a ' . date('d/m/Y');
