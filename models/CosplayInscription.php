@@ -121,23 +121,34 @@ class CosplayInscription extends \yii\db\ActiveRecord
     }
 
     public function getCategoryValue() {
-        $caetegories = $this->getCategories();
+        $caetegories = $this->getCategories (true);
         return $caetegories[$this->category];
     }
 
-    public static function getCategories() {
-        return [
-            '' => '',
-            'N1' => 'Niños (0-4)',
-            'N2' => 'Niños (5-9)',
-            'N3' => 'Niños (10-14)',
-            'ST' => 'Star Trek',
-            'SW' => 'Star Wars',
-            'CS' => 'Cómic / superhéroes',
-            'SP' => 'Steampunk',
-            'G' => 'Grupal',
-            'O' => 'Otros',
-        ];
-
+    public static function getCategories ($old = false) {
+        if ($old) {
+            $cats = [
+                '' => '',
+                'N1' => 'Niños (0-6)',
+                'N2' => 'Niños (7-12)',
+                /*'N1' => 'Niños (0-4)',
+                'N2' => 'Niños (5-9)',
+                'N3' => 'Niños (10-14)',*/
+                'ST' => 'Star Trek',
+                'SW' => 'Star Wars',
+                'CS' => 'Cómic / superhéroes',
+                'SP' => 'Steampunk',
+                'G' => 'Grupal',
+                'O' => 'Otros',
+            ];
+        } else {
+            $cats = [
+                'N1' => 'Niños (0-6)',
+                'N2' => 'Niños (7-12)',
+                'I' => 'Individual',
+                'G' => 'Grupal',
+            ];
+        }
+        return $cats;
     }
 }
