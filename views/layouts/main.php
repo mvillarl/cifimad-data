@@ -46,6 +46,7 @@ AppAsset::register($this);
         if (User::canRoute('/press/index')) $menuitemsevents[] = ['label' => 'Prensa', 'url' => '/press/index'];
         if (User::canRoute('/cosplayinscription/index')) $menuitemsevents[] = ['label' => 'Inscripciones cosplay', 'url' => '/cosplayinscription/index'];
         if (User::canRoute('/cosplayinscription/report')) $menuitemsevents[] = ['label' => 'Inscripciones cosplay - informe', 'url' => '/cosplayinscription/report', 'linkOptions' => ['target' => 'blank'] ];
+	    if (User::canRoute('/volunteer-inscription/index')) $menuitemsevents[] = ['label' => 'Inscripciones voluntarios', 'url' => '/volunteer-inscription/index'];
         $menuitems[] = ['label' => 'Base','items' => $menuitemsevents];
     }
     if (User::canRoute('/member/index')) $menuitems[] = ['label' => 'Socios', 'url' => '/member/index'];
@@ -67,7 +68,7 @@ AppAsset::register($this);
         ];
         $menuitems[] = ['label' => 'Asistentes', 'url' => '/attendee/index', 'items' => $menuitemsatt];
     }
-    if (User::canRoute('//user-management/user/index')) {
+    if (User::canRoute('/user-management/user/index')) {
         $menuitemsuser = [ ['label' => 'Usuarios', 'url' => '/user-management/user/index'] ];
         if (User::canRoute('/user-management/role/index') ) $menuitemsuser[] = ['label' => 'Roles', 'url' => '/user-management/role/index'];
         if (User::canRoute('/user-management/permission/index') ) $menuitemsuser[] = ['label' => 'Permisos', 'url' => '/user-management/permission/index'];
