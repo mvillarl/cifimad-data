@@ -28,10 +28,11 @@ class VolunteerInscriptionFunction extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idVolunteer', 'volunteerFunction'], 'required'],
+            [['volunteerFunction'], 'required'],
+            [['idVolunteer', 'volunteerFunction'], 'safe'],
             [['idVolunteer'], 'integer'],
             [['volunteerFunction'], 'string', 'max' => 2],
-            [['idVolunteer'], 'exist', 'skipOnError' => true, 'targetClass' => CifVolunteerInscriptions::className(), 'targetAttribute' => ['idVolunteer' => 'id']],
+            [['idVolunteer'], 'exist', 'skipOnError' => true, 'targetClass' => VolunteerInscription::className(), 'targetAttribute' => ['idVolunteer' => 'id']],
         ];
     }
 
@@ -41,8 +42,8 @@ class VolunteerInscriptionFunction extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idVolunteer' => 'Id Volunteer',
-            'volunteerFunction' => 'Volunteer Function',
+            'idVolunteer' => 'Voluntario',
+            'volunteerFunction' => 'Área',
         ];
     }
 
@@ -51,6 +52,23 @@ class VolunteerInscriptionFunction extends \yii\db\ActiveRecord
      */
     public function getIdVolunteer0()
     {
-        return $this->hasOne(CifVolunteerInscriptions::className(), ['id' => 'idVolunteer']);
+        return $this->hasOne(VolunteerInscription::className(), ['id' => 'idVolunteer']);
     }
+
+	public static function getFunctions() {
+		return [
+			'AC' => 'Acreditaciones',
+			'MO' => 'Montaje',
+			'PR' => 'Prensa',
+			'CO' => 'Comunicaciones',
+			'CK' => 'CifiKids',
+			'AA' => 'Asistente de actores',
+			'FT' => 'Fotografía y vídeo',
+			'PR' => 'Presentador cosplay',
+			'TR' => 'Tramoyista',
+			'CC' => 'Control cosplay',
+			'DM' => 'Desmontaje',
+			'TA' => 'Traductor para actores',
+		];
+	}
 }

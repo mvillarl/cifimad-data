@@ -121,8 +121,8 @@ class CosplayInscription extends \yii\db\ActiveRecord
     }
 
     public function getCategoryValue() {
-        $caetegories = $this->getCategories (true);
-        return $caetegories[$this->category];
+        $categories = $this->getCategories (true);
+        return $categories[$this->category];
     }
 
     public static function getCategories ($old = false) {

@@ -318,6 +318,40 @@ html, body {
     background-color: #C5D9F1;
 }
 
+.volunteers {
+    width: 80em;
+}
+.volunteers thead tr th {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 12pt;
+    background-color: #C5D9F1;
+    border: 1px solid black;
+    white-space: nowrap;
+    -webkit-print-color-adjust: exact;
+}
+
+.volunteers thead tr.volunteertitle th {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-size: 16pt;
+    text-align: center;
+    border: 2px solid black;
+    background-color: #C5D9F1;
+}
+
+
+.volunteers tbody tr td {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    border: 1px solid black;
+    -webkit-print-color-adjust: exact;
+}
+
+.volunteers tbody tr td.mark {
+    text-align: center;
+}
+
+
 .attendee-reportreservations h2 {
     font-family: "Calibri", Helvetica, Arial, sans-serif;
     font-size: 16pt;

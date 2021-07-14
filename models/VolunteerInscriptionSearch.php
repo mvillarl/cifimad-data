@@ -41,7 +41,7 @@ class VolunteerInscriptionSearch extends VolunteerInscription
      */
     public function search($params)
     {
-        $query = VolunteerInscription::find();
+	    $query = VolunteerInscription::find()->select ('cif_volunteer_inscriptions.*, cif_events.name eventName')->joinWith('idEvent0');
 
         // add conditions that should always apply here
 

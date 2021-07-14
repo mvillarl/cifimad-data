@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 
 /**
  * This is the model class for table "cif_volunteer_inscriptions".
@@ -13,13 +14,30 @@ use yii\helpers\ArrayHelper;
  * @property string $name
  * @property string $email
  * @property string $nameFacebook
+ * @property string $functionOther
+ * @property string $shiftOther
+ * @property string $otherVolunteer
  *
  * @property Event $idEvent0
- * @property VolunteerInscriptionFunction[] $VolunteerInscriptionFunctions
- * @property VolunteerInscriptionShift[] $VolunteerInscriptionShifts
+ * @property VolunteerInscriptionFunction[] $volunteerInscriptionFunctions
+ * @property VolunteerInscriptionShift[] $volunteerInscriptionShifts
  */
 class VolunteerInscription extends \yii\db\ActiveRecord
 {
+	public $eventName;
+
+	public function behaviors() {
+		$b = parent::behaviors();
+		$b['saveRelations'] = [
+				'class'     => SaveRelationsBehavior::className(),
+				'relations' => [
+					'volunteerInscriptionFunctions' => ['cascadeDelete' => true],
+					'volunteerInscriptionShifts' => ['cascadeDelete' => true],
+				],
+			];
+		return $b;
+	}
+
     /**
      * @inheritdoc
      */
@@ -34,12 +52,21 @@ class VolunteerInscription extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idEvent', 'name', 'email', 'nameFacebook'], 'required'],
+            [['idEvent', 'name', 'email'], 'required'],
             [['idEvent'], 'integer'],
-            [['name', 'email', 'nameFacebook'], 'string', 'max' => 100],
+            [['name', 'email', 'nameFacebook', 'functionOther', 'shiftOther'], 'string', 'max' => 100],
+            [['otherVolunteer'], 'string', 'max' => 500],
             [['idEvent'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['idEvent' => 'id']],
+	        [['volunteerInscriptionFunctions', 'volunteerInscriptionShifts'], 'safe'],
         ];
     }
+
+	public function transactions()
+	{
+		return [
+			self::SCENARIO_DEFAULT => self::OP_ALL,
+		];
+	}
 
     /**
      * @inheritdoc
@@ -49,9 +76,15 @@ class VolunteerInscription extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'idEvent' => 'Evento',
+            'eventName' => 'Evento',
             'name' => 'Nombre',
             'email' => 'E-mail',
             'nameFacebook' => 'Nombre en Facebook',
+            'functionOther' => 'Dónde colaborar - otra',
+            'shiftOther' => 'Disponibilidad - otra',
+            'otherVolunteer' => 'Datos de otro voluntario',
+            'volunteerInscriptionFunctions' => '¿Dónde podría colaborar?',
+            'volunteerInscriptionShifts' => 'Disponibilidad',
         ];
     }
 
@@ -81,8 +114,126 @@ class VolunteerInscription extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getVolunteerInscriptionShift()
+    public function getVolunteerInscriptionShifts()
     {
         return $this->hasMany(VolunteerInscriptionShift::className(), ['idVolunteer' => 'id']);
     }
+
+
+	/**
+	 * @inheritdoc
+	 * @return AttendeeQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new VolunteerInscriptionQuery(get_called_class());
+	}
+
+	public function load($request, $formName = null) {
+		//print_r($request);die;
+		$ret = parent::load($request, $formName);
+		if($ret && $request['functions']) {
+			$ret = $this->_populateFunctions ($request['functions']);
+			//$this->dateSentInfoHotel = date ('Y-m-d H:i:s');
+		}
+		if($ret && $request['shifts']) {
+			$ret = $this->_populateShifts ($request['shifts']);
+			//$this->dateBadgesPrinted = date ('Y-m-d H:i:s');
+		}
+		return $ret;
+	}
+
+	protected function _populateFunctions ($functions) {
+    	// Cambiarlo por variable miembro con sufijo ToSave
+		$volunteerInscriptionFunctions = [];
+		foreach ($functions as $function) {
+			$fun = new VolunteerInscriptionFunction();
+			$fun->idVolunteer = $this->id;
+			$fun->volunteerFunction = $function;
+			$volunteerInscriptionFunctions[] = $fun;
+		}
+		$this->volunteerInscriptionFunctions = $volunteerInscriptionFunctions;
+		return true;
+	}
+
+	protected function _populateShifts ($shifts) {
+		$volunteerInscriptionShifts = [];
+		foreach ($shifts as $shift) {
+			$sh = new VolunteerInscriptionShift();
+			$sh->idVolunteer = $this->id;
+			$sh->volunteerShift = $shift;
+			$volunteerInscriptionShifts[] = $sh;
+		}
+		$this->volunteerInscriptionShifts = $volunteerInscriptionShifts;
+		return true;
+	}
+
+	public function getFunctionsValue() {
+    	$value = '';
+		$functions = VolunteerInscriptionFunction::getFunctions();
+    	foreach ($this->volunteerInscriptionFunctions as $function) {
+    		if (!empty ($value)) $value .= ', ';
+		    $value .= $functions[$function->volunteerFunction];
+	    }
+    	return $value;
+	}
+
+	public function getShiftsValue() {
+    	$value = '';
+		$shifts = VolunteerInscriptionShift::getShifts();
+    	foreach ($this->volunteerInscriptionShifts as $shift) {
+    		if (!empty ($value)) $value .= ', ';
+		    $value .= $shifts[$shift->volunteerShift];
+	    }
+    	return $value;
+	}
+
+	public function hasFunction ($function) {
+		$ret = false;
+		foreach ($this->volunteerInscriptionFunctions as $volunteerInscriptionFunction) {
+			if ($volunteerInscriptionFunction->volunteerFunction == $function) {
+				$ret = true;
+				break;
+			}
+		}
+		return $ret;
+	}
+
+	public function hasShift ($shift) {
+		$ret = false;
+		foreach ($this->volunteerInscriptionShifts as $volunteerInscriptionShift) {
+			if ($volunteerInscriptionShift->volunteerShift == $shift) {
+				$ret = true;
+				break;
+			}
+		}
+		return $ret;
+	}
+
+	/*public function afterSave( $insert, $changedAttributes ) {
+		if (!parent::afterSave( $insert, $changedAttributes ) ) {
+			return false;
+		}
+		if (!$this->saveFunctions() ) return false;
+		if (!$this->saveShifts() ) return false;
+		return true;
+	}
+
+	protected function saveFunctions() {
+		foreach ($this->VolunteerInscriptionFunctions as $volunteerInscriptionFunction) {
+			$volunteerInscriptionFunction->idVolunteer = $this->id;
+			$ret = $volunteerInscriptionFunction->save();
+			if (!$ret) return false;
+		}
+		return true;
+	}
+
+	protected function saveShifts() {
+		foreach ($this->VolunteerInscriptionShifts as $volunteerInscriptionShift) {
+			$volunteerInscriptionShift->idVolunteer = $this->id;
+			$ret = $volunteerInscriptionShift->save();
+			if (!$ret) return false;
+		}
+		return true;
+	}*/
 }

@@ -12,7 +12,7 @@
         <p><label>Apellidos</label><br>
             <span><input type="text" name="surname" size="40" maxlength="100" class="required"/></span></p>
         <p><label>E-mail</label><br>
-            <span><input type="text" name="email" size="40" maxlength="100" class="required"/></span></p>
+            <span><input type="text" name="email" size="40" maxlength="100" class="required email"/></span></p>
         <p><label>Categoría</label><br>
             <span><select name="category" class="required">
             <?php foreach ($categories as $catid => $catname) { ?>

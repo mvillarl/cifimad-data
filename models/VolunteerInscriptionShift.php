@@ -28,10 +28,11 @@ class VolunteerInscriptionShift extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idVolunteer', 'volunteerShift'], 'required'],
+            [['volunteerShift'], 'required'],
+            [['idVolunteer', 'volunteerShift'], 'safe'],
             [['idVolunteer'], 'integer'],
             [['volunteerShift'], 'string', 'max' => 2],
-            [['idVolunteer'], 'exist', 'skipOnError' => true, 'targetClass' => CifVolunteerInscriptions::className(), 'targetAttribute' => ['idVolunteer' => 'id']],
+            [['idVolunteer'], 'exist', 'skipOnError' => true, 'targetClass' => VolunteerInscription::className(), 'targetAttribute' => ['idVolunteer' => 'id']],
         ];
     }
 
@@ -41,8 +42,8 @@ class VolunteerInscriptionShift extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idVolunteer' => 'Id Volunteer',
-            'volunteerShift' => 'Volunteer Shift',
+            'idVolunteer' => 'Voluntario',
+            'volunteerShift' => 'Turno disponible',
         ];
     }
 
@@ -51,6 +52,40 @@ class VolunteerInscriptionShift extends \yii\db\ActiveRecord
      */
     public function getIdVolunteer0()
     {
-        return $this->hasOne(CifVolunteerInscriptions::className(), ['id' => 'idVolunteer']);
+        return $this->hasOne(VolunteerInscription::className(), ['id' => 'idVolunteer']);
     }
+
+
+	public static function getShifts() {
+		return [
+			'JM' => 'Jueves (montaje mañana)',
+			'JT' => 'Jueves (montaje tarde)',
+			'JD' => 'Jueves (montaje todo el día)',
+			'VM' => 'Viernes (mañana)',
+			'VT' => 'Viernes (tarde)',
+			'VD' => 'Viernes (todo el día)',
+			'SM' => 'Sábado (mañana)',
+			'ST' => 'Sábado (tarde)',
+			'SD' => 'Sábado (todo el día)',
+			'DM' => 'Domingo (mañana)',
+			'DT' => 'Domingo (tarde)',
+			'DD' => 'Domingo (todo el día)',
+			'L' => 'Lunes (desmontaje)',
+		];
+	}
+
+	public static function shortShiftName ($name) {
+    	if (preg_match ("/\((.*)\)/", $name, $matches) ) {
+			$insidetext = $matches[1];
+			$words = explode(' ', $insidetext);
+			$awords = [];
+			foreach ($words as $word) {
+				if ($word != 'el') {
+					$awords[] = $word[0];
+				}
+			}
+			$name = str_replace('('.$insidetext.')', '('.join('', $awords) . ')', $name);
+		}
+    	return $name;
+	}
 }

@@ -205,8 +205,8 @@ $this->title = 'CifiMad';
 		}
 	</style>
 	<style type="text/css" title="dynamic-css" class="options-output">body{font-family:Roboto;font-weight:300;font-style:normal;color:#333;font-size:16px;}#main-menu .nav>li>a, #main-menu ul.sub-menu li > a{font-family:Roboto;font-weight:500;font-style:normal;font-size:15px;}h1{font-family:Roboto;font-weight:700;font-style:normal;color:#000;font-size:42px;}h2{font-family:Roboto;font-weight:700;font-style:normal;color:#000;font-size:36px;}h3{font-family:Roboto;font-weight:700;font-style:normal;color:#000;font-size:24px;}h4{font-family:Roboto;font-weight:500;font-style:normal;color:#000;font-size:16px;}h5{font-family:Roboto;font-weight:700;font-style:normal;color:#000;font-size:16px;}footer{padding-top:10px;padding-bottom:10px;}</style><style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1509544525562{margin-top: 0px !important;margin-bottom: 0px !important;padding-top: 0px !important;padding-bottom: 0px !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}</style><noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>
-    <link rel="stylesheet" href="/css/public.css?v1.0"/>
-    <script type='text/javascript' src='/js/validateForm.js?v1.0'></script>
+    <link rel="stylesheet" href="/css/public.css?v1.1"/>
+    <script type='text/javascript' src='/js/validateForm.js?v1.1'></script>
 </head>
 
 

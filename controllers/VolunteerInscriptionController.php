@@ -5,6 +5,9 @@ namespace app\controllers;
 use Yii;
 use app\models\VolunteerInscription;
 use app\models\VolunteerInscriptionSearch;
+use app\models\VolunteerInscriptionFunction;
+use app\models\VolunteerInscriptionShift;
+use app\models\Event;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -118,10 +121,70 @@ class VolunteerInscriptionController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = VolunteerInscription::findOne($id)) !== null) {
+	    $model = VolunteerInscription::find()->select ('cif_volunteer_inscriptions.*, cif_events.name eventName')->joinWith('idEvent0')->where (['cif_volunteer_inscriptions.id' => $id])->one();
+        if ($model !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+	public function getFreeAccessActions() {
+		return ['signup'];
+	}
+
+	public function actionSignup() {
+		$idEvent = $this->_getEventId(true);
+		$show = strlen ($idEvent);
+		$model = new VolunteerInscription();
+		$model->idEvent = $idEvent;
+		$created = false;
+		/*echo "<li>$show";
+		echo "<li>".$model->load(Yii::$app->request->post(), '');
+		die;*/
+		$errors = '';
+		if ($show && $model->load(Yii::$app->request->post(), '') && $model->save()) {
+			$created = true;
+		}
+		$err = $model->getErrors();
+		if (!empty ($err)) $errors = print_r($err,true);
+		return $this->render('signup', [
+			'show' => $show,
+			'created' => $created,
+			'csrfName' => Yii::$app->request->csrfParam,
+			'csrfValue' => Yii::$app->request->getCsrfToken(),
+			'functions' => VolunteerInscriptionFunction::getFunctions(),
+			'shifts' => VolunteerInscriptionShift::getShifts(),
+			'errors' => $errors,
+		]);
+	}
+
+	protected function _getEventId($checkdate) {
+		$idEvent = Event::getIdNextEvent();
+		if (!strlen ($idEvent)) $idEvent = Event::getIdLastEvent();
+		if (strlen ($idEvent)) {
+			$event = Event::findOne ($idEvent);
+			// Pendiente: decidir cuándo es la fecha de corte para voluntarios
+			if ($checkdate && ($event->dateEndCosplaySignup < date ('Y-m-d') ) ) {
+				$idEvent = null;
+			}
+		}
+		return $idEvent;
+	}
+
+	public function actionReport() {
+		$idEvent       = $this->_getEventId( false );
+		$inscriptionsq = VolunteerInscription::find()->andFilterEvent( $idEvent )->orderByName();
+		$inscriptions  = $inscriptionsq->all();
+
+		return $this->render( 'report', [
+			'inscriptions' => $inscriptions,
+			'functions'    => VolunteerInscriptionFunction::getFunctions(),
+			'shifts'       => VolunteerInscriptionShift::getShifts(),
+		] );
+	}
+
+	public function getReportTitle() {
+		return 'Inscripciones de voluntarios';
+	}
 }
