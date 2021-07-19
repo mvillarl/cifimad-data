@@ -37,8 +37,9 @@ AppAsset::register($this);
     <img src="/img/banner.png"/>
     <?php
     $menuitems = [];
-    if (User::canRoute('/event/index')) {
-        $menuitemsevents = [['label' => 'Eventos', 'url' => '/event/index']];
+    if (User::canRoute('/event/index') || User::canRoute('/volunteer-inscription/index') ) {
+        $menuitemsevents = [];
+        if (User::canRoute('/event/index')) $menuitemsevents[] = ['label' => 'Eventos', 'url' => '/event/index'];
         if (User::canRoute('/guest/index')) $menuitemsevents[] = ['label' => 'Invitados', 'url' => '/guest/index'];
         if (User::canRoute('/companion/index')) $menuitemsevents[] = ['label' => 'Acompañantes', 'url' => '/companion/index'];
         if (User::canRoute('/source/index')) $menuitemsevents[] = ['label' => 'Procedencias', 'url' => '/source/index'];
