@@ -17,6 +17,7 @@ use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
  * @property string $functionOther
  * @property string $shiftOther
  * @property string $otherVolunteer
+ * @property string $computersLevel
  *
  * @property Event $idEvent0
  * @property VolunteerInscriptionFunction[] $volunteerInscriptionFunctions
@@ -53,7 +54,7 @@ class VolunteerInscription extends \yii\db\ActiveRecord
     {
         return [
             [['idEvent', 'name', 'email'], 'required'],
-            [['idEvent'], 'integer'],
+            [['idEvent', 'computersLevel'], 'integer'],
             [['name', 'email', 'nameFacebook', 'functionOther', 'shiftOther'], 'string', 'max' => 100],
             [['otherVolunteer'], 'string', 'max' => 500],
             [['idEvent'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['idEvent' => 'id']],
@@ -83,6 +84,8 @@ class VolunteerInscription extends \yii\db\ActiveRecord
             'functionOther' => 'Dónde colaborar - otra',
             'shiftOther' => 'Disponibilidad - otra',
             'otherVolunteer' => 'Datos de otro voluntario',
+	        'computersLevel' => 'Conocimientos de informática',
+	        'computersLevelValue' => 'Conocimientos de informática',
             'volunteerInscriptionFunctions' => '¿Dónde podría colaborar?',
             'volunteerInscriptionShifts' => 'Disponibilidad',
         ];
@@ -208,6 +211,20 @@ class VolunteerInscription extends \yii\db\ActiveRecord
 			}
 		}
 		return $ret;
+	}
+
+	public static function getComputersLevels() {
+		return [
+			'' => '(No especificado)',
+			'1' => 'Básico',
+			'2' => 'Intermedio',
+			'3' => 'Avanzado',
+		];
+	}
+
+	public function getComputersLevelValue() {
+		$levels = $this->getComputersLevels();
+		return $levels[$this->computersLevel];
 	}
 
 	/*public function afterSave( $insert, $changedAttributes ) {

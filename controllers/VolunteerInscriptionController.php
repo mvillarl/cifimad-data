@@ -75,6 +75,7 @@ class VolunteerInscriptionController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'events' => VolunteerInscription::getEvents(true),
+	            'computersLevels' => VolunteerInscription::getComputersLevels(),
             ]);
         }
     }
@@ -95,6 +96,7 @@ class VolunteerInscriptionController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'events' => VolunteerInscription::getEvents(true),
+                'computersLevels' => VolunteerInscription::getComputersLevels(),
             ]);
         }
     }

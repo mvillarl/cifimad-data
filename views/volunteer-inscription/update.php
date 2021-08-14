@@ -5,9 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\VolunteerInscription */
 /* @var $events array */
+/* @var $computersLevels array */
 
-$this->title = 'Update Volunteer Inscription: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Volunteer Inscriptions', 'url' => ['index']];
+$this->title = 'Modificar Inscripción de voluntario: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Inscripciones de voluntarios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
@@ -18,6 +19,7 @@ $this->params['breadcrumbs'][] = 'Update';
     <?= $this->render('_form', [
         'model' => $model,
         'events' => $events,
+        'computersLevels' => $computersLevels,
     ]) ?>
 
 </div>

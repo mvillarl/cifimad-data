@@ -7,6 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\VolunteerInscription */
 /* @var $form yii\widgets\ActiveForm */
 /* @var $events array */
+/* @var $computersLevels array */
 ?>
 
 <div class="volunteer-inscription-form">
@@ -22,6 +23,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'nameFacebook')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'otherVolunteer')->textInput(['maxlength' => true]) ?>
+
+	<?= $form->field($model, 'computersLevel')->dropDownList($computersLevels) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

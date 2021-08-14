@@ -6,6 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\VolunteerInscription */
 /* @var $events array */
+/* @var $computersLevels array */
 
 $this->title = 'Crear Inscripción de voluntario';
 $this->params['breadcrumbs'][] = ['label' => 'Inscripciones de voluntarios', 'url' => ['index']];
@@ -18,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('_form', [
         'model' => $model,
         'events' => $events,
+        'computersLevels' => $computersLevels,
     ]) ?>
 
 </div>

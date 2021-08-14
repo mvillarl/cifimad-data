@@ -22,6 +22,7 @@ $rowsperpage = 40;
 			<th>Nombre y apellidos</th>
 			<th>Email</th>
 			<th>Nombre Facebook</th>
+			<th>Informática</th>
 			<?php foreach ($functions as $code => $name) { ?>
                 <th><a href="#" class="showrows" data-row="<?= $code ?>"><?= $name ?></a> <span class="showrowsind">v</span></th>
 			<?php } ?>
@@ -34,6 +35,7 @@ $rowsperpage = 40;
 				<td><?= $inscription->name ?></td>
 				<td><?= $inscription->email ?></td>
 				<td><?= $inscription->nameFacebook ?></td>
+				<td><?= $inscription->computersLevelValue ?></td>
 				<?php foreach ($functions as $code => $name) { ?>
                     <td class="mark"><?php if ($inscription->hasFunction ($code) ) { ?> X <?php } ?></td>
 				<?php } ?>
