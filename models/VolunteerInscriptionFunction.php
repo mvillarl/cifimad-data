@@ -69,6 +69,7 @@ class VolunteerInscriptionFunction extends \yii\db\ActiveRecord
 			'CC' => 'Control cosplay',
 			'DM' => 'Desmontaje',
 			'TA' => 'Traductor para actores',
+			'CV' => 'Controlar normas Covid',
 		];
 	}
 }
