@@ -46,7 +46,7 @@
             <?php foreach ($shifts as $code => $name) { ?>
                 <li><input type="checkbox" name="shifts[]" class="shifts required" value="<?= $code ?>"/> <?= $name ?> </li>
             <?php } ?>
-                <li><input type="checkbox" name="shifts[]" class="shifts required requiresOther" data-other="shiftOther" value="OT"/> Otra: <span><input type="text" name="shiftOther" id="shiftOthers" size="40" maxlength="100" /></span></li>
+                <li><input type="checkbox" name="shifts[]" class="shifts required requiresOther" data-other="shiftOther" value="OT"/> Otra: <span><input type="text" name="shiftOther" id="shiftOther" size="40" maxlength="100" /></span></li>
             </ul></div>
             <p><label>¿Conoces a alguien que quiera colaborar como voluntario?</label><br>
             En caso afirmativo, por favor necesitamos su nombre, apellidos, correo electrónico y teléfono para mantenernos en contacto.<br>

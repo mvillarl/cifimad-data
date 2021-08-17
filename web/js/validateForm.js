@@ -31,8 +31,13 @@ function volunteerPrev() {
     }
 }
 
+function isObject(val) {
+    if (val === null) { return false;}
+    return ( (typeof val === 'function') || (typeof val === 'object') );
+}
+
 function cfValidate(extrafilter) {
-    if (extrafilter == undefined) extrafilter = '';
+    if ( (extrafilter == undefined) || isObject (extrafilter) ) extrafilter = '';
     var anyerror = false;
     if (validating) {
         jQuery('#errors').text('');
