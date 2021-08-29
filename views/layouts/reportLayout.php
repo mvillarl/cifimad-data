@@ -16,7 +16,7 @@ $this->title = $this->context->getReportTitle();
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?= Html::csrfMetaTags() ?>
 	<title><?= Html::encode(Yii::$app->name . ' - ' . $this->title) ?></title>
-	<link rel="stylesheet" href="/css/reports.css?v1.14"/>
+	<link rel="stylesheet" href="/css/reports.css?v1.15"/>
     <script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
     <script type='text/javascript' src='/js/volunteerReport.js?v1.0'></script>
 </head>

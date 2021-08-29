@@ -72,6 +72,8 @@ use app\components\DateFunctions;
  * @property string $remarksMealSaturday
  * @property string $remarksHotel
  * @property string $orders
+ * @property string $cifiKidsDay
+ * @property string $parkingReservation
  * @property string $createdAt
  * @property string $updatedAt
  * @property string $updatedAtHotel
@@ -136,6 +138,7 @@ class Attendee extends \yii\db\ActiveRecord
     public $parentBadgeSurname;
     public $parentPhone;
 	public $memberParentId;
+	public $memberVaccine;
     //public $roommate1Name;
     //public $roommate2Name;
     //public $roommate3Name;
@@ -292,8 +295,8 @@ class Attendee extends \yii\db\ActiveRecord
             [['idEvent', 'idMember', 'guest1Photoshoot', 'guest1PhotoshootSpecial', 'guest1Autograph', 'guest1AutographSpecial', 'guest1Selfie', 'guest1ComboAutographSelfie', 'guest1Vintage', 'guest2Photoshoot', 'guest2PhotoshootSpecial', 'guest2Autograph', 'guest2AutographSpecial', 'guest2Selfie', 'guest2ComboAutographSelfie', 'guest2Vintage', 'guest3Photoshoot', 'guest3PhotoshootSpecial', 'guest3Autograph', 'guest3AutographSpecial', 'guest3Selfie', 'guest3ComboAutographSelfie', 'guest3Vintage', 'guest4Photoshoot', 'guest4PhotoshootSpecial', 'guest4Autograph', 'guest4AutographSpecial', 'guest4Selfie', 'guest4ComboAutographSelfie', 'guest4Vintage', 'extraProduct1', 'extraProduct2', 'extraProduct3', 'extraProduct4', 'idSource', 'idAttendeeRoommate1', 'idAttendeeRoommate2', 'idAttendeeRoommate3'], 'integer'],
             [['mealFridayDinner', 'mealSaturdayLunch', 'mealSaturdayDinner', 'mealSundayLunch', 'mealSundayDinner', 'isSpecial', 'freeLodging', 'freeSaturdayDinner'/*, 'memberSmall'*/], 'boolean'],
             [['dateStartLodging', 'dateEndLodging', 'createdAt', 'updatedAt', 'updatedAtHotel', 'updatedAtBadges', 'updatedAtBadgesTickets'], 'safe'],
-            [['remarks', 'remarksRegistration', 'remarksMeals', 'remarksMealSaturday', 'remarksHotel', 'orders'], 'string'],
-            [['status', 'ticketType', 'roomType'], 'string', 'max' => 1],
+            [['remarks', 'remarksRegistration', 'remarksMeals', 'remarksMealSaturday', 'remarksHotel', 'orders', 'parkingReservation'], 'string'],
+            [['status', 'ticketType', 'roomType', 'cifiKidsDay'], 'string', 'max' => 1],
             [['idEvent', 'idMember'], 'unique', 'targetAttribute' => ['idEvent', 'idMember'], 'message' => 'Este socio ya está incluido en este evento.'/*, 'filter' => function($q){
                     $parms = $q->where;
                     $q->where (['and', ['cif_attendees.idEvent' => ':idEvent'] , ['cif_attendees.idMember' => ':idMember'] ], $parms);
@@ -360,7 +363,10 @@ class Attendee extends \yii\db\ActiveRecord
             'remarksMeals' => 'Observaciones comidas - general',
             'remarksMealSaturday' => 'Observaciones comidas - cena de gala',
             'remarksHotel' => 'Observaciones hotel',
+            'parkingReservation' => 'Reserva de aparcamiento',
 	        'orders' => 'Nº pedido/s',
+	        'cifiKidsDay' => 'Reserva CifiKids día',
+	        'cifiKidsDayValue' => 'Reserva CifiKids día',
             'createdAt' => 'Fecha de creación',
             'updatedAt' => 'Fecha de modificación',
             'updatedAtHotel' => 'Fecha de modificación - datos hotel',
@@ -529,6 +535,20 @@ class Attendee extends \yii\db\ActiveRecord
         return $types[$this->ticketType];
     }
 
+    public static function getCifiKidsDays() {
+        return [
+            '' => '',
+            'S' => 'Sábado',
+            'D' => 'Domingo',
+            'B' => 'Los dos días',
+        ];
+    }
+
+    public function getCifiKidsDayValue() {
+        $days = $this->getCifiKidsDays();
+        return $days[$this->cifiKidsDay];
+    }
+
     public static function getStatusMap() {
         return [
             '' => '',
@@ -602,6 +622,11 @@ class Attendee extends \yii\db\ActiveRecord
         $products = Event::findOne($idEvent)->getProducts()->all();
         //print_r($products);die;
         return $products;
+    }
+
+    public function getMemberVaccineValue() {
+	    $vacc = Member::getVaccineOptions();
+	    return $vacc[$this->memberVaccine];
     }
 
     public static function termSearch ($term, $idEevent = null) {

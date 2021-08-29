@@ -7,8 +7,10 @@ use Yii;
 use app\models\Attendee;
 use app\models\AttendeeSearch;
 use app\models\Source;
+use app\models\Member;
 use webvimark\components\BaseController;
 use webvimark\modules\UserManagement\models\User;
+use yii\console\Application;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
@@ -78,6 +80,7 @@ class AttendeeController extends BaseController
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'ticketTypes' => Attendee::getTicketTypes(),
+            'vaccineOptions' => Member::getVaccineOptions(),
             'status' => Attendee::getStatusMap(),
             'events' => Attendee::getEvents(true),
             'sources' => Attendee::getSources(true),
@@ -556,7 +559,44 @@ class AttendeeController extends BaseController
 
     }
 
-    /**
+	public function actionReportcifikids() {
+		$idEvent = $this->getCurrentEvent();
+		$attq = Attendee::find()->andFilterEvent($idEvent)->andCifiKids();
+		$attendees = $attq->all();
+
+		$data = [
+			['title' => 'Sábado', 'children' => [] ],
+			['title' => 'Domingo', 'children' => [] ],
+		];
+
+		foreach ($attendees as $attendee) {
+			if (in_array ($attendee->cifiKidsDay, ['S', 'B'])) {
+				$data[0]['children'][] = $attendee;
+			}
+			if (in_array ($attendee->cifiKidsDay, ['D', 'B'])) {
+				$data[1]['children'][] = $attendee;
+			}
+		}
+
+		//$params = Yii::$app->params;
+		$maxChildrenCifiKids = Yii::$app->params['maxChildrenCifiKids'];
+		return $this->render('reportcifikids', [
+			'data' => $data,
+			'maxChildrenCifiKids' => $maxChildrenCifiKids,
+		]);
+	}
+
+	public function actionReportparking() {
+		$idEvent = $this->getCurrentEvent();
+		$attq = Attendee::find()->andFilterEvent($idEvent)->andParking();
+		$attendees = $attq->all();
+
+		return $this->render('reportparking', [
+			'attendees' => $attendees,
+		]);
+	}
+
+		/**
      * @deprecated
      * @return string
      */

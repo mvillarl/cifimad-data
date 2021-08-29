@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Member;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Member */
@@ -29,6 +30,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'remarks')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'status')->checkbox() ?>
+
+	<?= $form->field($model, 'vaccine')->dropDownList(Member::getVaccineOptions() ) ?>
 
     <?= $form->field($model, 'consent')->checkbox() ?>
 

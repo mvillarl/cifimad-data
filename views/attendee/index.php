@@ -123,6 +123,17 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
             'format'=>'raw',
             'content' => 'app\components\AttendeeColumns::orderNumbersCol',
         ];
+        $attendeeColumns[] = [
+            'label' => 'Vacunación',
+            'attribute' => 'memberVaccine',
+            //'headerOptions' => ['title' => $extraProductsTitle],
+            //'contentOptions' =>  ['style' => 'white-space; nowrap;', 'nowrap' => 'true'],
+            'format'=>'raw',
+            'filter' => $vaccineOptions,
+            'value'=> function($model, $key, $index) {
+                return $model->getMemberVaccineValue();
+            },
+        ];
         $attendeeColumns[] = ['class' => 'yii\grid\ActionColumn'];
 
     ?>

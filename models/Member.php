@@ -26,6 +26,7 @@ use yii\helpers\ArrayHelper;
  * @property string $consent
  * @property string $keyCheck
  * @property string $small
+ * @property string $vaccine
  *
  * @property Attendee[] $cifAttendees
  * @property Event[] $idEvents
@@ -64,6 +65,7 @@ class Member extends \yii\db\ActiveRecord
             [['createdAt', 'updatedAt'], 'safe'],
             [['name', 'surname', 'badgeName', 'badgeSurname', 'email'], 'string', 'max' => 100],
 	        [['keyCheck'], 'string', 'max' => 50],
+	        [['vaccine'], 'string', 'max' => 1],
 	        [['remarks'], 'string'],
 	        [['status', 'consent', 'small'], 'boolean'],
             [['badgeName', 'badgeSurname'], 'default', 'value' => function ($model, $attribute) {
@@ -95,6 +97,7 @@ class Member extends \yii\db\ActiveRecord
 	        'status' => 'Activo',
 	        'consent' => 'Consentimiento para enviar mails',
 	        'small' => 'Acreditación en letra pequeña',
+	        'vaccine' => 'Vacunación contra Covid-19',
 	        'keyCheck' => 'Clave de verificación',
             'createdAt' => 'Fecha de creación',
             'updatedAt' => 'Fecha de modificación',
@@ -125,7 +128,23 @@ class Member extends \yii\db\ActiveRecord
         return $this->badgeName . ' ' . $this->badgeSurname;
     }
 
-    public static function getLastLoadFrom($part) {
+	public static function getVaccineOptions() {
+		return [
+			'' => '',
+			'P' => 'Pauta parcial',
+			'C' => 'Pauta completa',
+			'N' => 'No tiene',
+			'R' => 'Prefiere no decirlo',
+		];
+	}
+
+	public function getVaccineValue() {
+		$vacc = $this->getVaccineOptions();
+		return $vacc[$this->vaccine];
+	}
+
+
+	public static function getLastLoadFrom($part) {
         $filename = Yii::$app->basePath . '/runtime/loadfrom'.strtolower($part).'flag.txt';
         $date = '';
         if (is_file ($filename)) {

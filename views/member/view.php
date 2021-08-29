@@ -37,6 +37,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'nif',
             'phone',
             'remarks:ntext',
+	        [
+		        'attribute' => 'vaccine',
+		        'value' => $model->getVaccineValue(),
+	        ],
             'status:boolean',
             'consent:boolean',
             'keyCheck',

@@ -37,12 +37,18 @@ $this->params['breadcrumbs'][] = $this->title;
 		'mealSaturdayLunch:boolean',
 		'mealSaturdayDinner:boolean',
 		'mealSundayLunch:boolean',
-		'mealSundayDinner:boolean'];
+		'mealSundayDinner:boolean',
+		[
+			'attribute' => 'cifiKidsDays',
+			'value' => $model->getCifiKidsDayValue(),
+		],
+        ];
 	foreach ($model->getGuestFields() as $field) $attributes[] = $field;
 	foreach ($model->getExtraProductFields() as $field) $attributes[] = $field;
 	$attributes = array_merge ($attributes, [
 		'remarksRegistration:ntext',
 		'orders',
+		'parkingReservation',
 	]);
 	?>
 	<?= DetailView::widget([

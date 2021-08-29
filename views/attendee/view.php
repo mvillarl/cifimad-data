@@ -80,6 +80,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'value'=> Html::a($model->roommate3Name, Url::toRoute(['attendee/view', 'id' => $model->idAttendeeRoommate3]), ['target' => '_blank']),
         ],
         'parentName',
+	    [
+		    'attribute' => 'cifiKidsDay',
+		    'value' => $model->getCifiKidsDayValue(),
+	    ],
+        'parkingReservation',
         'remarks:ntext',
         'remarksRegistration:ntext',
         'remarksMeals:ntext',

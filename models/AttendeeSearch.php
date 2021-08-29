@@ -25,7 +25,7 @@ class AttendeeSearch extends Attendee
         ];
 	    if (!User::hasRole('desk', false)) {
 	    	$ret[0][0] = array_merge ($ret[0][0], ['idEvent', 'idSource']);
-		    $ret[1][0] = array_merge ($ret[1][0], ['status', 'ticketType'] );
+		    $ret[1][0] = array_merge ($ret[1][0], ['status', 'ticketType', 'memberVaccine'] );
 		    //echo "<pre>"; print_r($ret); die;
 	    }
 	    return $ret;
@@ -110,6 +110,7 @@ class AttendeeSearch extends Attendee
             'cif_attendees.status' => $this->status,
             'cif_attendees.ticketType' => $this->ticketType,
             'roomType' => $this->roomType,
+	        'cif_members.vaccine' => $this->memberVaccine,
         ]);
 	    $query->andFilterOrders($this->orders);
 

@@ -41,21 +41,13 @@ use yii\web\JsExpression;
 
     <fieldset class="form-inline">
 
-    <?= $form->field($model, 'mealFridayDinner')->checkbox() ?>
+    <?= $form->field($model, 'mealFridayDinner')->checkbox() ?>    &nbsp;&nbsp;&nbsp;
 
-    &nbsp;&nbsp;&nbsp;
+    <?= $form->field($model, 'mealSaturdayLunch')->checkbox() ?>        &nbsp;&nbsp;&nbsp;
 
-    <?= $form->field($model, 'mealSaturdayLunch')->checkbox() ?>
+    <?= $form->field($model, 'mealSaturdayDinner')->checkbox() ?>        &nbsp;&nbsp;&nbsp;
 
-        &nbsp;&nbsp;&nbsp;
-
-    <?= $form->field($model, 'mealSaturdayDinner')->checkbox() ?>
-
-        &nbsp;&nbsp;&nbsp;
-
-    <?= $form->field($model, 'mealSundayLunch')->checkbox() ?>
-
-        &nbsp;&nbsp;&nbsp;
+    <?= $form->field($model, 'mealSundayLunch')->checkbox() ?>        &nbsp;&nbsp;&nbsp;
 
     <?= $form->field($model, 'mealSundayDinner')->checkbox() ?>
 
@@ -165,6 +157,10 @@ use yii\web\JsExpression;
             'source' => new JsExpression('autocomplete'),
         ],
     ]) ?>
+
+	<?= $form->field($model, 'cifiKidsDay')->dropDownList($model->getCifiKidsDays() ) ?>
+
+	<?= $form->field($model, 'parkingReservation')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'remarks')->textarea(['rows' => 6]) ?>
 

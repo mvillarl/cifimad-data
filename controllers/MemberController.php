@@ -157,6 +157,8 @@ class MemberController extends BaseController
                     $model->surname = $fieldvalues[1];
                     $model->email   = $fieldvalues[2];
                     $model->nif     = $fieldvalues[3];
+                    $model->phone   = $fieldvalues[4];
+                    $model->vaccine = $fieldvalues[5];
 	                $model->consent = true;
 	                $model->setKey();
 	                // Comprobamos si ya existe; en ese caso, no grabamos

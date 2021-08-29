@@ -79,7 +79,7 @@ $config = [
         {
             $event->action->controller->layout = 'excelLayout.php';
         };
-        if ( in_array ($event->action->uniqueId, array ('attendee/reportbadgelabels', 'attendee/reportbadges', 'attendee/reporthotel', 'attendee/reportincomes', 'attendee/reportreservations', 'cosplayinscription/report', 'volunteer-inscription/report') ) )
+        if ( in_array ($event->action->uniqueId, array ('attendee/reportbadgelabels', 'attendee/reportbadges', 'attendee/reporthotel', 'attendee/reportincomes', 'attendee/reportreservations', 'attendee/reportcifikids', 'attendee/reportparking', 'cosplayinscription/report', 'volunteer-inscription/report') ) )
         {
             $event->action->controller->layout = 'reportLayout.php';
         };
