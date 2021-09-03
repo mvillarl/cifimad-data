@@ -47,11 +47,17 @@ $(document).ready (function(){
 });
 
 function updateHotelCB() {
-    $('#updateHotelFlag').get(0).checked = true;
+    if ($('#updateHotelFlag').size() > 0) {
+        $('#updateHotelFlag').get(0).checked = true;
+    }
 }
 function updateBadgesCB() {
-    $('#updateBadgesFlag').get(0).checked = true;
+    if ($('#updateBadgesFlag').size() > 0) {
+        $('#updateBadgesFlag').get(0).checked = true;
+    }
 }
 function updateBadgesTicketsCB() {
-    $('#updateBadgesTicketsFlag').get(0).checked = true;
+    if ($('#updateBadgesTicketsFlag').size() > 0) {
+        $('#updateBadgesTicketsFlag').get(0).checked = true;
+    }
 }

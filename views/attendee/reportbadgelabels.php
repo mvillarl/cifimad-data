@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="attendee-reportbadgelabels">
 	<div id="warnings"></div>
 	<table class="attendee-reportbadgelabels" cellpadding="0" cellspacing="0">
-		<?php $type = ''; $long = 0; $isEspecial = false; $isCompanion = false; foreach ($attendees as $attendee) { ?>
+		<?php $type = ''; $long = 0; $isEspecial = false; $isVolunteer = false; $isCompanion = false; foreach ($attendees as $attendee) { ?>
 			<?php
 			$longd = 1.5;
 			if ($attendee->isSpecial || $attendee->idSource == '2') $longd += 1.5;
@@ -34,21 +34,46 @@ $this->params['breadcrumbs'][] = $this->title;
 					<td colspan="2" class="title">Acompañantes</td>
 				</tr>
 			<?php } ?>
-			<?php if (!$isEspecial && ($attendee->isSpecial || $attendee->idSource == '2') ) { ?>
-				<?php $isEspecial = true; $long += 1.5; ?>
+			<?php if (!$isEspecial && !$isVolunteer && $attendee->isSpecial && ($attendee->idSource == '2') ) { ?>
+				<?php $isEspecial = true; $isVolunteer = true; $long += 1.5; ?>
 				<tr>
-					<td colspan="2" class="title">Staff y Cochrane</td>
+					<td colspan="2" class="title">Staff del Cochrane<br/>Acred doble roja</td>
 				</tr>
 			<?php } ?>
-		<?php if ($isEspecial && !$attendee->isSpecial && ($attendee->idSource != '2') && ($attendee->ticketType != $type) ) { ?>
-				<?php $type = $attendee->ticketType; ?>
+			<?php if ($isEspecial && $isVolunteer && $attendee->isSpecial && ($attendee->idSource == '4') ) { ?>
+				<?php $isEspecial = true; $isVolunteer = false; $long += 1.5; ?>
+				<tr>
+					<td colspan="2" class="title">Miembros del Cochrane<br/>Acred doble normal</td>
+				</tr>
+			<?php } ?>
+			<?php if ($isEspecial && !$isVolunteer && !$attendee->isSpecial && ($attendee->idSource == '2') ) { ?>
+				<?php $isEspecial = false; $isVolunteer = true; $long += 1.5; ?>
+				<tr>
+					<td colspan="2" class="title">Staff de otros clubes<br/>Acred doble amarilla</td>
+				</tr>
+			<?php } ?>
+		<?php if ( ($isEspecial || $isVolunteer) && !$attendee->isSpecial && ($attendee->idSource != '2') && ($attendee->idSource != '4') && ($attendee->ticketType != $type) ) { ?>
+				<?php $isSpecial = false; $isVolunteer = false; $type = $attendee->ticketType; ?>
 			<tr>
 				<td colspan="2" class="title tit<?= $type ?>"><?= $attendee->getTicketTypeValue() ?></td>
 			</tr>
 			<?php } ?>
+        <?php if (!$isEspecial && $isVolunteer) {
+            $hint = 'C';
+        } else {
+            $hint = strlen ($type)? $type: 'F';
+        }
+        if ($isVolunteer) {
+            $class = 'volunteer';
+        } elseif ($isEspecial) {
+            $class = 'special';
+        } else {
+            $class = '';
+        }
+        ?>
 			<tr>
-				<td class="badgelabelhint<?= strlen ($type)? $type: 'F' ?>"> </td>
-				<td class="badgelabel<?php if ($attendee->isSpecial) { ?> special<?php } ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
+				<td class="badgelabelhint<?= $hint; ?>"> </td>
+				<td class="badgelabel <?= $class; ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
                 <span class="badgelabelin">
 					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
 					<?= $attendee->memberName ?></span>
@@ -71,8 +96,8 @@ $this->params['breadcrumbs'][] = $this->title;
 			</tr>
 			<?php if ( ($attendee->isSpecial || ($attendee->idSource == '2') || ($attendee->idSource == 'C') ) && !strlen (trim ($attendee->parentName) ) ) { ?>
 				<tr>
-					<td class="badgelabelhintF"> </td>
-					<td class="badgelabel<?php if ($attendee->isSpecial) { ?> special<?php } ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
+					<td class="badgelabelhint<?= $hint; ?>"> </td>
+					<td class="badgelabel <?= $class; ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
                     <span class="badgelabelin">
 					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
                     <?= $attendee->memberName ?></span></td>

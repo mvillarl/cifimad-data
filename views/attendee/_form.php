@@ -73,12 +73,12 @@ use yii\web\JsExpression;
     <?= $form->field($model, 'roomType')->dropDownList($model->getRoomTypes() ) ?>
 
     <?=  $form->field($model, 'dateStartLodging')->widget(\yii\jui\DatePicker::classname(),[
-        //'dateFormat' => 'dd-MM-yyyy',
+        'dateFormat' => 'dd/MM/yyyy',
         'options' => ['class' => 'cfdp', 'cf_lessthan' => 'attendee-dateendlodging']
     ]); ?>
 
     <?=  $form->field($model, 'dateEndLodging')->widget(\yii\jui\DatePicker::classname(),[
-        //'dateFormat' => 'dd-MM-yyyy',
+        'dateFormat' => 'dd/MM/yyyy',
         'options' => ['class' => 'cfdp', 'cf_greaterthan' => 'attendee-datestartlodging']
     ]); ?>
 
@@ -206,5 +206,5 @@ use yii\web\JsExpression;
 <?php
 $this->registerJsFile('/js/datepickerinterval.js', ['depends' => [\yii\jui\DatePickerLanguageAsset::className()]]);
 $this->registerJsFile('/js/autocomplete.js?v1', ['depends' => [\yii\jui\JuiAsset::className()]]);
-$this->registerJsFile('/js/checkboxes.js', ['depends' => [\yii\jui\JuiAsset::className()]]);
+$this->registerJsFile('/js/checkboxes.js?v1', ['depends' => [\yii\jui\JuiAsset::className()]]);
 ?>
