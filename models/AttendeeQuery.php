@@ -92,7 +92,7 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 	}
 
 	public function andParking() {
-		return $this->andWhere('cif_attendees.parkingReservation IS NOT NULL')->orderBy ('cif_members.createdAt');
+		return $this->andWhere("cif_attendees.parkingReservation IS NOT NULL AND TRIM(cif_attendees.parkingReservation ) <> '' ")->orderBy ('cif_members.createdAt');
 	}
 
 	/**
