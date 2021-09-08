@@ -95,6 +95,10 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 		return $this->andWhere("cif_attendees.parkingReservation IS NOT NULL AND TRIM(cif_attendees.parkingReservation ) <> '' ")->orderBy ('cif_members.createdAt');
 	}
 
+    public function andCifiKidsParticipantOrVolunteer() {
+        return $this->andWhere("((cif_attendees.cifiKidsDay IS NOT NULL AND TRIM(cif_attendees.cifiKidsDay) <> '') OR cif_attendees.isCifiKidsVolunteer = true)");
+    }
+
 	/**
      * @inheritdoc
      * @return Attendee[]|array

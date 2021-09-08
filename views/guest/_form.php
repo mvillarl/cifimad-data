@@ -32,13 +32,13 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'remarksMeals')->textarea(['rows' => 6]) ?>
 
     <?=  $form->field($model, 'dateArrival')->widget(\yii\jui\DatePicker::classname(),[
-        //'dateFormat' => 'yyyy-mm-dd',
-        //'options' => ['class' => 'cfdp', 'cf_lessthan' => 'guest-datedeparture']
+        'dateFormat' => 'dd/MM/yyyy',
+        'options' => ['class' => 'cfdp', 'cf_lessthan' => 'guest-datedeparture']
     ]); ?>
 
     <?=  $form->field($model, 'dateDeparture')->widget(\yii\jui\DatePicker::classname(),[
-        //'dateFormat' => 'yyyy-mm-dd',
-        //'options' => ['class' => 'cfdp', 'cf_greaterthan' => 'guest-datearrival']
+        'dateFormat' => 'dd/MM/yyyy',
+        'options' => ['class' => 'cfdp', 'cf_greaterthan' => 'guest-datearrival']
     ]); ?>
 
     <?= $form->field($model, 'hasAutograph')->checkbox() ?>

@@ -4,6 +4,8 @@ use app\models\Attendee;
 
 /* @var $this yii\web\View */
 /* @var $attendees app\models\Attendee[] */
+/* @var $blankBadges app\models\Source[] */
+/* @var $badgesCifiKids app\models\Attendee[] */
 
 $this->title = 'Informe - etiquetas para acreditaciones';
 $this->params['breadcrumbs'][] = ['label' => 'Asistentes', 'url' => ['index']];
@@ -54,7 +56,21 @@ $this->params['breadcrumbs'][] = $this->title;
 			<?php } ?>
 		<?php if ( ($isEspecial || $isVolunteer) && !$attendee->isSpecial && ($attendee->idSource != '2') && ($attendee->idSource != '4') && ($attendee->ticketType != $type) ) { ?>
 				<?php $isSpecial = false; $isVolunteer = false; $type = $attendee->ticketType; ?>
-			<tr>
+
+            <tr>
+                <td colspan="2" class="title">CifiKids - acreditación azul especial</td>
+            </tr>
+            <?php foreach ($badgesCifiKids as $badgeCifiKids) { ?>
+                    <tr>
+                        <td class="badgelabelhintS"> </td>
+                        <td class="badgelabel">
+						<span class="badgelabelin">
+                            <?= $badgeCifiKids->memberName ?></span>
+                        <td class="badgetype"></td>
+                    </tr>
+            <?php } ?>
+
+            <tr>
 				<td colspan="2" class="title tit<?= $type ?>"><?= $attendee->getTicketTypeValue() ?></td>
 			</tr>
 			<?php } ?>

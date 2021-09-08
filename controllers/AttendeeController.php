@@ -237,6 +237,12 @@ class AttendeeController extends BaseController
 
 	    $blankBadges = Source::find()->andWhere ('blankBadges > 0')->all();
 
+	    $badgesCifiKidsq = Attendee::find()->andFilterEvent($idEvent);
+        $badgesCifiKidsq->andCifiKidsParticipantOrVolunteer();
+        $badgesCifiKidsq->notCanceled();
+        $badgesCifiKidsq->orderBadgeLabelReport();
+        $badgesCifiKids = $badgesCifiKidsq->all();
+
 	    $this->_reportTitle = 'Informe asistentes - Etiquetas para acreditaciones';
 
         return $this->render('reportbadgelabels', [
@@ -247,6 +253,7 @@ class AttendeeController extends BaseController
             'guests' => $guests,
             'extraproducts' => $extraproducts,
 	        'blankBadges' => $blankBadges,
+            'badgesCifiKids' => $badgesCifiKids,
         ]);
         
     }

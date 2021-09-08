@@ -134,6 +134,7 @@ create table cif_attendees (
 	remarksHotel TEXT NULL,
 	orders VARCHAR(255) NULL,
 	cifiKidsDay CHAR(1) NULL,
+    isCifiKidsVolunteer BIT DEFAULT FALSE,
 	parkingReservation VARCHAR(100) NULL,
 	createdAt TIMESTAMP DEFAULT NOW(),
 	updatedAt TIMESTAMP DEFAULT NOW(),

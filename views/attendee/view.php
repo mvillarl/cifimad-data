@@ -58,6 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
     $attributes = array_merge ($attributes, [
         'sourceName',
         'isSpecial:boolean',
+        'isCifiKidsVolunteer:boolean',
         [
             'attribute' => 'roomType',
             'value' => $model->getRoomTypeValue(),

@@ -74,6 +74,7 @@ use app\components\DateFunctions;
  * @property string $orders
  * @property string $cifiKidsDay
  * @property string $parkingReservation
+ * @property boolean $isCifiKidsVolunteer
  * @property string $createdAt
  * @property string $updatedAt
  * @property string $updatedAtHotel
@@ -293,7 +294,7 @@ class Attendee extends \yii\db\ActiveRecord
             [['idEvent', 'idMember', 'ticketType', 'idSource', 'status'], 'required'],
             ['idEvent', 'default', 'value' => $this->_idEvent],
             [['idEvent', 'idMember', 'guest1Photoshoot', 'guest1PhotoshootSpecial', 'guest1Autograph', 'guest1AutographSpecial', 'guest1Selfie', 'guest1ComboAutographSelfie', 'guest1Vintage', 'guest2Photoshoot', 'guest2PhotoshootSpecial', 'guest2Autograph', 'guest2AutographSpecial', 'guest2Selfie', 'guest2ComboAutographSelfie', 'guest2Vintage', 'guest3Photoshoot', 'guest3PhotoshootSpecial', 'guest3Autograph', 'guest3AutographSpecial', 'guest3Selfie', 'guest3ComboAutographSelfie', 'guest3Vintage', 'guest4Photoshoot', 'guest4PhotoshootSpecial', 'guest4Autograph', 'guest4AutographSpecial', 'guest4Selfie', 'guest4ComboAutographSelfie', 'guest4Vintage', 'extraProduct1', 'extraProduct2', 'extraProduct3', 'extraProduct4', 'idSource', 'idAttendeeRoommate1', 'idAttendeeRoommate2', 'idAttendeeRoommate3'], 'integer'],
-            [['mealFridayDinner', 'mealSaturdayLunch', 'mealSaturdayDinner', 'mealSundayLunch', 'mealSundayDinner', 'isSpecial', 'freeLodging', 'freeSaturdayDinner'/*, 'memberSmall'*/], 'boolean'],
+            [['mealFridayDinner', 'mealSaturdayLunch', 'mealSaturdayDinner', 'mealSundayLunch', 'mealSundayDinner', 'isSpecial', 'freeLodging', 'freeSaturdayDinner'/*, 'memberSmall'*/, 'isCifiKidsVolunteer'], 'boolean'],
             [['dateStartLodging', 'dateEndLodging', 'createdAt', 'updatedAt', 'updatedAtHotel', 'updatedAtBadges', 'updatedAtBadgesTickets'], 'safe'],
             [['remarks', 'remarksRegistration', 'remarksMeals', 'remarksMealSaturday', 'remarksHotel', 'orders', 'parkingReservation'], 'string'],
             [['status', 'ticketType', 'roomType', 'cifiKidsDay'], 'string', 'max' => 1],
@@ -364,6 +365,7 @@ class Attendee extends \yii\db\ActiveRecord
             'remarksMealSaturday' => 'Observaciones comidas - cena de gala',
             'remarksHotel' => 'Observaciones hotel',
             'parkingReservation' => 'Reserva de aparcamiento',
+            'isCifiKidsVolunteer' => 'Voluntario CifiKids',
 	        'orders' => 'Nº pedido/s',
 	        'cifiKidsDay' => 'Reserva CifiKids día',
 	        'cifiKidsDayValue' => 'Reserva CifiKids día',
@@ -567,6 +569,11 @@ class Attendee extends \yii\db\ActiveRecord
 	public function getIsSpecialValue() {
 		$yesno = ['0' => 'No', '1' => 'Sí'];
 		return $yesno[$this->isSpecial];
+	}
+
+	public function getIsCifiKidsVolunteerValue() {
+		$yesno = ['0' => 'No', '1' => 'Sí'];
+		return $yesno[$this->isCifiKidsVolunteer];
 	}
 
     public static function getRoomTypes() {

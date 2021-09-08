@@ -70,6 +70,8 @@ use yii\web\JsExpression;
 
     <?= $form->field($model, 'isSpecial')->checkbox() ?>
 
+    <?= $form->field($model, 'isCifiKidsVolunteer')->checkbox() ?>
+
     <?= $form->field($model, 'roomType')->dropDownList($model->getRoomTypes() ) ?>
 
     <?=  $form->field($model, 'dateStartLodging')->widget(\yii\jui\DatePicker::classname(),[
