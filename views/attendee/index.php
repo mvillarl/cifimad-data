@@ -134,6 +134,15 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
                 return $model->getMemberVaccineValue();
             },
         ];
+        $attendeeColumns[] = [
+            'label' => 'Teléfono',
+            'attribute' => 'hasPhone',
+            'format' => 'raw',
+            'filter' => $yesno,
+            'value'=> function($model, $key, $index) {
+                return $model->getHasPhoneValue();
+            },
+        ];
         $attendeeColumns[] = ['class' => 'yii\grid\ActionColumn'];
 
     ?>

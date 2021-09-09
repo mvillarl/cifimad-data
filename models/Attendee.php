@@ -148,6 +148,7 @@ class Attendee extends \yii\db\ActiveRecord
 	/*public function setUpdatedFlag() {
 		$this->_updatedFlag = true;
 	}*/
+	protected $_hasPhone;
 
 	public function setUpdatedHotelFlag() {
 		$this->_updatedHotelFlag = true;
@@ -634,6 +635,18 @@ class Attendee extends \yii\db\ActiveRecord
     public function getMemberVaccineValue() {
 	    $vacc = Member::getVaccineOptions();
 	    return $vacc[$this->memberVaccine];
+    }
+
+    public function getHasPhoneValue() {
+        return !empty ($this->memberPhone);
+    }
+
+    public function getHasPhone() {
+        return $this->_hasPhone;
+    }
+
+    public function setHasPhone ($hasPhone) {
+        $this->_hasPhone = $hasPhone;
     }
 
     public static function termSearch ($term, $idEevent = null) {

@@ -23,7 +23,7 @@ class AttendeeQuery extends \yii\db\ActiveQuery
             ->leftJoin('cif_members memberRoommate3', 'roommate3.idMember = memberRoommate3.id')
             ->leftJoin('cif_attendees parent', 'cif_attendees.idAttendeeParent = parent.id')
             ->leftJoin('cif_members memberParent', 'parent.idMember = memberParent.id')
-            ->select('cif_attendees.*, cif_events.name eventName, cif_members.badgeName, cif_members.badgeSurname, cif_members.name, cif_members.surname, cif_sources.name sourceName, cif_members.nif, cif_members.small memberSmall, cif_members.vaccine memberVaccine'
+            ->select('cif_attendees.*, cif_events.name eventName, cif_members.badgeName, cif_members.badgeSurname, cif_members.name, cif_members.surname, cif_sources.name sourceName, cif_members.nif, cif_members.small memberSmall, cif_members.vaccine memberVaccine, cif_members.phone memberPhone'
                      . ', memberRoommate1.badgeName roommate1BadgeName, memberRoommate1.badgeSurname roommate1BadgeSurname'
                      . ', memberRoommate2.badgeName roommate2BadgeName, memberRoommate2.badgeSurname roommate2BadgeSurname'
                      . ', memberRoommate3.badgeName roommate3BadgeName, memberRoommate3.badgeSurname roommate3BadgeSurname'
@@ -51,6 +51,17 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 		}
 		return $this;
 	}
+
+    public function andFilterHasPhone ($hasPhone) {
+        if (strlen ($hasPhone)) {
+            if ($hasPhone == '1') {
+                $this->andWhere("cif_members.phone IS NOT NULL AND TRIM(cif_members.phone) <> '' ");
+            } else {
+                $this->andWhere("cif_members.phone IS  NULL OR TRIM(cif_members.phone) = '' ");
+            }
+        }
+        return $this;
+    }
 
 	public function andFilterEvent ($idEvent) {
 		return $this->andWhere ('cif_attendees.idEvent = :event', ['event' => $idEvent] );

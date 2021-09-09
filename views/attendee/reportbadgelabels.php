@@ -55,8 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				</tr>
 			<?php } ?>
 		<?php if ( ($isEspecial || $isVolunteer) && !$attendee->isSpecial && ($attendee->idSource != '2') && ($attendee->idSource != '4') && ($attendee->ticketType != $type) ) { ?>
-				<?php $isSpecial = false; $isVolunteer = false; $type = $attendee->ticketType; ?>
-
+				<?php $isSpecial = false; $isVolunteer = false; ?>
             <tr>
                 <td colspan="2" class="title">CifiKids - acreditación azul especial</td>
             </tr>
@@ -70,10 +69,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     </tr>
             <?php } ?>
 
-            <tr>
-				<td colspan="2" class="title tit<?= $type ?>"><?= $attendee->getTicketTypeValue() ?></td>
-			</tr>
 			<?php } ?>
+        <?php if (!$isEspecial && !$isVolunteer && ($attendee->ticketType != $type) ) { ?>
+            <?php $type = $attendee->ticketType; ?>
+            <tr>
+            <td colspan="2" class="title tit<?= $type ?>"><?= $attendee->getTicketTypeValue() ?></td>
+        </tr>
+        <?php } ?>
         <?php if (!$isEspecial && $isVolunteer) {
             $hint = 'C';
         } else {
