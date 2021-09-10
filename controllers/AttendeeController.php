@@ -321,6 +321,7 @@ class AttendeeController extends BaseController
         $ticketsSaturday = 0;
         $ticketsSunday = 0;
         $ticketsWeekend = 0;
+        $parking = 0;
 
         $attendeesRoomsCounted = [];
         foreach ($attendees as $attendee) {
@@ -402,6 +403,7 @@ class AttendeeController extends BaseController
                     $ticketsWeekend++;
                     break;
             }
+            if (!empty ($attendee->parkingReservation) ) $parking++;
         }
 
         $event   = Event::findOne( $idEvent );
@@ -445,6 +447,7 @@ class AttendeeController extends BaseController
             'ticketsSaturday' => $ticketsSaturday,
             'ticketsSunday' => $ticketsSunday,
             'ticketsWeekend' => $ticketsWeekend,
+            'parking' => $parking,
         ]);
     }
 

@@ -77,6 +77,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?= $lodgingQuadruples; ?></td>
                 </tr>
                 <?php } ?>
+                    <tr>
+                        <td>Reservas de aparcamiento</td>
+                        <td><?= $parking; ?></td>
+                    </tr>
                 </table></td>
         <tr>
             <td>Entradas</td>
