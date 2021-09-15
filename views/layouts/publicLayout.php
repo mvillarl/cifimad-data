@@ -246,7 +246,7 @@ $this->title = 'CifiMad';
 							<ul id="menu-menu-cifimad" class="nav"><li class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-home has-menu-child"><a href="https://www.cifimad.es/">Inicio</a></li>
 								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/actividades-horarios/">Programa</a></li>
 								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/invitados-estrella/">Invitados</a></li>
-								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/actividades-2020/concurso-de-cosplay-3/">Cosplay</a></li>
+								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/actividades-2021/concurso-de-cosplay-4/">Cosplay</a></li>
 								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/como-llegar/">Sede</a></li>
 								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/historia/">Historia</a></li>
 								<li class=" menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1661 current_page_item menu-item-has-children active has-menu-child"><a href="https://www.cifimad.es/tienda-entradas/">Tienda</a>
