@@ -164,7 +164,8 @@ class AttendeeController extends BaseController
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
+            $view = User::hasRole ('desk', false)? 'updatedesk': 'update';
+            return $this->render($view, [
                 'model' => $model,
                 'events' => Attendee::getEvents(true),
                 'sources' => Attendee::getSources(true, $model->idSource),

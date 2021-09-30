@@ -80,6 +80,8 @@ use app\components\DateFunctions;
  * @property string $updatedAtHotel
  * @property string $updatedAtBadges
  * @property string $updatedAtBadgesTickets
+ * @property string $phoneAtDesk
+ * @property string $memberPhone
  *
  * @property CifEvents $idEvent0
  * @property CifMembers $idMember0
@@ -140,6 +142,7 @@ class Attendee extends \yii\db\ActiveRecord
     public $parentPhone;
 	public $memberParentId;
 	public $memberVaccine;
+	public $memberPhone;
     //public $roommate1Name;
     //public $roommate2Name;
     //public $roommate3Name;
@@ -296,8 +299,8 @@ class Attendee extends \yii\db\ActiveRecord
             ['idEvent', 'default', 'value' => $this->_idEvent],
             [['idEvent', 'idMember', 'guest1Photoshoot', 'guest1PhotoshootSpecial', 'guest1Autograph', 'guest1AutographSpecial', 'guest1Selfie', 'guest1ComboAutographSelfie', 'guest1Vintage', 'guest2Photoshoot', 'guest2PhotoshootSpecial', 'guest2Autograph', 'guest2AutographSpecial', 'guest2Selfie', 'guest2ComboAutographSelfie', 'guest2Vintage', 'guest3Photoshoot', 'guest3PhotoshootSpecial', 'guest3Autograph', 'guest3AutographSpecial', 'guest3Selfie', 'guest3ComboAutographSelfie', 'guest3Vintage', 'guest4Photoshoot', 'guest4PhotoshootSpecial', 'guest4Autograph', 'guest4AutographSpecial', 'guest4Selfie', 'guest4ComboAutographSelfie', 'guest4Vintage', 'extraProduct1', 'extraProduct2', 'extraProduct3', 'extraProduct4', 'idSource', 'idAttendeeRoommate1', 'idAttendeeRoommate2', 'idAttendeeRoommate3'], 'integer'],
             [['mealFridayDinner', 'mealSaturdayLunch', 'mealSaturdayDinner', 'mealSundayLunch', 'mealSundayDinner', 'isSpecial', 'freeLodging', 'freeSaturdayDinner'/*, 'memberSmall'*/, 'isCifiKidsVolunteer'], 'boolean'],
-            [['dateStartLodging', 'dateEndLodging', 'createdAt', 'updatedAt', 'updatedAtHotel', 'updatedAtBadges', 'updatedAtBadgesTickets'], 'safe'],
-            [['remarks', 'remarksRegistration', 'remarksMeals', 'remarksMealSaturday', 'remarksHotel', 'orders', 'parkingReservation'], 'string'],
+            [['dateStartLodging', 'dateEndLodging', 'createdAt', 'updatedAt', 'updatedAtHotel', 'updatedAtBadges', 'updatedAtBadgesTickets', 'memberPhone'], 'safe'],
+            [['remarks', 'remarksRegistration', 'remarksMeals', 'remarksMealSaturday', 'remarksHotel', 'orders', 'parkingReservation', 'phoneAtDesk'], 'string'],
             [['status', 'ticketType', 'roomType', 'cifiKidsDay'], 'string', 'max' => 1],
             [['idEvent', 'idMember'], 'unique', 'targetAttribute' => ['idEvent', 'idMember'], 'message' => 'Este socio ya está incluido en este evento.'/*, 'filter' => function($q){
                     $parms = $q->where;
@@ -330,7 +333,7 @@ class Attendee extends \yii\db\ActiveRecord
             'memberName' => 'Socio',
             'attendeeName' => 'Socio',
             'status' => 'Estado',
-            'ticketType' => 'Tipo de entrada',
+            'ticketType' => 'Tipo de pase',
             'mealFridayDinner' => 'Cena Cocktail viernes',
             'mealSaturdayLunch' => 'Comida sábado',
             'mealSaturdayDinner' => 'Cena de Gala sábado',
@@ -366,6 +369,7 @@ class Attendee extends \yii\db\ActiveRecord
             'remarksMealSaturday' => 'Observaciones comidas - cena de gala',
             'remarksHotel' => 'Observaciones hotel',
             'parkingReservation' => 'Reserva de aparcamiento',
+            'phoneAtDesk' => 'Teléfono (recogido en acreditaciones)',
             'isCifiKidsVolunteer' => 'Voluntario CifiKids',
 	        'orders' => 'Nº pedido/s',
 	        'cifiKidsDay' => 'Reserva CifiKids día',

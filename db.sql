@@ -141,6 +141,7 @@ create table cif_attendees (
 	updatedAtHotel TIMESTAMP,
 	updatedAtBadges TIMESTAMP,
 	updatedAtBadgesTickets TIMESTAMP,
+    phoneAtDesk VARCHAR(50) NULL,
 	PRIMARY KEY (`id`),
 	CONSTRAINT attEvent FOREIGN KEY (idEvent) REFERENCES cif_events (id),
 	CONSTRAINT attMember FOREIGN KEY (idMember) REFERENCES cif_members (id),
@@ -231,4 +232,16 @@ CREATE TABLE cif_volunteer_inscriptions_shifts (
 	PRIMARY KEY (`idVolunteer`, `volunteerShift`),
     KEY `volunteerVIS` (`idVolunteer`),
     CONSTRAINT `volunteerVIS` FOREIGN KEY (`idVolunteer`) REFERENCES `cif_volunteer_inscriptions` (`id`)    
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE cif_attendee_sales (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `idEvent` int(11) NOT NULL,
+    `name` varchar(100) NOT NULL,
+    `phone` varchar(50) NOT NULL,
+    ticketType CHAR(1) NOT NULL,
+    authorizedBy varchar(50) NOT NULL,
+    authorizedReason varchar(2000) NOT NULL,
+    PRIMARY KEY id (`id`),
+    KEY `eventAS` (`idEvent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

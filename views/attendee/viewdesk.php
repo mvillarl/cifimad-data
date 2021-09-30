@@ -49,6 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		'remarksRegistration:ntext',
 		'orders',
 		'parkingReservation',
+        'phoneAtDesk',
 	]);
 	?>
 	<?= DetailView::widget([

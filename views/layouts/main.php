@@ -53,24 +53,31 @@ AppAsset::register($this);
     }
     if (User::canRoute('/member/index')) $menuitems[] = ['label' => 'Socios', 'url' => '/member/index'];
     if (User::canRoute('/attendee/index')) {
-        $menuitemsatt = [
-            ['label' => 'Asistentes', 'url' => '/attendee/index'],
-            ['label' => 'Informe - etiquetas', 'url' => '/attendee/reportbadgelabels', 'linkOptions' => ['target' => 'blank'] ],
-            ['label' => 'Informe - etiquetas - después de primera impresión', 'url' => '/attendee/reportbadgelabels/A', 'linkOptions' => ['target' => 'blank'] ],
-            ['label' => 'Informe - etiquetas - después de primera impresión - info tickets', 'url' => '/attendee/reportbadgelabels/A/T', 'linkOptions' => ['target' => 'blank'] ],
-            ['label' => 'Informe - acreditaciones', 'url' => '/attendee/reportbadges', 'linkOptions' => ['target' => 'blank'] ],
-            ['label' => 'Informe - acreditaciones - fotos, firmas, cartones', 'url' => '/attendee/reportbadges/D', 'linkOptions' => ['target' => 'blank'] ],
-            ['label' => 'Informe - acreditaciones - asociaciones', 'url' => '/attendee/reportbadges/A', 'linkOptions' => ['target' => 'blank'] ],
-            ['label' => 'Informe - hotel', 'url' => '/attendee/reporthotel', 'linkOptions' => ['target' => 'blank'] ],
-            ['label' => 'Informe - hotel - después de primer envío', 'url' => '/attendee/reporthotel/A', 'linkOptions' => ['target' => 'blank'] ],
-            //['label' => 'Informe - cenas y comidas', 'url' => '/attendee/reporthotel/M', 'linkOptions' => ['target' => 'blank'] ],
-            ['label' => 'Informe - cenas y comidas', 'url' => '/attendee/reportbadges/M', 'linkOptions' => ['target' => 'blank'] ],
-            //['label' => 'Informe - cuentas', 'url' => '/attendee/reportincomes', 'linkOptions' => ['target' => 'blank'] ],
-            ['label' => 'Informe - reservas', 'url' => '/attendee/reportreservations', 'linkOptions' => ['target' => 'blank'] ],
-            ['label' => 'Informe - CifiKids', 'url' => '/attendee/reportcifikids', 'linkOptions' => ['target' => 'blank'] ],
-            ['label' => 'Informe - Reservas de aparcamiento', 'url' => '/attendee/reportparking', 'linkOptions' => ['target' => 'blank'] ],
-        ];
+        if (User::hasRole ('desk', false)) {
+            $menuitemsatt = null;
+        } else {
+            $menuitemsatt = [
+                ['label' => 'Asistentes', 'url' => '/attendee/index'],
+                ['label' => 'Informe - etiquetas', 'url' => '/attendee/reportbadgelabels', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - etiquetas - después de primera impresión', 'url' => '/attendee/reportbadgelabels/A', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - etiquetas - después de primera impresión - info tickets', 'url' => '/attendee/reportbadgelabels/A/T', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - acreditaciones', 'url' => '/attendee/reportbadges', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - acreditaciones - fotos, firmas, cartones', 'url' => '/attendee/reportbadges/D', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - acreditaciones - asociaciones', 'url' => '/attendee/reportbadges/A', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - hotel', 'url' => '/attendee/reporthotel', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - hotel - después de primer envío', 'url' => '/attendee/reporthotel/A', 'linkOptions' => ['target' => 'blank']],
+                //['label' => 'Informe - cenas y comidas', 'url' => '/attendee/reporthotel/M', 'linkOptions' => ['target' => 'blank'] ],
+                ['label' => 'Informe - cenas y comidas', 'url' => '/attendee/reportbadges/M', 'linkOptions' => ['target' => 'blank']],
+                //['label' => 'Informe - cuentas', 'url' => '/attendee/reportincomes', 'linkOptions' => ['target' => 'blank'] ],
+                ['label' => 'Informe - reservas', 'url' => '/attendee/reportreservations', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - CifiKids', 'url' => '/attendee/reportcifikids', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - Reservas de aparcamiento', 'url' => '/attendee/reportparking', 'linkOptions' => ['target' => 'blank']],
+            ];
+        }
         $menuitems[] = ['label' => 'Asistentes', 'url' => '/attendee/index', 'items' => $menuitemsatt];
+    }
+    if (User::canRoute('/attendee-sale/index')) {
+        $menuitems[] = ['label' => 'Registrar ventas', 'url' => '/attendee-sale/index'];
     }
     if (User::canRoute('/user-management/user/index')) {
         $menuitemsuser = [ ['label' => 'Usuarios', 'url' => '/user-management/user/index'] ];

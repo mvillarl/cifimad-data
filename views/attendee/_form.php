@@ -164,6 +164,8 @@ use yii\web\JsExpression;
 
 	<?= $form->field($model, 'parkingReservation')->textInput(['maxlength' => true]) ?>
 
+	<?= $form->field($model, 'phoneAtDesk')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'remarks')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'remarksRegistration')->textarea(['rows' => 6]) ?>

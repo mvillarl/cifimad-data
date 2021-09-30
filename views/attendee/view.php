@@ -86,6 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		    'value' => $model->getCifiKidsDayValue(),
 	    ],
         'parkingReservation',
+        'phoneAtDesk',
         'remarks:ntext',
         'remarksRegistration:ntext',
         'remarksMeals:ntext',
