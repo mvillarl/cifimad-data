@@ -12,3 +12,6 @@ CREATE TABLE cif_attendee_sales (
     PRIMARY KEY id (`id`),
     KEY `eventAS` (`idEvent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE cif_volunteer_inscriptions 
+ADD `status` bit DEFAULT true;

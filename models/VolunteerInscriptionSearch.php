@@ -20,6 +20,7 @@ class VolunteerInscriptionSearch extends VolunteerInscription
         return [
             [['id', 'idEvent'], 'integer'],
             [['name', 'email', 'nameFacebook'], 'safe'],
+            [['status'], 'boolean'],
         ];
     }
 
@@ -61,6 +62,7 @@ class VolunteerInscriptionSearch extends VolunteerInscription
         $query->andFilterWhere([
             'id' => $this->id,
             'idEvent' => $this->idEvent,
+            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

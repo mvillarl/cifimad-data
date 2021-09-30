@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Crear Inscripción de voluntario', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php $yesno = ['0' => 'No', '1' => 'Sí']; ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -36,6 +37,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'email:email',
             'nameFacebook',
+            [
+                'attribute'=>'status',
+                'filter'=>$yesno,
+                'format'=>'raw',
+                'value' => function($model, $key, $index) {
+
+                    return $model->getStatusValue();
+                }
+
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

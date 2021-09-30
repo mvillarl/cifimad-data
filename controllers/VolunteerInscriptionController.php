@@ -176,7 +176,7 @@ class VolunteerInscriptionController extends Controller
 
 	public function actionReport() {
 		$idEvent       = $this->_getEventId( false );
-		$inscriptionsq = VolunteerInscription::find()->andFilterEvent( $idEvent )->orderByName();
+		$inscriptionsq = VolunteerInscription::find()->andFilterEvent( $idEvent )->active()->orderByName();
 		$inscriptions  = $inscriptionsq->all();
 
 		return $this->render( 'report', [

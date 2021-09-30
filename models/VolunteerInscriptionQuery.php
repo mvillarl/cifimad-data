@@ -15,7 +15,11 @@ class VolunteerInscriptionQuery extends \yii\db\ActiveQuery
 		return $this->andWhere ('cif_volunteer_inscriptions.idEvent = :event', ['event' => $idEvent] );
 	}
 
-	public function orderByName() {
+    public function active() {
+	    return $this->andWhere ('status = true');
+    }
+
+    public function orderByName() {
 		return $this->orderBy ('cif_volunteer_inscriptions.name');
 	}
 }

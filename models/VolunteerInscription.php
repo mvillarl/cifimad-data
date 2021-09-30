@@ -18,6 +18,7 @@ use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
  * @property string $shiftOther
  * @property string $otherVolunteer
  * @property string $computersLevel
+ * @property boolean $status
  *
  * @property Event $idEvent0
  * @property VolunteerInscriptionFunction[] $volunteerInscriptionFunctions
@@ -59,6 +60,8 @@ class VolunteerInscription extends \yii\db\ActiveRecord
             [['otherVolunteer'], 'string', 'max' => 500],
             [['idEvent'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['idEvent' => 'id']],
 	        [['volunteerInscriptionFunctions', 'volunteerInscriptionShifts'], 'safe'],
+            [['status'], 'boolean'],
+            ['status', 'default', 'value' => true],
         ];
     }
 
@@ -86,6 +89,7 @@ class VolunteerInscription extends \yii\db\ActiveRecord
             'otherVolunteer' => 'Datos de otro voluntario',
 	        'computersLevel' => 'Conocimientos de informática',
 	        'computersLevelValue' => 'Conocimientos de informática',
+            'status' => 'Activo',
             'volunteerInscriptionFunctions' => '¿Dónde podría colaborar?',
             'volunteerInscriptionShifts' => 'Disponibilidad',
         ];
@@ -226,6 +230,10 @@ class VolunteerInscription extends \yii\db\ActiveRecord
 		$levels = $this->getComputersLevels();
 		return $levels[$this->computersLevel];
 	}
+
+	public function getStatusValue() {
+	    return $this->status? 'Sí': 'No';
+    }
 
 	/*public function afterSave( $insert, $changedAttributes ) {
 		if (!parent::afterSave( $insert, $changedAttributes ) ) {
