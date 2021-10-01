@@ -7,6 +7,7 @@ use app\models\Attendee;
 use app\models\AttendeeSale;
 use app\models\AttendeeSaleSearch;
 use app\models\Event;
+use app\models\Member;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -53,6 +54,7 @@ class AttendeeSaleController extends Controller
             'dataProvider' => $dataProvider,
             'events' => Attendee::getEvents(true),
             'ticketTypes' => Attendee::getTicketTypes(),
+            'vaccineOptions' => Member::getVaccineOptions(),
         ]);
     }
 

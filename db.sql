@@ -243,6 +243,7 @@ CREATE TABLE cif_attendee_sales (
     ticketType CHAR(1) NOT NULL,
     authorizedBy varchar(50) NOT NULL,
     authorizedReason varchar(2000) NOT NULL,
+    vaccine CHAR(1) NULL,
     PRIMARY KEY id (`id`),
     KEY `eventAS` (`idEvent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

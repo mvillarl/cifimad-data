@@ -15,3 +15,6 @@ CREATE TABLE cif_attendee_sales (
 
 ALTER TABLE cif_volunteer_inscriptions 
 ADD `status` bit DEFAULT true;
+
+ALTER TABLE cif_attendee_sales 
+ADD vaccine CHAR(1) NULL;

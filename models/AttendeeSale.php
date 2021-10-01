@@ -12,6 +12,7 @@ use Yii;
  * @property string $name
  * @property string $phone
  * @property string $ticketType
+ * @property string $vaccine
  * @property string $authorizedBy
  * @property string $authorizedReason
  *
@@ -41,7 +42,7 @@ class AttendeeSale extends \yii\db\ActiveRecord
             ['idEvent', 'default', 'value' => $this->_idEvent],
             [['name'], 'string', 'max' => 100],
             [['phone', 'authorizedBy'], 'string', 'max' => 50],
-            [['ticketType'], 'string', 'max' => 1],
+            [['ticketType', 'vaccine'], 'string', 'max' => 1],
             [['authorizedReason'], 'string', 'max' => 2000],
         ];
     }
@@ -58,6 +59,7 @@ class AttendeeSale extends \yii\db\ActiveRecord
             'name' => 'Nombre y apellidos',
             'phone' => 'Teléfono',
             'ticketType' => 'Tipo de pase',
+            'vaccine' => 'Vacunación contra Covid-19',
             'authorizedBy' => 'Autorizado por',
             'authorizedReason' => 'Razón para autorizar',
         ];
@@ -84,5 +86,14 @@ class AttendeeSale extends \yii\db\ActiveRecord
     public function getTicketTypeValue() {
         $types = $this->getTicketTypes();
         return $types[$this->ticketType];
+    }
+
+    public static function getVaccineOptions() {
+        return Member::getVaccineOptions();
+    }
+
+    public function getVaccineValue() {
+        $options = $this->getVaccineOptions();
+        return $options[$this->vaccine];
     }
 }

@@ -100,13 +100,13 @@ $this->params['breadcrumbs'][] = $this->title;
 		<?php foreach ($attendeerooms as $attendeeroom) { ?>
 		<tr <?php if ($attendeeroom->status == '2') {echo 'class="cancelled"'; } else if ($attendeeroom->status == '4') {echo 'class="modified"'; }  else if ($attendeeroom->status == '0') {echo 'class="notconfirmed"'; } ?>>
 			<td><?php $first = true; foreach ($attendeeroom->names as $name) { ?>
-					<?php if ($first) $first = false; else echo '<br/>'; ?><?= $name ?>
+					<?php if ($first) $first = false; else echo '<br/><hr/>'; ?><?= $name ?>
 			<?php } ?></td>
 			<td><?php $first = true; foreach ($attendeeroom->surnames as $surname) { ?>
-					<?php if ($first) $first = false; else echo '<br/>'; ?><?= $surname ?>
+					<?php if ($first) $first = false; else echo '<br/><hr/>'; ?><?= $surname ?>
 				<?php } ?></td>
 			<td><?php $first = true; foreach ($attendeeroom->nifs as $nif) { ?>
-					<?php if ($first) $first = false; else echo '<br/>'; ?><?= $nif ?>
+					<?php if ($first) $first = false; else echo '<br/><hr/>'; ?><?= $nif ?>
 				<?php } ?></td>
 			<td><?= $attendeeroom->roomType ?></td>
 			<td class="c"><?= $attendeeroom->wednesday? 'X': '' ?></td>

@@ -41,6 +41,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'ticketType',
                 'value' => $model->getTicketTypeValue(),
             ],
+            [
+                'attribute' => 'vaccine',
+                'value' => $model->getVaccineValue(),
+            ],
             'authorizedBy',
             'authorizedReason',
         ],

@@ -42,6 +42,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->getTicketTypeValue();
                 }
             ],
+            [
+                'attribute'=>'vaccine',
+                'filter'=>$vaccineOptions,
+                'format'=>'raw',
+                'value' => function($model, $key, $index) {
+                    return $model->getVaccineValue();
+                }
+            ],
             //'authorizedBy',
             //'authorizedReason',
 

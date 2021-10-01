@@ -20,6 +20,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ticketType')->dropDownList($model->getTicketTypes() ) ?>
 
+    <?= $form->field($model, 'vaccine')->dropDownList($model->getVaccineOptions() ) ?>
+
     <div class="xform-control"><label>Estos campos sólo son necesarios para acreditados que no compren pase</label></div>
 
     <?= $form->field($model, 'authorizedBy')->textInput(['maxlength' => true]) ?>
