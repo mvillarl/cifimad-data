@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             <?php foreach ($badgesCifiKids as $badgeCifiKids) { ?>
                     <tr>
-                        <td class="badgelabelhintS"> </td>
+                        <td class="badgelabelhintD"> </td>
                         <td class="badgelabel">
 						<span class="badgelabelin">
                             <?= $badgeCifiKids->memberName ?></span>
