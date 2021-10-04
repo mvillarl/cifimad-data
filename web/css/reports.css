@@ -57,6 +57,19 @@ html, body {
     height: 1.50cm;
     white-space: nowrap;
 }
+.badgelabelvertical {
+    text-align: center;
+    font-family: Bitsumishi;
+    font-size: 16pt;
+    width: 6.75cm;
+    height: 1.50cm;
+    border-right: solid black 1px;
+}
+.badgelabelverticalin {
+    width: 6.75cm;
+    height: 1.50cm;
+    white-space: nowrap;
+}
 
 .small {
     font-size: 16pt;

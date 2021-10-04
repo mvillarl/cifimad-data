@@ -76,13 +76,18 @@ $this->params['breadcrumbs'][] = $this->title;
             <td colspan="2" class="title tit<?= $type ?>"><?= $attendee->getTicketTypeValue() ?></td>
         </tr>
         <?php } ?>
-        <?php if (!$isEspecial && $isVolunteer) {
+        <?php
+        $mainclass = 'badgelabel';
+        $mainclassIn = 'badgelabelin';
+        if (!$isEspecial && $isVolunteer) {
             $hint = 'C';
         } else {
             $hint = strlen ($type)? $type: 'F';
         }
         if ($isVolunteer) {
             $class = 'volunteer';
+            $mainclass = 'badgelabelvertical';
+            $mainclassIn = 'badgelabelverticalin';
         } elseif ($isEspecial) {
             $class = 'special';
         } else {
@@ -91,8 +96,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ?>
 			<tr>
 				<td class="badgelabelhint<?= $hint; ?>"> </td>
-				<td class="badgelabel <?= $class; ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
-                <span class="badgelabelin">
+				<td class="<?= $mainclass ?> <?= $class; ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
+                <span class="<?= $mainclassIn ?>">
 					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
 					<?= $attendee->memberName ?></span>
 				</td>
@@ -115,8 +120,8 @@ $this->params['breadcrumbs'][] = $this->title;
 			<?php if ( ($attendee->isSpecial || ($attendee->idSource == '2') || ($attendee->idSource == 'C') ) && !strlen (trim ($attendee->parentName) ) ) { ?>
 				<tr>
 					<td class="badgelabelhint<?= $hint; ?>"> </td>
-					<td class="badgelabel <?= $class; ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
-                    <span class="badgelabelin">
+					<td class="<?= $mainclass ?> <?= $class; ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
+                    <span class="<?= $mainclassIn ?>">
 					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
                     <?= $attendee->memberName ?></span></td>
 				</tr>
@@ -175,5 +180,5 @@ $this->params['breadcrumbs'][] = $this->title;
 		<?php } ?>
 	</table>
 </div>
-<script src="/assets/a9a1902f/jquery.js"></script>
-<script type="text/javascript" src="/js/reportcheckdimensions.js?v1.1"></script>
+<script src="/assets/96b38976/jquery.js"></script>
+<script type="text/javascript" src="/js/reportcheckdimensions.js?v1.2"></script>
