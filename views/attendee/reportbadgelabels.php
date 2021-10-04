@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="attendee-reportbadgelabels">
 	<div id="warnings"></div>
 	<table class="attendee-reportbadgelabels" cellpadding="0" cellspacing="0">
-		<?php $type = ''; $long = 0; $isEspecial = false; $isVolunteer = false; $isCompanion = false; foreach ($attendees as $attendee) { ?>
+		<?php $type = ''; $long = 0; $isEspecial = false; $isVolunteer = false; $isCompanion = false; $cifikidsShown = false; foreach ($attendees as $attendee) { ?>
 			<?php
 			$longd = 1.5;
 			if ($attendee->isSpecial || $attendee->idSource == '2') $longd += 1.5;
@@ -54,11 +54,15 @@ $this->params['breadcrumbs'][] = $this->title;
 					<td colspan="2" class="title">Staff de otros clubes<br/>Acred doble amarilla</td>
 				</tr>
 			<?php } ?>
-		<?php if ( ($isEspecial || $isVolunteer) && !$attendee->isSpecial && ($attendee->idSource != '2') && ($attendee->idSource != '4') && ($attendee->ticketType != $type) ) { ?>
-				<?php $isSpecial = false; $isVolunteer = false; ?>
+		<?php if ( ($isEspecial || $isVolunteer) && !$attendee->isSpecial && ($attendee->idSource != '2') && ($attendee->idSource != '4') ) { ?>
+            <?php $isEspecial = false; $isVolunteer = false; ?>
+            <?php if ($attendee->ticketType != $type) { ?>
+            <?php if (!$cifikidsShown) { ?>
+                <?php if (!empty ($badgesCifiKids)) { ?>
             <tr>
                 <td colspan="2" class="title">CifiKids - acreditación azul especial</td>
             </tr>
+                <?php } ?>
             <?php foreach ($badgesCifiKids as $badgeCifiKids) { ?>
                     <tr>
                         <td class="badgelabelhintD"> </td>
@@ -68,8 +72,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td class="badgetype"></td>
                     </tr>
             <?php } ?>
-
+                <?php $cifikidsShown = true; } ?>
 			<?php } ?>
+        <?php } ?>
         <?php if (!$isEspecial && !$isVolunteer && ($attendee->ticketType != $type) ) { ?>
             <?php $type = $attendee->ticketType; ?>
             <tr>

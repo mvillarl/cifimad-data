@@ -241,6 +241,10 @@ class AttendeeController extends BaseController
 	    $badgesCifiKidsq = Attendee::find()->andFilterEvent($idEvent);
         $badgesCifiKidsq->andCifiKidsParticipantOrVolunteer();
         $badgesCifiKidsq->notCanceled();
+        if ($afterprint) {
+            $event   = Event::findOne( $idEvent );
+            $badgesCifiKidsq->afterDate( $event->dateBadgesPrinted, 'Badges');
+        }
         $badgesCifiKidsq->orderBadgeLabelReport();
         $badgesCifiKids = $badgesCifiKidsq->all();
 
