@@ -563,6 +563,7 @@ class Attendee extends \yii\db\ActiveRecord
             '1' => 'Confirmado',
             '2' => 'Cancela alojamiento',
             '3' => 'Cancelado',
+            '4' => 'No vino',
         ];
     }
 
@@ -642,7 +643,7 @@ class Attendee extends \yii\db\ActiveRecord
     }
 
     public function getHasPhoneValue() {
-        return !empty ($this->memberPhone);
+        return !empty ($this->memberPhone)? 'Sí': 'No';
     }
 
     public function getHasPhone() {

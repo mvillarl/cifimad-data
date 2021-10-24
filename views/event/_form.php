@@ -19,12 +19,12 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?=  $form->field($model, 'dateStart')->widget(\yii\jui\DatePicker::classname(),[
-            //'dateFormat' => 'dd-MM-yyyy',
+            'dateFormat' => 'dd-MM-yyyy',
             'options' => ['class' => 'cfdp', 'cf_lessthan' => 'event-dateend']
     ]); ?>
 
     <?=  $form->field($model, 'dateEnd')->widget(\yii\jui\DatePicker::classname(),[
-            //'dateFormat' => 'dd-MM-yyyy',
+            'dateFormat' => 'dd-MM-yyyy',
         'options' => ['class' => 'cfdp', 'cf_greaterthan' => 'event-datestart']
     ]); ?>
 

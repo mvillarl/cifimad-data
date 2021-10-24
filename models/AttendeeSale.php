@@ -22,6 +22,7 @@ class AttendeeSale extends \yii\db\ActiveRecord
 {
     protected $_idEvent;
     public $eventName;
+	protected $_hasAuthorization;
 
     /**
      * {@inheritdoc}
@@ -96,4 +97,25 @@ class AttendeeSale extends \yii\db\ActiveRecord
         $options = $this->getVaccineOptions();
         return $options[$this->vaccine];
     }
+
+	public function getHasAuthorizationValue() {
+		return !empty ($this->authorizedBy)? 'Sí': 'No';
+	}
+
+	public function getHasAuthorization() {
+		return $this->_hasAuthorization;
+	}
+
+	public function setHasAuthorization ($hasAuthorization) {
+		$this->_hasAuthorization = $hasAuthorization;
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return AttendeeSaleQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new AttendeeSaleQuery(get_called_class());
+	}
 }

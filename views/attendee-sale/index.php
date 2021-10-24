@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Registrar venta', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php $yesno = ['0' => 'No', '1' => 'Sí'];// echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -49,6 +49,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($model, $key, $index) {
                     return $model->getVaccineValue();
                 }
+            ],
+            [
+                'label' => 'Autorizado',
+                'attribute' => 'hasAuthorization',
+                'format' => 'raw',
+                'filter' => $yesno,
+                'value'=> function($model, $key, $index) {
+                    return $model->getHasAuthorizationValue();
+                },
             ],
             //'authorizedBy',
             //'authorizedReason',

@@ -20,6 +20,7 @@ class AttendeeSaleSearch extends AttendeeSale
         $ret =  [
             [['id'], 'integer'],
             [['name', 'phone', 'ticketType', 'vaccine', 'authorizedBy', 'authorizedReason'], 'safe'],
+	        [['hasAuthorization'], 'boolean']
         ];
         if (!User::hasRole('desk', false)) {
             $ret[0][0] = array_merge($ret[0][0], ['idEvent']);
@@ -73,7 +74,8 @@ class AttendeeSaleSearch extends AttendeeSale
             ->andFilterWhere(['like', 'ticketType', $this->ticketType])
             ->andFilterWhere(['like', 'vaccine', $this->vaccine])
             ->andFilterWhere(['like', 'authorizedBy', $this->authorizedBy])
-            ->andFilterWhere(['like', 'authorizedReason', $this->authorizedReason]);
+            ->andFilterWhere(['like', 'authorizedReason', $this->authorizedReason])
+	        ->andFilterHasAuthorization ($this->hasAuthorization);
 
         return $dataProvider;
     }
