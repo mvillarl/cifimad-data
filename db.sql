@@ -30,6 +30,7 @@ create table cif_guests (
 	nif_passport VARCHAR(25) NULL,
 	remarks TEXT NULL,
 	remarksMeals TEXT NULL,
+	remarksMealsSaturday TEXT NULL,
 	PRIMARY KEY (`id`),
 	CONSTRAINT event FOREIGN KEY (idEvent) REFERENCES cif_events (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -163,6 +164,7 @@ create table cif_companions (
 	nif_passport VARCHAR(25) NULL,
 	remarks TEXT NULL,
 	remarksMeals TEXT NULL,
+	remarksMealsSaturday TEXT NULL,
 	separateRoom BIT DEFAULT false,
 	excludeLodging BIT DEFAULT false,
 	excludeFridayDinner BIT DEFAULT false,

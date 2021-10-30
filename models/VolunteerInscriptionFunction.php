@@ -60,16 +60,16 @@ class VolunteerInscriptionFunction extends \yii\db\ActiveRecord
 			'AC' => 'Acreditaciones',
 			'MO' => 'Montaje',
 			'PR' => 'Prensa',
-			'CO' => 'Comunicaciones',
+			//'CO' => 'Comunicaciones',
 			'CK' => 'CifiKids',
 			'AA' => 'Asistente de actores',
 			'FT' => 'Fotografía y vídeo',
-			'PR' => 'Presentador cosplay',
+			'PC' => 'Presentador cosplay',
 			'TR' => 'Tramoyista',
 			'CC' => 'Control cosplay',
 			'DM' => 'Desmontaje',
 			'TA' => 'Intérprete para actores',
-			'CV' => 'Controlar normas Covid',
+			//'CV' => 'Controlar normas Covid',
 		];
 	}
 }

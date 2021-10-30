@@ -26,6 +26,7 @@ use yii\helpers\ArrayHelper;
  * @property boolean $nif_passport
  * @property string $remarks
  * @property string $remarksMeals
+ * @property string $remarksMealsSaturday
  * @property string pseudonym
  *
  * @property Event $idEvent0
@@ -54,11 +55,10 @@ class Guest extends \yii\db\ActiveRecord
             [['name', 'surname'], 'string', 'max' => 60],
             [['characterName', 'pseudonym'], 'string', 'max' => 100],
             [['nif_passport'], 'string', 'max' => 25],
-	        [['remarks'], 'string'],
-	        [['remarksMeals'], 'string'],
+	        [['remarks', 'remarksMeals', 'remarksMealsSaturday'], 'string'],
             [['idEvent'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['idEvent' => 'id']],
-            ['dateArrival', 'date', 'timestampAttribute' => 'dateArrival', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
-            ['dateDeparture', 'date', 'timestampAttribute' => 'dateDeparture', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
+            ['dateArrival', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateArrival', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
+            ['dateDeparture', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateDeparture', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
             [['dateArrival'], 'compare', 'compareAttribute' => 'dateDeparture', 'operator' => '<'],
         ];
     }
@@ -88,6 +88,7 @@ class Guest extends \yii\db\ActiveRecord
             'nif_passport' => 'DNI / Pasaporte',
             'remarks' => 'Observaciones',
             'remarksMeals' => 'Observaciones comidas',
+            'remarksMealsSaturday' => 'Opción menú cena de gala',
             'pseudonym' => 'Seudónimo',
         ];
     }

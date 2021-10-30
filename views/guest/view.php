@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nif_passport',
             'remarks',
             'remarksMeals',
+            'remarksMealsSaturday',
             'dateArrival:date',
             'dateDeparture:date',
             'hasAutograph:boolean',

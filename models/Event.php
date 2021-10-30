@@ -40,10 +40,10 @@ class Event extends \yii\db\ActiveRecord
             [['dateStart', 'dateEnd', 'dateSentInfoHotel', 'dateBadgesPrinted', 'dateEndCosplaySignup'], 'safe'],
             [['name'], 'string', 'max' => 60],
             //[['dateStart', 'dateEnd', 'dateSentInfoHotel'], 'date'],
-            ['dateStart', 'date', 'timestampAttribute' => 'dateStart', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
-            ['dateEnd', 'date', 'timestampAttribute' => 'dateEnd', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
-            ['dateEndCosplaySignup', 'date', 'timestampAttribute' => 'dateEndCosplaySignup', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
-            [['dateSentInfoHotel', 'dateBadgesPrinted'], 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
+            ['dateStart', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateStart', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
+            ['dateEnd', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateEnd', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
+            ['dateEndCosplaySignup', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateEndCosplaySignup', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
+            [['dateSentInfoHotel', 'dateBadgesPrinted'], 'date', 'format' => 'dd/MM/yyyy', 'format' => 'yyyy-MM-dd HH:mm:ss'],
             [['dateStart'], 'compare', 'compareAttribute' => 'dateEnd', 'operator' => '<'],
         ];
     }

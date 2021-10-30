@@ -31,6 +31,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'remarksMeals')->textarea(['rows' => 6]) ?>
 
+    <?= $form->field($model, 'remarksMealsSaturday')->textarea(['rows' => 2]) ?>
+
     <?=  $form->field($model, 'dateArrival')->widget(\yii\jui\DatePicker::classname(),[
         'dateFormat' => 'dd/MM/yyyy',
         'options' => ['class' => 'cfdp', 'cf_lessthan' => 'guest-datedeparture']

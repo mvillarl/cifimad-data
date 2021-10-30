@@ -314,8 +314,8 @@ class Attendee extends \yii\db\ActiveRecord
 	        [['idAttendeeRoommate3'], 'exist', 'skipOnError' => true, 'targetClass' => Attendee::className(), 'targetAttribute' => ['idAttendeeRoommate3' => 'id']],
             [['idAttendeeParent'], 'exist', 'skipOnError' => true, 'targetClass' => Attendee::className(), 'targetAttribute' => ['idAttendeeParent' => 'id']],
             [['createdAt', 'updatedAt', 'updatedAtHotel', 'updatedAtBadges', 'updatedAtBadgesTickets'], 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
-            ['dateStartLodging', 'date', 'timestampAttribute' => 'dateStartLodging', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
-            ['dateEndLodging', 'date', 'timestampAttribute' => 'dateEndLodging', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
+            ['dateStartLodging', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateStartLodging', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
+            ['dateEndLodging', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateEndLodging', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
             [['dateStartLodging'], 'compare', 'compareAttribute' => 'dateEndLodging', 'operator' => '<'],
         ];
     }

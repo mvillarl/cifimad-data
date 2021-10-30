@@ -28,6 +28,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'remarksMeals')->textarea(['rows' => 6]) ?>
 
+    <?= $form->field($model, 'remarksMealsSaturday')->textarea(['rows' => 2]) ?>
+
     <?= $form->field($model, 'separateRoom')->checkbox() ?>
 
     <?= $form->field($model, 'excludeLodging')->checkbox() ?>

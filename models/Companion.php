@@ -17,6 +17,7 @@ use yii\helpers\ArrayHelper;
  * @property string $nif_passport
  * @property string $remarks
  * @property string $remarksMeals
+ * @property string $remarksMealsSaturday
  * @property boolean $separateRoom
  * @property boolean $excludeLodging
  * @property boolean $excludeFridayDinner
@@ -39,8 +40,7 @@ class Companion extends \yii\db\ActiveRecord
         return [
             [['idGuest', 'name', 'surname'], 'required'],
             [['idGuest'], 'integer'],
-            [['remarks'], 'string'],
-            [['remarksMeals'], 'string'],
+            [['remarks', 'remarksMeals', 'remarksMealsSaturday'], 'string'],
             [['name', 'surname', 'badgeName', 'badgeSurname'], 'string', 'max' => 60],
             [['nif_passport'], 'string', 'max' => 25],
             [['separateRoom', 'excludeLodging', 'excludeFridayDinner'], 'boolean'],
@@ -62,6 +62,7 @@ class Companion extends \yii\db\ActiveRecord
             'nif_passport' => 'NIF / Pasaporte',
             'remarks' => 'Observaciones',
             'remarksMeals' => 'Observaciones comidas',
+            'remarksMealsSaturday' => 'Opción de menú cena de gala',
 	        'separateRoom' => '¿Habitación separada?',
 	        'excludeLodging' => 'Excluir alojamiento',
 	        'excludeFridayDinner' => 'Excluir cena viernes',

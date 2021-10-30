@@ -297,6 +297,34 @@ class AttendeeController extends BaseController
         $fields = $model->getGuestFields();
         $pfields = $model->getExtraProductFields();
 
+        if ($detailed == 'M') {
+        	$any = false;
+	        foreach ( $guests as $guest ) {
+		        $companions = $guest->getCompanions();
+		        foreach ( $companions as $companion ) {
+			        $compatt = new Attendee;
+			        $compatt->name = $companion->name;
+			        $compatt->surname = $companion->surname;
+			        $compatt->badgeName = $companion->badgeName;
+			        if (empty ($compatt->badgeName)) $compatt->badgeName = $companion->name;
+			        $compatt->badgeSurname = $companion->badgeSurname;
+			        if (empty ($compatt->badgeSurname)) $compatt->badgeSurname = $companion->surname;
+			        $compatt->ticketType = 'F';
+			        $compatt->remarksMeals = $companion->remarksMeals;
+			        $compatt->remarksMealSaturday = $companion->remarksMealsSaturday;
+			        $compatt->mealFridayDinner = !$companion->excludeFridayDinner;
+			        $compatt->mealSaturdayLunch = true;
+			        $compatt->mealSaturdayDinner = true;
+			        $compatt->mealSundayLunch = true;
+			        $any = true;
+			        $attendees[] = $compatt;
+		        }
+	        }
+	        if ($any) {
+	        	usort ($attendees, [$this, 'sortAttendeesBadgesMeals']);
+	        }
+        }
+
         return $this->render($view, [
             'attendees' => $attendees,
             'guests' => $guests,
@@ -500,7 +528,7 @@ class AttendeeController extends BaseController
 			    }
 			    if ( ($guest->dateArrival <= $saturday) && ($saturday <= $guest->dateDeparture) ) {
 			    	//echo "<li>Sumo cena sábado para acompañante " . $companion->fullname;
-				    $attComp->remarksMealSaturday = $companion->remarksMeals;
+				    $attComp->remarksMealSaturday = $companion->remarksMealsSaturday;
 				    array_unshift( $saturdayDinner, $attComp );
 			    }
 		    }
@@ -515,7 +543,7 @@ class AttendeeController extends BaseController
 		    }
 		    if ( ($guest->dateArrival <= $saturday) && ($saturday <= $guest->dateDeparture) ) {
 			    //echo "<li>Incluyo a " . $guest->name . " en sábado pq " . $event->dateStart . " < " . $guest->dateArrival;
-			    $attGuest->remarksMealSaturday = $guest->remarksMeals;
+			    $attGuest->remarksMealSaturday = $guest->remarksMealsSaturday;
 			    array_unshift( $saturdayDinner, $attGuest );
 		    }
 	    }
@@ -624,5 +652,11 @@ class AttendeeController extends BaseController
 			'incomes' => $attendeeincomes,
 			'guests' => $guests,
 		]);
+	}
+
+	protected function sortAttendeesBadgesMeals ($att1, $att2) {
+		$ret = strcasecmp ($att1->badgeName, $att2->badgeName);
+		if ($ret == 0) $ret = strcasecmp ($att1->badgeSurname, $att2->badgeSurname);
+		return $ret;
 	}
 }
