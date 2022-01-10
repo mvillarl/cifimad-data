@@ -208,6 +208,49 @@ class AttendeeController extends BaseController
         return Json::encode($attendeeresult);
     }
 
+    public function actionReporttickets ($afterprint = false) {
+        $idEvent = $this->getCurrentEvent();
+        $attq = Attendee::find()->andFilterEvent($idEvent);
+        $attq->notCanceled();
+        $attq->orderBadgeReport('T');
+        if ($afterprint) {
+            $event   = Event::findOne( $idEvent );
+            $attq->afterDate( $event->dateBadgesPrinted, 'BadgesTickets');
+        }
+
+        $attendees = $attq->all();
+        $guests = Attendee::getGuests($idEvent);
+        $extraproducts = Attendee::getProducts($idEvent);
+        if (!$afterprint) {
+            foreach ( $guests as $guest ) {
+                $companions = $guest->getCompanions();
+                foreach ( $companions as $companion ) {
+                    $compatt             = new \stdClass();
+                    $compatt->idSource   = 'C';
+                    $compatt->memberName = $companion->fullBadgeName;
+                    array_unshift( $attendees, $compatt );
+                }
+            }
+        }
+
+        $model = new Attendee();
+        $model->setEvent($idEvent, $guests,$extraproducts);
+        $fields = $model->getGuestFields();
+        $pfields = $model->getExtraProductFields();
+
+        $this->_reportTitle = 'Informe asistentes - Tickets';
+        return $this->render('reporttickets', [
+            'attendees' => $attendees,
+            'afterprint' => $afterprint,
+            'idEvent' => $idEvent,
+            //'guests' => $guests,
+            //'extraproducts' => $extraproducts,
+            'fields' => $fields,
+            'pfields' => $pfields,
+            'model' => $model,
+        ]);
+    }
+
     public function actionReportbadgelabels($afterprint = false, $showinfotickets = false) {
 	    $idEvent = $this->getCurrentEvent();
         $attq = Attendee::find()->andFilterEvent($idEvent);

@@ -419,3 +419,31 @@ html, body {
     page-break-after: always;
     padding: 110pt 0;
 }
+
+.attendee-reporttickets {
+    border-collapse: separate;
+    border-spacing: 0 3pt;
+}
+.attendee-reporttickets tbody tr th {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 12pt;
+    -webkit-print-color-adjust: exact;
+    border-top: 1pt solid black;
+    border-left: 1pt solid black;
+    border-bottom: 1pt solid black;
+    text-align: left;
+    vertical-align: top;
+}
+.attendee-reporttickets tbody tr td {
+    -webkit-print-color-adjust: exact;
+    border-top: 1pt solid black;
+    border-right: 1pt solid black;
+    border-bottom: 1pt solid black;
+}
+
+.attendee-reporttickets-inside tbody tr td {
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-size: 12pt;
+    -webkit-print-color-adjust: exact;
+}

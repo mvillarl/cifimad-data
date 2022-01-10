@@ -150,31 +150,40 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 		//return $this->andWhere("cif_attendees.ticketType <> '-'")->orderBy('cif_members.badgeSurname, cif_members.badgeName');
 		$this->andWhere("cif_attendees.ticketType <> '-'");
         $order = 'cif_members.surname, cif_members.name';
+        $whereProds = $this->_getProductsCondition();
+        $whereMeals = ' cif_attendees.mealFridayDinner = true OR cif_attendees.mealSaturdayDinner = true OR cif_attendees.mealSaturdayLunch = true OR cif_attendees.mealSundayLunch = true OR cif_attendees.mealSundayDinner = true';
+        $orderBadges = 'cif_members.badgeName, cif_members.badgeSurname';
 		if ($detailed == 'D') {
-			$maxGuests = 4;
-			$maxExtraProd = 4;
-			$whereProds = '';
-			for ($i = 1; $i <= $maxGuests; $i++) {
-				if (strlen ($whereProds) ) $whereProds .= ' OR ';
-				$whereProds .= 'cif_attendees.guest'.$i.'Photoshoot <> 0 OR cif_attendees.guest'.$i.'PhotoshootSpecial <> 0 OR cif_attendees.guest'.$i.'Autograph <> 0  OR cif_attendees.guest'.$i.'AutographSpecial <> 0  OR cif_attendees.guest'.$i.'Selfie <> 0  OR cif_attendees.guest'.$i.'ComboAutographSelfie <> 0 OR cif_attendees.guest'.$i.'Vintage <> 0' ;
-			}
-			for ($i = 1; $i <= $maxExtraProd; $i++) {
-				if ( strlen( $whereProds ) ) $whereProds .= ' OR ';
-				$whereProds .= 'cif_attendees.extraProduct'.$i.' <> 0';
-				
-			}
 			$this->andWhere( $whereProds );
-			$order = 'cif_members.badgeName, cif_members.badgeSurname';
+			$order = $orderBadges;
 		} elseif ($detailed == 'A') {
             $this->andWhere(' cif_sources.separateList = 1');
             $order = 'cif_sources.name,cif_members.badgeName, cif_members.badgeSurname';
 		} elseif ($detailed == 'M') {
-            $this->andWhere(' cif_attendees.mealFridayDinner = true OR cif_attendees.mealSaturdayDinner = true OR cif_attendees.mealSaturdayLunch = true OR cif_attendees.mealSundayLunch = true OR cif_attendees.mealSundayDinner = true');
-            $order = 'cif_members.badgeName, cif_members.badgeSurname';
+            $this->andWhere($whereMeals);
+            $order = $orderBadges;
+        } elseif ($detailed == 'T') {
+            $this->andWhere($whereProds . ' OR ' . $whereMeals);
+            $order = $orderBadges;
         }
 		$this->orderBy($order);
 		return $this;
 	}
+
+    protected function _getProductsCondition() {
+        $maxGuests = 4;
+        $maxExtraProd = 4;
+        $whereProds = '';
+        for ($i = 1; $i <= $maxGuests; $i++) {
+            if (strlen ($whereProds) ) $whereProds .= ' OR ';
+            $whereProds .= 'cif_attendees.guest'.$i.'Photoshoot <> 0 OR cif_attendees.guest'.$i.'PhotoshootSpecial <> 0 OR cif_attendees.guest'.$i.'Autograph <> 0  OR cif_attendees.guest'.$i.'AutographSpecial <> 0  OR cif_attendees.guest'.$i.'Selfie <> 0  OR cif_attendees.guest'.$i.'ComboAutographSelfie <> 0 OR cif_attendees.guest'.$i.'Vintage <> 0' ;
+        }
+        for ($i = 1; $i <= $maxExtraProd; $i++) {
+            if ( strlen( $whereProds ) ) $whereProds .= ' OR ';
+            $whereProds .= 'cif_attendees.extraProduct'.$i.' <> 0';
+        }
+        return $whereProds;
+    }
 
     public function afterDate ($date, $part = '') {
     	if ($part == 'BadgesTickets') {

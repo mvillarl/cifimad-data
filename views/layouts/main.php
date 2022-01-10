@@ -68,6 +68,8 @@ AppAsset::register($this);
                 ['label' => 'Informe - hotel - después de primer envío', 'url' => '/attendee/reporthotel/A', 'linkOptions' => ['target' => 'blank']],
                 //['label' => 'Informe - cenas y comidas', 'url' => '/attendee/reporthotel/M', 'linkOptions' => ['target' => 'blank'] ],
                 ['label' => 'Informe - cenas y comidas', 'url' => '/attendee/reportbadges/M', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - tickets', 'url' => '/attendee/reporttickets', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - tickets - después de primera impresión', 'url' => '/attendee/reporttickets/A', 'linkOptions' => ['target' => 'blank']],
                 //['label' => 'Informe - cuentas', 'url' => '/attendee/reportincomes', 'linkOptions' => ['target' => 'blank'] ],
                 ['label' => 'Informe - reservas', 'url' => '/attendee/reportreservations', 'linkOptions' => ['target' => 'blank']],
                 ['label' => 'Informe - CifiKids', 'url' => '/attendee/reportcifikids', 'linkOptions' => ['target' => 'blank']],
