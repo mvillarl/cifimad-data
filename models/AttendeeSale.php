@@ -45,9 +45,18 @@ class AttendeeSale extends \yii\db\ActiveRecord
             [['phone', 'authorizedBy'], 'string', 'max' => 50],
             [['ticketType', 'vaccine'], 'string', 'max' => 1],
             [['authorizedReason'], 'string', 'max' => 2000],
+            [['authorizedBy', 'authorizedReason'], 'checkAuthorization'], // Función de validación personalizada
         ];
     }
 
+    public function checkAuthorization ($attribute, $params) {
+        if (!$this->hasErrors()) {
+            if ( (empty ($this->authorizedBy) && !empty ($this->authorizedReason)) ||
+                (!empty ($this->authorizedBy) && empty ($this->authorizedReason)) ) {
+                $this->addError($attribute, 'Si se indica un campo de autorización, se deben indicar los dos');
+            }
+        }
+    }
     /**
      * {@inheritdoc}
      */
