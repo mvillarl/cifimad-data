@@ -28,7 +28,7 @@
         <p>También puedes indicarnos si tu actuación va a necesitar banda sonora. Intentaremos buscarla y tenerla preparada para agilizar el concurso.</p>
         <p><input type="checkbox" name="hasPerformance" value="1" /> Marca la casilla si harás actuación al subir al escenario.</p>
         <p><input type="checkbox" name="hasSoundtrack" value="1" /> Marca la casilla si traerás tu propia banda sonora.</p>
-        <p class="consent"><input type="checkbox" name="consent" class="required"/> Al usar este formulario accedes al almacenamiento y gestión de tus datos por parte de esta web.</p>
+        <p class="consent"><input type="checkbox" name="consent" class="required consent"/> Al usar este formulario accedes al almacenamiento y gestión de tus datos por parte de esta web.</p>
         <p><input type="button" value="Enviar inscripción" class="submit" id="sendForm"/></p>
     </div>
     </form>
