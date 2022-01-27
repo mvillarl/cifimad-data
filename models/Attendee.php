@@ -690,6 +690,7 @@ class Attendee extends \yii\db\ActiveRecord
 		    	$rooms[$roompos]->names[] = $attendee->name;
 		    	$rooms[$roompos]->surnames[] = $attendee->surname;
 			    $rooms[$roompos]->nifs[] = $attendee->nif;
+			    $rooms[$roompos]->parking[] = $attendee->parkingReservation;
 			    $rooms[$roompos]->remarks .= ' ' . $attendee->remarksHotel;
 			    $rooms[$roompos]->wednesday |= ($attendee->dateStartLodging <= $wednesday);
 			    $rooms[$roompos]->thursday |= ($attendee->dateStartLodging <= $thursday);
@@ -702,6 +703,7 @@ class Attendee extends \yii\db\ActiveRecord
 			    $rooms[$roomindex]->names = [$attendee->name];
 			    $rooms[$roomindex]->surnames = [$attendee->surname];
 			    $rooms[$roomindex]->nifs = [$attendee->nif];
+			    $rooms[$roomindex]->parking = [$attendee->parkingReservation];
 			    $rooms[$roomindex]->status = $attendee->status;
 			    $rooms[$roomindex]->roomType = $attendee->getRoomTypeValue();
 			    $rooms[$roomindex]->remarks = $attendee->remarksHotel;

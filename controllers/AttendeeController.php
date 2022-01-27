@@ -529,9 +529,14 @@ class AttendeeController extends BaseController
 
     public function actionReporthotel($aftersend = false) {
     	$meals = false;
+		$parking = false;
     	if ($aftersend == 'M') {
     		$aftersend = false;
 		    $meals = true;
+	    }
+	    if ($aftersend == 'P') {
+		    $aftersend = false;
+		    $parking = true;
 	    }
 
 	    $idEvent = $this->getCurrentEvent();
@@ -641,6 +646,7 @@ class AttendeeController extends BaseController
 		    'sundayDinner' => $sundayDinner,
 		    'mealsummary' => $mealsummary,
 	        'roomdays' => $roomdays,
+	        'parking' => $parking,
 	    ]);
 
     }

@@ -7,6 +7,7 @@ use app\components\DateFunctions;
 /* @var $attendeerooms [] */
 /* @var $guests app\models\Guest[] */
 /* @var $roomdays */
+/* @var $parking */
 
 $this->title = 'Informe - Hotel';
 $this->params['breadcrumbs'][] = ['label' => 'Asistentes', 'url' => ['index']];
@@ -94,6 +95,9 @@ $this->params['breadcrumbs'][] = $this->title;
 			<th>Sábado - domingo</th>
 			<th>Domingo - lunes</th>
 			<th>Observaciones</th>
+			<?php if ($parking) { ?>
+                <th>Aparcamiento</th>
+			<?php } ?>
 		</tr>
 		</thead>
 		<tbody>
@@ -115,7 +119,13 @@ $this->params['breadcrumbs'][] = $this->title;
 			<td class="c"><?= $attendeeroom->saturday? 'X': '' ?></td>
 			<td class="c"><?= $attendeeroom->sunday? 'X': '' ?></td>
 			<td><?= nl2br ($attendeeroom->remarks) ?></td>
-		<?php } ?>
+			<?php if ($parking) { ?>
+                <td><?php $first = true; foreach ($attendeeroom->parking as $parkingRes) { ?>
+                    <?php if ($first) $first = false; else echo '<br/><hr/>'; ?><?= $parkingRes ?>
+                <?php } ?></td>
+		    <?php } ?>
+        </tr>
+        <?php } ?>
 		<tr>
 			<td colspan="4"></td>
 			<td class="c"><?= $roomdays->wednesday ?></td>
