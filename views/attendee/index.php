@@ -151,5 +151,8 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
         'filterModel' => $searchModel,
         'columns' => $attendeeColumns,
         //'rowOptions' => Closure::fromCallable ('app\components\AttendeeColumns::rowOptions'), // Closures sólo PHP7?
+        'rowOptions' => function ($model, $key, $index, $grid) {
+            return app\components\AttendeeColumns::rowOptions ($model, $key, $index, $grid);
+        },
     ]); ?>
 </div>

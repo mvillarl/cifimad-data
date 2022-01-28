@@ -67,7 +67,9 @@ class AttendeeColumns {
 
 	public static function rowOptions ($model, $key, $index, $grid) {
 		$ret = [];
-		if (strlen ($model->remarksRegistration)) {
+		if (strlen ($model->remarks) || strlen ($model->remarksRegistration)) {
+			$ret['style'] = 'background-color: #00DADA;';
+		} elseif (strlen ($model->status == '0')) {
 			$ret['style'] = 'background-color: orange;';
 		}
 		return $ret;

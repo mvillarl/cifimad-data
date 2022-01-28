@@ -129,5 +129,8 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
 		'dataProvider' => $dataProvider,
 		'filterModel' => $searchModel,
 		'columns' => $attendeeColumns,
+        'rowOptions' => function ($model, $key, $index, $grid) {
+            return app\components\AttendeeColumns::rowOptions ($model, $key, $index, $grid);
+        },
 	]); ?>
 </div>
