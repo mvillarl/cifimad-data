@@ -65,7 +65,7 @@ class VolunteerInscriptionSearch extends VolunteerInscription
             'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
+        $query->andFilterWhere(['like', 'cif_volunteer_inscriptions.name', $this->name])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'nameFacebook', $this->nameFacebook]);
 

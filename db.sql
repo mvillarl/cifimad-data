@@ -7,6 +7,7 @@ create table cif_events (
 	dateSentInfoHotel TIMESTAMP NULL,
 	dateBadgesPrinted TIMESTAMP NULL,
 	dateEndCosplaySignup date NULL,
+	`status` bit DEFAULT true,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

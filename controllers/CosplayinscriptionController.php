@@ -159,7 +159,8 @@ class CosplayinscriptionController extends Controller
     }
 
     protected function _getEventId($checkdate) {
-        $idEvent = Event::getIdNextEvent();
+	    $idEvent = Yii::$app->session->get('Attendee.idEvent');
+	    if (!strlen ($idEvent)) $idEvent = Event::getIdNextEvent();
         if (!strlen ($idEvent)) $idEvent = Event::getIdLastEvent();
         if (strlen ($idEvent)) {
             $event = Event::findOne ($idEvent);
@@ -172,7 +173,7 @@ class CosplayinscriptionController extends Controller
 
     public function actionReport() {
         $idEvent = $this->_getEventId(false);
-        $inscriptionsq = CosplayInscription::find()->andFilterEvent($idEvent)->orderByCat();
+        $inscriptionsq = CosplayInscription::find()->andFilterEvent($idEvent)->active()->orderByCat();
         $inscriptions = $inscriptionsq->all();
 
         return $this->render ('report', [

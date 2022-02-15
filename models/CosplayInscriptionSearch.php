@@ -19,6 +19,7 @@ class CosplayInscriptionSearch extends CosplayInscription
         return [
             [['id', 'idEvent'], 'integer'],
             [['name', 'surname', 'email', 'category', 'characterName', 'remarks'], 'safe'],
+	        [['status'], 'boolean'],
         ];
     }
 
@@ -61,9 +62,10 @@ class CosplayInscriptionSearch extends CosplayInscription
             'id' => $this->id,
             'idEvent' => $this->idEvent,
             'category' => $this->category,
+            'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
+        $query->andFilterWhere(['like', 'cif_cosplay_inscriptions.name', $this->name])
             ->andFilterWhere(['like', 'surname', $this->surname])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'characterName', $this->characterName])

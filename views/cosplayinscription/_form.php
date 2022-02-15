@@ -33,6 +33,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'hasSoundtrack')->checkbox() ?>
 
+    <?= $form->field($model, 'status')->checkbox() ?>
+
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>

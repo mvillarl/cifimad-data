@@ -42,6 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'remarks:ntext',
             'hasPerformance:boolean',
             'hasSoundtrack:boolean',
+            'status:boolean',
         ],
     ]) ?>
 

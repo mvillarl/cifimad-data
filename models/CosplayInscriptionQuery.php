@@ -15,6 +15,10 @@ class CosplayInscriptionQuery extends \yii\db\ActiveQuery
         return $this->andWhere ('cif_cosplay_inscriptions.idEvent = :event', ['event' => $idEvent] );
     }
 
+	public function active() {
+		return $this->andWhere ('cif_cosplay_inscriptions.status = true');
+	}
+
     public function orderByCat() {
         return $this->orderBy ('category, createdAt');
     }

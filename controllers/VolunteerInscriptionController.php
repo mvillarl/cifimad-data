@@ -162,7 +162,8 @@ class VolunteerInscriptionController extends Controller
 	}
 
 	protected function _getEventId($checkdate) {
-		$idEvent = Event::getIdNextEvent();
+		$idEvent = Yii::$app->session->get('Attendee.idEvent');
+		if (!strlen ($idEvent)) $idEvent = Event::getIdNextEvent();
 		if (!strlen ($idEvent)) $idEvent = Event::getIdLastEvent();
 		if (strlen ($idEvent)) {
 			$event = Event::findOne ($idEvent);

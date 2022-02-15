@@ -23,6 +23,7 @@ use yii\helpers\ArrayHelper;
  * @property string $updatedAt
  * @property boolean $hasPerformance
  * @property boolean $hasSoundtrack
+ * @property boolean $status
  *
  * @property Event $idEvent0
  */
@@ -62,7 +63,7 @@ class CosplayInscription extends \yii\db\ActiveRecord
             [['createdAt', 'updatedAt'], 'safe'],
             [['idEvent'], 'integer'],
             [['remarks'], 'string'],
-            [['hasPerformance', 'hasSoundtrack'], 'boolean'],
+            [['hasPerformance', 'hasSoundtrack', 'status'], 'boolean'],
             [['name', 'surname', 'email', 'characterName'], 'string', 'max' => 100],
             [['category'], 'string', 'max' => 2],
             [['idEvent'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['idEvent' => 'id']],
@@ -89,6 +90,7 @@ class CosplayInscription extends \yii\db\ActiveRecord
             'updatedAt' => 'Fecha de modificación',
             'hasPerformance' => '¿Actuación?',
             'hasSoundtrack' => '¿Banda sonora?',
+	        'status' => 'Estado',
         ];
     }
 
@@ -124,6 +126,10 @@ class CosplayInscription extends \yii\db\ActiveRecord
         $categories = $this->getCategories (true);
         return $categories[$this->category];
     }
+
+	public function getStatusValue() {
+		return $this->status? 'Sí': 'No';
+	}
 
     public static function getCategories ($old = false) {
         if ($old) {

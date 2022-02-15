@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+	<?php $yesno = ['0' => 'No', '1' => 'Sí']; ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -45,6 +46,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>'categoryValue',
                 'format'=>'raw',
             ],
+	        [
+		        'attribute'=>'status',
+		        'filter'=>$yesno,
+		        'format'=>'raw',
+		        'value' => function($model, $key, $index) {
+
+			        return $model->getStatusValue();
+		        }
+
+	        ],
             //'category',
             //'characterName',
             //'remarks:ntext',
