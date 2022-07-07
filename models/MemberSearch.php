@@ -20,7 +20,7 @@ class MemberSearch extends Member
     {
         return [
             [['id'], 'integer'],
-            [['name', 'surname', 'badgeName', 'badgeSurname', 'email', 'nif', 'phone', 'createdAt', 'updatedAt'], 'safe'],
+            [['name', 'surname', 'badgeName', 'badgeSurname', 'email', 'nif', 'phone', 'createdAt', 'updatedAt', 'status'], 'safe'],
         ];
     }
 
@@ -71,7 +71,8 @@ class MemberSearch extends Member
         QuerySearchBuilder::makeSearch($query,'badgeSurname', $this->badgeSurname);
         $query->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'nif', $this->nif])
-            ->andFilterWhere(['like', 'phone', $this->phone]);
+            ->andFilterWhere(['like', 'phone', $this->phone])
+	        ->andFilterWhere(['status' => $this->status]);
 
         // Default sort?
         $query->orderBy(['surname' => 'ASC', 'name' => 'ASC']);

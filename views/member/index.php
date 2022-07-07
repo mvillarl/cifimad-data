@@ -6,6 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MemberSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $status array */
 
 $this->title = 'Socios';
 $this->params['breadcrumbs'][] = $this->title;
@@ -38,6 +39,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'badgeSurname',
              'email:email',
              'nif',
+	        [
+		        'attribute'=>'status',
+		        'filter'=>$status,
+		        'format'=>'raw',
+		        'value' => function($model, $key, $index) {
+			        return $model->getStatusValue();
+		        }
+	        ],
             // 'phone',
             // 'createdAt',
             // 'updatedAt',

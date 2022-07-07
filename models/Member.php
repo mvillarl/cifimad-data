@@ -143,6 +143,18 @@ class Member extends \yii\db\ActiveRecord
 		return $vacc[$this->vaccine];
 	}
 
+	public static function getStatusMap() {
+		return [
+			'' => '',
+			'0' => 'No',
+			'1' => 'Sí',
+		];
+	}
+
+	public function getStatusValue() {
+		$status = $this->getStatusMap();
+		return $status[$this->status];
+	}
 
 	public static function getLastLoadFrom($part) {
         $filename = Yii::$app->basePath . '/runtime/loadfrom'.strtolower($part).'flag.txt';

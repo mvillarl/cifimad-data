@@ -46,7 +46,8 @@ class MemberController extends BaseController
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);
+            'status' => Member::getStatusMap(),
+	        ]);
     }
 
     /**
