@@ -22,7 +22,6 @@ use yii\widgets\ActiveForm;
             'dateFormat' => 'dd/MM/yyyy',
             'options' => ['class' => 'cfdp', 'cf_lessthan' => 'event-dateend']
     ]); ?>
-
     <?=  $form->field($model, 'dateEnd')->widget(\yii\jui\DatePicker::classname(),[
             'dateFormat' => 'dd/MM/yyyy',
         'options' => ['class' => 'cfdp', 'cf_greaterthan' => 'event-datestart']

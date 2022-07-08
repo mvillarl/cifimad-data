@@ -44,7 +44,7 @@ class Event extends \yii\db\ActiveRecord
             ['dateEnd', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateEnd', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
             ['dateEndCosplaySignup', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateEndCosplaySignup', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
             [['dateSentInfoHotel', 'dateBadgesPrinted'], 'date', 'format' => 'dd/MM/yyyy', 'format' => 'yyyy-MM-dd HH:mm:ss'],
-            [['dateStart'], 'compare', 'compareAttribute' => 'dateEnd', 'operator' => '<'],
+            [['dateStart'], 'compare', 'compareAttribute' => 'dateEnd', 'operator' => '<', 'enableClientValidation' => false],
         ];
     }
 

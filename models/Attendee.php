@@ -316,7 +316,7 @@ class Attendee extends \yii\db\ActiveRecord
             [['createdAt', 'updatedAt', 'updatedAtHotel', 'updatedAtBadges', 'updatedAtBadgesTickets'], 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
             ['dateStartLodging', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateStartLodging', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
             ['dateEndLodging', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateEndLodging', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
-            [['dateStartLodging'], 'compare', 'compareAttribute' => 'dateEndLodging', 'operator' => '<'],
+            [['dateStartLodging'], 'compare', 'compareAttribute' => 'dateEndLodging', 'operator' => '<', 'enableClientValidation' => false],
         ];
     }
 

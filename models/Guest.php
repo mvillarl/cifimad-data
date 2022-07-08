@@ -59,7 +59,7 @@ class Guest extends \yii\db\ActiveRecord
             [['idEvent'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['idEvent' => 'id']],
             ['dateArrival', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateArrival', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
             ['dateDeparture', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateDeparture', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
-            [['dateArrival'], 'compare', 'compareAttribute' => 'dateDeparture', 'operator' => '<'],
+            [['dateArrival'], 'compare', 'compareAttribute' => 'dateDeparture', 'operator' => '<', 'enableClientValidation' => false],
         ];
     }
 
