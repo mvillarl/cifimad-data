@@ -45,7 +45,7 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 			if ( ($term == '%') || ($term == '*') ) {
 				$this->andWhere ("cif_attendees.remarksRegistration IS NOT NULL AND cif_attendees.remarksRegistration <> ''");
 			} else {
-                QuerySearchBuilder::makeSearch($this, 'cif_attendees.remarksRegistration,cif_attendees.remarks,cif_attendees.remarksMeals,cif_attendees.remarksMealSaturday,cif_attendees.remarksHotel', $term);
+                QuerySearchBuilder::makeSearch($this, 'cif_attendees.remarksRegistration,cif_attendees.remarks,cif_attendees.remarksMeals,cif_attendees.remarksMealSaturday,cif_attendees.remarksHotel,cif_attendees.parkingReservation', $term);
 				//$this->andWhere('cif_attendees.remarksRegistration LIKE :term OR cif_attendees.remarks LIKE :term OR cif_attendees.remarksMeals LIKE :term OR cif_attendees.remarksMealSaturday LIKE :term OR cif_attendees.remarksHotel LIKE :term', [':term' => '%'.$term.'%']);
 			}
 		}
