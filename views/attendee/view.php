@@ -99,6 +99,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'format'=>'raw',
             'value' => AttendeeColumns::orderNumbersCol ($model, '', '', ''),
         ],
+        'remarksOrPendingPaymentDone:boolean',
         'createdAt',
         'updatedAt',
         'updatedAtHotel',

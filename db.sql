@@ -144,6 +144,7 @@ create table cif_attendees (
 	updatedAtBadges TIMESTAMP,
 	updatedAtBadgesTickets TIMESTAMP,
     phoneAtDesk VARCHAR(50) NULL,
+    remarksOrPendingPaymentDone BIT DEFAULT FALSE,
 	PRIMARY KEY (`id`),
 	CONSTRAINT attEvent FOREIGN KEY (idEvent) REFERENCES cif_events (id),
 	CONSTRAINT attMember FOREIGN KEY (idMember) REFERENCES cif_members (id),

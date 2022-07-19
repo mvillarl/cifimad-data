@@ -66,6 +66,7 @@ $config = [
                 '/attendee/reporthotel/<aftersend>' => 'attendee/reporthotel',
                 '/attendee/reportbadges/<detailed>' => 'attendee/reportbadges',
                 '/attendee/reportreservations/<detailed>' => 'attendee/reportreservations',
+                '/attendee/ajaxsavemark/<id>/<done>' => 'attendee/ajaxsavemark',
                 '/press/export/<consent>' => 'press/export',
                 '/press/consent/<key>/<email>' => 'press/consent',
             ],

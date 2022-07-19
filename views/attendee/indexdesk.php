@@ -120,6 +120,19 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
             return $ret;
         }
     ];
+    $attendeeColumns[] = [
+        'attribute'=>'remarksOrPendingPaymentDone',
+        'label' => 'Marcar',
+        'format'=>'raw',
+        'value' => function($model, $key, $index) {
+            $ret = '<input type="checkbox" class="checkboxinline" name="remarksOrPendingPaymentDone_' . $model->id . '" data-id="' . $model->id . '" ';
+            if ($model->remarksOrPendingPaymentDone) {
+                $ret .= ' checked="true"';
+            }
+            $ret .= '/>';
+            return $ret;
+        }
+    ];
 	$attendeeColumns[] = ['class' => 'yii\grid\ActionColumn', 'visibleButtons' => ['update' => function($model, $key, $index) {
 	    return  (empty ($model->memberPhone) && empty ($model->phoneAtDesk));
     }, 'delete' => false] ];
@@ -134,3 +147,6 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
         },
 	]); ?>
 </div>
+<?php
+$this->registerJsFile('/js/checkboxesListDesk.js?v1', ['depends' => [\yii\jui\JuiAsset::className()]]);
+?>

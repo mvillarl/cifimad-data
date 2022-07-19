@@ -178,6 +178,8 @@ use yii\web\JsExpression;
 
     <?= $form->field($model, 'orders')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'remarksOrPendingPaymentDone')->checkbox() ?>
+
     <?= $form->field($model, 'createdAt')->textInput( ['readonly' => 'readonly']) ?>
 
     <?= $form->field($model, 'updatedAt')->textInput( ['readonly' => 'readonly']) ?>

@@ -208,6 +208,13 @@ class AttendeeController extends BaseController
         return Json::encode($attendeeresult);
     }
 
+    public function actionAjaxsavemark ($id, $done) {
+        $att = $this->findModel ($id);
+        $att->remarksOrPendingPaymentDone = $done;
+        $att->save();
+        return 'OK';
+    }
+
     public function actionReporttickets ($afterprint = false) {
         $idEvent = $this->getCurrentEvent();
         $attq = Attendee::find()->andFilterEvent($idEvent);
