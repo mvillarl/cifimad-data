@@ -25,29 +25,37 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <?php $attributes = [
+        'id',
+        [
+            'attribute' => 'eventName',
+            'format' => 'raw',
+            'value'=> $model->eventName,
+        ],
+        'name'
+    ];
+    if ($isPandemic) {
+        $attributes[] = 'phone';
+    }
+	$attributes[] = [
+        'attribute' => 'ticketType',
+        'value' => $model->getTicketTypeValue(),
+    ];
+    if ($isPandemic) {
+	    $attributes[] = [
+		    'attribute' => 'vaccine',
+		    'value' => $model->getVaccineValue(),
+	    ];
+    }
+    $attributes = array_merge ($attributes, [
+        'authorizedBy',
+        'authorizedReason',
+    ]);
+    ?>
 
     <?= DetailView::widget([
         'model' => $model,
-        'attributes' => [
-            'id',
-            [
-                'attribute' => 'eventName',
-                'format' => 'raw',
-                'value'=> $model->eventName,
-            ],
-            'name',
-            'phone',
-            [
-                'attribute' => 'ticketType',
-                'value' => $model->getTicketTypeValue(),
-            ],
-            [
-                'attribute' => 'vaccine',
-                'value' => $model->getVaccineValue(),
-            ],
-            'authorizedBy',
-            'authorizedReason',
-        ],
+        'attributes' => $attributes,
     ]) ?>
 
 </div>

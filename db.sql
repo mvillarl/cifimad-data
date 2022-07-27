@@ -8,6 +8,7 @@ create table cif_events (
 	dateBadgesPrinted TIMESTAMP NULL,
 	dateEndCosplaySignup date NULL,
 	`status` bit DEFAULT true,
+	`isPandemic` bit DEFAULT false,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

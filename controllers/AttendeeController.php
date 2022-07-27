@@ -65,6 +65,7 @@ class AttendeeController extends BaseController
         if (!strlen ($idEvent)) $idEvent = $this->getCurrentEvent();
         Yii::$app->session->set('Attendee.idEvent', $idEvent);
 
+        $isPandemic = Event::findOne($idEvent)->isPandemic;
         $guests = Attendee::getGuests($idEvent);
         $products = Attendee::getProducts($idEvent);
 
@@ -85,6 +86,7 @@ class AttendeeController extends BaseController
             'events' => Attendee::getEvents(true),
             'sources' => Attendee::getSources(true),
 	        'errors' => $errors,
+	        'isPandemic' => $isPandemic,
         ]);
     }
 
@@ -101,10 +103,13 @@ class AttendeeController extends BaseController
         $model = $this->findModel($id);
         $model->setEvent($idEvent, $guests, $products);
 
+	    $isPandemic = Event::findOne($idEvent)->isPandemic;
+
 	    $view = User::hasRole ('desk', false)? 'viewdesk': 'view';
 
         return $this->render($view, [
             'model' => $model,
+	        'isPandemic' => $isPandemic,
         ]);
     }
 

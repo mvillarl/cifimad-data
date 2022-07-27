@@ -86,7 +86,11 @@ $this->params['breadcrumbs'][] = $this->title;
 		    'value' => $model->getCifiKidsDayValue(),
 	    ],
         'parkingReservation',
-        'phoneAtDesk',
+        ]);
+    if ($isPandemic) {
+        $attributes[] = 'phoneAtDesk';
+    }
+    $attributes = array_merge ($attributes, [
         'remarks:ntext',
         'remarksRegistration:ntext',
         'remarksMeals:ntext',

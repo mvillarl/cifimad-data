@@ -27,6 +27,8 @@ use yii\widgets\ActiveForm;
         'options' => ['class' => 'cfdp', 'cf_greaterthan' => 'event-datestart']
     ]); ?>
 
+	<?= $form->field($model, 'isPandemic')->checkbox() ?>
+
     <?= $form->field ($model, 'dateSentInfoHotel')->label()->hint('Marca la casilla para guardar la fecha y hora actual')->textInput( ['readonly' => 'readonly']); ?>
     <?= Html::checkbox('dateSentInfoHotelNow'); ?>
 

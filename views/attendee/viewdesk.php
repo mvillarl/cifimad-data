@@ -50,8 +50,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'remarksOrPendingPaymentDone:boolean',
 		'orders',
 		'parkingReservation',
-        'phoneAtDesk',
 	]);
+	if ($isPandemic) {
+		$attributes[] = 'phoneAtDesk';
+	}
 	?>
 	<?= DetailView::widget([
 		'model' => $model,

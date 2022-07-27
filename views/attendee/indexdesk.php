@@ -110,16 +110,22 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
 		'format'=>'raw',
 		//'content' => 'app\components\AttendeeColumns::orderNumbersCol',
 	];
-    $attendeeColumns[] = [
-        'attribute'=>'memberPhone',
-        'label' => ' ',
-        'format'=>'raw',
-        'value' => function($model, $key, $index) {
-            if (empty ($model->memberPhone) && empty ($model->phoneAtDesk)) $ret = 'No tiene teléfono - pedir y guardar';
-            else $ret = '';
-            return $ret;
-        }
-    ];
+	if ($isPandemic) {
+		$attendeeColumns[] = [
+			'attribute' => 'memberPhone',
+			'label'     => ' ',
+			'format'    => 'raw',
+			'value'     => function ( $model, $key, $index ) {
+				if ( empty ( $model->memberPhone ) && empty ( $model->phoneAtDesk ) ) {
+					$ret = 'No tiene teléfono - pedir y guardar';
+				} else {
+					$ret = '';
+				}
+
+				return $ret;
+			}
+		];
+	}
     $attendeeColumns[] = [
         'attribute'=>'remarksOrPendingPaymentDone',
         'label' => 'Marcar',
@@ -133,9 +139,15 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
             return $ret;
         }
     ];
-	$attendeeColumns[] = ['class' => 'yii\grid\ActionColumn', 'visibleButtons' => ['update' => function($model, $key, $index) {
-	    return  (empty ($model->memberPhone) && empty ($model->phoneAtDesk));
-    }, 'delete' => false] ];
+	$actionColumnRow = ['class' => 'yii\grid\ActionColumn', 'visibleButtons' => ['delete' => false] ];
+	if ($isPandemic) {
+		$actionColumnRow['visibleButtons']['update'] = function($model, $key, $index) {
+			return  (empty ($model->memberPhone) && empty ($model->phoneAtDesk));
+		};
+    } else {
+		$actionColumnRow['visibleButtons']['update'] = false;
+    }
+    $attendeeColumns[] = $actionColumnRow;
 
 	?>
 	<?= GridView::widget([

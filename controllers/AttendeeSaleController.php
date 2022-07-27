@@ -49,12 +49,15 @@ class AttendeeSaleController extends Controller
         $searchModel->setEvent($idEvent);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+	    $isPandemic = Event::findOne($idEvent)->isPandemic;
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'events' => Attendee::getEvents(true),
             'ticketTypes' => Attendee::getTicketTypes(),
             'vaccineOptions' => Member::getVaccineOptions(),
+	        'isPandemic' => $isPandemic,
         ]);
     }
 
@@ -69,8 +72,10 @@ class AttendeeSaleController extends Controller
         $idEvent = $this->getCurrentEvent();
         $model = $this->findModel($id);
         $model->setEvent($idEvent);
+	    $isPandemic = Event::findOne($idEvent)->isPandemic;
         return $this->render('view', [
             'model' => $model,
+            'isPandemic' => $isPandemic,
         ]);
     }
 
@@ -84,6 +89,7 @@ class AttendeeSaleController extends Controller
         $idEvent = $this->getCurrentEvent();
         $model = new AttendeeSale();
         $model->setEvent($idEvent);
+	    $isPandemic = Event::findOne($idEvent)->isPandemic;
 
         if (Yii::$app->request->isPost) {
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -96,6 +102,7 @@ class AttendeeSaleController extends Controller
         return $this->render('create', [
             'model' => $model,
             'events' => Attendee::getEvents(true),
+            'isPandemic' => $isPandemic,
         ]);
     }
 
@@ -111,6 +118,7 @@ class AttendeeSaleController extends Controller
         $idEvent = $this->getCurrentEvent();
         $model = $this->findModel($id);
         $model->setEvent($idEvent);
+	    $isPandemic = Event::findOne($idEvent)->isPandemic;
 
         if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -120,6 +128,7 @@ class AttendeeSaleController extends Controller
             'model' => $model,
             'events' => Attendee::getEvents(true),
             'ticketTypes' => Attendee::getTicketTypes(),
+            'isPandemic' => $isPandemic,
         ]);
     }
 

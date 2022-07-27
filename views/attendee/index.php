@@ -6,6 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AttendeeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $isPandemic boolean */
 
 $this->title = 'Asistentes';
 $this->params['breadcrumbs'][] = $this->title;
@@ -123,26 +124,29 @@ for ($i = 0, $ct = count ($pfields); $i < $ct; $i++) {
             'format'=>'raw',
             'content' => 'app\components\AttendeeColumns::orderNumbersCol',
         ];
-        $attendeeColumns[] = [
-            'label' => 'Vacunación',
-            'attribute' => 'memberVaccine',
-            //'headerOptions' => ['title' => $extraProductsTitle],
-            //'contentOptions' =>  ['style' => 'white-space; nowrap;', 'nowrap' => 'true'],
-            'format'=>'raw',
-            'filter' => $vaccineOptions,
-            'value'=> function($model, $key, $index) {
-                return $model->getMemberVaccineValue();
-            },
-        ];
-        $attendeeColumns[] = [
-            'label' => 'Teléfono',
-            'attribute' => 'hasPhone',
-            'format' => 'raw',
-            'filter' => $yesno,
-            'value'=> function($model, $key, $index) {
-                return $model->getHasPhoneValue();
-            },
-        ];
+        if ($isPandemic) {
+	        $attendeeColumns[] = [
+		        'label'     => 'Vacunación',
+		        'attribute' => 'memberVaccine',
+		        //'headerOptions' => ['title' => $extraProductsTitle],
+		        //'contentOptions' =>  ['style' => 'white-space; nowrap;', 'nowrap' => 'true'],
+		        'format'    => 'raw',
+		        'filter'    => $vaccineOptions,
+		        'value'     => function ( $model, $key, $index ) {
+			        return $model->getMemberVaccineValue();
+		        },
+	        ];
+
+	        $attendeeColumns[] = [
+		        'label'     => 'Teléfono',
+		        'attribute' => 'hasPhone',
+		        'format'    => 'raw',
+		        'filter'    => $yesno,
+		        'value'     => function ( $model, $key, $index ) {
+			        return $model->getHasPhoneValue();
+		        },
+	        ];
+        }
         $attendeeColumns[] = ['class' => 'yii\grid\ActionColumn'];
 
     ?>

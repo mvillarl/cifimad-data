@@ -1,4 +1,4 @@
 
-ALTER TABLE  cif_attendees 
-ADD remarksOrPendingPaymentDone BIT DEFAULT FALSE;
+ALTER TABLE  cif_events
+ADD `isPandemic` bit DEFAULT false;
 

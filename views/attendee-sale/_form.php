@@ -16,11 +16,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
+	<?php if ($isPandemic) { ?>
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+	<?php } ?>
 
     <?= $form->field($model, 'ticketType')->dropDownList($model->getTicketTypes() ) ?>
 
+    <?php if ($isPandemic) { ?>
     <?= $form->field($model, 'vaccine')->dropDownList($model->getVaccineOptions() ) ?>
+    <?php } ?>
 
     <div class="xform-control"><label>Estos campos sólo son necesarios para acreditados que no compren pase</label></div>
 

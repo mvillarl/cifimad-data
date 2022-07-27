@@ -18,53 +18,63 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Registrar venta', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php $yesno = ['0' => 'No', '1' => 'Sí'];// echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php $yesno = ['0' => 'No', '1' => 'Sí'];// echo $this->render('_search', ['model' => $searchModel]);
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+    $columns = [
+        ['class' => 'yii\grid\SerialColumn'],
 
-            //'id',
-            [
-                'attribute'=>'idEvent',
-                'filter'=>$events,
-                'format'=>'raw',
-            ],
-            'name',
-            'phone',
-            [
-                'attribute'=>'ticketType',
-                'filter'=>$ticketTypes,
-                'format'=>'raw',
-                'value' => function($model, $key, $index) {
-                    return $model->getTicketTypeValue();
-                }
-            ],
-            [
-                'attribute'=>'vaccine',
-                'filter'=>$vaccineOptions,
-                'format'=>'raw',
-                'value' => function($model, $key, $index) {
-                    return $model->getVaccineValue();
-                }
-            ],
-            [
-                'label' => 'Autorizado',
-                'attribute' => 'hasAuthorization',
-                'format' => 'raw',
-                'filter' => $yesno,
-                'value'=> function($model, $key, $index) {
-                    return $model->getHasAuthorizationValue();
-                },
-            ],
-            //'authorizedBy',
-            //'authorizedReason',
-
-            ['class' => 'yii\grid\ActionColumn'],
+        //'id',
+        [
+        'attribute'=>'idEvent',
+        'filter'=>$events,
+        'format'=>'raw',
         ],
-    ]); ?>
+        'name'
+        ];
+    if ($isPandemic) {
+        $columns[] = 'phone';
+    }
+    $columns[] = [
+        'attribute'=>'ticketType',
+        'filter'=>$ticketTypes,
+        'format'=>'raw',
+        'value' => function($model, $key, $index) {
+        return $model->getTicketTypeValue();
+        }
+        ];
+    if ($isPandemic) {
+	    $columns[] = [
+		    'attribute'=>'vaccine',
+		    'filter'=>$vaccineOptions,
+		    'format'=>'raw',
+		    'value' => function($model, $key, $index) {
+			    return $model->getVaccineValue();
+		    }
+	    ];
+    }
+    $columns = array_merge ($columns, [
+        [
+        'label' => 'Autorizado',
+        'attribute' => 'hasAuthorization',
+        'format' => 'raw',
+        'filter' => $yesno,
+        'value'=> function($model, $key, $index) {
+        return $model->getHasAuthorizationValue();
+        },
+        ],
+        //'authorizedBy',
+        //'authorizedReason',
+
+        ['class' => 'yii\grid\ActionColumn'],
+    ]);
+
+    $attributes = [
+	    'dataProvider' => $dataProvider,
+	    'filterModel' => $searchModel,
+	    'columns' => $columns,
+    ];
+    ?>
+    <?= GridView::widget($attributes); ?>
 
 
 </div>
