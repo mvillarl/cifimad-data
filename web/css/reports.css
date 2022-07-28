@@ -420,6 +420,11 @@ html, body {
     padding: 110pt 0;
 }
 
+.parkingoptions {
+    font-size: 36pt;
+    margin-top: 90pt;
+}
+
 .attendee-reporttickets {
     border-collapse: separate;
     border-spacing: 0 3pt;

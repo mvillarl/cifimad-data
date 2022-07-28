@@ -8,6 +8,8 @@ use app\components\DateFunctions;
 /* @var $guests app\models\Guest[] */
 /* @var $roomdays */
 /* @var $parking */
+/* @var $parkingOptions */
+/* @var $parkingReservations */
 
 $this->title = 'Informe - Hotel';
 $this->params['breadcrumbs'][] = ['label' => 'Asistentes', 'url' => ['index']];
@@ -193,4 +195,22 @@ $this->params['breadcrumbs'][] = $this->title;
 		</tr>
 		</tbody>
 	</table>
+
+    <div class="reportheadertxt">Reservas aparcamiento</div>
+    <table class="reporthoteltable" cellpadding="2" cellspacing="2">
+        <thead>
+            <th>Total</th>
+            <?php foreach ($parkingOptions as $poValue => $poName) { ?>
+                <th><?= $poName ?></th>
+            <?php } ?>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?= $parkingReservations['total'] ?></td>
+                <?php foreach ($parkingOptions as $poValue => $poName) { ?>
+                    <td><?= $parkingReservations[$poValue] ?></td>
+                <?php } ?>
+            </tr>
+        </tbody>
+    </table>
 </div>

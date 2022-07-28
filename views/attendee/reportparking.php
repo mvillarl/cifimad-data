@@ -18,6 +18,9 @@ $this->params['breadcrumbs'][] = $this->title;
 			<?php if (!empty ($parkingparts[1])) { ?>
 				<br/><?= $parkingparts[1]; ?>
 			<?php } ?>
+            <?php if ($attendee->getParkingOptionsValue() != '') { ?>
+            <div class="parkingoptions"><?= $attendee->getParkingOptionsValue() ?></div>
+            <?php } ?>
 		</div>
 	<?php } ?>
 

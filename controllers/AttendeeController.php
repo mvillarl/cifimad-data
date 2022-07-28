@@ -564,7 +564,9 @@ class AttendeeController extends BaseController
 	    $attendeerooms = Attendee::getAttendeeRooms( $idEvent, $aftersend, $numattendees);
 	    $roomdays = Attendee::getRoomDays( $attendeerooms );
 
-	    $numattendees += count ($guests);
+        $parkingReservations = Attendee::getParkingReservations ($idEvent);
+
+        $numattendees += count ($guests);
 
 	    $fridayDinner = Attendee::find()->andFilterEvent($idEvent)->andCocktail()->notCanceled()->all();
 	    $saturdayDinner = Attendee::find()->andFilterEvent($idEvent)->andGala()->notCanceled()->all();
@@ -659,6 +661,8 @@ class AttendeeController extends BaseController
 		    'mealsummary' => $mealsummary,
 	        'roomdays' => $roomdays,
 	        'parking' => $parking,
+            'parkingOptions' => Attendee::getParkingOptions(),
+            'parkingReservations' => $parkingReservations,
 	    ]);
 
     }

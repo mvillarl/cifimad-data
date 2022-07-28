@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\jui\AutoComplete;
 use yii\web\JsExpression;
+use app\models\Attendee;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Attendee */
@@ -163,6 +164,8 @@ use yii\web\JsExpression;
 	<?= $form->field($model, 'cifiKidsDay')->dropDownList($model->getCifiKidsDays() ) ?>
 
 	<?= $form->field($model, 'parkingReservation')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'parkingOptions')->radioList(Attendee::getParkingOptions() ) ?>
 
 	<?= $form->field($model, 'phoneAtDesk')->textInput(['maxlength' => true]) ?>
 

@@ -86,6 +86,10 @@ $this->params['breadcrumbs'][] = $this->title;
 		    'value' => $model->getCifiKidsDayValue(),
 	    ],
         'parkingReservation',
+        [
+            'attribute' => 'parkingOptions',
+            'value' => $model->getParkingOptionsValue(),
+        ],
         ]);
     if ($isPandemic) {
         $attributes[] = 'phoneAtDesk';

@@ -1,4 +1,4 @@
 
-ALTER TABLE  cif_events
-ADD `isPandemic` bit DEFAULT false;
+ALTER TABLE  cif_attendees
+ADD parkingOptions CHAR(1) NULL;
 

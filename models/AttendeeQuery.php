@@ -71,6 +71,10 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 		return $this->andWhere("cif_attendees.roomType IS NOT NULL AND cif_attendees.roomType <> '' AND cif_attendees.status <> '3'")->orderBy('cif_members.surname, cif_members.name');
 	}
 
+    public function andFilterParking() {
+        return $this->andWhere("cif_attendees.parkingReservation IS NOT NULL AND TRIM(cif_attendees.parkingReservation) <> ''");
+    }
+
     /*public function active()
     {
         return $this->andWhere('[[status]]=1');

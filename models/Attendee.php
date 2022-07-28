@@ -83,6 +83,7 @@ use app\components\DateFunctions;
  * @property string $phoneAtDesk
  * @property boolean $remarksOrPendingPaymentDone
  * @property string $memberPhone
+ * @property string $parkingOptions
  *
  * @property CifEvents $idEvent0
  * @property CifMembers $idMember0
@@ -302,7 +303,7 @@ class Attendee extends \yii\db\ActiveRecord
             [['mealFridayDinner', 'mealSaturdayLunch', 'mealSaturdayDinner', 'mealSundayLunch', 'mealSundayDinner', 'isSpecial', 'freeLodging', 'freeSaturdayDinner'/*, 'memberSmall'*/, 'isCifiKidsVolunteer'], 'boolean'],
             [['dateStartLodging', 'dateEndLodging', 'createdAt', 'updatedAt', 'updatedAtHotel', 'updatedAtBadges', 'updatedAtBadgesTickets', 'remarksOrPendingPaymentDone', 'memberPhone'], 'safe'],
             [['remarks', 'remarksRegistration', 'remarksMeals', 'remarksMealSaturday', 'remarksHotel', 'orders', 'parkingReservation', 'phoneAtDesk'], 'string'],
-            [['status', 'ticketType', 'roomType', 'cifiKidsDay'], 'string', 'max' => 1],
+            [['status', 'ticketType', 'roomType', 'cifiKidsDay', 'parkingOptions'], 'string', 'max' => 1],
             [['idEvent', 'idMember'], 'unique', 'targetAttribute' => ['idEvent', 'idMember'], 'message' => 'Este socio ya está incluido en este evento.'/*, 'filter' => function($q){
                     $parms = $q->where;
                     $q->where (['and', ['cif_attendees.idEvent' => ':idEvent'] , ['cif_attendees.idMember' => ':idMember'] ], $parms);
@@ -381,6 +382,7 @@ class Attendee extends \yii\db\ActiveRecord
             'updatedAtBadges' => 'Fecha de modificación - acreditación',
             'updatedAtBadgesTickets' => 'Fecha de modificación - acreditación y tickets',
             'remarksOrPendingPaymentDone' => 'Marcar como hecho observaciones / pago pendiente',
+            'parkingOptions' => 'Opciones de aparcamiento',
         ];
         if (is_array ($this->_guestFields)) $labels = array_merge ($labels, $this->_guestFields);
         if (is_array ($this->_extraProductFields)) $labels = array_merge ($labels, $this->_extraProductFields);
@@ -606,8 +608,20 @@ class Attendee extends \yii\db\ActiveRecord
     }
 
     public function getRoomTypeValue() {
-        $types = $this->getRoomTypes();
+        $types = Attendee::getRoomTypes();
         return $types[$this->roomType];
+    }
+
+    public static function getParkingOptions() {
+        return [
+            'P' => 'Enchufe',
+            'H' => 'Discapacidad',
+        ];
+    }
+
+    public function getParkingOptionsValue() {
+        $options = Attendee::getParkingOptions();
+        return $options[$this->parkingOptions];
     }
 
     public static function getEvents($map = false) {
@@ -728,6 +742,23 @@ class Attendee extends \yii\db\ActiveRecord
 
 	    return $rooms;
 	}
+
+    public static function getParkingReservations ($idEvent) {
+        $attq = Attendee::find()->andFilterEvent($idEvent)->andFilterParking();
+        $attendees = $attq->all();
+
+        $parkingReservations = ['total' => count ($attendees)];
+        foreach ($attendees as $attendee) {
+            if ($attendee->parkingOptions != '') {
+                if (isset ($parkingReservations[$attendee->parkingOptions])) {
+                    $parkingReservations[$attendee->parkingOptions]++;
+                } else {
+                    $parkingReservations[$attendee->parkingOptions] = 1;
+                }
+            }
+        }
+        return $parkingReservations;
+    }
 
 	public static function getRoomDays ($attendeerooms) {
 		$roomdays = new \stdClass();
