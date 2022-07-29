@@ -59,6 +59,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'sourceName',
         'isSpecial:boolean',
         'isCifiKidsVolunteer:boolean',
+        ]);
+    if ($hasVIPAttendees) {
+        $attributes[] = 'isVIP:boolean';
+    }
+    $attributes = array_merge ($attributes, [
         [
             'attribute' => 'roomType',
             'value' => $model->getRoomTypeValue(),

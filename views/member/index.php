@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Exportar a Excel - sólo con e-mail', ['/member/export/M'], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Exportar a Excel - con e-mail y sin consent', ['/member/export/MN'], ['class' => 'btn btn-primary']) ?>
     </p>
+    <p>Las exportaciones sólo recogen socios CifiMad, no Fanvención</p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

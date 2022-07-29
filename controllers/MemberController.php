@@ -46,7 +46,7 @@ class MemberController extends BaseController
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'status' => Member::getStatusMap(),
+            'status' => Member::getYesNoMap(),
 	        ]);
     }
 
@@ -307,7 +307,7 @@ class MemberController extends BaseController
         if ($onlydni == 'MN') {
         	$q->where('email IS NOT NULL AND consent is false');
         }
-	    $q->andWhere('status = true');
+	    $q->andWhere('status = true AND isFromFanvencion = false');
         $members = $q->all();
         $filename = "SociosCifimad".date("Ymd").".xls";
         Yii::$app->response->setDownloadHeaders($filename, "application/vnd.ms-excel");

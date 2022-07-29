@@ -31,13 +31,15 @@ use app\models\Member;
 
     <?= $form->field($model, 'status')->checkbox() ?>
 
-	<?= $form->field($model, 'vaccine')->dropDownList(Member::getVaccineOptions() ) ?>
+    	<?= $form->field($model, 'vaccine')->dropDownList(Member::getVaccineOptions() ) ?>
 
     <?= $form->field($model, 'consent')->checkbox() ?>
 
     <?= $form->field($model, 'keyCheck')->textInput(['readonly' => 'readonly']) ?>
 
     <?= $form->field($model, 'small')->checkbox() ?>
+
+    <?= $form->field($model, 'isFromFanvencion')->checkbox() ?>
 
     <?= $form->field($model, 'createdAt')->textInput( ['readonly' => 'readonly']) ?>
 

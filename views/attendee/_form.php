@@ -73,6 +73,10 @@ use app\models\Attendee;
 
     <?= $form->field($model, 'isCifiKidsVolunteer')->checkbox() ?>
 
+    <?php if ($hasVIPAttendees) { ?>
+        <?= $form->field($model, 'isVIP')->checkbox() ?>
+    <?php } ?>
+
     <?= $form->field($model, 'roomType')->dropDownList($model->getRoomTypes() ) ?>
 
     <?=  $form->field($model, 'dateStartLodging')->widget(\yii\jui\DatePicker::classname(),[
@@ -167,7 +171,9 @@ use app\models\Attendee;
 
     <?= $form->field($model, 'parkingOptions')->radioList(Attendee::getParkingOptions() ) ?>
 
-	<?= $form->field($model, 'phoneAtDesk')->textInput(['maxlength' => true]) ?>
+    <?php if ($isPandemic) { ?>
+    <?= $form->field($model, 'phoneAtDesk')->textInput(['maxlength' => true]) ?>
+    <?php } ?>
 
     <?= $form->field($model, 'remarks')->textarea(['rows' => 6]) ?>
 

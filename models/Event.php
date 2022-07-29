@@ -16,6 +16,7 @@ use Yii;
  * @property string $dateBadgesPrinted
  * @property string $dateEndCosplaySignup
  * @property boolean $isPandemic
+ * @property boolean $hasVIPAttendees
  *
  * @property CifAttendees[] $cifAttendees
  * @property CifGuests[] $cifGuests
@@ -38,8 +39,8 @@ class Event extends \yii\db\ActiveRecord
         return [
             [['year', 'name', 'dateStart', 'dateEnd'], 'required'],
             [['year'], 'integer'],
-            [['dateStart', 'dateEnd', 'dateSentInfoHotel', 'dateBadgesPrinted', 'dateEndCosplaySignup', 'isPandemic'], 'safe'],
-	        [['isPandemic'], 'boolean'],
+            [['dateStart', 'dateEnd', 'dateSentInfoHotel', 'dateBadgesPrinted', 'dateEndCosplaySignup', 'isPandemic', 'hasVIPAttendees'], 'safe'],
+	        [['isPandemic', 'hasVIPAttendees'], 'boolean'],
             [['name'], 'string', 'max' => 60],
             //[['dateStart', 'dateEnd', 'dateSentInfoHotel'], 'date'],
             ['dateStart', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateStart', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
@@ -65,6 +66,7 @@ class Event extends \yii\db\ActiveRecord
             'dateBadgesPrinted' => 'Primera impresión de acreditaciones',
             'dateEndCosplaySignup' => 'Fecha límite de inscripción al concurso de cosplay',
 	        'isPandemic' => 'Modo pandemia',
+	        'hasVIPAttendees' => 'Hay asistentes VIP',
         ];
     }
 

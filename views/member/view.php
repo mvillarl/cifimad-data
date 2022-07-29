@@ -45,6 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'consent:boolean',
             'keyCheck',
             'small:boolean',
+            'isFromFanvencion:boolean',
             'createdAt:datetime',
             'updatedAt:datetime',
         ],

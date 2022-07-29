@@ -58,6 +58,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         </tr>
                     <?php } ?>
                 <?php } ?>
+                <?php if ($attendee->isVIP) { ?>
+                    <tr>
+                        <td style="background-color: #FFF701;">Regalo VIP</td>
+                    </tr>
+                <?php } ?>
                 </table></td>
         </tr>
     <?php } ?>

@@ -33,6 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
 			'value' => $model->getTicketTypeValue(),
 		],
 		'sourceName',
+		];
+    if ($hasVIPAttendees) {
+        $attributes[] = 'isVIP:boolean';
+    }
+    $attributes = array_merge ($attributes, [
 		'mealFridayDinner:boolean',
 		'mealSaturdayLunch:boolean',
 		'mealSaturdayDinner:boolean',
@@ -42,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'attribute' => 'cifiKidsDays',
 			'value' => $model->getCifiKidsDayValue(),
 		],
-        ];
+        ]);
 	foreach ($model->getGuestFields() as $field) $attributes[] = $field;
 	foreach ($model->getExtraProductFields() as $field) $attributes[] = $field;
 	$attributes = array_merge ($attributes, [

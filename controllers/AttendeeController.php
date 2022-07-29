@@ -103,13 +103,16 @@ class AttendeeController extends BaseController
         $model = $this->findModel($id);
         $model->setEvent($idEvent, $guests, $products);
 
-	    $isPandemic = Event::findOne($idEvent)->isPandemic;
+        $event = Event::findOne($idEvent);
+	    $isPandemic = $event->isPandemic;
+        $hasVIPAttendees = $event->hasVIPAttendees;
 
 	    $view = User::hasRole ('desk', false)? 'viewdesk': 'view';
 
         return $this->render($view, [
             'model' => $model,
 	        'isPandemic' => $isPandemic,
+            'hasVIPAttendees' => $hasVIPAttendees,
         ]);
     }
 
@@ -127,6 +130,9 @@ class AttendeeController extends BaseController
 	    //$model->setUpdatedFlag();
         $model->setEvent($idEvent, $guests, $products);
 
+        $event = Event::findOne($idEvent);
+        $isPandemic = $event->isPandemic;
+        $hasVIPAttendees = $event->hasVIPAttendees;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -134,6 +140,8 @@ class AttendeeController extends BaseController
                 'model' => $model,
                 'events' => Attendee::getEvents(true),
                 'sources' => Attendee::getSources(true),
+                'isPandemic' => $isPandemic,
+                'hasVIPAttendees' => $hasVIPAttendees,
             ]);
         }
     }
@@ -166,6 +174,9 @@ class AttendeeController extends BaseController
 		    $model->setUpdatedBadgesTicketsFlag();
 	    }
 
+        $event = Event::findOne($idEvent);
+        $isPandemic = $event->isPandemic;
+        $hasVIPAttendees = $event->hasVIPAttendees;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -174,6 +185,8 @@ class AttendeeController extends BaseController
                 'model' => $model,
                 'events' => Attendee::getEvents(true),
                 'sources' => Attendee::getSources(true, $model->idSource),
+                'isPandemic' => $isPandemic,
+                'hasVIPAttendees' => $hasVIPAttendees,
             ]);
         }
     }

@@ -18,6 +18,8 @@ $this->params['breadcrumbs'][] = 'Modificar';
         'model' => $model,
         'events' => $events,
         'sources' => $sources,
+        'isPandemic' => $isPandemic,
+        'hasVIPAttendees' => $hasVIPAttendees,
     ]) ?>
 
 </div>

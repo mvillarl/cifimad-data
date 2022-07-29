@@ -23,10 +23,11 @@ use yii\helpers\ArrayHelper;
  * @property boolean $status
  * @property string $createdAt
  * @property string $updatedAt
- * @property string $consent
+ * @property boolean $consent
  * @property string $keyCheck
- * @property string $small
+ * @property boolean $small
  * @property string $vaccine
+ * @property boolean $isFromFanvencion
  *
  * @property Attendee[] $cifAttendees
  * @property Event[] $idEvents
@@ -67,7 +68,7 @@ class Member extends \yii\db\ActiveRecord
 	        [['keyCheck'], 'string', 'max' => 50],
 	        [['vaccine'], 'string', 'max' => 1],
 	        [['remarks'], 'string'],
-	        [['status', 'consent', 'small'], 'boolean'],
+	        [['status', 'consent', 'small', 'isFromFanvencion'], 'boolean'],
             [['badgeName', 'badgeSurname'], 'default', 'value' => function ($model, $attribute) {
                 return Member::cleanup( ($attribute == 'badgeName')? $model->name: $model->surname );
             }],
@@ -98,6 +99,7 @@ class Member extends \yii\db\ActiveRecord
 	        'consent' => 'Consentimiento para enviar mails',
 	        'small' => 'Acreditación en letra pequeña',
 	        'vaccine' => 'Vacunación contra Covid-19',
+            'isFromFanvencion' => 'Procede de evento Fanvención',
 	        'keyCheck' => 'Clave de verificación',
             'createdAt' => 'Fecha de creación',
             'updatedAt' => 'Fecha de modificación',
@@ -143,7 +145,7 @@ class Member extends \yii\db\ActiveRecord
 		return $vacc[$this->vaccine];
 	}
 
-	public static function getStatusMap() {
+	public static function getYesNoMap() {
 		return [
 			'' => '',
 			'0' => 'No',
@@ -152,8 +154,13 @@ class Member extends \yii\db\ActiveRecord
 	}
 
 	public function getStatusValue() {
-		$status = $this->getStatusMap();
+		$status = $this->getYesNoMap();
 		return $status[$this->status];
+	}
+
+	public function getIsFromFanvencionValue() {
+		$status = $this->getYesNoMap();
+		return $status[$this->isFromFanvencion];
 	}
 
 	public static function getLastLoadFrom($part) {

@@ -9,6 +9,7 @@ create table cif_events (
 	dateEndCosplaySignup date NULL,
 	`status` bit DEFAULT true,
 	`isPandemic` bit DEFAULT false,
+    hasVIPAttendees BIT DEFAULT false,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -54,6 +55,7 @@ create table cif_members (
 	keyCheck VARCHAR(50) NULL,
 	small BIT DEFAULT false,
 	vaccine CHAR(1) NULL,
+    isFromFanvencion BIT DEFAULT false,
 	PRIMARY KEY (`id`),
 	CONSTRAINT email UNIQUE KEY (email),
 	CONSTRAINT nif UNIQUE KEY (nif),
@@ -147,6 +149,7 @@ create table cif_attendees (
     phoneAtDesk VARCHAR(50) NULL,
     remarksOrPendingPaymentDone BIT DEFAULT FALSE,
     parkingOptions CHAR(1) NULL,
+    isVIP BIT DEFAULT false,
 	PRIMARY KEY (`id`),
 	CONSTRAINT attEvent FOREIGN KEY (idEvent) REFERENCES cif_events (id),
 	CONSTRAINT attMember FOREIGN KEY (idMember) REFERENCES cif_members (id),

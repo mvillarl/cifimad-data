@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'dateStart:date',
             'dateEnd:date',
             'isPandemic:boolean',
+            'hasVIPAttendees:boolean',
             'dateSentInfoHotel:datetime',
             'dateBadgesPrinted:datetime',
             'dateEndCosplaySignup:date',
