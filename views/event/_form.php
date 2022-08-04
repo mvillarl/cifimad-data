@@ -31,6 +31,9 @@ use yii\widgets\ActiveForm;
 
 	<?= $form->field($model, 'hasVIPAttendees')->checkbox() ?>
 
+    <?= $form->field($model, 'deskHelp')->widget(\yii\redactor\widgets\Redactor::className(),
+    ['clientOptions' => ['lang' => 'es', 'minHeight' => '500px'] ]) ?>
+
     <?= $form->field ($model, 'dateSentInfoHotel')->label()->hint('Marca la casilla para guardar la fecha y hora actual')->textInput( ['readonly' => 'readonly']); ?>
     <?= Html::checkbox('dateSentInfoHotelNow'); ?>
 

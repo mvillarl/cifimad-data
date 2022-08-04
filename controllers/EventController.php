@@ -123,4 +123,19 @@ class EventController extends BaseController
         }
     }
 
+    public static function getCurrentEvent() {
+        $idEvent = Yii::$app->session->get('Attendee.idEvent');
+        if (!strlen ($idEvent)) $idEvent = Event::getIdNextEvent();
+        if (!strlen ($idEvent)) $idEvent = Event::getIdLastEvent();
+        return $idEvent;
+    }
+
+    public function actionHelp() {
+        $idEvent = EventController::getCurrentEvent();
+        $model = $this->findModel($idEvent);
+        return $this->render('help', [
+            'model' => $model,
+        ]);
+    }
+
 }

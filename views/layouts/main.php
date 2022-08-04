@@ -81,6 +81,9 @@ AppAsset::register($this);
     if (User::canRoute('/attendee-sale/index')) {
         $menuitems[] = ['label' => 'Registrar ventas', 'url' => '/attendee-sale/index'];
     }
+    if (User::canRoute('/event/help')) {
+        $menuitems[] = ['label' => 'Ayuda acreditaciones', 'url' => '/event/help'];
+    }
     if (User::canRoute('/user-management/user/index')) {
         $menuitemsuser = [ ['label' => 'Usuarios', 'url' => '/user-management/user/index'] ];
         if (User::canRoute('/user-management/role/index') ) $menuitemsuser[] = ['label' => 'Roles', 'url' => '/user-management/role/index'];

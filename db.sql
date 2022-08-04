@@ -10,6 +10,7 @@ create table cif_events (
 	`status` bit DEFAULT true,
 	`isPandemic` bit DEFAULT false,
     hasVIPAttendees BIT DEFAULT false,
+    deskHelp TEXT DEFAULT null,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

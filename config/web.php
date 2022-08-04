@@ -118,6 +118,7 @@ $config = [
                 }
             },
         ],
+        'redactor' => 'yii\redactor\RedactorModule',
     ],
 ];
 
