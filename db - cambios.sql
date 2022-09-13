@@ -1,2 +1,2 @@
 ALTER TABLE  cif_events
-ADD deskHelp TEXT DEFAULT null;
+ADD imgLogo VARCHAR(100) DEFAULT NULL;

@@ -18,6 +18,7 @@ use Yii;
  * @property boolean $isPandemic
  * @property boolean $hasVIPAttendees
  * @property string $deskHelp
+ * @property string $imgLogo
  *
  * @property CifAttendees[] $cifAttendees
  * @property CifGuests[] $cifGuests
@@ -43,6 +44,7 @@ class Event extends \yii\db\ActiveRecord
             [['dateStart', 'dateEnd', 'dateSentInfoHotel', 'dateBadgesPrinted', 'dateEndCosplaySignup', 'isPandemic', 'hasVIPAttendees'], 'safe'],
 	        [['isPandemic', 'hasVIPAttendees'], 'boolean'],
             [['name'], 'string', 'max' => 60],
+            [['imgLogo'], 'string', 'max' => 100],
             [['deskHelp'], 'string'],
             //[['dateStart', 'dateEnd', 'dateSentInfoHotel'], 'date'],
             ['dateStart', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateStart', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
@@ -70,6 +72,7 @@ class Event extends \yii\db\ActiveRecord
 	        'isPandemic' => 'Modo pandemia',
 	        'hasVIPAttendees' => 'Hay asistentes VIP',
             'deskHelp' => 'Ayuda para acreditaciones',
+            'imgLogo' => 'Logo especial en informes',
         ];
     }
 

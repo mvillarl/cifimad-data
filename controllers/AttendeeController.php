@@ -676,6 +676,7 @@ class AttendeeController extends BaseController
 	        'parking' => $parking,
             'parkingOptions' => Attendee::getParkingOptions(),
             'parkingReservations' => $parkingReservations,
+            'imgLogo' => $event->imgLogo,
 	    ]);
 
     }

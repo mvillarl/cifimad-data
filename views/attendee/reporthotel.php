@@ -24,7 +24,13 @@ $this->params['breadcrumbs'][] = $this->title;
 -->
 <div class="attendee-reporthotel">
 <div class="reportheader">
-	<div class="logoleft"><img src="/img/Logo_CIFIMAD_2016_banner_360.png"/></div>
+	<div class="logoleft">
+        <?php if (empty ($imgLogo)) { ?>
+        <img src="/img/Logo_CIFIMAD_2016_banner_360.png"/>
+        <?php } else { ?>
+            <img src="/img/<?= $imgLogo ?>"/>
+        <?php } ?>
+    </div>
 	<div class="logoright"><img src="/img/HLP_360.png"/></div>
 </div>
 	<div class="reportheadertxt">Habitaciones actores</div>
