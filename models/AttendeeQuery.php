@@ -143,11 +143,11 @@ class AttendeeQuery extends \yii\db\ActiveQuery
     }
 
     public function orderBadgeLabelReport() {
-        return $this->addSelect (new Expression ("IF(cif_attendees.idSource = '2', 1, 2) isStaff") )->addSelect (new Expression ("CASE cif_attendees.ticketType WHEN 'V' THEN 1 WHEN 'S' THEN 2 WHEN 'D' THEN 3 WHEN 'F' THEN 4 END ticketTypeOrder") )
-	        ->addSelect ('cif_sources.imageFile sourceImageFile')
+        return $this->addSelect ("cif_sources.isVolunteer")->addSelect (new Expression ("CASE cif_attendees.ticketType WHEN 'V' THEN 1 WHEN 'S' THEN 2 WHEN 'D' THEN 3 WHEN 'F' THEN 4 END ticketTypeOrder") )
+	        ->addSelect ('cif_sources.imageFile sourceImageFile, cif_sources.isVolunteer sourceIsVolunteer')
             ->andWhere("cif_attendees.ticketType <> '-'")
             //->orderBy('isSpecial DESC, isStaff, ticketTypeOrder, cif_members.badgeSurname, cif_members.badgeName');
-            ->orderBy('isSpecial DESC, isStaff, ticketTypeOrder, cif_members.badgeName, cif_members.badgeSurname');
+            ->orderBy('isSpecial DESC, isVolunteer DESC, ticketTypeOrder, cif_members.badgeName, cif_members.badgeSurname');
     }
 
 	public function orderBadgeReport($detailed) {

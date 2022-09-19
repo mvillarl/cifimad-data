@@ -37,6 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'imgLogo',
             'deskHelp',
             'hasVIPAttendees:boolean',
+            'verticalBadges:boolean',
+            'acadiBadges',
             'dateSentInfoHotel:datetime',
             'dateBadgesPrinted:datetime',
             'dateEndCosplaySignup:date',

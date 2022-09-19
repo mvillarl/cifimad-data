@@ -24,6 +24,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'blankBadges')->textInput() ?>
 
+    <?= $form->field($model, 'isVolunteer')->checkbox() ?>
+
     <?= $form->field($model, 'status')->checkbox() ?>
 
     <div class="form-group">

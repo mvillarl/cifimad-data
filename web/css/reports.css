@@ -75,6 +75,10 @@ html, body {
     font-size: 16pt;
 }
 
+.verticalsmall {
+    font-size: 13pt;
+}
+
 .badgetype {
     padding: 5px;
     font-size: 10pt;

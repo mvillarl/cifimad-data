@@ -306,11 +306,11 @@ class AttendeeController extends BaseController
 
 	    $blankBadges = Source::find()->andWhere ('blankBadges > 0')->all();
 
+        $event = Event::findOne( $idEvent );
 	    $badgesCifiKidsq = Attendee::find()->andFilterEvent($idEvent);
         $badgesCifiKidsq->andCifiKidsParticipantOrVolunteer();
         $badgesCifiKidsq->notCanceled();
         if ($afterprint) {
-            $event   = Event::findOne( $idEvent );
             $badgesCifiKidsq->afterDate( $event->dateBadgesPrinted, 'Badges');
         }
         $badgesCifiKidsq->orderBadgeLabelReport();
@@ -327,6 +327,8 @@ class AttendeeController extends BaseController
             'extraproducts' => $extraproducts,
 	        'blankBadges' => $blankBadges,
             'badgesCifiKids' => $badgesCifiKids,
+            'verticalBadges' => $event->verticalBadges,
+            'acadiBadges' => $event->acadiBadges,
         ]);
         
     }

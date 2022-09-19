@@ -31,6 +31,10 @@ use yii\widgets\ActiveForm;
 
 	<?= $form->field($model, 'hasVIPAttendees')->checkbox() ?>
 
+	<?= $form->field($model, 'verticalBadges')->checkbox() ?>
+
+	<?= $form->field($model, 'acadiBadges')->textInput() ?>
+
     <?= $form->field($model, 'imgLogo')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'deskHelp')->widget(\yii\redactor\widgets\Redactor::className(),

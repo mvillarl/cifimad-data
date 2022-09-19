@@ -13,6 +13,7 @@ use yii\web\UploadedFile;
  * @property string $imageFile
  * @property string $separateList
  * @property int $blankBadges
+ * @property boolean $isVolunteer
  * @property boolean $status
  *
  * @property CifAttendees[] $cifAttendees
@@ -43,7 +44,7 @@ class Source extends \yii\db\ActiveRecord
             [['separateList'], 'boolean'],
 	        [['blankBadges'], 'integer'],
 	        [['imageFileObj'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, gif'],
-            [['status'], 'boolean'],
+            [['status', 'isVolunteer'], 'boolean'],
         ];
     }
 
@@ -59,6 +60,7 @@ class Source extends \yii\db\ActiveRecord
             'separateList' => 'Lista separada',
             'blankBadges' => 'Acreditaciones en blanco',
             'status' => 'Activa',
+            'isVolunteer' => 'Es staff',
         ];
     }
 
@@ -81,5 +83,10 @@ class Source extends \yii\db\ActiveRecord
     public function getStatusValue() {
         $yesno = ['0' => 'No', '1' => 'Sí'];
         return $yesno[$this->status];
+    }
+
+    public function getVolunteerValue() {
+        $yesno = ['0' => 'No', '1' => 'Sí'];
+        return $yesno[$this->isVolunteer];
     }
 }

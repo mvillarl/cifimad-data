@@ -134,6 +134,7 @@ class Attendee extends \yii\db\ActiveRecord
     //public $attendeeName;
     public $sourceName;
     public $sourceImageFile;
+    public $sourceIsVolunteer;
     public $roommate1BadgeName;
     public $roommate1BadgeSurname;
     public $roommate2BadgeName;
@@ -353,6 +354,7 @@ class Attendee extends \yii\db\ActiveRecord
             'idSource' => 'Procedencia',
             'sourceName' => 'Procedencia',
             'isSpecial' => 'Acreditación especial (Cochrane)',
+            'sourceIsVolunteer' => 'es staff',
             'roomType' => 'Habitación',
             'dateStartLodging' => 'Se aloja desde',
             'dateEndLodging' => 'Se aloja hasta',
@@ -498,6 +500,10 @@ class Attendee extends \yii\db\ActiveRecord
 
     public function getSourceImageFile() {
         return $this->sourceImageFile;
+    }
+
+    public function getSourceIsVolunteer() {
+        return $this->sourceIsVolunteer == 1? '1': '';
     }
 
 /*    public function getRoommate1BadgeName() {

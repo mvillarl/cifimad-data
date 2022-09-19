@@ -19,6 +19,8 @@ use Yii;
  * @property boolean $hasVIPAttendees
  * @property string $deskHelp
  * @property string $imgLogo
+ * @property boolean $verticalBadges
+ * @property integer $acadiBadges
  *
  * @property CifAttendees[] $cifAttendees
  * @property CifGuests[] $cifGuests
@@ -40,9 +42,9 @@ class Event extends \yii\db\ActiveRecord
     {
         return [
             [['year', 'name', 'dateStart', 'dateEnd'], 'required'],
-            [['year'], 'integer'],
-            [['dateStart', 'dateEnd', 'dateSentInfoHotel', 'dateBadgesPrinted', 'dateEndCosplaySignup', 'isPandemic', 'hasVIPAttendees'], 'safe'],
-	        [['isPandemic', 'hasVIPAttendees'], 'boolean'],
+            [['year', 'acadiBadges'], 'integer'],
+            [['dateStart', 'dateEnd', 'dateSentInfoHotel', 'dateBadgesPrinted', 'dateEndCosplaySignup', 'isPandemic', 'hasVIPAttendees', 'verticalBadges'], 'safe'],
+	        [['isPandemic', 'hasVIPAttendees', 'verticalBadges'], 'boolean'],
             [['name'], 'string', 'max' => 60],
             [['imgLogo'], 'string', 'max' => 100],
             [['deskHelp'], 'string'],
@@ -71,6 +73,8 @@ class Event extends \yii\db\ActiveRecord
             'dateEndCosplaySignup' => 'Fecha límite de inscripción al concurso de cosplay',
 	        'isPandemic' => 'Modo pandemia',
 	        'hasVIPAttendees' => 'Hay asistentes VIP',
+	        'verticalBadges' => 'Todas las acreditaciones verticales',
+            'acadiBadges' => 'Acreditaciones para ACADI',
             'deskHelp' => 'Ayuda para acreditaciones',
             'imgLogo' => 'Logo especial en informes',
         ];

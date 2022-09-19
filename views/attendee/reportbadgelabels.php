@@ -6,6 +6,8 @@ use app\models\Attendee;
 /* @var $attendees app\models\Attendee[] */
 /* @var $blankBadges app\models\Source[] */
 /* @var $badgesCifiKids app\models\Attendee[] */
+/* @var $verticalBadges boolean */
+/* @var $acadiBadges integer */
 
 $this->title = 'Informe - etiquetas para acreditaciones';
 $this->params['breadcrumbs'][] = ['label' => 'Asistentes', 'url' => ['index']];
@@ -18,9 +20,9 @@ $this->params['breadcrumbs'][] = $this->title;
 		<?php $type = ''; $long = 0; $isEspecial = false; $isVolunteer = false; $isCompanion = false; $cifikidsShown = false; foreach ($attendees as $attendee) { ?>
 			<?php
 			$longd = 1.5;
-			if ($attendee->isSpecial || $attendee->idSource == '2') $longd += 1.5;
-			if (!$isEspecial && ($attendee->isSpecial || $attendee->idSource == '2') ) $longd += 1.5;
-			if ($isEspecial && !$attendee->isSpecial && ($attendee->idSource != '2') && ($attendee->ticketType != $type) ) $longd += 1.5;
+			if ($attendee->isSpecial || $attendee->getSourceIsVolunteer() ) $longd += 1.5;
+			if (!$isEspecial && ($attendee->isSpecial || $attendee->getSourceIsVolunteer() ) ) $longd += 1.5;
+			if ($isEspecial && !$attendee->isSpecial && (!$attendee->getSourceIsVolunteer() ) && ($attendee->ticketType != $type) ) $longd += 1.5;
 			if (strlen (trim ($attendee->parentName) ) ) $longd += 4.5;
 		if (false && ($long + $longd > 26) ) {
 				$long = $longd; ?>
@@ -36,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<td colspan="2" class="title">Acompañantes</td>
 				</tr>
 			<?php } ?>
-			<?php if (!$isEspecial && !$isVolunteer && $attendee->isSpecial && ($attendee->idSource == '2') ) { ?>
+			<?php if (!$isEspecial && !$isVolunteer && $attendee->isSpecial && ($attendee->getSourceIsVolunteer() ) ) { ?>
 				<?php $isEspecial = true; $isVolunteer = true; $long += 1.5; ?>
 				<tr>
 					<td colspan="2" class="title">Staff del Cochrane<br/>Acred doble roja</td>
@@ -48,13 +50,13 @@ $this->params['breadcrumbs'][] = $this->title;
 					<td colspan="2" class="title">Miembros del Cochrane<br/>Acred doble normal</td>
 				</tr>
 			<?php } ?>
-			<?php if ($isEspecial && !$isVolunteer && !$attendee->isSpecial && ($attendee->idSource == '2') ) { ?>
+			<?php if ($isEspecial && !$isVolunteer && !$attendee->isSpecial && ($attendee->getSourceIsVolunteer() ) ) { ?>
 				<?php $isEspecial = false; $isVolunteer = true; $long += 1.5; ?>
 				<tr>
 					<td colspan="2" class="title">Staff de otros clubes<br/>Acred doble amarilla</td>
 				</tr>
 			<?php } ?>
-		<?php if ( ($isEspecial || $isVolunteer) && !$attendee->isSpecial && ($attendee->idSource != '2') && ($attendee->idSource != '4') ) { ?>
+		<?php if ( ($isEspecial || $isVolunteer) && !$attendee->isSpecial && (!$attendee->getSourceIsVolunteer() ) && ($attendee->idSource != '4') ) { ?>
             <?php $isEspecial = false; $isVolunteer = false; ?>
             <?php if ($attendee->ticketType != $type) { ?>
             <?php if (!$cifikidsShown) { ?>
@@ -82,8 +84,13 @@ $this->params['breadcrumbs'][] = $this->title;
         </tr>
         <?php } ?>
         <?php
-        $mainclass = 'badgelabel';
-        $mainclassIn = 'badgelabelin';
+        if ($verticalBadges) {
+            $mainclass = 'badgelabelvertical';
+            $mainclassIn = 'badgelabelverticalin';
+        } else {
+            $mainclass = 'badgelabel';
+            $mainclassIn = 'badgelabelin';
+        }
         if (!$isEspecial && $isVolunteer) {
             $hint = 'C';
         } else {
@@ -98,10 +105,18 @@ $this->params['breadcrumbs'][] = $this->title;
         } else {
             $class = '';
         }
+        $addclass = '';
+        if ( $attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') {
+            if ($verticalBadges || $isVolunteer) {
+                $addclass = 'verticalsmall';
+            } else {
+                $addclass = 'small';
+            }
+        }
         ?>
 			<tr>
 				<td class="badgelabelhint<?= $hint; ?>"> </td>
-				<td class="<?= $mainclass ?> <?= $class; ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
+				<td class="<?= $mainclass ?> <?= $class; ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?= $addclass ?>">
                 <span class="<?= $mainclassIn ?>">
 					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
 					<?= $attendee->memberName ?></span>
@@ -122,9 +137,9 @@ $this->params['breadcrumbs'][] = $this->title;
 					<?php } ?>
 				</td>
 			</tr>
-			<?php if ( ($attendee->isSpecial || ($attendee->idSource == '2') || ($attendee->idSource == 'C') ) && !strlen (trim ($attendee->parentName) ) ) { ?>
+			<?php if ( ($attendee->isSpecial || ($attendee->getSourceIsVolunteer() ) || ($attendee->idSource == 'C') ) && !strlen (trim ($attendee->parentName) ) ) { ?>
 				<tr>
-					<td class="badgelabelhint<?= $hint; ?>"> </td>
+					<td class="badgelabelhint<?= $hint; ?> repeat<?= $attendee->isSpecial . '-' . $attendee->getSourceIsVolunteer() . '-' . $attendee->idSource ?>"> </td>
 					<td class="<?= $mainclass ?> <?= $class; ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
                     <span class="<?= $mainclassIn ?>">
 					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
@@ -163,7 +178,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		</tr>
 		<?php } ?>
 		<?php if (!$afterprint) { ?>
-			<?php for ($i = 0; $i < 15; $i++) { ?>
+			<?php for ($i = 0; $i < $acadiBadges; $i++) { ?>
 			<tr>
 			<td class="badgelabelhintD"> </td>
 			<td class="badgelabel"><span class="badgelabelin">ACADI  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

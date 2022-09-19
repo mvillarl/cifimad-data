@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'separateList:boolean',
             'blankBadges',
+            'isVolunteer:boolean',
             'status:boolean',
         ],
     ]) ?>

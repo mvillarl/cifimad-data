@@ -12,6 +12,8 @@ create table cif_events (
     hasVIPAttendees BIT DEFAULT false,
     deskHelp TEXT DEFAULT null,
     imgLogo VARCHAR(100) DEFAULT NULL,
+    verticalBadges BIT default false,
+    acadiBadges INT default 15,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -70,6 +72,7 @@ create table cif_sources (
 	imageFile VARCHAR(255) NULL,
 	separateList BIT default false,
 	blankBadges INT default 0,
+    isVolunteer BIT default false,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
