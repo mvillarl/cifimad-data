@@ -156,6 +156,7 @@ class AttendeeQuery extends \yii\db\ActiveQuery
         $order = 'cif_members.surname, cif_members.name';
         $whereProds = $this->_getProductsCondition();
         $whereMeals = ' cif_attendees.mealFridayDinner = true OR cif_attendees.mealSaturdayDinner = true OR cif_attendees.mealSaturdayLunch = true OR cif_attendees.mealSundayLunch = true OR cif_attendees.mealSundayDinner = true';
+        $whereVIP = ' cif_attendees.isVIP = true ';
         $orderBadges = 'cif_members.badgeName, cif_members.badgeSurname';
 		if ($detailed == 'D') {
 			$this->andWhere( $whereProds );
@@ -167,7 +168,7 @@ class AttendeeQuery extends \yii\db\ActiveQuery
             $this->andWhere($whereMeals);
             $order = $orderBadges;
         } elseif ($detailed == 'T') {
-            $this->andWhere($whereProds . ' OR ' . $whereMeals);
+            $this->andWhere($whereProds . ' OR ' . $whereMeals . ' OR ' . $whereVIP);
             $order = $orderBadges;
         }
 		$this->orderBy($order);

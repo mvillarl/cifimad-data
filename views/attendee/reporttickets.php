@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <td><table class="attendee-reporttickets-inside">
                     <?php if ($attendee->mealFridayDinner) { ?>
                     <tr>
-                        <td style="background-color: orange;">Cena cocktail</td>
+                        <td style="background-color: orange;">Cena viernes</td>
                     </tr>
                     <?php } ?>
                     <?php if ($attendee->mealSaturdayDinner) { ?>
