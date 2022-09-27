@@ -658,6 +658,7 @@ class AttendeeController extends BaseController
 			    else $mealsummary['saturdayRemarks'][ $sd->remarksMealSaturday ] = 1;
 		    }
 	    }
+	    ksort ($mealsummary['saturdayRemarks']);
 
         $this->_reportTitle = 'Informe asistentes - Reservas hotel';
 
@@ -710,12 +711,13 @@ class AttendeeController extends BaseController
 		]);
 	}
 
-	public function actionReportparking() {
+	public function actionReportparking($flag = '') {
 		$idEvent = $this->getCurrentEvent();
 		$attq = Attendee::find()->andFilterEvent($idEvent)->andParking();
 		$attendees = $attq->all();
 
-		return $this->render('reportparking', [
+		$template = $flag == 'H'? 'reportparkinghotel': 'reportparking';
+		return $this->render($template, [
 			'attendees' => $attendees,
 		]);
 	}

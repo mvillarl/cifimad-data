@@ -74,6 +74,7 @@ AppAsset::register($this);
                 ['label' => 'Informe - reservas', 'url' => '/attendee/reportreservations', 'linkOptions' => ['target' => 'blank']],
                 ['label' => 'Informe - CifiKids', 'url' => '/attendee/reportcifikids', 'linkOptions' => ['target' => 'blank']],
                 ['label' => 'Informe - Reservas de aparcamiento', 'url' => '/attendee/reportparking', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - Reservas de aparcamiento - hotel', 'url' => '/attendee/reportparking/H', 'linkOptions' => ['target' => 'blank']],
             ];
         }
         $menuitems[] = ['label' => 'Asistentes', 'url' => '/attendee/index', 'items' => $menuitemsatt];
