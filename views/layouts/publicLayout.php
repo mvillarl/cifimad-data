@@ -1,1790 +1,707 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: redfu
- * Date: 22/11/2018
- * Time: 22:42
- */
 use yii\helpers\Html;
+use yii\helpers\Url;
 
-$this->title = 'CifiMad';
+$this->title = $this->context->getSignupTitle();
 ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" prefix="og: http://ogp.me/ns#">
+<html lang="<?= Yii::$app->language ?>">
 <head>
-	<meta charset="<?= Yii::$app->charset ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<?= Html::csrfMetaTags() ?>
-	<link rel="shortcut icon" href="https://www.cifimad.es/wp-content/uploads/2017/10/favicon-2.ico" type="image/x-icon"/>
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="https://www.cifimad.es/xmlrpc.php">
-	<title><?= Html::encode(Yii::$app->name . ' - ' . $this->title) ?></title>
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
 
-	<!-- This site is optimized with the Yoast SEO plugin v7.2 - https://yoast.com/wordpress/plugins/seo/ -->
-	<!-- Aviso solo para el Administrador: esta página no muestra una meta description porque no la tiene. Haz una de estas dos cosas: escribe una específicamente para esta página o ve al menú SEO -&gt; Apariencia en la búsqueda y configura una plantilla. -->
-	<link rel="canonical" href="http://data.cifimad.es/member/consent/" />
-	<meta property="og:locale" content="es_ES" />
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="CifiMad" />
-	<meta property="og:url" content="http://data.cifimad.es/member/consent/" />
-	<meta property="og:site_name" content="CifiMad" />
-	<!-- / Yoast SEO plugin. -->
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
 
-	<link rel='dns-prefetch' href='//maps.google.com' />
-	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
-	<link rel='dns-prefetch' href='//s.w.org' />
-	<link rel="alternate" type="application/rss+xml" title="CifiMad &raquo; Feed" href="https://www.cifimad.es/feed/" />
-	<link rel="alternate" type="application/rss+xml" title="CifiMad &raquo; RSS de los comentarios" href="https://www.cifimad.es/comments/feed/" />
-	<!-- This site uses the Google Analytics by MonsterInsights plugin v7.0.5 - Using Analytics tracking - https://www.monsterinsights.com/ -->
-	<!-- Note: The site owner has disabled Google Analytics tracking for your user role. -->
-	<script type="text/javascript" data-cfasync="false">
-		var mi_track_user = false;
+    <!-- This site is optimized with the Yoast SEO plugin v16.6.1 - https://yoast.com/wordpress/plugins/seo/ -->
+    <link media="all" href="https://www.cifimad.es/wp-content/cache/autoptimize/css/autoptimize_9f28f407f8a3511c2cef650d98bdcbd3.css" rel="stylesheet" /><link media="only screen and (max-width: 921px)" href="https://www.cifimad.es/wp-content/cache/autoptimize/css/autoptimize_09a016ead3ca8cb8c840b81b85711d9e.css" rel="stylesheet" /><title><?= Html::encode($this->title) ?></title>
+    <link rel="canonical" href="<?= URL::current() ?>" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="<?= Html::encode($this->title) ?>" />
+    <meta property="og:url" content="<?= URL::current() ?>" />
+    <meta property="og:site_name" content="CifiMad" />
+    <meta property="article:modified_time" content="2022-09-12T12:47:23+00:00" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- / Yoast SEO plugin. -->
 
-		var disableStr = 'ga-disable-UA-59187728-1';
 
-		/* Function to detect opted out users */
-		function __gaTrackerIsOptedOut() {
-			return document.cookie.indexOf(disableStr + '=true') > -1;
-		}
+    <link rel='dns-prefetch' href='//fonts.googleapis.com' />
+    <link rel='dns-prefetch' href='//s.w.org' />
+    <link rel="alternate" type="application/rss+xml" title="CifiMad &raquo; Feed" href="https://www.cifimad.es/feed/" />
+    <link rel="alternate" type="application/rss+xml" title="CifiMad &raquo; Feed de los comentarios" href="https://www.cifimad.es/comments/feed/" />
+    <script>
+        window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.cifimad.es\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7.7"}};
+        !function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+    </script>
 
-		/* Disable tracking if the opt-out cookie exists. */
-		if ( __gaTrackerIsOptedOut() ) {
-			window[disableStr] = true;
-		}
 
-		/* Opt-out function */
-		function __gaTrackerOptout() {
-			document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-			window[disableStr] = true;
-		}
 
-		if ( mi_track_user ) {
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+    <link rel='stylesheet' id='astra-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C&#038;display=fallback&#038;ver=3.6.2' media='all' />
 
-			__gaTracker('create', 'UA-59187728-1', 'auto');
-			__gaTracker('set', 'forceSSL', true);
-			__gaTracker('send','pageview');
-		} else {
-			console.log( "Note: The site owner has disabled Google Analytics tracking for your user role." );
-			(function() {
-				/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
-				var noopfn = function() {
-					return null;
-				};
-				var noopnullfn = function() {
-					return null;
-				};
-				var Tracker = function() {
-					return null;
-				};
-				var p = Tracker.prototype;
-				p.get = noopfn;
-				p.set = noopfn;
-				p.send = noopfn;
-				var __gaTracker = function() {
-					var len = arguments.length;
-					if ( len === 0 ) {
-						return;
-					}
-					var f = arguments[len-1];
-					if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
-						console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you\'re not being tracked. Note: The site owner has disabled Google Analytics tracking for your user role.");
-						return;
-					}
-					try {
-						f.hitCallback();
-					} catch (ex) {
 
-					}
-				};
-				__gaTracker.create = function() {
-					return new Tracker();
-				};
-				__gaTracker.getByName = noopnullfn;
-				__gaTracker.getAll = function() {
-					return [];
-				};
-				__gaTracker.remove = noopfn;
-				window['__gaTracker'] = __gaTracker;
-			})();
-		}
-	</script>
-	<!-- / Google Analytics by MonsterInsights -->
-	<script type="text/javascript">
-		window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.cifimad.es\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.7"}};
-		!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
-	</script>
-	<style type="text/css">
-		img.wp-smiley,
-		img.emoji {
-			display: inline !important;
-			border: none !important;
-			box-shadow: none !important;
-			height: 1em !important;
-			width: 1em !important;
-			margin: 0 .07em !important;
-			vertical-align: -0.1em !important;
-			background: none !important;
-			padding: 0 !important;
-		}
-	</style>
-	<link rel='stylesheet' id='font-awesome-css'  href='https://www.cifimad.es/wp-content/plugins/menu-icons/includes/library/icon-picker/css/types/font-awesome.min.css?ver=4.6.1' type='text/css' media='all' />
-	<link rel='stylesheet' id='menu-icons-extra-css'  href='https://www.cifimad.es/wp-content/plugins/menu-icons/css/extra.min.css?ver=0.10.2' type='text/css' media='all' />
-	<link rel='stylesheet' id='contact-form-7-css'  href='https://www.cifimad.es/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.9' type='text/css' media='all' />
-	<link rel='stylesheet' id='mptt-style-css'  href='https://www.cifimad.es/wp-content/plugins/mp-timetable/media/css/style.css?ver=2.1.10' type='text/css' media='all' />
-	<link rel='stylesheet' id='bootstrap-css'  href='https://www.cifimad.es/wp-content/plugins/responsive-table-for-woocommerce/public/css/bootstrap.min.css?ver=4.8.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='woocommerce-layout-css'  href='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=3.2.3' type='text/css' media='all' />
-	<link rel='stylesheet' id='woocommerce-smallscreen-css'  href='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=3.2.3' type='text/css' media='only screen and (max-width: 768px)' />
-	<link rel='stylesheet' id='woocommerce-general-css'  href='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=3.2.3' type='text/css' media='all' />
-	<link rel='stylesheet' id='wpml-legacy-horizontal-list-0-css'  href='https://www.cifimad.es/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-list-horizontal/style.css?ver=1' type='text/css' media='all' />
-	<link rel='stylesheet' id='wpml-menu-item-0-css'  href='https://www.cifimad.es/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/menu-item/style.css?ver=1' type='text/css' media='all' />
-	<link rel='stylesheet' id='wcff-style-css'  href='https://www.cifimad.es/wp-content/plugins/wc-fields-factory/classes/../assets/css/wcff.css?ver=4.8.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='wccpf-font-end-style-css'  href='https://www.cifimad.es/wp-content/plugins/wc-fields-factory/assets/css/wccpf-front-end.css?ver=4.8.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='spectrum-css-css'  href='https://www.cifimad.es/wp-content/plugins/wc-fields-factory/assets/css/spectrum.css?ver=4.8.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='yoast-seo-adminbar-css'  href='https://www.cifimad.es/wp-content/plugins/wordpress-seo/css/dist/adminbar-720.min.css?ver=7.2' type='text/css' media='all' />
-	<link rel='stylesheet' id='thm-style-css'  href='https://www.cifimad.es/wp-content/themes/eventum/style.css?ver=4.8.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='buttons-css'  href='https://www.cifimad.es/wp-includes/css/buttons.min.css?ver=4.8.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='mediaelement-css'  href='https://www.cifimad.es/wp-includes/js/mediaelement/mediaelementplayer.min.css?ver=2.22.0' type='text/css' media='all' />
-	<link rel='stylesheet' id='wp-mediaelement-css'  href='https://www.cifimad.es/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=4.8.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='media-views-css'  href='https://www.cifimad.es/wp-includes/css/media-views.min.css?ver=4.8.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='imgareaselect-css'  href='https://www.cifimad.es/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8' type='text/css' media='all' />
-	<link rel='stylesheet' id='quick-preset-css'  href='https://www.cifimad.es/wp-content/themes/eventum/quick-preset.php?ver=4.8.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='quick-style-css'  href='https://www.cifimad.es/wp-content/themes/eventum/quick-style.php?ver=4.8.7' type='text/css' media='all' />
-	<link rel='stylesheet' id='js_composer_front-css'  href='https://www.cifimad.es/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=5.1.1' type='text/css' media='all' />
-	<link rel='stylesheet' id='redux-google-fonts-themeum_options-css'  href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C300%2C400%2C500%2C700%2C900%2C100italic%2C300italic%2C400italic%2C500italic%2C700italic%2C900italic&#038;ver=1509800736' type='text/css' media='all' />
-	<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
-	<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
-	<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/woocommerce-multilingual/res/js/front-scripts.min.js?ver=4.2.5'></script>
-	<script type='text/javascript'>
-		/* <![CDATA[ */
-		var actions = {"is_lang_switched":"0","is_currency_switched":"0","force_reset":"0","cart_fragment":"wc_fragments_92f0ff2f9c7ff417c6ef2afda7e8f894"};
-		/* ]]> */
-	</script>
-	<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/woocommerce-multilingual/res/js/cart_widget.min.js?ver=4.2.5'></script>
-	<script type='text/javascript'>
-		/* <![CDATA[ */
-		var monsterinsights_frontend = {"js_events_tracking":"true","is_debug_mode":"false","download_extensions":"doc,exe,js,pdf,ppt,tgz,zip,xls","inbound_paths":"","home_url":"https:\/\/www.cifimad.es","track_download_as":"event","internal_label":"int","hash_tracking":"false"};
-		/* ]]> */
-	</script>
-	<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js?ver=7.0.5'></script>
-	<script type='text/javascript'>
-		/* <![CDATA[ */
-		var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/www.cifimad.es\/?wc-ajax=%%endpoint%%","i18n_view_cart":"Ver carrito","cart_url":"https:\/\/www.cifimad.es\/carrito\/","is_cart":"","cart_redirect_after_add":"yes"};
-		/* ]]> */
-	</script>
-	<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.2.3'></script>
-	<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/js_composer/assets/js/vendors/woocommerce-add-to-cart.js?ver=5.1.1'></script>
-	<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/wc-fields-factory/assets/js/spectrum.js?ver=4.8.7'></script>
-	<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/wc-fields-factory/assets/js/wccpf-front-end.js?ver=4.8.7'></script>
-	<script type='text/javascript' src='https://maps.google.com/maps/api/js?key=AIzaSyDh1eLs0rpNzEL9GpVMxJDu5ggCZqEtcbI&#038;ver=4.8.7'></script>
-	<script type='text/javascript'>
-		/* <![CDATA[ */
-		var userSettings = {"url":"\/","uid":"6","time":"1542827129","secure":"1"};
-		/* ]]> */
-	</script>
-	<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/utils.min.js?ver=4.8.7'></script>
-	<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/plupload/plupload.full.min.js?ver=2.1.8'></script>
-	<!--[if lt IE 8]>
-	<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/json2.min.js?ver=2015-05-03'></script>
-	<![endif]-->
-	<link rel='https://api.w.org/' href='https://www.cifimad.es/wp-json/' />
-	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.cifimad.es/xmlrpc.php?rsd" />
-	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.cifimad.es/wp-includes/wlwmanifest.xml" />
-	<noscript><style type="text/css">.mptt-shortcode-wrapper .mptt-shortcode-table:first-of-type{display:table!important}.mptt-shortcode-wrapper .mptt-shortcode-table .mptt-event-container:hover{height:auto!important;min-height:100%!important}body.mprm_ie .mptt-shortcode-wrapper .mptt-event-container{height:auto!important}@media (max-width:767px){.mptt-shortcode-wrapper .mptt-shortcode-table:first-of-type{display:none!important}}</style></noscript><style>.woocommerce div.product .in_stock_color { color: #77a464 }ul.products .in_stock_color { color: #77a464 }.woocommerce div.product .only_s_left_in_stock_color { color: #77a464 }ul.products .only_s_left_in_stock_color { color: #77a464 }.woocommerce div.product .s_in_stock_color { color: #77a464 }ul.products .s_in_stock_color { color: #77a464 }.woocommerce div.product .available_on_backorder_color { color: #77a464 }ul.products .available_on_backorder_color { color: #77a464 }.woocommerce div.product .can_be_backordered_color { color: #77a464 }ul.products .can_be_backordered_color { color: #77a464 }.woocommerce div.product .out_of_stock_color { color: #0883e2 }ul.products .out_of_stock_color { color: #0883e2 }</style><!-- woo-custom-stock-status-color-css -->	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
-	<meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress."/>
-	<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="https://www.cifimad.es/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><style type="text/css" media="print">#wpadminbar { display:none; }</style>
-	<style type="text/css" media="screen">
-		html { margin-top: 32px !important; }
-		* html body { margin-top: 32px !important; }
-		@media screen and ( max-width: 782px ) {
-			html { margin-top: 46px !important; }
-			* html body { margin-top: 46px !important; }
-		}
-	</style>
-	<style type="text/css" title="dynamic-css" class="options-output">body{font-family:Roboto;font-weight:300;font-style:normal;color:#333;font-size:16px;}#main-menu .nav>li>a, #main-menu ul.sub-menu li > a{font-family:Roboto;font-weight:500;font-style:normal;font-size:15px;}h1{font-family:Roboto;font-weight:700;font-style:normal;color:#000;font-size:42px;}h2{font-family:Roboto;font-weight:700;font-style:normal;color:#000;font-size:36px;}h3{font-family:Roboto;font-weight:700;font-style:normal;color:#000;font-size:24px;}h4{font-family:Roboto;font-weight:500;font-style:normal;color:#000;font-size:16px;}h5{font-family:Roboto;font-weight:700;font-style:normal;color:#000;font-size:16px;}footer{padding-top:10px;padding-bottom:10px;}</style><style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1509544525562{margin-top: 0px !important;margin-bottom: 0px !important;padding-top: 0px !important;padding-bottom: 0px !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}</style><noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>
-    <link rel="stylesheet" href="/css/public.css?v1.1"/>
-    <script type='text/javascript' src='/js/validateForm.js?v1.2'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <link rel='stylesheet' id='elementor-post-6281-css'  href='https://www.cifimad.es/wp-content/cache/autoptimize/css/autoptimize_single_37f4effab1d056c655d78ef8f06154ca.css?ver=1665251946' media='all' />
+
+    <link rel='stylesheet' id='elementor-global-css'  href='https://www.cifimad.es/wp-content/cache/autoptimize/css/autoptimize_single_d466049315e03bfe5a798acb942b5684.css?ver=1665251947' media='all' />
+    <link rel='stylesheet' id='elementor-post-10897-css'  href='https://www.cifimad.es/wp-content/cache/autoptimize/css/autoptimize_single_632c10bb203ccc2d8b089944cf555a8d.css?ver=1665251979' media='all' />
+
+    <link rel='stylesheet' id='elementor-post-6302-css'  href='https://www.cifimad.es/wp-content/cache/autoptimize/css/autoptimize_single_c9ab4b8150f0edd0ccad93f8e1cbbd5b.css?ver=1665251948' media='all' />
+    <link rel='stylesheet' id='elementor-post-6502-css'  href='https://www.cifimad.es/wp-content/cache/autoptimize/css/autoptimize_single_7acb16928e289221c3dcbc367b5ac746.css?ver=1665251948' media='all' />
+    <link rel='stylesheet' id='astra-addon-css-css'  href='https://www.cifimad.es/wp-content/cache/autoptimize/css/autoptimize_single_1e7c996a95acecab6ece808ddfd61009.css?ver=3.5.3' media='all' />
+
+
+
+
+    <link rel='stylesheet' id='google-fonts-1-css'  href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7COpen+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CBebas+Neue%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Condensed%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=auto&#038;ver=5.7.7' media='all' />
+
+
+    <link rel='stylesheet' href="/css/public.css?v=1.21"/>
+
+
+    <!--[if IE]>
+    <script src='https://www.cifimad.es/wp-content/themes/astra/assets/js/minified/flexibility.min.js?ver=3.6.2' id='astra-flexibility-js'></script>
+    <script id='astra-flexibility-js-after'>
+        flexibility(document.documentElement);
+    </script>
+    <![endif]-->
+    <script id='monsterinsights-frontend-script-js-extra'>
+        var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[]","home_url":"https:\/\/www.cifimad.es","hash_tracking":"false","ua":"UA-59187728-1"};
+    </script>
+    <script src='https://www.cifimad.es/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend-gtag.min.js?ver=7.17.0' id='monsterinsights-frontend-script-js'></script>
+    <script src='https://www.cifimad.es/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+    <script src='https://www.cifimad.es/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+    <script id='jquery-js-after'>
+
+        jQuery(document).ready(function ($) {
+            $(document).on("cmplzRunAfterAllScripts", cmplz_uafe_fire_initOnReadyComponents);
+            function cmplz_uafe_fire_initOnReadyComponents() {
+                setTimeout(cmplz_uafe_trigger_element, 2000);
+            }
+
+            function cmplz_uafe_trigger_element()
+            {
+
+                window.elementorFrontend.init();
+                // $('.elementor-widget-uael-google-map').each(function () {
+                // 	// window.elementorFrontend.init();
+                // 	elementorFrontend.elementsHandler.runReadyTrigger( $(this) );
+                // });
+            }
+        });
+
+
+
+        jQuery(document).ready(function ($) {
+            $(document).on("cmplzRunAfterAllScripts", cmplz_elementor_fire_initOnReadyComponents);
+            function cmplz_elementor_fire_initOnReadyComponents() {
+                var blockedContentContainers = [];
+                $('[data-cmplz-elementor-settings]').each(function (i, obj) {
+                    if ( $(this).hasClass('cmplz-activated') ) return;
+                    $(this).addClass('cmplz-activated' );
+                    $(this).data('settings', $(this).data('cmplz-elementor-settings'));
+
+                    var blockedContentContainer = $(this);
+                    blockedContentContainer.animate({"background-image": "url('')"}, 400, function () {
+                        //remove the added classes
+                        var cssIndex = blockedContentContainer.data('placeholderClassIndex');
+                        blockedContentContainer.removeClass('cmplz-blocked-content-container');
+                        blockedContentContainer.removeClass('cmplz-placeholder-' + cssIndex);
+                    });
+                    blockedContentContainers.push(blockedContentContainer);
+                });
+
+                for (var key in blockedContentContainers) {
+                    console.log(blockedContentContainers[key]);
+                    if (blockedContentContainers.hasOwnProperty(key) && blockedContentContainers[key] !== undefined ) {
+                        elementorFrontend.elementsHandler.runReadyTrigger( blockedContentContainers[key] );
+                    }
+                }
+            }
+        })
+
+
+    </script>
+    <script src='https://www.cifimad.es/wp-content/plugins/woo-donations/assets/js/script.js?ver=1.0' id='wdgk_donation_script-js'></script>
+    <link rel="https://api.w.org/" href="https://www.cifimad.es/wp-json/" /><link rel="alternate" type="application/json" href="https://www.cifimad.es/wp-json/wp/v2/pages/10897" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.cifimad.es/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.cifimad.es/wp-includes/wlwmanifest.xml" />
+    <meta name="generator" content="WordPress 5.7.7" />
+    <meta name="generator" content="WooCommerce 5.4.4" />
+    <link rel='shortlink' href='https://www.cifimad.es/?p=10897' />
+    <link rel="alternate" type="application/json+oembed" href="https://www.cifimad.es/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.cifimad.es%2Fcosplay%2F" />
+    <link rel="alternate" type="text/xml+oembed" href="https://www.cifimad.es/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.cifimad.es%2Fcosplay%2F&#038;format=xml" />
+    <meta name="cdp-version" content="1.3.0" /><!-- woo-custom-stock-status-color-css -->
+
+    <noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+
+    <link rel="icon" href="https://www.cifimad.es/wp-content/uploads/2021/07/faviconV2.jpg" sizes="32x32" />
+    <link rel="icon" href="https://www.cifimad.es/wp-content/uploads/2021/07/faviconV2.jpg" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://www.cifimad.es/wp-content/uploads/2021/07/faviconV2.jpg" />
+    <meta name="msapplication-TileImage" content="https://www.cifimad.es/wp-content/uploads/2021/07/faviconV2.jpg" />
 </head>
 
+<body data-cmplz=1 itemtype='https://schema.org/WebPage' itemscope='itemscope' class="page-template-default page page-id-10897 theme-astra woocommerce-no-js ehf-header ehf-footer ehf-template-astra ehf-stylesheet-astra group-blog ast-single-post ast-inherit-site-logo-transparent ast-theme-transparent-header ast-hfb-header ast-desktop ast-plain-container ast-no-sidebar astra-3.6.2 elementor-default elementor-kit-6281 elementor-page elementor-page-10897 astra-addon-3.5.3">
+<div
+        class="hfeed site" id="page">
+    <a class="skip-link screen-reader-text" href="#content">Ir al contenido</a>
+    <header id="masthead" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
+        <p class="main-title bhf-hidden" itemprop="headline"><a href="https://www.cifimad.es" title="CifiMad" rel="home">CifiMad</a></p>
+        <div data-elementor-type="wp-post" data-elementor-id="6302" class="elementor elementor-6302">
+            <section class="elementor-section elementor-top-section elementor-element elementor-element-eea5ea5 elementor-section-height-min-height elementor-hidden-tablet elementor-hidden-phone elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="eea5ea5" data-element_type="section">
+                <div class="elementor-background-overlay"></div>
+                <div class="elementor-container elementor-column-gap-wider">
+                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-60c9945" data-id="60c9945" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                            <div class="elementor-element elementor-element-4f94f6a elementor-widget elementor-widget-image" data-id="4f94f6a" data-element_type="widget" data-widget_type="image.default">
+                                <div class="elementor-widget-container">
+                                    <a href="/">
+                                        <img width="400" height="61" src="https://www.cifimad.es/wp-content/uploads/2017/09/logo-cifimad.png" class="attachment-large size-large" alt="" loading="lazy" srcset="https://www.cifimad.es/wp-content/uploads/2017/09/logo-cifimad.png 400w, https://www.cifimad.es/wp-content/uploads/2017/09/logo-cifimad-300x46.png 300w" sizes="(max-width: 400px) 100vw, 400px" />								</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-c30b35d" data-id="c30b35d" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                            <div class="elementor-element elementor-element-de5cc13 uael-nav-menu__align-right uael-submenu-open-hover uael-submenu-icon-arrow uael-submenu-animation-none uael-link-redirect-child uael-nav-menu__breakpoint-tablet uael-nav-menu-toggle-label-no elementor-widget elementor-widget-uael-nav-menu" data-id="de5cc13" data-element_type="widget" data-widget_type="uael-nav-menu.default">
+                                <div class="elementor-widget-container">
+                                    <div class="uael-nav-menu uael-layout-horizontal uael-nav-menu-layout uael-pointer__none" data-layout="horizontal">
+                                        <div class="uael-nav-menu__toggle elementor-clickable">
+                                            <div class="uael-nav-menu-icon">
+                                                <i aria-hidden="true" tabindex="0" class="fas fa-align-justify"></i>					</div>
+                                        </div>
+                                        <nav class="uael-nav-menu__layout-horizontal uael-nav-menu__submenu-arrow" data-toggle-icon="&lt;i aria-hidden=&quot;true&quot; tabindex=&quot;0&quot; class=&quot;fas fa-align-justify&quot;&gt;&lt;/i&gt;" data-close-icon="&lt;i aria-hidden=&quot;true&quot; tabindex=&quot;0&quot; class=&quot;far fa-window-close&quot;&gt;&lt;/i&gt;" data-full-width="yes"><ul id="menu-1-de5cc13" class="uael-nav-menu"><li id="menu-item-6531" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home parent uael-creative-menu"><a href="https://www.cifimad.es/" class = "uael-menu-item">Inicio</a></li>
+                                                <li id="menu-item-10836" class="menu-item menu-item-type-post_type menu-item-object-page parent uael-creative-menu"><a href="https://www.cifimad.es/programa/" class = "uael-menu-item">Programa</a></li>
+                                                <li id="menu-item-1919" class="menu-item menu-item-type-post_type menu-item-object-page parent uael-creative-menu"><a href="https://www.cifimad.es/invitados/" class = "uael-menu-item">Invitados</a></li>
+                                                <li id="menu-item-10907" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-10897 current_page_item parent uael-creative-menu"><a href="https://www.cifimad.es/cosplay/" class = "uael-menu-item">Cosplay</a></li>
+                                                <li id="menu-item-1330" class="menu-item menu-item-type-post_type menu-item-object-page parent uael-creative-menu"><a href="https://www.cifimad.es/como-llegar/" class = "uael-menu-item">Sede</a></li>
+                                                <li id="menu-item-1534" class="menu-item menu-item-type-post_type menu-item-object-page parent uael-creative-menu"><a href="https://www.cifimad.es/historia/" class = "uael-menu-item">Historia</a></li>
+                                                <li id="menu-item-1776" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children parent uael-has-submenu uael-creative-menu"><div class="uael-has-submenu-container"><a href="https://www.cifimad.es/tienda/" class = "uael-menu-item">Tienda<span class='uael-menu-toggle sub-arrow uael-menu-child-0'><i class='fa'></i></span></a></div>
+                                                    <ul class="sub-menu">
+                                                        <li id="menu-item-1595" class="menu-item menu-item-type-post_type menu-item-object-page uael-creative-menu"><a href="https://www.cifimad.es/productos-tienda/mi-cuenta/" class = "uael-sub-menu-item">Mi cuenta</a></li>
+                                                        <li id="menu-item-1605" class="menu-item menu-item-type-post_type menu-item-object-page uael-creative-menu"><a href="https://www.cifimad.es/carrito/" class = "uael-sub-menu-item">Cesta</a></li>
+                                                        <li id="menu-item-1395" class="menu-item menu-item-type-post_type menu-item-object-page uael-creative-menu"><a href="https://www.cifimad.es/informacion-precios/" class = "uael-sub-menu-item">Información (FAQ)</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul></nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="elementor-section elementor-top-section elementor-element elementor-element-7c104c2 elementor-section-content-middle elementor-hidden-desktop elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7c104c2" data-element_type="section">
+                <div class="elementor-background-overlay"></div>
+                <div class="elementor-container elementor-column-gap-wider">
+                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-a0b6cc9" data-id="a0b6cc9" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                            <div class="elementor-element elementor-element-a0e9e2c uael-menu-item-flex-start uael-menu-item-space-between uael-submenu-icon-arrow uael-link-redirect-child uael-nav-menu-toggle-label-no elementor-widget elementor-widget-uael-nav-menu" data-id="a0e9e2c" data-element_type="widget" data-widget_type="uael-nav-menu.default">
+                                <div class="elementor-widget-container">
+                                    <div class="uael-nav-menu__toggle elementor-clickable uael-flyout-trigger" tabindex="0">
+                                        <div class="uael-nav-menu-icon">
+                                            <i aria-hidden="true" tabindex="0" class="fas fa-align-justify"></i>					</div>
+                                    </div>
+                                    <div class="uael-flyout-wrapper" >
+                                        <div class="uael-flyout-overlay elementor-clickable"></div>
+                                        <div class="uael-flyout-container">
+                                            <div id="uael-flyout-content-id-a0e9e2c" class="uael-side uael-flyout-left uael-flyout-open" data-layout="left" data-flyout-type="normal">
+                                                <div class="uael-flyout-content push">
+                                                    <nav ><ul id="menu-1-a0e9e2c" class="uael-nav-menu"><li id="menu-item-6531" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home parent uael-creative-menu"><a href="https://www.cifimad.es/" class = "uael-menu-item">Inicio</a></li>
+                                                            <li id="menu-item-10836" class="menu-item menu-item-type-post_type menu-item-object-page parent uael-creative-menu"><a href="https://www.cifimad.es/programa/" class = "uael-menu-item">Programa</a></li>
+                                                            <li id="menu-item-1919" class="menu-item menu-item-type-post_type menu-item-object-page parent uael-creative-menu"><a href="https://www.cifimad.es/invitados/" class = "uael-menu-item">Invitados</a></li>
+                                                            <li id="menu-item-10907" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-10897 current_page_item parent uael-creative-menu"><a href="https://www.cifimad.es/cosplay/" class = "uael-menu-item">Cosplay</a></li>
+                                                            <li id="menu-item-1330" class="menu-item menu-item-type-post_type menu-item-object-page parent uael-creative-menu"><a href="https://www.cifimad.es/como-llegar/" class = "uael-menu-item">Sede</a></li>
+                                                            <li id="menu-item-1534" class="menu-item menu-item-type-post_type menu-item-object-page parent uael-creative-menu"><a href="https://www.cifimad.es/historia/" class = "uael-menu-item">Historia</a></li>
+                                                            <li id="menu-item-1776" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children parent uael-has-submenu uael-creative-menu"><div class="uael-has-submenu-container"><a href="https://www.cifimad.es/tienda/" class = "uael-menu-item">Tienda<span class='uael-menu-toggle sub-arrow uael-menu-child-0'><i class='fa'></i></span></a></div>
+                                                                <ul class="sub-menu">
+                                                                    <li id="menu-item-1595" class="menu-item menu-item-type-post_type menu-item-object-page uael-creative-menu"><a href="https://www.cifimad.es/productos-tienda/mi-cuenta/" class = "uael-sub-menu-item">Mi cuenta</a></li>
+                                                                    <li id="menu-item-1605" class="menu-item menu-item-type-post_type menu-item-object-page uael-creative-menu"><a href="https://www.cifimad.es/carrito/" class = "uael-sub-menu-item">Cesta</a></li>
+                                                                    <li id="menu-item-1395" class="menu-item menu-item-type-post_type menu-item-object-page uael-creative-menu"><a href="https://www.cifimad.es/informacion-precios/" class = "uael-sub-menu-item">Información (FAQ)</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul></nav>
+                                                    <div class="elementor-clickable uael-flyout-close" tabindex="0">
+                                                        <i aria-hidden="true" tabindex="0" class="far fa-window-close"></i>						</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-09130a6" data-id="09130a6" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                            <div class="elementor-element elementor-element-8dfbe7f elementor-widget elementor-widget-image" data-id="8dfbe7f" data-element_type="widget" data-widget_type="image.default">
+                                <div class="elementor-widget-container">
+                                    <a href="/">
+                                        <img width="400" height="61" src="https://www.cifimad.es/wp-content/uploads/2017/09/logo-cifimad.png" class="attachment-large size-large" alt="" loading="lazy" srcset="https://www.cifimad.es/wp-content/uploads/2017/09/logo-cifimad.png 400w, https://www.cifimad.es/wp-content/uploads/2017/09/logo-cifimad-300x46.png 300w" sizes="(max-width: 400px) 100vw, 400px" />								</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="elementor-section elementor-top-section elementor-element elementor-element-f37438b elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f37438b" data-element_type="section" data-settings="{&quot;shape_divider_top&quot;:&quot;mountains&quot;}">
+                <div class="elementor-shape elementor-shape-top" data-negative="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                        <path class="elementor-shape-fill" opacity="0.33" d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z"/>
+                        <path class="elementor-shape-fill" opacity="0.66" d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z"/>
+                        <path class="elementor-shape-fill" d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z"/>
+                    </svg>		</div>
+                <div class="elementor-container elementor-column-gap-default">
+                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-93f5993" data-id="93f5993" data-element_type="column">
+                        <div class="elementor-widget-wrap">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </header>
 
-<body class="page-template page-template-homepage page-template-homepage-php page page-id-1661 logged-in admin-bar no-customize-support fullwidth-bg wpb-js-composer js-comp-ver-5.1.1 vc_responsive ">
-<div id="page" class="hfeed site fullwidth">
-	<header id="masthead" class="site-header header solid">
-		<div id="header-container">
-			<div id="navigation" class="container">
-				<div class="row">
-					<div class="col-sm-3">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<div class="logo-wrapper">
-								<a class="navbar-brand" href="https://www.cifimad.es">
-									<img class="enter-logo img-responsive" src="https://www.cifimad.es/wp-content/uploads/2017/09/logo-cifimad.png" alt="" title="">
-								</a>
-							</div>
-						</div>
-					</div>
+    <div id="content" class="site-content">
 
-					<div class="col-sm-9 woo-menu-item-add">
-                                                                <span id="themeum-woo-cart" class="woo-cart" style="display:none;">
-                                                                                        <span class="woo-cart-items">
-                                                <span class="cart-has-products">0</span>
-                                            </span>
-                                            <i class="fa fa-shopping-cart"></i>
+    <?= $content ?>
 
-                                        <div class="widget woocommerce widget_shopping_cart"><h2 class="widgettitle"> </h2><div class="widget_shopping_cart_content"></div></div>                                    </span>
+    </div>
 
+    <footer itemtype="https://schema.org/WPFooter" itemscope="itemscope" id="colophon" role="contentinfo">
+        <div class='footer-width-fixer'>		<div data-elementor-type="wp-post" data-elementor-id="6502" class="elementor elementor-6502">
+                <section class="elementor-section elementor-top-section elementor-element elementor-element-ab87f7a elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="ab87f7a" data-element_type="section" data-settings="{&quot;shape_divider_bottom&quot;:&quot;mountains&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+                    <div class="elementor-background-overlay"></div>
+                    <div class="elementor-shape elementor-shape-bottom" data-negative="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                            <path class="elementor-shape-fill" opacity="0.33" d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z"/>
+                            <path class="elementor-shape-fill" opacity="0.66" d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z"/>
+                            <path class="elementor-shape-fill" d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z"/>
+                        </svg>		</div>
+                    <div class="elementor-container elementor-column-gap-no">
+                        <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-548a97a" data-id="548a97a" data-element_type="column">
+                            <div class="elementor-widget-wrap elementor-element-populated">
+                                <div class="elementor-element elementor-element-b8d4e4c elementor-shape-circle elementor-grid-0 e-grid-align-center elementor-widget elementor-widget-social-icons" data-id="b8d4e4c" data-element_type="widget" data-widget_type="social-icons.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-social-icons-wrapper elementor-grid">
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-a71251f" href="https://www.instagram.com/cifimad/" target="_blank">
+						<span class="elementor-screen-only">Instagram</span>
+						<i class="fab fa-instagram"></i>					</a>
+				</span>
+                                            <span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-facebook-f elementor-repeater-item-ce36243" href="https://www.facebook.com/cifimad" target="_blank">
+						<span class="elementor-screen-only">Facebook-f</span>
+						<i class="fab fa-facebook-f"></i>					</a>
+				</span>
+                                            <span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-repeater-item-e89c573" href="https://twitter.com/cifimad" target="_blank">
+						<span class="elementor-screen-only">Twitter</span>
+						<i class="fab fa-twitter"></i>					</a>
+				</span>
+                                            <span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-f35705a" href="https://www.youtube.com/channel/UC3NZdz0xlDBo03Ye7dntTrQ" target="_blank">
+						<span class="elementor-screen-only">Youtube</span>
+						<i class="fab fa-youtube"></i>					</a>
+				</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="elementor-section elementor-top-section elementor-element elementor-element-250e8e4 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="250e8e4" data-element_type="section">
+                    <div class="elementor-background-overlay"></div>
+                    <div class="elementor-container elementor-column-gap-no">
+                        <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-c676770" data-id="c676770" data-element_type="column">
+                            <div class="elementor-widget-wrap elementor-element-populated">
+                                <div class="elementor-element elementor-element-9126e6e elementor-widget elementor-widget-text-editor" data-id="9126e6e" data-element_type="widget" data-widget_type="text-editor.default">
+                                    <div class="elementor-widget-container">
+                                        <p><strong>CifiMad</strong>, convención de ciencia ficción, fantasía y fándom. Todos los derechos reservados.</p>						</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-b0d967c" data-id="b0d967c" data-element_type="column">
+                            <div class="elementor-widget-wrap elementor-element-populated">
+                                <div class="elementor-element elementor-element-6ffeb09 elementor-widget elementor-widget-text-editor" data-id="6ffeb09" data-element_type="widget" data-widget_type="text-editor.default">
+                                    <div class="elementor-widget-container">
+                                        Contáctanos <a style="color:#fff;" href="mailto:info@cifimad.es"><strong>info@cifimad.es</strong></a>						</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="elementor-section elementor-top-section elementor-element elementor-element-022142b elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="022142b" data-element_type="section">
+                    <div class="elementor-background-overlay"></div>
+                    <div class="elementor-container elementor-column-gap-no">
+                        <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-e90fce3" data-id="e90fce3" data-element_type="column">
+                            <div class="elementor-widget-wrap elementor-element-populated">
+                                <div class="elementor-element elementor-element-083ec45 elementor-widget elementor-widget-text-editor" data-id="083ec45" data-element_type="widget" data-widget_type="text-editor.default">
+                                    <div class="elementor-widget-container">
+                                        <p>Web y diseño de Angel Lorente Graciano</p>						</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>		</footer>
+</div><!-- #page -->
+<script>
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    jQuery(".wdgk_donation").on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            jQuery( ".wdgk_add_donation").trigger( "click" );
+        }
+    });
+    jQuery('.wdgk_add_donation').click(function(){
+        var note= "";
+        var price= jQuery('.wdgk_donation').val();
+        if(jQuery('.donation_note').val())
+        {
+            var note= jQuery('.donation_note').val();
+        }
+        var ajaxurl= jQuery('.wdgk_ajax_url').val();
+        var product_id=jQuery(this).attr('data-product-id');
+        var redirect_url=jQuery(this).attr('data-product-url');
+        if(price=="")
+        {
+            jQuery(".wdgk_error_front").text("Please enter value!!");
+            return false;
+        }
+        else{
+            var pattern = new RegExp(/^[0-9.*]/);
+            if (!pattern.test(price) || price < 0.01) {
+                jQuery(".wdgk_error_front").text("Please enter valid value!!");
+                return false;
+            }
+        }
+        if(!jQuery.isNumeric(price))
+        {
+            jQuery(".wdgk_error_front").text("Please enter numeric value !!");
+            return false;
+        }
+        jQuery('.wdgk_loader').removeClass("wdgk_loader_img");
+        setCookie('product_price',price,1);
+        setCookie('donation_note',note,2);
 
-						<div id="main-menu" class="hidden-xs">
+        jQuery.ajax({
+            url: ajaxurl,
+            data: {
+                action: 'wdgk_donation_form',
+                product_id: product_id,
+                price: price,
+                note:note,
+                redirect_url: redirect_url
+            },
+            type: 'POST',
+            success: function(data){
+                var redirect=jQuery.parseJSON(data);
+                if(redirect.error == "true"){
+                    jQuery(".wdgk_error_front").text("Please enter valid value!!");
+                    jQuery('.wdgk_loader').addClass("wdgk_loader_img");
+                    return false;
+                }else{
 
-							<ul id="menu-menu-cifimad" class="nav"><li class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-home has-menu-child"><a href="https://www.cifimad.es/">Inicio</a></li>
-								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/actividades-horarios/">Programa</a></li>
-								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/invitados-estrella/">Invitados</a></li>
-								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/actividades-2021/concurso-de-cosplay-4/">Cosplay</a></li>
-								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/como-llegar/">Sede</a></li>
-								<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/historia/">Historia</a></li>
-								<li class=" menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1661 current_page_item menu-item-has-children active has-menu-child"><a href="https://www.cifimad.es/tienda-entradas/">Tienda</a>
-									<ul role="menu" class="sub-menu">
-										<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/productos-tienda/mi-cuenta/">Mi cuenta</a></li>
-										<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/carrito/">Cesta</a></li>
-										<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/informacion-precios/">Información (FAQ)</a></li>
-										<li class=" menu-item menu-item-type-post_type menu-item-object-page has-menu-child"><a href="https://www.cifimad.es/contacto/">Contacto</a></li>
-									</ul>
-								</li>
-								<li class="menu-item wpml-ls-slot-46 wpml-ls-item wpml-ls-item-en wpml-ls-menu-item wpml-ls-first-item wpml-ls-last-item has-menu-child"><a href="https://www.cifimad.es/en/shop-tickets/"><img class="wpml-ls-flag" src="https://www.cifimad.es/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt="en" title="English"></a></li>
-								<li><a class="socialicons" target="blank" href="https://www.facebook.com/cifimad"><span></span><i class="_mi _after fa fa-facebook" aria-hidden="true"></i></a></li><li><a class="socialicons" target="blank" href="https://twitter.com/cifimad"><span></span><i class="_mi _after fa fa-twitter" aria-hidden="true"></i></a></li><li><a class="socialicons" target="blank" href="https://www.youtube.com/channel/UC3NZdz0xlDBo03Ye7dntTrQ"><span></span><i class="_mi _after fa fa-youtube" aria-hidden="true"></i></a></li></ul>
-						</div><!--/#main-menu-->
-					</div>
+                    document.location.href=redirect.url;
+                }
 
+            }
 
-
-					<div id="mobile-menu" class="visible-xs">
-						<div class="collapse navbar-collapse">
-							<ul id="menu-menu-cifimad-1" class="nav navbar-nav"><li id="menu-item-1187" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1187"><a title="Inicio" href="https://www.cifimad.es/">Inicio</a></li>
-								<li id="menu-item-1356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1356"><a title="Programa" href="https://www.cifimad.es/actividades-horarios/">Programa</a></li>
-								<li id="menu-item-1919" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1919"><a title="Invitados" href="https://www.cifimad.es/invitados-estrella/">Invitados</a></li>
-								<li id="menu-item-1330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1330"><a title="Cosplay" href="https://www.cifimad.es/actividades-2020/concurso-de-cosplay-3/">Cosplay</a></li>
-								<li id="menu-item-1330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1330"><a title="Sede" href="https://www.cifimad.es/como-llegar/">Sede</a></li>
-								<li id="menu-item-1534" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1534"><a title="Historia" href="https://www.cifimad.es/historia/">Historia</a></li>
-								<li id="menu-item-1776" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1661 current_page_item menu-item-has-children menu-item-1776 active"><a title="Tienda" href="https://www.cifimad.es/tienda-entradas/">Tienda</a>
-									<span class="menu-toggler collapsed" data-toggle="collapse" data-target=".collapse-1776">
-                <i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i>
-                </span>
-									<ul role="menu" class="collapse collapse-1776 ">
-										<li id="menu-item-1595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1595"><a title="Mi cuenta" href="https://www.cifimad.es/productos-tienda/mi-cuenta/">Mi cuenta</a></li>
-										<li id="menu-item-1605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1605"><a title="Cesta" href="https://www.cifimad.es/carrito/">Cesta</a></li>
-										<li id="menu-item-1395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1395"><a title="Información (FAQ)" href="https://www.cifimad.es/informacion-precios/">Información (FAQ)</a></li>
-										<li id="menu-item-1764" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1764"><a title="Contacto" href="https://www.cifimad.es/contacto/">Contacto</a></li>
-									</ul>
-								</li>
-								<li id="menu-item-wpml-ls-46-en" class="menu-item wpml-ls-slot-46 wpml-ls-item wpml-ls-item-en wpml-ls-menu-item wpml-ls-first-item wpml-ls-last-item menu-item-wpml-ls-46-en"><a title="&lt;img class=&quot;wpml-ls-flag&quot; src=&quot;https://www.cifimad.es/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png&quot; alt=&quot;en&quot; title=&quot;English&quot;&gt;" href="https://www.cifimad.es/en/shop-tickets/"><img class="wpml-ls-flag" src="https://www.cifimad.es/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt="en" title="English"></a></li>
-								<li><a class="socialicons" target="blank" href="https://www.facebook.com/cifimad"><span></span><i class="_mi _after fa fa-facebook" aria-hidden="true"></i></a></li><li><a class="socialicons" target="blank" href="https://twitter.com/cifimad"><span></span><i class="_mi _after fa fa-twitter" aria-hidden="true"></i></a></li><li><a class="socialicons" target="blank" href="https://www.youtube.com/channel/UC3NZdz0xlDBo03Ye7dntTrQ"><span></span><i class="_mi _after fa fa-youtube" aria-hidden="true"></i></a></li></ul>                            </div>
-					</div><!--/.#mobile-menu-->
-				</div><!--/.row-->
-			</div><!--/.container-->
-		</div>
-
-	</header><!--/#header-->
-
-
-	<section id="main" class="clearfix">
-		<div class="container">
-			<div id="content" class="site-content" role="main">
-
-				<?= $content ?>
-
-			</div> <!--/#content-->
-		</div> <!--/container-->
-	</section> <!--/#main-->
-
-	<!-- start footer -->
-	<footer id="footer" class="footer-wrap">
-		<div class="footer-wrap-inner">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<a class="footer-logo" href="https://www.cifimad.es">
-							<img class="eventum-logo" src="" alt="" title="">
-						</a>
-
-
-						<span class="copyright">
-                                <div style="padding-top: 10px;"><a href="http://www.angel-lorente.com"><img class="alignnone wp-image-1676" style="width: auto; margin: 8px;" src="https://www.cifimad.es/wp-content/uploads/2017/10/angel-lorente-1.png" alt="" width="242" height="54" /></a></div>
-<div>Web diseñada y creada por <a style="color: #fff;" href="http://www.angel-lorente.com"><strong>Angel Lorente Graciano</strong></a></div>                            </span>
-
-
-						<ul class="social-icons">
-						</ul>
-
-					</div> <!-- end row -->
-				</div> <!-- end row -->
-			</div> <!-- end container -->
-		</div> <!-- end footer-wrap-inner -->
-	</footer>
-</div> <!-- #page -->
-
-
-
-
-<!--[if lte IE 8]>
-<style>
-	.attachment:focus {
-		outline: #1e8cbe solid;
-	}
-	.selected.attachment {
-		outline: #1e8cbe solid;
-	}
-</style>
-<![endif]-->
-<script type="text/html" id="tmpl-media-frame">
-	<div class="media-frame-menu"></div>
-	<div class="media-frame-title"></div>
-	<div class="media-frame-router"></div>
-	<div class="media-frame-content"></div>
-	<div class="media-frame-toolbar"></div>
-	<div class="media-frame-uploader"></div>
+        });
+    });
 </script>
 
-<script type="text/html" id="tmpl-media-modal">
-	<div class="media-modal wp-core-ui">
-		<button type="button" class="media-modal-close"><span class="media-modal-icon"><span class="screen-reader-text">Cerrar el panel de medios</span></span></button>
-		<div class="media-modal-content"></div>
-	</div>
-	<div class="media-modal-backdrop"></div>
+
+<script type="text/javascript">
+    (function () {
+        var c = document.body.className;
+        c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+        document.body.className = c;
+    })();
 </script>
-
-<script type="text/html" id="tmpl-uploader-window">
-	<div class="uploader-window-content">
-		<h1>Arrastra archivos para subirlos</h1>
-	</div>
+<script id='astra-theme-js-js-extra'>
+    var astra = {"break_point":"921","isRtl":"","is_product_taxonomy":"","edit_post_url":"https:\/\/www.cifimad.es\/wp-admin\/post.php?post={{id}}&action=edit","ajax_url":"https:\/\/www.cifimad.es\/wp-admin\/admin-ajax.php","shop_infinite_count":"2","shop_infinite_total":"0","shop_pagination":"number","shop_infinite_scroll_event":"scroll","shop_infinite_nonce":"3a5df04141","shop_no_more_post_message":"No hay m\u00e1s productos para mostrar.","checkout_prev_text":"Volver a mis detalles","checkout_next_text":"Proceder al pago","show_comments":"Mostrar comentarios","shop_quick_view_enable":"disabled","shop_quick_view_stick_cart":"","shop_quick_view_auto_height":"1","single_product_ajax_add_to_cart":"","is_cart":"","is_single_product":"","view_cart":"Ver carrito","cart_url":"https:\/\/www.cifimad.es\/carrito\/"};
 </script>
-
-<script type="text/html" id="tmpl-uploader-editor">
-	<div class="uploader-editor-content">
-		<div class="uploader-editor-title">Arrastra archivos para subirlos</div>
-	</div>
+<script src='https://www.cifimad.es/wp-content/themes/astra/assets/js/minified/frontend.min.js?ver=3.6.2' id='astra-theme-js-js'></script>
+<script src='https://www.cifimad.es/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=7.4.4' id='wp-polyfill-js'></script>
+<script id='wp-polyfill-js-after'>
+    ( 'fetch' in window ) || document.write( '<script src="https://www.cifimad.es/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://www.cifimad.es/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?ver=3.42.0"></scr' + 'ipt>' );( window.DOMRect ) || document.write( '<script src="https://www.cifimad.es/wp-includes/js/dist/vendor/wp-polyfill-dom-rect.min.js?ver=3.42.0"></scr' + 'ipt>' );( window.URL && window.URL.prototype && window.URLSearchParams ) || document.write( '<script src="https://www.cifimad.es/wp-includes/js/dist/vendor/wp-polyfill-url.min.js?ver=3.6.4"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://www.cifimad.es/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://www.cifimad.es/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?ver=2.0.2"></scr' + 'ipt>' );( 'objectFit' in document.documentElement.style ) || document.write( '<script src="https://www.cifimad.es/wp-includes/js/dist/vendor/wp-polyfill-object-fit.min.js?ver=2.3.4"></scr' + 'ipt>' );
 </script>
-
-<script type="text/html" id="tmpl-uploader-inline">
-	<# var messageClass = data.message ? 'has-upload-message' : 'no-upload-message'; #>
-		<# if ( data.canClose ) { #>
-			<button class="close dashicons dashicons-no"><span class="screen-reader-text">Cerrar cargador</span></button>
-			<# } #>
-				<div class="uploader-inline-content {{ messageClass }}">
-					<# if ( data.message ) { #>
-						<h2 class="upload-message">{{ data.message }}</h2>
-						<# } #>
-							<div class="upload-ui">
-								<h2 class="upload-instructions drop-instructions">Arrastra archivos a cualquier lugar para subirlos</h2>
-								<p class="upload-instructions drop-instructions">o</p>
-								<button type="button" class="browser button button-hero">Selecciona archivos</button>
-							</div>
-
-							<div class="upload-inline-status"></div>
-
-							<div class="post-upload-ui">
-
-								<p class="max-upload-size">Tamaño máximo de archivo: 32 MB.</p>
-
-								<# if ( data.suggestedWidth && data.suggestedHeight ) { #>
-									<p class="suggested-dimensions">
-										Dimensiones de imagen sugeridas: {{data.suggestedWidth}} por {{data.suggestedHeight}} píxeles.					</p>
-									<# } #>
-
-							</div>
-				</div>
+<script id='contact-form-7-js-extra'>
+    var wpcf7 = {"api":{"root":"https:\/\/www.cifimad.es\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
 </script>
-
-<script type="text/html" id="tmpl-media-library-view-switcher">
-	<a href="/tienda-entradas/?mode=list" class="view-list">
-		<span class="screen-reader-text">Vista de lista</span>
-	</a>
-	<a href="/tienda-entradas/?mode=grid" class="view-grid current">
-		<span class="screen-reader-text">Vista de cuadrícula</span>
-	</a>
+<script src='https://www.cifimad.es/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.4.1' id='contact-form-7-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/responsive-table-for-woocommerce/public/js/bootstrap.min.js?ver=5.7.7' id='bootstrap-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70' id='jquery-blockui-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4' id='js-cookie-js'></script>
+<script id='woocommerce-js-extra'>
+    var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
 </script>
-
-<script type="text/html" id="tmpl-uploader-status">
-	<h2>Subiendo</h2>
-	<button type="button" class="button-link upload-dismiss-errors"><span class="screen-reader-text">Descartar errores</span></button>
-
-	<div class="media-progress-bar"><div></div></div>
-	<div class="upload-details">
-			<span class="upload-count">
-				<span class="upload-index"></span> / <span class="upload-total"></span>
-			</span>
-		<span class="upload-detail-separator">&ndash;</span>
-		<span class="upload-filename"></span>
-	</div>
-	<div class="upload-errors"></div>
+<script src='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=5.4.4' id='woocommerce-js'></script>
+<script id='wc-cart-fragments-js-extra'>
+    var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_b671f030b45f46f8897154931d808d75","fragment_name":"wc_fragments_b671f030b45f46f8897154931d808d75","request_timeout":"5000"};
 </script>
-
-<script type="text/html" id="tmpl-uploader-status-error">
-	<span class="upload-error-filename">{{{ data.filename }}}</span>
-	<span class="upload-error-message">{{ data.message }}</span>
+<script src='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=5.4.4' id='wc-cart-fragments-js'></script>
+<script src='https://www.cifimad.es/wp-includes/js/imagesloaded.min.js?ver=4.1.4' id='imagesloaded-js'></script>
+<script id='astra-addon-js-js-extra'>
+    var astraAddon = {"sticky_active":"","svgIconClose":"<span class=\"ast-icon icon-close\"><svg viewBox=\"0 0 512 512\" aria-hidden=\"true\" role=\"img\" version=\"1.1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" width=\"18px\" height=\"18px\">\n                                <path d=\"M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z\" \/>\n                            <\/svg><\/span>","product_plus_minus_text":{"plus_qty":"Plus Quantity","minus_qty":"Minus Quantity"},"is_header_builder_active":"1"};
 </script>
-
-<script type="text/html" id="tmpl-edit-attachment-frame">
-	<div class="edit-media-header">
-		<button class="left dashicons <# if ( ! data.hasPrevious ) { #> disabled <# } #>"><span class="screen-reader-text">Editar el medio anterior</span></button>
-		<button class="right dashicons <# if ( ! data.hasNext ) { #> disabled <# } #>"><span class="screen-reader-text">Editar el siguiente medio</span></button>
-	</div>
-	<div class="media-frame-title"></div>
-	<div class="media-frame-content"></div>
+<script src='https://www.cifimad.es/wp-content/uploads/astra-addon/astra-addon-62b9fbbe078602-13348960.js?ver=3.5.3' id='astra-addon-js-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/astra-addon/addons/woocommerce/assets/js/minified/single-product-ajax-cart.min.js?ver=3.5.3' id='astra-single-product-ajax-cart-js'></script>
+<script id='wpgdprc.js-js-extra'>
+    var wpgdprcData = {"ajaxURL":"https:\/\/www.cifimad.es\/wp-admin\/admin-ajax.php","ajaxSecurity":"4beaa7d7d0","isMultisite":"","path":"\/","blogId":""};
 </script>
-
-<script type="text/html" id="tmpl-attachment-details-two-column">
-	<div class="attachment-media-view {{ data.orientation }}">
-		<div class="thumbnail thumbnail-{{ data.type }}">
-			<# if ( data.uploading ) { #>
-				<div class="media-progress-bar"><div></div></div>
-				<# } else if ( data.sizes && data.sizes.large ) { #>
-					<img class="details-image" src="{{ data.sizes.large.url }}" draggable="false" alt="" />
-					<# } else if ( data.sizes && data.sizes.full ) { #>
-						<img class="details-image" src="{{ data.sizes.full.url }}" draggable="false" alt="" />
-						<# } else if ( -1 === jQuery.inArray( data.type, [ 'audio', 'video' ] ) ) { #>
-							<img class="details-image icon" src="{{ data.icon }}" draggable="false" alt="" />
-							<# } #>
-
-								<# if ( 'audio' === data.type ) { #>
-									<div class="wp-media-wrapper">
-										<audio style="visibility: hidden" controls class="wp-audio-shortcode" width="100%" preload="none">
-											<source type="{{ data.mime }}" src="{{ data.url }}"/>
-										</audio>
-									</div>
-									<# } else if ( 'video' === data.type ) {
-										var w_rule = '';
-										if ( data.width ) {
-										w_rule = 'width: ' + data.width + 'px;';
-										} else if ( wp.media.view.settings.contentWidth ) {
-										w_rule = 'width: ' + wp.media.view.settings.contentWidth + 'px;';
-										}
-										#>
-										<div style="{{ w_rule }}" class="wp-media-wrapper wp-video">
-											<video controls="controls" class="wp-video-shortcode" preload="metadata"
-											<# if ( data.width ) { #>width="{{ data.width }}"<# } #>
-													<# if ( data.height ) { #>height="{{ data.height }}"<# } #>
-															<# if ( data.image && data.image.src !== data.icon ) { #>poster="{{ data.image.src }}"<# } #>>
-																	<source type="{{ data.mime }}" src="{{ data.url }}"/>
-																	</video>
-										</div>
-										<# } #>
-
-											<div class="attachment-actions">
-												<# if ( 'image' === data.type && ! data.uploading && data.sizes && data.can.save ) { #>
-													<button type="button" class="button edit-attachment">Editar imagen</button>
-													<# } else if ( 'pdf' === data.subtype && data.sizes ) { #>
-														Vista previa del documento					<# } #>
-											</div>
-		</div>
-	</div>
-	<div class="attachment-info">
-			<span class="settings-save-status">
-				<span class="spinner"></span>
-				<span class="saved">Guardado.</span>
-			</span>
-		<div class="details">
-			<div class="filename"><strong>Nombre de archivo:</strong> {{ data.filename }}</div>
-			<div class="filename"><strong>Tipo de archivo:</strong> {{ data.mime }}</div>
-			<div class="uploaded"><strong>Subido el:</strong> {{ data.dateFormatted }}</div>
-
-			<div class="file-size"><strong>Tamaño de archivo:</strong> {{ data.filesizeHumanReadable }}</div>
-			<# if ( 'image' === data.type && ! data.uploading ) { #>
-				<# if ( data.width && data.height ) { #>
-					<div class="dimensions"><strong>Dimensiones:</strong> {{ data.width }} &times; {{ data.height }}</div>
-					<# } #>
-						<# } #>
-
-							<# if ( data.fileLength ) { #>
-								<div class="file-length"><strong>Longitud:</strong> {{ data.fileLength }}</div>
-								<# } #>
-
-									<# if ( 'audio' === data.type && data.meta.bitrate ) { #>
-										<div class="bitrate">
-											<strong>Bitrate:</strong> {{ Math.round( data.meta.bitrate / 1000 ) }}kb/s
-											<# if ( data.meta.bitrate_mode ) { #>
-												{{ ' ' + data.meta.bitrate_mode.toUpperCase() }}
-												<# } #>
-										</div>
-										<# } #>
-
-											<div class="compat-meta">
-												<# if ( data.compat && data.compat.meta ) { #>
-													{{{ data.compat.meta }}}
-													<# } #>
-											</div>
-		</div>
-
-		<div class="settings">
-			<label class="setting" data-setting="url">
-				<span class="name">URL</span>
-				<input type="text" value="{{ data.url }}" readonly />
-			</label>
-			<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
-				<label class="setting" data-setting="title">
-					<span class="name">Título</span>
-					<input type="text" value="{{ data.title }}" {{ maybeReadOnly }} />
-				</label>
-				<# if ( 'audio' === data.type ) { #>
-					<label class="setting" data-setting="artist">
-						<span class="name">Artista</span>
-						<input type="text" value="{{ data.artist || data.meta.artist || '' }}" />
-					</label>
-					<label class="setting" data-setting="album">
-						<span class="name">Álbum</span>
-						<input type="text" value="{{ data.album || data.meta.album || '' }}" />
-					</label>
-					<# } #>
-						<label class="setting" data-setting="caption">
-							<span class="name">Leyenda</span>
-							<textarea {{ maybeReadOnly }}>{{ data.caption }}</textarea>
-						</label>
-						<# if ( 'image' === data.type ) { #>
-							<label class="setting" data-setting="alt">
-								<span class="name">Texto alternativo</span>
-								<input type="text" value="{{ data.alt }}" {{ maybeReadOnly }} />
-							</label>
-							<# } #>
-								<label class="setting" data-setting="description">
-									<span class="name">Descripción</span>
-									<textarea {{ maybeReadOnly }}>{{ data.description }}</textarea>
-								</label>
-								<label class="setting">
-									<span class="name">Subido por</span>
-									<span class="value">{{ data.authorName }}</span>
-								</label>
-								<# if ( data.uploadedToTitle ) { #>
-									<label class="setting">
-										<span class="name">Subido a </span>
-										<# if ( data.uploadedToLink ) { #>
-											<span class="value"><a href="{{ data.uploadedToLink }}">{{ data.uploadedToTitle }}</a></span>
-											<# } else { #>
-												<span class="value">{{ data.uploadedToTitle }}</span>
-												<# } #>
-									</label>
-									<# } #>
-										<div class="attachment-compat"></div>
-		</div>
-
-		<div class="actions">
-			<a class="view-attachment" href="{{ data.link }}">Ver página de adjuntos</a>
-			<# if ( data.can.save ) { #> |
-				<a href="post.php?post={{ data.id }}&action=edit">Editar más detalles</a>
-				<# } #>
-					<# if ( ! data.uploading && data.can.remove ) { #> |
-						<button type="button" class="button-link delete-attachment">Borrar permanentemente</button>
-						<# } #>
-		</div>
-
-	</div>
+<script src='https://www.cifimad.es/wp-content/plugins/wp-gdpr-compliance/assets/js/front.min.js?ver=1625507256' id='wpgdprc.js-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/complianz-gdpr/assets/js/cookieconsent.min.js?ver=5.2.2' id='cmplz-cookie-js'></script>
+<script id='cmplz-cookie-config-js-extra'>
+    var complianz = {"static":"","is_multisite_root":"","set_cookies":[],"block_ajax_content":"","banner_version":"10","version":"5.2.2","a_b_testing":"","do_not_track":"","consenttype":"optin","region":"eu","geoip":"","categories":"<div class=\"cmplz-categories-wrap\"><label for=\"cmplz_functional\"><input type=\"checkbox\" id=\"cmplz_functional\" class=\"cmplz-consent-checkbox cmplz-svg-checkbox cmplz-square-checkbox cmplz_functional\" checked disabled data-category=\"cmplz_functional\"><div class=\"cc-check\"><svg width=\"16px\" height=\"16px\" viewBox=\"0 0 18 18\" class=\"cmplz-square\" aria-hidden=\"true\"><path d=\"M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z\"><\/path><polyline points=\"1 9 7 14 15 4\"><\/polyline><\/svg><\/div><span class=\"cc-category\" style=\"\">Funcional<\/span><\/label><\/div><div class=\"cmplz-categories-wrap\"><label for=\"cmplz_statistics\"><input type=\"checkbox\" id=\"cmplz_statistics\" class=\"cmplz-consent-checkbox cmplz-svg-checkbox cmplz-square-checkbox cmplz_statistics\"   data-category=\"cmplz_statistics\"><div class=\"cc-check\"><svg width=\"16px\" height=\"16px\" viewBox=\"0 0 18 18\" class=\"cmplz-square\" aria-hidden=\"true\"><path d=\"M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z\"><\/path><polyline points=\"1 9 7 14 15 4\"><\/polyline><\/svg><\/div><span class=\"cc-category\" style=\"\">Estad\u00edsticas<\/span><\/label><\/div><div class=\"cmplz-categories-wrap\"><label for=\"cmplz_marketing\"><input type=\"checkbox\" id=\"cmplz_marketing\" class=\"cmplz-consent-checkbox cmplz-svg-checkbox cmplz-square-checkbox cmplz_marketing\"   data-category=\"cmplz_marketing\"><div class=\"cc-check\"><svg width=\"16px\" height=\"16px\" viewBox=\"0 0 18 18\" class=\"cmplz-square\" aria-hidden=\"true\"><path d=\"M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z\"><\/path><polyline points=\"1 9 7 14 15 4\"><\/polyline><\/svg><\/div><span class=\"cc-category\" style=\"\">Marketing<\/span><\/label><\/div><style>#cc-window.cc-window .cmplz-categories-wrap .cc-check svg {stroke: #191e23}<\/style>","position":"bottom","title":"Aviso de cookies","theme":"classic","checkbox_style":"square","use_categories":"hidden","use_categories_optinstats":"hidden","header":"","accept":"Aceptar cookies","revoke":"Administrar consentimiento","dismiss":"Solo funcionales","dismiss_timeout":"10","use_custom_cookie_css":"","custom_css":".cc-window  \n\n \n\n \n\n \n\n \n\n\n\n#cmplz-consent-ui, #cmplz-post-consent-ui {} \n\n#cmplz-consent-ui .cmplz-consent-message {} \n\n#cmplz-consent-ui button, #cmplz-post-consent-ui button {}","readmore_optin":"Pol\u00edtica de cookies","readmore_impressum":"Impressum","accept_informational":"Acepto","message_optout":"Utilizamos cookies para optimizar nuestro sitio web y nuestro servicio.","message_optin":"Utilizamos cookies para optimizar nuestro sitio web y nuestro servicio.","readmore_optout":"Cookie Policy","readmore_optout_dnsmpi":"Do Not Sell My Personal Information","hide_revoke":"","disable_cookiebanner":"","banner_width":"","soft_cookiewall":"","type":"opt-in","layout":"basic","dismiss_on_scroll":"","dismiss_on_timeout":"","cookie_expiry":"365","nonce":"3c1a569857","url":"https:\/\/www.cifimad.es\/wp-json\/complianz\/v1\/?lang=es&locale=es_ES","set_cookies_on_root":"","cookie_domain":"","current_policy_id":"15","cookie_path":"\/","tcf_active":"","colorpalette_background_color":"#f1f1f1","colorpalette_background_border":"#f1f1f1","colorpalette_text_color":"#191e23","colorpalette_text_hyperlink_color":"#191e23","colorpalette_toggles_background":"#0073aa","colorpalette_toggles_bullet":"#fff","colorpalette_toggles_inactive":"#F56E28","colorpalette_border_radius":"0px 0px 0px 0px","border_width":"1px 1px 1px 1px","colorpalette_button_accept_background":"#0085ba","colorpalette_button_accept_border":"#0073aa","colorpalette_button_accept_text":"#fff","colorpalette_button_deny_background":"#f1f1f1","colorpalette_button_deny_border":"#f1f1f1","colorpalette_button_deny_text":"#0073aa","colorpalette_button_settings_background":"#f1f1f1","colorpalette_button_settings_border":"#0073aa","colorpalette_button_settings_text":"#0073aa","buttons_border_radius":"5px 5px 5px 5px","box_shadow":"","animation":"none","animation_fade":"","animation_slide":"","view_preferences":"Ver preferencias","save_preferences":"Guardar preferencias","accept_all":"Aceptar todo","readmore_url":{"eu":"https:\/\/www.cifimad.es\/aviso-legal\/"},"privacy_link":{"eu":""},"placeholdertext":"Haz clic para aceptar las cookies de marketing y activar este contenido"};
 </script>
-
-<script type="text/html" id="tmpl-attachment">
-	<div class="attachment-preview js--select-attachment type-{{ data.type }} subtype-{{ data.subtype }} {{ data.orientation }}">
-		<div class="thumbnail">
-			<# if ( data.uploading ) { #>
-				<div class="media-progress-bar"><div style="width: {{ data.percent }}%"></div></div>
-				<# } else if ( 'image' === data.type && data.sizes ) { #>
-					<div class="centered">
-						<img src="{{ data.size.url }}" draggable="false" alt="" />
-					</div>
-					<# } else { #>
-						<div class="centered">
-							<# if ( data.image && data.image.src && data.image.src !== data.icon ) { #>
-								<img src="{{ data.image.src }}" class="thumbnail" draggable="false" alt="" />
-								<# } else if ( data.sizes && data.sizes.medium ) { #>
-									<img src="{{ data.sizes.medium.url }}" class="thumbnail" draggable="false" alt="" />
-									<# } else { #>
-										<img src="{{ data.icon }}" class="icon" draggable="false" alt="" />
-										<# } #>
-						</div>
-						<div class="filename">
-							<div>{{ data.filename }}</div>
-						</div>
-						<# } #>
-		</div>
-		<# if ( data.buttons.close ) { #>
-			<button type="button" class="button-link attachment-close media-modal-icon"><span class="screen-reader-text">Eliminar</span></button>
-			<# } #>
-	</div>
-	<# if ( data.buttons.check ) { #>
-		<button type="button" class="check" tabindex="-1"><span class="media-modal-icon"></span><span class="screen-reader-text">Desmarcar</span></button>
-		<# } #>
-			<#
-				var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly';
-				if ( data.describe ) {
-				if ( 'image' === data.type ) { #>
-				<input type="text" value="{{ data.caption }}" class="describe" data-setting="caption"
-				       placeholder="Titula esta imagen&hellip;" {{ maybeReadOnly }} />
-				<# } else { #>
-					<input type="text" value="{{ data.title }}" class="describe" data-setting="title"
-					<# if ( 'video' === data.type ) { #>
-						placeholder="Describe este video&hellip;"
-						<# } else if ( 'audio' === data.type ) { #>
-							placeholder="Describe este archivo de audio&hellip;"
-							<# } else { #>
-								placeholder="Describe este archivo multimedia&hellip;"
-								<# } #> {{ maybeReadOnly }} />
-									<# }
-										} #>
+<script src='https://www.cifimad.es/wp-content/plugins/complianz-gdpr/assets/js/complianz.min.js?ver=5.2.2' id='cmplz-cookie-config-js'></script>
+<script src='https://www.cifimad.es/wp-includes/js/wp-embed.min.js?ver=5.7.7' id='wp-embed-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/ultimate-elementor/assets/min-js/uael-nav-menu.min.js?ver=1.36.8' id='uael-nav-menu-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/ultimate-elementor/assets/lib/jquery-element-resize/jquery_resize.min.js?ver=1.36.8' id='uael-element-resize-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/ultimate-elementor/assets/lib/js-cookie/js_cookie.min.js?ver=1.36.8' id='uael-cookie-lib-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/ultimate-elementor/assets/lib/isotope/isotope.min.js?ver=1.36.8' id='uael-isotope-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/ultimate-elementor/assets/lib/slick/slick.min.js?ver=1.36.8' id='uael-slick-js'></script>
+<script id='uael-frontend-script-js-extra'>
+    var uael_script = {"ajax_url":"https:\/\/www.cifimad.es\/wp-admin\/admin-ajax.php"};
+    var uael_post_loader_script = {"post_loader":"https:\/\/www.cifimad.es\/wp-content\/plugins\/ultimate-elementor\/assets\/img\/post-loader.gif"};
+    var uael_login_form_script = {"ajax_url":"https:\/\/www.cifimad.es\/wp-admin\/admin-ajax.php","invalid_mail":"Enter valid Email!","pass_unmatch":"The specified password do not match!","required":"This Field is required!","incorrect_password":"Error: The Password you have entered is incorrect.","invalid_username":"Unknown username. Check again or try your email address.","invalid_email":"Unknown email address. Check again or try your username.","logged_in_message":"Thanks for logging in, ","wp_version":"1"};
 </script>
-
-<script type="text/html" id="tmpl-attachment-details">
-	<h2>
-		Detalles de adjuntos			<span class="settings-save-status">
-				<span class="spinner"></span>
-				<span class="saved">Guardado.</span>
-			</span>
-	</h2>
-	<div class="attachment-info">
-		<div class="thumbnail thumbnail-{{ data.type }}">
-			<# if ( data.uploading ) { #>
-				<div class="media-progress-bar"><div></div></div>
-				<# } else if ( 'image' === data.type && data.sizes ) { #>
-					<img src="{{ data.size.url }}" draggable="false" alt="" />
-					<# } else { #>
-						<img src="{{ data.icon }}" class="icon" draggable="false" alt="" />
-						<# } #>
-		</div>
-		<div class="details">
-			<div class="filename">{{ data.filename }}</div>
-			<div class="uploaded">{{ data.dateFormatted }}</div>
-
-			<div class="file-size">{{ data.filesizeHumanReadable }}</div>
-			<# if ( 'image' === data.type && ! data.uploading ) { #>
-				<# if ( data.width && data.height ) { #>
-					<div class="dimensions">{{ data.width }} &times; {{ data.height }}</div>
-					<# } #>
-
-						<# if ( data.can.save && data.sizes ) { #>
-							<a class="edit-attachment" href="{{ data.editLink }}&amp;image-editor" target="_blank">Editar imagen</a>
-							<# } #>
-								<# } #>
-
-									<# if ( data.fileLength ) { #>
-										<div class="file-length">Longitud: {{ data.fileLength }}</div>
-										<# } #>
-
-											<# if ( ! data.uploading && data.can.remove ) { #>
-												<button type="button" class="button-link delete-attachment">Borrar permanentemente</button>
-												<# } #>
-
-													<div class="compat-meta">
-														<# if ( data.compat && data.compat.meta ) { #>
-															{{{ data.compat.meta }}}
-															<# } #>
-													</div>
-		</div>
-	</div>
-
-	<label class="setting" data-setting="url">
-		<span class="name">URL</span>
-		<input type="text" value="{{ data.url }}" readonly />
-	</label>
-	<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
-		<label class="setting" data-setting="title">
-			<span class="name">Título</span>
-			<input type="text" value="{{ data.title }}" {{ maybeReadOnly }} />
-		</label>
-		<# if ( 'audio' === data.type ) { #>
-			<label class="setting" data-setting="artist">
-				<span class="name">Artista</span>
-				<input type="text" value="{{ data.artist || data.meta.artist || '' }}" />
-			</label>
-			<label class="setting" data-setting="album">
-				<span class="name">Álbum</span>
-				<input type="text" value="{{ data.album || data.meta.album || '' }}" />
-			</label>
-			<# } #>
-				<label class="setting" data-setting="caption">
-					<span class="name">Leyenda</span>
-					<textarea {{ maybeReadOnly }}>{{ data.caption }}</textarea>
-				</label>
-				<# if ( 'image' === data.type ) { #>
-					<label class="setting" data-setting="alt">
-						<span class="name">Texto alternativo</span>
-						<input type="text" value="{{ data.alt }}" {{ maybeReadOnly }} />
-					</label>
-					<# } #>
-						<label class="setting" data-setting="description">
-							<span class="name">Descripción</span>
-							<textarea {{ maybeReadOnly }}>{{ data.description }}</textarea>
-						</label>
+<script src='https://www.cifimad.es/wp-content/plugins/ultimate-elementor/assets/min-js/uael-frontend.min.js?ver=1.36.8' id='uael-frontend-script-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/ultimate-elementor/assets/lib/fancybox/jquery_fancybox.min.js?ver=1.36.8' id='uael-fancybox-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/ultimate-elementor/assets/lib/justifiedgallery/justifiedgallery.min.js?ver=1.36.8' id='uael-justified-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.6.8' id='elementor-webpack-runtime-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.6.8' id='elementor-frontend-modules-js'></script>
+<script src='https://www.cifimad.es/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2' id='elementor-waypoints-js'></script>
+<script src='https://www.cifimad.es/wp-includes/js/jquery/ui/core.min.js?ver=1.12.1' id='jquery-ui-core-js'></script>
+<script id='elementor-frontend-js-extra'>
+    var uael_particles_script = {"uael_particles_url":"https:\/\/www.cifimad.es\/wp-content\/plugins\/ultimate-elementor\/assets\/min-js\/uael-particles.min.js","particles_url":"https:\/\/www.cifimad.es\/wp-content\/plugins\/ultimate-elementor\/assets\/lib\/particles\/particles.min.js","snowflakes_image":"https:\/\/www.cifimad.es\/wp-content\/plugins\/ultimate-elementor\/assets\/img\/snowflake.svg","gift":"https:\/\/www.cifimad.es\/wp-content\/plugins\/ultimate-elementor\/assets\/img\/gift.png","tree":"https:\/\/www.cifimad.es\/wp-content\/plugins\/ultimate-elementor\/assets\/img\/tree.png","skull":"https:\/\/www.cifimad.es\/wp-content\/plugins\/ultimate-elementor\/assets\/img\/skull.png","ghost":"https:\/\/www.cifimad.es\/wp-content\/plugins\/ultimate-elementor\/assets\/img\/ghost.png","moon":"https:\/\/www.cifimad.es\/wp-content\/plugins\/ultimate-elementor\/assets\/img\/moon.png","bat":"https:\/\/www.cifimad.es\/wp-content\/plugins\/ultimate-elementor\/assets\/img\/bat.png","pumpkin":"https:\/\/www.cifimad.es\/wp-content\/plugins\/ultimate-elementor\/assets\/img\/pumpkin.png"};
 </script>
-
-<script type="text/html" id="tmpl-media-selection">
-	<div class="selection-info">
-		<span class="count"></span>
-		<# if ( data.editable ) { #>
-			<button type="button" class="button-link edit-selection">Editar selección</button>
-			<# } #>
-				<# if ( data.clearable ) { #>
-					<button type="button" class="button-link clear-selection">Borrar</button>
-					<# } #>
-	</div>
-	<div class="selection-view"></div>
+<script id='elementor-frontend-js-before'>
+    var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartir en Facebook","shareOnTwitter":"Compartir en Twitter","pinIt":"Pinear","download":"Descargar","downloadImage":"Descargar imagen","fullscreen":"Pantalla completa","zoom":"Zoom","share":"Compartir","playVideo":"Reproducir v\u00eddeo","previous":"Anterior","next":"Siguiente","close":"Cerrar"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"M\u00f3vil","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"M\u00f3vil grande","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tableta","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tableta grande","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Port\u00e1til","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Pantalla grande","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},"version":"3.6.8","is_static":false,"experimentalFeatures":{"e_dom_optimization":true,"e_optimized_assets_loading":true,"a11y_improvements":true,"e_import_export":true,"e_hidden_wordpress_widgets":true,"landing-pages":true,"elements-color-picker":true,"favorite-widgets":true,"admin-top-bar":true},"urls":{"assets":"https:\/\/www.cifimad.es\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":10897,"title":"Cosplay%20%E2%80%93%20CifiMad","excerpt":"","featuredImage":false}};
 </script>
+<script src='https://www.cifimad.es/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.6.8' id='elementor-frontend-js'></script>
+<script id='elementor-frontend-js-after'>
+    window.scope_array = [];
+    window.backend = 0;
+    jQuery.cachedScript = function( url, options ) {
+        // Allow user to set any option except for dataType, cache, and url.
+        options = jQuery.extend( options || {}, {
+            dataType: "script",
+            cache: true,
+            url: url
+        });
+        // Return the jqXHR object so we can chain callbacks.
+        return jQuery.ajax( options );
+    };
+    jQuery( window ).on( "elementor/frontend/init", function() {
+        elementorFrontend.hooks.addAction( "frontend/element_ready/global", function( $scope, $ ){
+            if ( "undefined" == typeof $scope ) {
+                return;
+            }
+            if ( $scope.hasClass( "uael-particle-yes" ) ) {
+                window.scope_array.push( $scope );
+                $scope.find(".uael-particle-wrapper").addClass("js-is-enabled");
+            }else{
+                return;
+            }
+            if(elementorFrontend.isEditMode() && $scope.find(".uael-particle-wrapper").hasClass("js-is-enabled") && window.backend == 0 ){
+                var uael_url = uael_particles_script.uael_particles_url;
 
-<script type="text/html" id="tmpl-attachment-display-settings">
-	<h2>Ajustes de visualización de adjuntos</h2>
-
-	<# if ( 'image' === data.type ) { #>
-		<label class="setting align">
-			<span>Alineación</span>
-			<select class="alignment"
-			        data-setting="align"
-			<# if ( data.userSettings ) { #>
-				data-user-setting="align"
-				<# } #>>
-
-					<option value="left">
-						Izquierda					</option>
-					<option value="center">
-						Centrar					</option>
-					<option value="right">
-						Derecha					</option>
-					<option value="none" selected>
-						Ninguna					</option>
-					</select>
-		</label>
-		<# } #>
-
-			<div class="setting">
-				<label>
-					<# if ( data.model.canEmbed ) { #>
-						<span>Incrustar o enlazar</span>
-						<# } else { #>
-							<span>Enlazado a</span>
-							<# } #>
-
-								<select class="link-to"
-								        data-setting="link"
-								<# if ( data.userSettings && ! data.model.canEmbed ) { #>
-									data-user-setting="urlbutton"
-									<# } #>>
-
-										<# if ( data.model.canEmbed ) { #>
-											<option value="embed" selected>
-												Incrustar reproductor de medios					</option>
-											<option value="file">
-												<# } else { #>
-											<option value="none" selected>
-												Ninguna					</option>
-											<option value="file">
-												<# } #>
-													<# if ( data.model.canEmbed ) { #>
-														Enlace al archivo de medios					<# } else { #>
-															Archivo multimedia					<# } #>
-											</option>
-											<option value="post">
-												<# if ( data.model.canEmbed ) { #>
-													Enlace a página de adjuntos					<# } else { #>
-														Página de adjuntos					<# } #>
-											</option>
-											<# if ( 'image' === data.type ) { #>
-												<option value="custom">
-													URL personalizada					</option>
-												<# } #>
-													</select>
-				</label>
-				<input type="text" class="link-to-custom" data-setting="linkUrl" />
-			</div>
-
-			<# if ( 'undefined' !== typeof data.sizes ) { #>
-				<label class="setting">
-					<span>Tamaño</span>
-					<select class="size" name="size"
-					        data-setting="size"
-					<# if ( data.userSettings ) { #>
-						data-user-setting="imgsize"
-						<# } #>>
-							<#
-								var size = data.sizes['thumbnail'];
-								if ( size ) { #>
-								<option value="thumbnail" >
-									Miniatura &ndash; {{ size.width }} &times; {{ size.height }}
-								</option>
-								<# } #>
-									<#
-										var size = data.sizes['medium'];
-										if ( size ) { #>
-										<option value="medium" >
-											Medio &ndash; {{ size.width }} &times; {{ size.height }}
-										</option>
-										<# } #>
-											<#
-												var size = data.sizes['large'];
-												if ( size ) { #>
-												<option value="large" >
-													Grande &ndash; {{ size.width }} &times; {{ size.height }}
-												</option>
-												<# } #>
-													<#
-														var size = data.sizes['full'];
-														if ( size ) { #>
-														<option value="full"  selected='selected'>
-															Tamaño completo &ndash; {{ size.width }} &times; {{ size.height }}
-														</option>
-														<# } #>
-															</select>
-				</label>
-				<# } #>
+                jQuery.cachedScript( uael_url );
+                window.backend = 1;
+            }else if(elementorFrontend.isEditMode()){
+                var uael_url = uael_particles_script.uael_particles_url;
+                jQuery.cachedScript( uael_url ).done(function(){
+                    var flag = true;
+                });
+            }
+        });
+    });
+    jQuery( document ).on( "ready elementor/popup/show", () => {
+        if ( jQuery.find( ".uael-particle-yes" ).length < 1 ) {
+            return;
+        }
+        var uael_url = uael_particles_script.uael_particles_url;
+        jQuery.cachedScript = function( url, options ) {
+            // Allow user to set any option except for dataType, cache, and url.
+            options = jQuery.extend( options || {}, {
+                dataType: "script",
+                cache: true,
+                url: url
+            });
+            // Return the jqXHR object so we can chain callbacks.
+            return jQuery.ajax( options );
+        };
+        jQuery.cachedScript( uael_url );
+    });
 </script>
-
-<script type="text/html" id="tmpl-gallery-settings">
-	<h2>Ajustes de galería</h2>
-
-	<label class="setting">
-		<span>Enlazado a</span>
-		<select class="link-to"
-		        data-setting="link"
-		<# if ( data.userSettings ) { #>
-			data-user-setting="urlbutton"
-			<# } #>>
-
-				<option value="post" <# if ( ! wp.media.galleryDefaults.link || 'post' == wp.media.galleryDefaults.link ) {
-					#>selected="selected"<# }
-						#>>
-						Página de adjuntos				</option>
-						<option value="file" <# if ( 'file' == wp.media.galleryDefaults.link ) { #>selected="selected"<# } #>>
-								Archivo multimedia				</option>
-								<option value="none" <# if ( 'none' == wp.media.galleryDefaults.link ) { #>selected="selected"<# } #>>
-										Ninguna				</option>
-										</select>
-	</label>
-
-	<label class="setting">
-		<span>Columnas</span>
-		<select class="columns" name="columns"
-		        data-setting="columns">
-			<option value="1" <#
-				if ( 1 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
-					#>>
-					1					</option>
-					<option value="2" <#
-						if ( 2 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
-							#>>
-							2					</option>
-							<option value="3" <#
-								if ( 3 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
-									#>>
-									3					</option>
-									<option value="4" <#
-										if ( 4 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
-											#>>
-											4					</option>
-											<option value="5" <#
-												if ( 5 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
-													#>>
-													5					</option>
-													<option value="6" <#
-														if ( 6 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
-															#>>
-															6					</option>
-															<option value="7" <#
-																if ( 7 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
-																	#>>
-																	7					</option>
-																	<option value="8" <#
-																		if ( 8 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
-																			#>>
-																			8					</option>
-																			<option value="9" <#
-																				if ( 9 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
-																					#>>
-																					9					</option>
-		</select>
-	</label>
-
-	<label class="setting">
-		<span>Orden aleatorio</span>
-		<input type="checkbox" data-setting="_orderbyRandom" />
-	</label>
-
-	<label class="setting size">
-		<span>Tamaño</span>
-		<select class="size" name="size"
-		        data-setting="size"
-		<# if ( data.userSettings ) { #>
-			data-user-setting="imgsize"
-			<# } #>
-				>
-				<option value="thumbnail">
-					Miniatura					</option>
-				<option value="medium">
-					Medio					</option>
-				<option value="large">
-					Grande					</option>
-				<option value="full">
-					Tamaño completo					</option>
-				</select>
-	</label>
+<script>
+    /(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
 </script>
+<!-- This site uses the Google Analytics by MonsterInsights plugin v7.17.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script src="//www.googletagmanager.com/gtag/js?id=UA-59187728-1"  type="text/plain" data-cfasync="false" class="cmplz-script cmplz-stats"></script>
+<script type="text/plain" data-cfasync="false" class="cmplz-script cmplz-stats">
+				var mi_version = '7.17.0';
+				var mi_track_user = true;
+				var mi_no_track_reason = '';
 
-<script type="text/html" id="tmpl-playlist-settings">
-	<h2>Ajuste de listas de reproducción</h2>
+								var disableStr = 'ga-disable-UA-59187728-1';
 
-	<# var emptyModel = _.isEmpty( data.model ),
-		isVideo = 'video' === data.controller.get('library').props.get('type'); #>
+				/* Function to detect opted out users */
+				function __gtagTrackerIsOptedOut() {
+					return document.cookie.indexOf( disableStr + '=true' ) > - 1;
+				}
 
-		<label class="setting">
-			<input type="checkbox" data-setting="tracklist" <# if ( emptyModel ) { #>
-				checked="checked"
-				<# } #> />
-					<# if ( isVideo ) { #>
-						<span>Mostrar lista de vídeos</span>
-						<# } else { #>
-							<span>Mostrar lista de reproducción</span>
-							<# } #>
-		</label>
+				/* Disable tracking if the opt-out cookie exists. */
+				if ( __gtagTrackerIsOptedOut() ) {
+					window[disableStr] = true;
+				}
 
-		<# if ( ! isVideo ) { #>
-			<label class="setting">
-				<input type="checkbox" data-setting="artists" <# if ( emptyModel ) { #>
-					checked="checked"
-					<# } #> />
-						<span>Mostrar nombre de artista en la lista de pistas</span>
-			</label>
-			<# } #>
+				/* Opt-out function */
+				function __gtagTrackerOptout() {
+					document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+					window[disableStr] = true;
+				}
 
-				<label class="setting">
-					<input type="checkbox" data-setting="images" <# if ( emptyModel ) { #>
-						checked="checked"
-						<# } #> />
-							<span>Mostrar imágenes</span>
-				</label>
-</script>
-
-<script type="text/html" id="tmpl-embed-link-settings">
-	<label class="setting link-text">
-		<span>Texto del enlace</span>
-		<input type="text" class="alignment" data-setting="linkText" />
-	</label>
-	<div class="embed-container" style="display: none;">
-		<div class="embed-preview"></div>
-	</div>
-</script>
-
-<script type="text/html" id="tmpl-embed-image-settings">
-	<div class="thumbnail">
-		<img src="{{ data.model.url }}" draggable="false" alt="" />
-	</div>
-
-	<label class="setting caption">
-		<span>Leyenda</span>
-		<textarea data-setting="caption" />
-	</label>
-
-	<label class="setting alt-text">
-		<span>Texto alternativo</span>
-		<input type="text" data-setting="alt" />
-	</label>
-
-	<div class="setting align">
-		<span>Alineación</span>
-		<div class="button-group button-large" data-setting="align">
-			<button class="button" value="left">
-				Izquierda				</button>
-			<button class="button" value="center">
-				Centrar				</button>
-			<button class="button" value="right">
-				Derecha				</button>
-			<button class="button active" value="none">
-				Ninguna				</button>
-		</div>
-	</div>
-
-	<div class="setting link-to">
-		<span>Enlazado a</span>
-		<div class="button-group button-large" data-setting="link">
-			<button class="button" value="file">
-				URL de la imagen				</button>
-			<button class="button" value="custom">
-				URL personalizada				</button>
-			<button class="button active" value="none">
-				Ninguna				</button>
-		</div>
-		<input type="text" class="link-to-custom" data-setting="linkUrl" />
-	</div>
-</script>
-
-<script type="text/html" id="tmpl-image-details">
-	<div class="media-embed">
-		<div class="embed-media-settings">
-			<div class="column-image">
-				<div class="image">
-					<img src="{{ data.model.url }}" draggable="false" alt="" />
-
-					<# if ( data.attachment && window.imageEdit ) { #>
-						<div class="actions">
-							<input type="button" class="edit-attachment button" value="Editar Original" />
-							<input type="button" class="replace-attachment button" value="Reemplazar" />
-						</div>
-						<# } #>
-				</div>
-			</div>
-			<div class="column-settings">
-				<label class="setting caption">
-					<span>Leyenda</span>
-					<textarea data-setting="caption">{{ data.model.caption }}</textarea>
-				</label>
-
-				<label class="setting alt-text">
-					<span>Texto alternativo</span>
-					<input type="text" data-setting="alt" value="{{ data.model.alt }}" />
-				</label>
-
-				<h2>Ajustes de visualización</h2>
-				<div class="setting align">
-					<span>Alineación</span>
-					<div class="button-group button-large" data-setting="align">
-						<button class="button" value="left">
-							Izquierda							</button>
-						<button class="button" value="center">
-							Centrar							</button>
-						<button class="button" value="right">
-							Derecha							</button>
-						<button class="button active" value="none">
-							Ninguna							</button>
-					</div>
-				</div>
-
-				<# if ( data.attachment ) { #>
-					<# if ( 'undefined' !== typeof data.attachment.sizes ) { #>
-						<label class="setting size">
-							<span>Tamaño</span>
-							<select class="size" name="size"
-							        data-setting="size"
-							<# if ( data.userSettings ) { #>
-								data-user-setting="imgsize"
-								<# } #>>
-									<#
-										var size = data.sizes['thumbnail'];
-										if ( size ) { #>
-										<option value="thumbnail">
-											Miniatura &ndash; {{ size.width }} &times; {{ size.height }}
-										</option>
-										<# } #>
-											<#
-												var size = data.sizes['medium'];
-												if ( size ) { #>
-												<option value="medium">
-													Medio &ndash; {{ size.width }} &times; {{ size.height }}
-												</option>
-												<# } #>
-													<#
-														var size = data.sizes['large'];
-														if ( size ) { #>
-														<option value="large">
-															Grande &ndash; {{ size.width }} &times; {{ size.height }}
-														</option>
-														<# } #>
-															<#
-																var size = data.sizes['full'];
-																if ( size ) { #>
-																<option value="full">
-																	Tamaño completo &ndash; {{ size.width }} &times; {{ size.height }}
-																</option>
-																<# } #>
-																	<option value="custom">
-																		Tamaño personalizado									</option>
-																	</select>
-						</label>
-						<# } #>
-							<div class="custom-size<# if ( data.model.size !== 'custom' ) { #> hidden<# } #>">
-								<label><span>Ancho <small>(px)</small></span> <input data-setting="customWidth" type="number" step="1" value="{{ data.model.customWidth }}" /></label><span class="sep">&times;</span><label><span>Altura <small>(px)</small></span><input data-setting="customHeight" type="number" step="1" value="{{ data.model.customHeight }}" /></label>
-							</div>
-							<# } #>
-
-								<div class="setting link-to">
-									<span>Enlazado a</span>
-									<select data-setting="link">
-										<# if ( data.attachment ) { #>
-											<option value="file">
-												Archivo multimedia							</option>
-											<option value="post">
-												Página de adjuntos							</option>
-											<# } else { #>
-												<option value="file">
-													URL de la imagen							</option>
-												<# } #>
-													<option value="custom">
-														URL personalizada							</option>
-													<option value="none">
-														Ninguna							</option>
-									</select>
-									<input type="text" class="link-to-custom" data-setting="linkUrl" />
-								</div>
-								<div class="advanced-section">
-									<h2><button type="button" class="button-link advanced-toggle">Opciones Avanzadas</button></h2>
-									<div class="advanced-settings hidden">
-										<div class="advanced-image">
-											<label class="setting title-text">
-												<span>Atributo "title" de la imagen</span>
-												<input type="text" data-setting="title" value="{{ data.model.title }}" />
-											</label>
-											<label class="setting extra-classes">
-												<span>Clases CSS de la imagen</span>
-												<input type="text" data-setting="extraClasses" value="{{ data.model.extraClasses }}" />
-											</label>
-										</div>
-										<div class="advanced-link">
-											<div class="setting link-target">
-												<label><input type="checkbox" data-setting="linkTargetBlank" value="_blank" <# if ( data.model.linkTargetBlank ) { #>checked="checked"<# } #>>Abrir enlace en una pestaña nueva</label>
-											</div>
-											<label class="setting link-rel">
-												<span>Relación del enlace</span>
-												<input type="text" data-setting="linkRel" value="{{ data.model.linkClassName }}" />
-											</label>
-											<label class="setting link-class-name">
-												<span>Clases CSS del enlace</span>
-												<input type="text" data-setting="linkClassName" value="{{ data.model.linkClassName }}" />
-											</label>
-										</div>
-									</div>
-								</div>
-			</div>
-		</div>
-	</div>
-</script>
-
-<script type="text/html" id="tmpl-image-editor">
-	<div id="media-head-{{ data.id }}"></div>
-	<div id="image-editor-{{ data.id }}"></div>
-</script>
-
-<script type="text/html" id="tmpl-audio-details">
-	<# var ext, html5types = {
-		mp3: wp.media.view.settings.embedMimes.mp3,
-		ogg: wp.media.view.settings.embedMimes.ogg
-		}; #>
-
-		<div class="media-embed media-embed-details">
-			<div class="embed-media-settings embed-audio-settings">
-				<audio style="visibility: hidden"
-				       controls
-				       class="wp-audio-shortcode"
-				       width="{{ _.isUndefined( data.model.width ) ? 400 : data.model.width }}"
-				       preload="{{ _.isUndefined( data.model.preload ) ? 'none' : data.model.preload }}"
-				<#
-					if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
-					#> autoplay<#
-						}
-						if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
-						#> loop<#
-							}
-							#>
-							>
-							<# if ( ! _.isEmpty( data.model.src ) ) { #>
-								<source src="{{ data.model.src }}" type="{{ wp.media.view.settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
-								<# } #>
-
-									<# if ( ! _.isEmpty( data.model.mp3 ) ) { #>
-										<source src="{{ data.model.mp3 }}" type="{{ wp.media.view.settings.embedMimes[ 'mp3' ] }}" />
-										<# } #>
-											<# if ( ! _.isEmpty( data.model.ogg ) ) { #>
-												<source src="{{ data.model.ogg }}" type="{{ wp.media.view.settings.embedMimes[ 'ogg' ] }}" />
-												<# } #>
-													<# if ( ! _.isEmpty( data.model.m4a ) ) { #>
-														<source src="{{ data.model.m4a }}" type="{{ wp.media.view.settings.embedMimes[ 'm4a' ] }}" />
-														<# } #>
-															<# if ( ! _.isEmpty( data.model.wav ) ) { #>
-																<source src="{{ data.model.wav }}" type="{{ wp.media.view.settings.embedMimes[ 'wav' ] }}" />
-																<# } #>
-																	</audio>
-
-																	<# if ( ! _.isEmpty( data.model.src ) ) {
-																		ext = data.model.src.split('.').pop();
-																		if ( html5types[ ext ] ) {
-																		delete html5types[ ext ];
-																		}
-																		#>
-																		<label class="setting">
-																			<span>SRC</span>
-																			<input type="text" disabled="disabled" data-setting="src" value="{{ data.model.src }}" />
-																			<button type="button" class="button-link remove-setting">Retire fuente de audio</button>
-																		</label>
-																		<# } #>
-																			<# if ( ! _.isEmpty( data.model.mp3 ) ) {
-																				if ( ! _.isUndefined( html5types.mp3 ) ) {
-																				delete html5types.mp3;
-																				}
-																				#>
-																				<label class="setting">
-																					<span>MP3</span>
-																					<input type="text" disabled="disabled" data-setting="mp3" value="{{ data.model.mp3 }}" />
-																					<button type="button" class="button-link remove-setting">Retire fuente de audio</button>
-																				</label>
-																				<# } #>
-																					<# if ( ! _.isEmpty( data.model.ogg ) ) {
-																						if ( ! _.isUndefined( html5types.ogg ) ) {
-																						delete html5types.ogg;
-																						}
-																						#>
-																						<label class="setting">
-																							<span>OGG</span>
-																							<input type="text" disabled="disabled" data-setting="ogg" value="{{ data.model.ogg }}" />
-																							<button type="button" class="button-link remove-setting">Retire fuente de audio</button>
-																						</label>
-																						<# } #>
-																							<# if ( ! _.isEmpty( data.model.m4a ) ) {
-																								if ( ! _.isUndefined( html5types.m4a ) ) {
-																								delete html5types.m4a;
-																								}
-																								#>
-																								<label class="setting">
-																									<span>M4A</span>
-																									<input type="text" disabled="disabled" data-setting="m4a" value="{{ data.model.m4a }}" />
-																									<button type="button" class="button-link remove-setting">Retire fuente de audio</button>
-																								</label>
-																								<# } #>
-																									<# if ( ! _.isEmpty( data.model.wav ) ) {
-																										if ( ! _.isUndefined( html5types.wav ) ) {
-																										delete html5types.wav;
-																										}
-																										#>
-																										<label class="setting">
-																											<span>WAV</span>
-																											<input type="text" disabled="disabled" data-setting="wav" value="{{ data.model.wav }}" />
-																											<button type="button" class="button-link remove-setting">Retire fuente de audio</button>
-																										</label>
-																										<# } #>
-
-																											<# if ( ! _.isEmpty( html5types ) ) { #>
-																												<div class="setting">
-																													<span>Añadir fuentes alternativas para mejorar la reproducción en HTML5:</span>
-																													<div class="button-large">
-																														<# _.each( html5types, function (mime, type) { #>
-																															<button class="button add-media-source" data-mime="{{ mime }}">{{ type }}</button>
-																															<# } ) #>
-																													</div>
-																												</div>
-																												<# } #>
-
-																													<div class="setting preload">
-																														<span>Precarga</span>
-																														<div class="button-group button-large" data-setting="preload">
-																															<button class="button" value="auto">Automático</button>
-																															<button class="button" value="metadata">Metadatos</button>
-																															<button class="button active" value="none">Ninguna</button>
-																														</div>
-																													</div>
-
-																													<label class="setting checkbox-setting autoplay">
-																														<input type="checkbox" data-setting="autoplay" />
-																														<span>Reproducción automática</span>
-																													</label>
-
-																													<label class="setting checkbox-setting">
-																														<input type="checkbox" data-setting="loop" />
-																														<span>Repetir</span>
-																													</label>
-			</div>
-		</div>
-</script>
-
-<script type="text/html" id="tmpl-video-details">
-	<# var ext, html5types = {
-		mp4: wp.media.view.settings.embedMimes.mp4,
-		ogv: wp.media.view.settings.embedMimes.ogv,
-		webm: wp.media.view.settings.embedMimes.webm
-		}; #>
-
-		<div class="media-embed media-embed-details">
-			<div class="embed-media-settings embed-video-settings">
-				<div class="wp-video-holder">
-					<#
-						var w = ! data.model.width || data.model.width > 640 ? 640 : data.model.width,
-						h = ! data.model.height ? 360 : data.model.height;
-
-						if ( data.model.width && w !== data.model.width ) {
-						h = Math.ceil( ( h * w ) / data.model.width );
-						}
-						#>
-
-						<#  var w_rule = '', classes = [],
-							w, h, settings = wp.media.view.settings,
-							isYouTube = isVimeo = false;
-
-							if ( ! _.isEmpty( data.model.src ) ) {
-							isYouTube = data.model.src.match(/youtube|youtu\.be/);
-							isVimeo = -1 !== data.model.src.indexOf('vimeo');
-							}
-
-							if ( settings.contentWidth && data.model.width >= settings.contentWidth ) {
-							w = settings.contentWidth;
-							} else {
-							w = data.model.width;
-							}
-
-							if ( w !== data.model.width ) {
-							h = Math.ceil( ( data.model.height * w ) / data.model.width );
-							} else {
-							h = data.model.height;
-							}
-
-							if ( w ) {
-							w_rule = 'width: ' + w + 'px; ';
-							}
-
-							if ( isYouTube ) {
-							classes.push( 'youtube-video' );
-							}
-
-							if ( isVimeo ) {
-							classes.push( 'vimeo-video' );
-							}
-
-							#>
-							<div style="{{ w_rule }}" class="wp-video">
-								<video controls
-								       class="wp-video-shortcode {{ classes.join( ' ' ) }}"
-								<# if ( w ) { #>width="{{ w }}"<# } #>
-										<# if ( h ) { #>height="{{ h }}"<# } #>
-												<#
-													if ( ! _.isUndefined( data.model.poster ) && data.model.poster ) {
-													#> poster="{{ data.model.poster }}"<#
-														} #>
-														preload="{{ _.isUndefined( data.model.preload ) ? 'metadata' : data.model.preload }}"<#
-															if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
-															#> autoplay<#
-																}
-																if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
-																#> loop<#
-																	}
-																	#>
-																	>
-																	<# if ( ! _.isEmpty( data.model.src ) ) {
-																		if ( isYouTube ) { #>
-																		<source src="{{ data.model.src }}" type="video/youtube" />
-																		<# } else if ( isVimeo ) { #>
-																			<source src="{{ data.model.src }}" type="video/vimeo" />
-																			<# } else { #>
-																				<source src="{{ data.model.src }}" type="{{ settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
-																				<# }
-																					} #>
-
-																					<# if ( data.model.mp4 ) { #>
-																						<source src="{{ data.model.mp4 }}" type="{{ settings.embedMimes[ 'mp4' ] }}" />
-																						<# } #>
-																							<# if ( data.model.m4v ) { #>
-																								<source src="{{ data.model.m4v }}" type="{{ settings.embedMimes[ 'm4v' ] }}" />
-																								<# } #>
-																									<# if ( data.model.webm ) { #>
-																										<source src="{{ data.model.webm }}" type="{{ settings.embedMimes[ 'webm' ] }}" />
-																										<# } #>
-																											<# if ( data.model.ogv ) { #>
-																												<source src="{{ data.model.ogv }}" type="{{ settings.embedMimes[ 'ogv' ] }}" />
-																												<# } #>
-																													<# if ( data.model.flv ) { #>
-																														<source src="{{ data.model.flv }}" type="{{ settings.embedMimes[ 'flv' ] }}" />
-																														<# } #>
-																															{{{ data.model.content }}}
-																															</video>
-							</div>
-
-							<# if ( ! _.isEmpty( data.model.src ) ) {
-								ext = data.model.src.split('.').pop();
-								if ( html5types[ ext ] ) {
-								delete html5types[ ext ];
+				if ( 'undefined' === typeof gaOptout ) {
+					function gaOptout() {
+						__gtagTrackerOptout();
+					}
+				}
+								window.dataLayer = window.dataLayer || [];
+				if ( mi_track_user ) {
+					function __gtagTracker() {dataLayer.push( arguments );}
+					__gtagTracker( 'js', new Date() );
+					__gtagTracker( 'set', {
+						'developer_id.dZGIzZG' : true,
+						                    });
+					__gtagTracker( 'config', 'UA-59187728-1', {
+						forceSSL:true,					} );
+										window.gtag = __gtagTracker;										(
+						function () {
+							/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+							/* ga and __gaTracker compatibility shim. */
+							var noopfn = function () {
+								return null;
+							};
+							var newtracker = function () {
+								return new Tracker();
+							};
+							var Tracker = function () {
+								return null;
+							};
+							var p = Tracker.prototype;
+							p.get = noopfn;
+							p.set = noopfn;
+							p.send = function (){
+								var args = Array.prototype.slice.call(arguments);
+								args.unshift( 'send' );
+								__gaTracker.apply(null, args);
+							};
+							var __gaTracker = function () {
+								var len = arguments.length;
+								if ( len === 0 ) {
+									return;
 								}
-								#>
-								<label class="setting">
-									<span>SRC</span>
-									<input type="text" disabled="disabled" data-setting="src" value="{{ data.model.src }}" />
-									<button type="button" class="button-link remove-setting">Quitar fuente de vídeo</button>
-								</label>
-								<# } #>
-									<# if ( ! _.isEmpty( data.model.mp4 ) ) {
-										if ( ! _.isUndefined( html5types.mp4 ) ) {
-										delete html5types.mp4;
-										}
-										#>
-										<label class="setting">
-											<span>MP4</span>
-											<input type="text" disabled="disabled" data-setting="mp4" value="{{ data.model.mp4 }}" />
-											<button type="button" class="button-link remove-setting">Quitar fuente de vídeo</button>
-										</label>
-										<# } #>
-											<# if ( ! _.isEmpty( data.model.m4v ) ) {
-												if ( ! _.isUndefined( html5types.m4v ) ) {
-												delete html5types.m4v;
+								var f = arguments[len - 1];
+								if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+									if ( 'send' === arguments[0] ) {
+										var hitConverted, hitObject = false, action;
+										if ( 'event' === arguments[1] ) {
+											if ( 'undefined' !== typeof arguments[3] ) {
+												hitObject = {
+													'eventAction': arguments[3],
+													'eventCategory': arguments[2],
+													'eventLabel': arguments[4],
+													'value': arguments[5] ? arguments[5] : 1,
 												}
-												#>
-												<label class="setting">
-													<span>M4V</span>
-													<input type="text" disabled="disabled" data-setting="m4v" value="{{ data.model.m4v }}" />
-													<button type="button" class="button-link remove-setting">Quitar fuente de vídeo</button>
-												</label>
-												<# } #>
-													<# if ( ! _.isEmpty( data.model.webm ) ) {
-														if ( ! _.isUndefined( html5types.webm ) ) {
-														delete html5types.webm;
-														}
-														#>
-														<label class="setting">
-															<span>WEBM</span>
-															<input type="text" disabled="disabled" data-setting="webm" value="{{ data.model.webm }}" />
-															<button type="button" class="button-link remove-setting">Quitar fuente de vídeo</button>
-														</label>
-														<# } #>
-															<# if ( ! _.isEmpty( data.model.ogv ) ) {
-																if ( ! _.isUndefined( html5types.ogv ) ) {
-																delete html5types.ogv;
-																}
-																#>
-																<label class="setting">
-																	<span>OGV</span>
-																	<input type="text" disabled="disabled" data-setting="ogv" value="{{ data.model.ogv }}" />
-																	<button type="button" class="button-link remove-setting">Quitar fuente de vídeo</button>
-																</label>
-																<# } #>
-																	<# if ( ! _.isEmpty( data.model.flv ) ) {
-																		if ( ! _.isUndefined( html5types.flv ) ) {
-																		delete html5types.flv;
-																		}
-																		#>
-																		<label class="setting">
-																			<span>FLV</span>
-																			<input type="text" disabled="disabled" data-setting="flv" value="{{ data.model.flv }}" />
-																			<button type="button" class="button-link remove-setting">Quitar fuente de vídeo</button>
-																		</label>
-																		<# } #>
-				</div>
+											}
+										}
+										if ( typeof arguments[2] === 'object' ) {
+											hitObject = arguments[2];
+										}
+										if ( typeof arguments[5] === 'object' ) {
+											Object.assign( hitObject, arguments[5] );
+										}
+										if ( 'undefined' !== typeof (
+											arguments[1].hitType
+										) ) {
+											hitObject = arguments[1];
+										}
+										if ( hitObject ) {
+											action = 'timing' === arguments[1].hitType ? 'timing_complete' : hitObject.eventAction;
+											hitConverted = mapArgs( hitObject );
+											__gtagTracker( 'event', action, hitConverted );
+										}
+									}
+									return;
+								}
 
-				<# if ( ! _.isEmpty( html5types ) ) { #>
-					<div class="setting">
-						<span>Añadir fuentes alternativas para mejorar la reproducción en HTML5:</span>
-						<div class="button-large">
-							<# _.each( html5types, function (mime, type) { #>
-								<button class="button add-media-source" data-mime="{{ mime }}">{{ type }}</button>
-								<# } ) #>
-						</div>
-					</div>
-					<# } #>
+								function mapArgs( args ) {
+									var gaKey, hit = {};
+									var gaMap = {
+										'eventCategory': 'event_category',
+										'eventAction': 'event_action',
+										'eventLabel': 'event_label',
+										'eventValue': 'event_value',
+										'nonInteraction': 'non_interaction',
+										'timingCategory': 'event_category',
+										'timingVar': 'name',
+										'timingValue': 'value',
+										'timingLabel': 'event_label',
+									};
+									for ( gaKey in gaMap ) {
+										if ( 'undefined' !== typeof args[gaKey] ) {
+											hit[gaMap[gaKey]] = args[gaKey];
+										}
+									}
+									return hit;
+								}
 
-						<# if ( ! _.isEmpty( data.model.poster ) ) { #>
-							<label class="setting">
-								<span>Imagen de poster</span>
-								<input type="text" disabled="disabled" data-setting="poster" value="{{ data.model.poster }}" />
-								<button type="button" class="button-link remove-setting">Quitar imagen de cartel</button>
-							</label>
-							<# } #>
-								<div class="setting preload">
-									<span>Precarga</span>
-									<div class="button-group button-large" data-setting="preload">
-										<button class="button" value="auto">Automático</button>
-										<button class="button" value="metadata">Metadatos</button>
-										<button class="button active" value="none">Ninguna</button>
-									</div>
-								</div>
-
-								<label class="setting checkbox-setting autoplay">
-									<input type="checkbox" data-setting="autoplay" />
-									<span>Reproducción automática</span>
-								</label>
-
-								<label class="setting checkbox-setting">
-									<input type="checkbox" data-setting="loop" />
-									<span>Repetir</span>
-								</label>
-
-								<label class="setting" data-setting="content">
-									<span>Pistas (subtítulos, leyendas, descripciones, capítulos o metadatos)</span>
-									<#
-										var content = '';
-										if ( ! _.isEmpty( data.model.content ) ) {
-										var tracks = jQuery( data.model.content ).filter( 'track' );
-										_.each( tracks.toArray(), function (track) {
-										content += track.outerHTML; #>
-										<p>
-											<input class="content-track" type="text" value="{{ track.outerHTML }}" />
-											<button type="button" class="button-link remove-setting remove-track">Eliminar pista de vídeo</button>
-										</p>
-										<# } ); #>
-											<# } else { #>
-												<em>No hay subtítulos asociados.</em>
-												<# } #>
-													<textarea class="hidden content-setting">{{ content }}</textarea>
-								</label>
-			</div>
-		</div>
-</script>
-
-<script type="text/html" id="tmpl-editor-gallery">
-	<# if ( data.attachments.length ) { #>
-		<div class="gallery gallery-columns-{{ data.columns }}">
-			<# _.each( data.attachments, function( attachment, index ) { #>
-				<dl class="gallery-item">
-					<dt class="gallery-icon">
-						<# if ( attachment.thumbnail ) { #>
-							<img src="{{ attachment.thumbnail.url }}" width="{{ attachment.thumbnail.width }}" height="{{ attachment.thumbnail.height }}" alt="" />
-							<# } else { #>
-								<img src="{{ attachment.url }}" alt="" />
-								<# } #>
-					</dt>
-					<# if ( attachment.caption ) { #>
-						<dd class="wp-caption-text gallery-caption">
-							{{{ data.verifyHTML( attachment.caption ) }}}
-						</dd>
-						<# } #>
-				</dl>
-				<# if ( index % data.columns === data.columns - 1 ) { #>
-					<br style="clear: both;">
-					<# } #>
-						<# } ); #>
-		</div>
-		<# } else { #>
-			<div class="wpview-error">
-				<div class="dashicons dashicons-format-gallery"></div><p>No se han encontrado elementos.</p>
-			</div>
-			<# } #>
-</script>
-
-<script type="text/html" id="tmpl-crop-content">
-	<img class="crop-image" src="{{ data.url }}" alt="Previsualización de área de recorte de la imagen. Requiere hace algo con el ratón.">
-	<div class="upload-errors"></div>
-</script>
-
-<script type="text/html" id="tmpl-site-icon-preview">
-	<h2>Vista previa</h2>
-	<strong aria-hidden="true">Como un icono del navegador</strong>
-	<div class="favicon-preview">
-		<img src="https://www.cifimad.es/wp-admin/images/browser.png" class="browser-preview" width="182" height="" alt="" />
-
-		<div class="favicon">
-			<img id="preview-favicon" src="{{ data.url }}" alt="Vista previa como un icono del navegador"/>
-		</div>
-		<span class="browser-title" aria-hidden="true">CifiMad</span>
-	</div>
-
-	<strong aria-hidden="true">Como un icono de aplicación</strong>
-	<div class="app-icon-preview">
-		<img id="preview-app-icon" src="{{ data.url }}" alt="Vista previa como un icono de aplicación"/>
-	</div>
-</script>
-
-<script id="tmpl-rwmb-media-item" type="text/html">
-	<input type="hidden" name="{{{ data.fieldName }}}" value="{{{ data.id }}}" class="rwmb-media-input">
-	<div class="rwmb-media-preview">
-		<div class="rwmb-media-content">
-			<div class="centered">
-				<# if ( 'image' === data.type && data.sizes ) { #>
-					<# if ( data.sizes.thumbnail ) { #>
-						<img src="{{{ data.sizes.thumbnail.url }}}">
-						<# } else { #>
-							<img src="{{{ data.sizes.full.url }}}">
-							<# } #>
-								<# } else { #>
-									<# if ( data.image && data.image.src && data.image.src !== data.icon ) { #>
-										<img src="{{ data.image.src }}" />
-										<# } else { #>
-											<img src="{{ data.icon }}" />
-											<# } #>
-												<# } #>
-			</div>
-		</div>
-	</div>
-	<div class="rwmb-media-info">
-		<h4>
-			<a href="{{{ data.url }}}" target="_blank" title="{{{ i18nRwmbMedia.view }}}">
-				<# if( data.title ) { #> {{{ data.title }}}
-					<# } else { #> {{{ i18nRwmbMedia.noTitle }}}
-						<# } #>
-			</a>
-		</h4>
-		<p>{{{ data.mime }}}</p>
-		<p>
-			<a class="rwmb-edit-media" title="{{{ i18nRwmbMedia.edit }}}" href="{{{ data.editLink }}}" target="_blank">
-				<span class="dashicons dashicons-edit"></span>{{{ i18nRwmbMedia.edit }}}
-			</a>
-			<a href="#" class="rwmb-remove-media" title="{{{ i18nRwmbMedia.remove }}}">
-				<span class="dashicons dashicons-no-alt"></span>{{{ i18nRwmbMedia.remove }}}
-			</a>
-		</p>
-	</div>
-</script>
-
-<script id="tmpl-rwmb-media-status" type="text/html">
-	<# if ( data.maxFiles > 0 ) { #>
-		{{{ data.length }}}/{{{ data.maxFiles }}}
-		<# if ( 1 < data.maxFiles ) { #>  {{{ i18nRwmbMedia.multiple }}} <# } else {#> {{{ i18nRwmbMedia.single }}} <# } #>
-				<# } #>
-</script>
-<script id="tmpl-rwmb-image-item" type="text/html">
-	<input type="hidden" name="{{{ data.fieldName }}}" value="{{{ data.id }}}" class="rwmb-media-input">
-	<div class="rwmb-media-preview">
-		<div class="rwmb-media-content">
-			<div class="centered">
-				<# if ( 'image' === data.type && data.sizes ) { #>
-					<# if ( data.sizes.thumbnail ) { #>
-						<img src="{{{ data.sizes.thumbnail.url }}}">
-						<# } else { #>
-							<img src="{{{ data.sizes.full.url }}}">
-							<# } #>
-								<# } else { #>
-									<# if ( data.image && data.image.src && data.image.src !== data.icon ) { #>
-										<img src="{{ data.image.src }}" />
-										<# } else { #>
-											<img src="{{ data.icon }}" />
-											<# } #>
-												<# } #>
-			</div>
-		</div>
-	</div>
-	<div class="rwmb-overlay"></div>
-	<div class="rwmb-media-bar">
-		<a class="rwmb-edit-media" title="{{{ i18nRwmbMedia.edit }}}" href="{{{ data.editLink }}}" target="_blank">
-			<span class="dashicons dashicons-edit"></span>
-		</a>
-		<a href="#" class="rwmb-remove-media" title="{{{ i18nRwmbMedia.remove }}}">
-			<span class="dashicons dashicons-no-alt"></span>
-		</a>
-	</div>
-</script>
-<script type='text/javascript'>
-	/* <![CDATA[ */
-	var wpcf7 = {"apiSettings":{"root":"https:\/\/www.cifimad.es\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Por favor, prueba que no eres un robot."}}};
-	/* ]]> */
-</script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.9'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/responsive-table-for-woocommerce/public/js/bootstrap.min.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>
-<script type='text/javascript'>
-	/* <![CDATA[ */
-	var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/www.cifimad.es\/?wc-ajax=%%endpoint%%"};
-	/* ]]> */
-</script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.2.3'></script>
-<script type='text/javascript'>
-	/* <![CDATA[ */
-	var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/www.cifimad.es\/?wc-ajax=%%endpoint%%","fragment_name":"wc_fragments_92f0ff2f9c7ff417c6ef2afda7e8f894"};
-	/* ]]> */
-</script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.2.3'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/themes/eventum/js/jquery.countdown.min.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/themes/eventum/js/jquery.magnific-popup.min.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/themes/eventum/js/loopcounter.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/themes/eventum/js/gmaps.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/themes/eventum/js/queryloader2.min.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/shortcode.min.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/backbone.min.js?ver=1.2.3'></script>
-<script type='text/javascript'>
-	/* <![CDATA[ */
-	var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
-	/* ]]> */
-</script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/wp-util.min.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/wp-backbone.min.js?ver=4.8.7'></script>
-<script type='text/javascript'>
-	/* <![CDATA[ */
-	var _wpMediaModelsL10n = {"settings":{"ajaxurl":"\/wp-admin\/admin-ajax.php","post":{"id":0}}};
-	/* ]]> */
-</script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/media-models.min.js?ver=4.8.7'></script>
-<script type='text/javascript'>
-	/* <![CDATA[ */
-	var pluploadL10n = {"queue_limit_exceeded":"Has intentado poner en cola demasiados archivos.","file_exceeds_size_limit":"El tama\u00f1o del archivo %s excede el tama\u00f1o permitido en este sitio.","zero_byte_file":"Este archivo est\u00e1 vacio. Por favor, prueba con otro.","invalid_filetype":"Lo siento, este tipo de archivo no est\u00e1 permitido por motivos de seguridad.","not_an_image":"Este archivo no es una imagen. Por favor, prueba con otro.","image_memory_exceeded":"Memoria excedida. Por favor, prueba con otro archivo m\u00e1s peque\u00f1o.","image_dimensions_exceeded":"Supera el tama\u00f1o permitido. Por favor, prueba con otro.","default_error":"Ha habido un error en la subida. Por favor int\u00e9ntalo m\u00e1s tarde.","missing_upload_url":"Ha habido un problema con la configuraci\u00f3n. Por favor, contacta con el  administrador del servidor.","upload_limit_exceeded":"Solo puedes subir 1 archivo.","http_error":"Error HTTP.","upload_failed":"Fall\u00f3 la subida.","big_upload_failed":"Por favor, intenta subir este archivo a trav\u00e9s del %1$snavegador%2$s.","big_upload_queued":"%s excede el tama\u00f1o m\u00e1ximo de subida del cargador de m\u00faltiples archivos del navegador.","io_error":"Error de entrada\/salida.","security_error":"Error de seguridad.","file_cancelled":"Archivo cancelado.","upload_stopped":"Subida detenida.","dismiss":"Descartar","crunching":"Calculando\u2026","deleted":"movidos a la papelera.","error_uploading":"Ha habido un error al subir \u201c%s\u201d"};
-	var _wpPluploadSettings = {"defaults":{"runtimes":"html5,flash,silverlight,html4","file_data_name":"async-upload","url":"\/wp-admin\/async-upload.php","flash_swf_url":"https:\/\/www.cifimad.es\/wp-includes\/js\/plupload\/plupload.flash.swf","silverlight_xap_url":"https:\/\/www.cifimad.es\/wp-includes\/js\/plupload\/plupload.silverlight.xap","filters":{"max_file_size":"33554432b","mime_types":[{"extensions":"323,acx,ai,aif,aifc,aiff,asf,asr,asx,au,avi,axs,bas,bcpio,bin,bmp,c,cat,cdf,cer,class,clp,cmx,cod,cpio,crd,crl,crt,csh,css,dcr,der,dir,dll,dms,doc,dot,dvi,dxr,eps,etx,evy,exe,fif,flr,gif,gtar,gz,h,hdf,hlp,hqx,hta,htc,htm,html,htt,ico,ief,iii,ins,isp,jfif,jpe,jpeg,jpg,png,js,latex,lha,lsf,lsx,lzh,m13,m14,m3u,man,mdb,me,mht,mhtml,mid,mny,mov,movie,mp2,mp4,mp3,mpa,mpe,mpeg,mpg,mpp,mpv2,ms,mvb,nws,oda,p10,p12,p7b,p7c,p7m,p7r,p7s,pbm,pdf,pfx,pgm,pko,pma,pmc,pml,pmr,pmw,pnm,pot,ppm,pps,ppt,prf,ps,pub,qt,ra,ram,ras,rgb,rmi,roff,rtf,rtx,scd,sct,setpay,setreg,sh,shar,sit,snd,spc,spl,src,sst,stl,stm,svg,sv4cpio,sv4crc,t,tar,tcl,tex,texi,texinfo,tgz,tif,tiff,tr,trm,tsv,txt,uls,ustar,vcf,vrml,wav,wcm,wdb,wks,wmf,wps,wri,wrl,wrz,xaf,xbm,xla,xlc,xlm,xls,xlsx,xlt,xlw,xof,xpm,xwd,z,zip,redux"}]},"multipart_params":{"action":"upload-attachment","_wpnonce":"fb8c6baa36"}},"browser":{"mobile":false,"supported":true},"limitExceeded":false};
-	/* ]]> */
-</script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/plupload/wp-plupload.min.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/jquery/ui/sortable.min.js?ver=1.11.4'></script>
-<script type='text/javascript'>
-	/* <![CDATA[ */
-	var mejsL10n = {"language":"es-ES","strings":{"Close":"Cerrar","Fullscreen":"Pantalla completa","Turn off Fullscreen":"Salir de pantalla completa","Go Fullscreen":"Ver en pantalla completa","Download File":"Descargar archivo","Download Video":"Descargar v\u00eddeo","Play":"Reproducir","Pause":"Pausa","Captions\/Subtitles":"Pies de foto \/ Subt\u00edtulos","None":"Ninguno","Time Slider":"Control de tiempo","Skip back %1 seconds":"Retroceder %1 segundos","Video Player":"Reproductor de v\u00eddeo","Audio Player":"Reproductor de audio","Volume Slider":"Control de volumen","Mute Toggle":"Desactivar sonido","Unmute":"Activar sonido","Mute":"Silenciar","Use Up\/Down Arrow keys to increase or decrease volume.":"Utiliza las teclas de flecha arriba\/abajo para aumentar o disminuir el volumen.","Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.":"Usa las teclas de direcci\u00f3n izquierda\/derecha para avanzar un segundo, y las flechas arriba\/abajo para avanzar diez segundos."}};
-	var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/"};
-	/* ]]> */
-</script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=2.22.0'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=4.8.7'></script>
-<script type='text/javascript'>
-	/* <![CDATA[ */
-	var _wpMediaViewsL10n = {"url":"URL","addMedia":"A\u00f1adir objeto","search":"Buscar","select":"Elegir","cancel":"Cancelar","update":"Actualizar","replace":"Reemplazar","remove":"Eliminar","back":"Volver","selected":"%d seleccionados","dragInfo":"Arrastra y suelta para reordenar archivos multimedia.","uploadFilesTitle":"Subir archivos","uploadImagesTitle":"Subir im\u00e1genes","mediaLibraryTitle":"Biblioteca de medios","insertMediaTitle":"Insertar medios","createNewGallery":"Crear una nueva galer\u00eda","createNewPlaylist":"Crear una nueva lista de reproducci\u00f3n","createNewVideoPlaylist":"Crear una nueva lista de reproducci\u00f3n de v\u00eddeos","returnToLibrary":"\u2190 Volver a la biblioteca","allMediaItems":"Todos los medios","allDates":"Todas las fechas","noItemsFound":"No se han encontrado elementos.","insertIntoPost":"Insertar en la entrada","unattached":"Sin adjuntar","trash":"Papelera","uploadedToThisPost":"Subido a esta entrada","warnDelete":"Est\u00e1s a punto de borrar permanentemente este elemento de tu sitio.\nEsta acci\u00f3n es irreversible.\n'Cancelar' para parar, 'Aceptar' para borrar.","warnBulkDelete":"Est\u00e1s a punto de borrar permanentemente estos elementos de tu sitio.\nEsta acci\u00f3n es irreversible.\n'Cancelar' para parar, 'Aceptar' para borrar.","warnBulkTrash":"Est\u00e1s a punto de enviar a la papelera estos elementos.\n  'Cancelar' para parar, 'OK' para borrarlos.","bulkSelect":"Selecci\u00f3n m\u00faltiple","cancelSelection":"Cancelar selecci\u00f3n","trashSelected":"\"Enviar a la papelera\" seleccionado","untrashSelected":"\"Sacar de la papelera\" seleccionado","deleteSelected":"Borrar selecci\u00f3n","deletePermanently":"Borrar permanentemente","apply":"Aplicar","filterByDate":"Filtrar por fecha","filterByType":"Filtrar por tipo","searchMediaLabel":"Buscar medios","searchMediaPlaceholder":"Busca medios...","noMedia":"No se encontraron archivos multimedia.","attachmentDetails":"Detalles de adjuntos","insertFromUrlTitle":"Insertar desde URL","setFeaturedImageTitle":"Imagen destacada","setFeaturedImage":"Establecer imagen destacada","createGalleryTitle":"Crear galer\u00eda","editGalleryTitle":"Editar galer\u00eda","cancelGalleryTitle":"\u2190 Cancelar galer\u00eda","insertGallery":"Inserta galer\u00eda","updateGallery":"Actualizar galer\u00eda","addToGallery":"A\u00f1adir a la galer\u00eda","addToGalleryTitle":"A\u00f1adir a la Galer\u00eda","reverseOrder":"Orden inverso","imageDetailsTitle":"Detalles de la imagen","imageReplaceTitle":"Reemplazar imagen","imageDetailsCancel":"Cancela la edici\u00f3n","editImage":"Editar imagen","chooseImage":"Elegir imagen","selectAndCrop":"Selecciona y recorta","skipCropping":"No recortar","cropImage":"Recortar imagen","cropYourImage":"Recorta tu imagen","cropping":"Recortando\u2026","suggestedDimensions":"Dimensiones de imagen sugeridas: %1$s por %2$s p\u00edxeles.","cropError":"Se ha producido un error recortando la imagen.","audioDetailsTitle":"Detalles del audio","audioReplaceTitle":"Reemplazar audio","audioAddSourceTitle":"A\u00f1adir origen del audio","audioDetailsCancel":"Cancela la edici\u00f3n","videoDetailsTitle":"Detalles del v\u00eddeo","videoReplaceTitle":"Reemplazar v\u00eddeo","videoAddSourceTitle":"A\u00f1adir fuente de v\u00eddeo","videoDetailsCancel":"Cancela la edici\u00f3n","videoSelectPosterImageTitle":"Elegir imagen de poster","videoAddTrackTitle":"A\u00f1adir subt\u00edtulos","playlistDragInfo":"Arrastrar y soltar para reordenar pistas.","createPlaylistTitle":"Crear lista de reproducci\u00f3n de audios","editPlaylistTitle":"Editar lista de reproducci\u00f3n de audio","cancelPlaylistTitle":"\u2190 Cancelar lista de reproducci\u00f3n de audio","insertPlaylist":"Insertar lista de reproducci\u00f3n de audio","updatePlaylist":"Actualizar lista de reproducci\u00f3n de audio","addToPlaylist":"A\u00f1adir a la lista de reproducci\u00f3n de audio","addToPlaylistTitle":"A\u00f1adir a la lista de reproducci\u00f3n de audio","videoPlaylistDragInfo":"Arrastrar y soltar para reordenar v\u00eddeos.","createVideoPlaylistTitle":"Crear lista de reproducci\u00f3n de v\u00eddeos","editVideoPlaylistTitle":"Editar lista de reproducci\u00f3n de v\u00eddeo","cancelVideoPlaylistTitle":"\u2190 Cancelar lista de reproducci\u00f3n de v\u00eddeos","insertVideoPlaylist":"Insertar lista de reproducci\u00f3n de v\u00eddeo","updateVideoPlaylist":"Actualizar lista de reproducci\u00f3n de v\u00eddeos","addToVideoPlaylist":"A\u00f1adir a lista de reproducci\u00f3n de v\u00eddeos","addToVideoPlaylistTitle":"A\u00f1adir a lista de reproducci\u00f3n de v\u00eddeo","iconPicker":{"frameTitle":"Icon Picker","allFilter":"All","selectIcon":"Select Icon"},"settings":{"tabs":[],"tabUrl":"https:\/\/www.cifimad.es\/wp-admin\/media-upload.php?chromeless=1","mimeTypes":{"image":"Im\u00e1genes","audio":"Audio","video":"V\u00eddeo"},"captions":true,"nonce":{"sendToEditor":"6aa872d5e6","wpRestApi":"36a83a97d4"},"post":{"id":0},"defaultProps":{"link":"none","align":"","size":""},"attachmentCounts":{"audio":1,"video":1},"oEmbedProxyUrl":"https:\/\/www.cifimad.es\/wp-json\/oembed\/1.0\/proxy","embedExts":["mp3","ogg","m4a","wav","mp4","m4v","webm","ogv","flv"],"embedMimes":{"mp3":"audio\/mpeg","wav":"audio\/x-wav","mp4":"video\/mp4"},"contentWidth":null,"months":[{"year":"2018","month":"11","text":"noviembre 2018"},{"year":"2018","month":"8","text":"agosto 2018"},{"year":"2018","month":"7","text":"julio 2018"},{"year":"2018","month":"3","text":"marzo 2018"},{"year":"2018","month":"2","text":"febrero 2018"},{"year":"2018","month":"1","text":"enero 2018"},{"year":"2017","month":"12","text":"diciembre 2017"},{"year":"2017","month":"11","text":"noviembre 2017"},{"year":"2017","month":"10","text":"octubre 2017"},{"year":"2017","month":"9","text":"septiembre 2017"},{"year":"2016","month":"9","text":"septiembre 2016"},{"year":"2016","month":"1","text":"enero 2016"},{"year":"2015","month":"10","text":"octubre 2015"},{"year":"2015","month":"9","text":"septiembre 2015"}],"mediaTrash":0}};
-	/* ]]> */
-</script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/media-views.min.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/media-editor.min.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/media-audiovideo.min.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/themes/eventum/js/main.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-includes/js/wp-embed.min.js?ver=4.8.7'></script>
-<script type='text/javascript' src='https://www.cifimad.es/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=5.1.1'></script>
-<!-- WooCommerce JavaScript -->
-<script type="text/javascript">
-	jQuery(function($) {
-
-		jQuery( function( $ ) {
-			var ppec_mark_fields      = '#woocommerce_ppec_paypal_title, #woocommerce_ppec_paypal_description';
-			var ppec_live_fields      = '#woocommerce_ppec_paypal_api_username, #woocommerce_ppec_paypal_api_password, #woocommerce_ppec_paypal_api_signature, #woocommerce_ppec_paypal_api_certificate, #woocommerce_ppec_paypal_api_subject';
-			var ppec_sandbox_fields   = '#woocommerce_ppec_paypal_sandbox_api_username, #woocommerce_ppec_paypal_sandbox_api_password, #woocommerce_ppec_paypal_sandbox_api_signature, #woocommerce_ppec_paypal_sandbox_api_certificate, #woocommerce_ppec_paypal_sandbox_api_subject';
-
-			var enable_toggle         = $( 'a.ppec-toggle-settings' ).length > 0;
-			var enable_sandbox_toggle = $( 'a.ppec-toggle-sandbox-settings' ).length > 0;
-
-			$( '#woocommerce_ppec_paypal_environment' ).change(function(){
-				$( ppec_sandbox_fields + ',' + ppec_live_fields ).closest( 'tr' ).hide();
-
-				if ( 'live' === $( this ).val() ) {
-					$( '#woocommerce_ppec_paypal_api_credentials, #woocommerce_ppec_paypal_api_credentials + p' ).show();
-					$( '#woocommerce_ppec_paypal_sandbox_api_credentials, #woocommerce_ppec_paypal_sandbox_api_credentials + p' ).hide();
-
-					if ( ! enable_toggle ) {
-						$( ppec_live_fields ).closest( 'tr' ).show();
-					}
-				} else {
-					$( '#woocommerce_ppec_paypal_api_credentials, #woocommerce_ppec_paypal_api_credentials + p' ).hide();
-					$( '#woocommerce_ppec_paypal_sandbox_api_credentials, #woocommerce_ppec_paypal_sandbox_api_credentials + p' ).show();
-
-					if ( ! enable_sandbox_toggle ) {
-						$( ppec_sandbox_fields ).closest( 'tr' ).show();
-					}
-				}
-			}).change();
-
-			$( '#woocommerce_ppec_paypal_mark_enabled' ).change(function(){
-				if ( $( this ).is( ':checked' ) ) {
-					$( ppec_mark_fields ).closest( 'tr' ).show();
-				} else {
-					$( ppec_mark_fields ).closest( 'tr' ).hide();
-				}
-			}).change();
-
-			$( '#woocommerce_ppec_paypal_paymentaction' ).change(function(){
-				if ( 'sale' === $( this ).val() ) {
-					$( '#woocommerce_ppec_paypal_instant_payments' ).closest( 'tr' ).show();
-				} else {
-					$( '#woocommerce_ppec_paypal_instant_payments' ).closest( 'tr' ).hide();
-				}
-			}).change();
-
-			if ( enable_toggle ) {
-				$( document ).on( 'click', '.ppec-toggle-settings', function( e ) {
-					$( ppec_live_fields ).closest( 'tr' ).toggle( 'fast' );
-					e.preventDefault();
-				} );
-			}
-			if ( enable_sandbox_toggle ) {
-				$( document ).on( 'click', '.ppec-toggle-sandbox-settings', function( e ) {
-					$( ppec_sandbox_fields ).closest( 'tr' ).toggle( 'fast' );
-					e.preventDefault();
-				} );
-			}
-		});
-
-	});
-</script>
-<script type="text/javascript">
+								try {
+									f.hitCallback();
+								} catch ( ex ) {
+								}
+							};
+							__gaTracker.create = newtracker;
+							__gaTracker.getByName = newtracker;
+							__gaTracker.getAll = function () {
+								return [];
+							};
+							__gaTracker.remove = noopfn;
+							__gaTracker.loaded = true;
+							window['__gaTracker'] = __gaTracker;
+						}
+					)();
+									} else {
+										console.log( "" );
+					( function () {
+							function __gtagTracker() {
+								return null;
+							}
+							window['__gtagTracker'] = __gtagTracker;
+							window['gtag'] = __gtagTracker;
+					} )();
+									}
+			</script>
+<!-- / Google Analytics by MonsterInsights -->
 </body>
 </html>
-

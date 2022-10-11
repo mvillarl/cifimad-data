@@ -190,4 +190,8 @@ class VolunteerInscriptionController extends Controller
 	public function getReportTitle() {
 		return 'Inscripciones de voluntarios';
 	}
+
+    public function getSignupTitle() {
+        return '¡Colabora con nosotros! - CifiMad';
+    }
 }

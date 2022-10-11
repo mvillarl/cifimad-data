@@ -184,4 +184,8 @@ class CosplayinscriptionController extends Controller
     public function getReportTitle() {
         return 'Inscripciones al concurso de cosplay';
     }
+
+    public function getSignupTitle() {
+        return 'Cosplay - ¡Apúntate al concurso! - CifiMad';
+    }
 }

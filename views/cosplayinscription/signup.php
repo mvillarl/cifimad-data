@@ -1,3 +1,6 @@
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="signup-form">
 <?php if ($show) { ?>
     <h2 align="center">Inscripción previa al concurso de cosplay</h2>
     <?php if ($created) { ?>
@@ -39,6 +42,7 @@
     <p align="center"> <img src="/img/cosplay-monstruitos.jpg"/> </p>
     <p>Pero no te preocupes. ¡Aún puedes apuntarte en el propio evento! ¡Te esperamos!</p>
 <?php } ?>
+</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

@@ -1,3 +1,6 @@
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="signup-form">
 <?php if ($show) { ?>
     <h2 align="center">Voluntarios CifiMad</h2>
     <?php if ($created) { ?>
@@ -10,8 +13,8 @@
         <div id="d-form-volunteer-1">
         <p>Hola a todos.</p>
 
-        <p>Otro año más volvemos a la carga; después de unos meses de retraso obligados por la pandemia, gracias a los cuales hay más ganas de convención que nunca.
-        Como siempre necesitamos vuestra ayuda para hacer que la CifiMad sea posible.</p>
+        <p>¡Vamos allá una vez más! Después de un par de años difíciles, 2023 vuelve a ser CifiMad sin pandemia y con invitados internacionales.
+        Como siempre necesitamos vuestra ayuda para hacer que sea posible.</p>
         <p class="labelReq">* Obligatorio</p>
         <p><label>E-mail</label><span class="labelReq">*</span><br>
         <span><input type="text" name="email" size="40" maxlength="100" class="required email"/></span><br/>
@@ -62,6 +65,7 @@
 	<p align="center"> <img src="/img/cosplay-monstruitos.jpg"/> </p>
 	<p>¡Gracias por animarte en todo caso!</p>
 <?php } ?>
+</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
