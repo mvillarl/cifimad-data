@@ -90,3 +90,11 @@
 .consent {
     font-size: smaller;
 }
+
+.message {
+    color: green;
+}
+
+.result {
+    color: navy;
+}

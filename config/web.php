@@ -70,6 +70,8 @@ $config = [
                 '/attendee/ajaxsavemark/<id>/<done>' => 'attendee/ajaxsavemark',
                 '/press/export/<consent>' => 'press/export',
                 '/press/consent/<key>/<email>' => 'press/consent',
+                '/poll/vote/<key>' => 'poll/vote',
+                '/poll/result/<key>' => 'poll/result',
             ],
         ],
     ],
@@ -86,7 +88,7 @@ $config = [
         {
             $event->action->controller->layout = 'reportLayout.php';
         };
-        if ( in_array ($event->action->uniqueId, array ('member/consent', 'press/consent', 'cosplayinscription/signup', 'volunteer-inscription/signup') ) )
+        if ( in_array ($event->action->uniqueId, array ('member/consent', 'press/consent', 'cosplayinscription/signup', 'volunteer-inscription/signup', 'poll/vote', 'poll/result') ) )
         {
             $event->action->controller->layout = 'publicLayout.php';
         };

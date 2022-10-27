@@ -49,6 +49,8 @@ AppAsset::register($this);
         if (User::canRoute('/cosplayinscription/report')) $menuitemsevents[] = ['label' => 'Inscripciones cosplay - informe', 'url' => '/cosplayinscription/report', 'linkOptions' => ['target' => 'blank'] ];
 	    if (User::canRoute('/volunteer-inscription/index')) $menuitemsevents[] = ['label' => 'Inscripciones voluntarios', 'url' => '/volunteer-inscription/index'];
 	    if (User::canRoute('/volunteer-inscription/report')) $menuitemsevents[] = ['label' => 'Inscripciones voluntarios - informe', 'url' => '/volunteer-inscription/report'];
+	    if (User::canRoute('/poll/index')) $menuitemsevents[] = ['label' => 'Encuestas', 'url' => '/poll/index'];
+	    if (User::canRoute('/poll-answer/index')) $menuitemsevents[] = ['label' => 'Encuestas - respuestas', 'url' => '/poll-answer/index'];
         $menuitems[] = ['label' => 'Base','items' => $menuitemsevents];
     }
     if (User::canRoute('/member/index')) $menuitems[] = ['label' => 'Socios', 'url' => '/member/index'];
