@@ -25,7 +25,7 @@
     <?php foreach ($model->pollAnswers as $pollAnswer) { ?>
         <p><input type="radio" name="idPollAnswer" class="required" value="<?= $pollAnswer->id ?>"> <?= $pollAnswer->answerText ?></p>
     <?php } ?>
-    <p><input type="radio" name="idPollAnswer" class="required" value="_new"> <input type="text" name="newAnswerText" size="40"/></p>
+    <p><input type="radio" name="idPollAnswer" class="required" value="_new"> <input type="text" name="newAnswerText" size="40" class="poll"/></p>
     <input type="submit" value="Votar"/>
     <p><a href="/poll/result/<?= $model->pkey ?>">Ver resultados</a></p>
     </form>

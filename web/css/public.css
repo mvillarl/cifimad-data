@@ -98,3 +98,7 @@
 .result {
     color: navy;
 }
+
+input.poll {
+    background: #f5d6da;
+}
