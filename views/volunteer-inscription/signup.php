@@ -21,7 +21,7 @@
         <div class="labelReq" id="error_email"></div></p>
         <p><label>Nombre y Apellidos<span class="labelReq">*</span></label><br>
         <span><input type="text" name="name" size="40" maxlength="100" class="required"/></span></p>
-        <p><label>Nombre en Facebook</label><br>
+        <p><label>Nombre en redes sociales</label><br>
         <span><input type="text" name="nameFacebook" size="40" maxlength="100" /></span></p>
             <p><input type="button" value="Siguiente" class="btnNav" id="volunteerNext"/></p>
         </div>

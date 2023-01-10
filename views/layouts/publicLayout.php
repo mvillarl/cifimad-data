@@ -150,6 +150,8 @@ $this->title = $this->context->getSignupTitle();
     <link rel="icon" href="https://www.cifimad.es/wp-content/uploads/2021/07/faviconV2.jpg" sizes="192x192" />
     <link rel="apple-touch-icon" href="https://www.cifimad.es/wp-content/uploads/2021/07/faviconV2.jpg" />
     <meta name="msapplication-TileImage" content="https://www.cifimad.es/wp-content/uploads/2021/07/faviconV2.jpg" />
+    <link rel="stylesheet" href="/css/public.css?v1.2"/>
+    <script type='text/javascript' src='/js/validateForm.js?v1.2'></script>
 </head>
 
 <body data-cmplz=1 itemtype='https://schema.org/WebPage' itemscope='itemscope' class="page-template-default page page-id-10897 theme-astra woocommerce-no-js ehf-header ehf-footer ehf-template-astra ehf-stylesheet-astra group-blog ast-single-post ast-inherit-site-logo-transparent ast-theme-transparent-header ast-hfb-header ast-desktop ast-plain-container ast-no-sidebar astra-3.6.2 elementor-default elementor-kit-6281 elementor-page elementor-page-10897 astra-addon-3.5.3">
@@ -447,7 +449,7 @@ $this->title = $this->context->getSignupTitle();
     var wpcf7 = {"api":{"root":"https:\/\/www.cifimad.es\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
 </script>
 <script src='https://www.cifimad.es/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.4.1' id='contact-form-7-js'></script>
-<script src='https://www.cifimad.es/wp-content/plugins/responsive-table-for-woocommerce/public/js/bootstrap.min.js?ver=5.7.7' id='bootstrap-js'></script>
+<!-- <script src='https://www.cifimad.es/wp-content/plugins/responsive-table-for-woocommerce/public/js/bootstrap.min.js?ver=5.7.7' id='bootstrap-js'></script> -->
 <script src='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70' id='jquery-blockui-js'></script>
 <script src='https://www.cifimad.es/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4' id='js-cookie-js'></script>
 <script id='woocommerce-js-extra'>
