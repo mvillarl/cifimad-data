@@ -13,6 +13,7 @@ use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
  * @property integer $idEvent
  * @property string $name
  * @property string $email
+ * @property string $phone
  * @property string $nameFacebook
  * @property string $functionOther
  * @property string $shiftOther
@@ -54,9 +55,9 @@ class VolunteerInscription extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idEvent', 'name', 'email'], 'required'],
+            [['idEvent', 'name'], 'required'],
             [['idEvent', 'computersLevel'], 'integer'],
-            [['name', 'email', 'nameFacebook', 'functionOther', 'shiftOther'], 'string', 'max' => 100],
+            [['name', 'email', 'phone', 'nameFacebook', 'functionOther', 'shiftOther'], 'string', 'max' => 100],
             [['otherVolunteer'], 'string', 'max' => 500],
             [['idEvent'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['idEvent' => 'id']],
 	        [['volunteerInscriptionFunctions', 'volunteerInscriptionShifts'], 'safe'],
@@ -83,7 +84,8 @@ class VolunteerInscription extends \yii\db\ActiveRecord
             'eventName' => 'Evento',
             'name' => 'Nombre',
             'email' => 'E-mail',
-            'nameFacebook' => 'Nombre en Facebook',
+            'phone' => 'Teléfono',
+            'nameFacebook' => 'Nombre en redes sociales',
             'functionOther' => 'Dónde colaborar - otra',
             'shiftOther' => 'Disponibilidad - otra',
             'otherVolunteer' => 'Datos de otro voluntario',

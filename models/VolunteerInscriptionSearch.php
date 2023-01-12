@@ -19,7 +19,7 @@ class VolunteerInscriptionSearch extends VolunteerInscription
     {
         return [
             [['id', 'idEvent'], 'integer'],
-            [['name', 'email', 'nameFacebook'], 'safe'],
+            [['name', 'email', 'phone', 'nameFacebook'], 'safe'],
             [['status'], 'boolean'],
         ];
     }
@@ -67,6 +67,7 @@ class VolunteerInscriptionSearch extends VolunteerInscription
 
         $query->andFilterWhere(['like', 'cif_volunteer_inscriptions.name', $this->name])
             ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'phone', $this->phone])
             ->andFilterWhere(['like', 'nameFacebook', $this->nameFacebook]);
 
         return $dataProvider;

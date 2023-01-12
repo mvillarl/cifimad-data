@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'eventName',
             'name',
             'email:email',
+            'phone',
             'nameFacebook',
 	        'computersLevelValue',
 	        [

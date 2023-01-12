@@ -1,5 +1,6 @@
 jQuery(document).ready (function () {
     jQuery('.required').blur (cfValidate);
+    jQuery('.requiredone').blur (cfValidate);
     jQuery('.email').blur (cfValidate);
     jQuery('#sendForm').click (sendForm);
     jQuery('#d-form-volunteer-2').hide();
@@ -20,6 +21,8 @@ function volunteerNext() {
     if (cfValidate ('#d-form-volunteer-1 ')) {
         jQuery('#d-form-volunteer-1').hide();
         jQuery('#d-form-volunteer-2').show();
+        jQuery('#d-form-volunteer-2').removeClass ('fieldError');
+        jQuery('#d-form-volunteer-2 ul').removeClass ('fieldError');
     }
 }
 
@@ -28,6 +31,8 @@ function volunteerPrev() {
     if (cfValidate ('#d-form-volunteer-2 ')) {
         jQuery('#d-form-volunteer-1').show();
         jQuery('#d-form-volunteer-2').hide();
+        jQuery('#d-form-volunteer-1').removeClass ('fieldError');
+        jQuery('#d-form-volunteer-1 ul').removeClass ('fieldError');
     }
 }
 
@@ -55,6 +60,22 @@ function cfValidate(extrafilter) {
                 prnt.removeClass('fieldError');
             }
         });
+        var anyvalue = false;
+        jQuery(extrafilter + '.requiredone').each(function () {
+            var value = fieldValue(this);
+            if (value != '') {
+                anyvalue = true;
+            }
+        });
+        if (jQuery(extrafilter + '.requiredone').size() > 0) {
+            if (anyvalue) {
+                jQuery(extrafilter + '.requiredone').parent().parent().removeClass('fieldError');
+            } else {
+                jQuery('#errors').text('Es necesario que nos indiques al menos uno de los dos campos: e-mail o teléfono');
+                jQuery(extrafilter + '.requiredone').parent().parent().addClass('fieldError');
+                anyerror = true;
+            }
+        }
         jQuery(extrafilter + '.email').each(function () {
             var value = fieldValue(this);
             if ( (value != '') && !isValidEmail (value) ) {

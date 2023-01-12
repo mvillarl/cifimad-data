@@ -16,11 +16,15 @@
         <p>¡Vamos allá una vez más! Después de un par de años difíciles, 2023 vuelve a ser CifiMad sin pandemia y con invitados internacionales.
         Como siempre necesitamos vuestra ayuda para hacer que sea posible.</p>
         <p class="labelReq">* Obligatorio</p>
-        <p><label>E-mail</label><span class="labelReq">*</span><br>
-        <span><input type="text" name="email" size="40" maxlength="100" class="required email"/></span><br/>
+        <p>(Necesitamos e-mail o teléfono, no hacen falta los dos pero sí uno de ellos)</p>
+            <p><label>Nombre y Apellidos<span class="labelReq">*</span></label><br>
+                <span><input type="text" name="name" size="40" maxlength="100" class="required"/></span></p>
+        <p><label>E-mail</label><br>
+        <span><input type="text" name="email" size="40" maxlength="100" class="requiredone email"/></span><br/>
         <div class="labelReq" id="error_email"></div></p>
-        <p><label>Nombre y Apellidos<span class="labelReq">*</span></label><br>
-        <span><input type="text" name="name" size="40" maxlength="100" class="required"/></span></p>
+        <p><label>Teléfono</label><br>
+        <span><input type="text" name="phone" size="40" maxlength="100" class="requiredone"/></span><br/>
+        <div class="labelReq" id="error_phone"></div></p>
         <p><label>Nombre en redes sociales</label><br>
         <span><input type="text" name="nameFacebook" size="40" maxlength="100" /></span></p>
             <p><input type="button" value="Siguiente" class="btnNav" id="volunteerNext"/></p>
