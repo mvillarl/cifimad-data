@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Crear Inscripción de voluntario', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Exportar', ['export'], ['class' => 'btn btn-primary']) ?>
     </p>
     <?php $yesno = ['0' => 'No', '1' => 'Sí']; ?>
     <?= GridView::widget([

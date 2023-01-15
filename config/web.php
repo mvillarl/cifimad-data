@@ -80,7 +80,7 @@ $config = [
     //'defaultRoute' => '/event/index',
     'language' => 'es-ES',
     'on beforeAction'=>function(yii\base\ActionEvent $event) {
-        if ( in_array ($event->action->uniqueId, array ('member/export', 'press/export') ) )
+        if ( in_array ($event->action->uniqueId, array ('member/export', 'press/export', 'volunteer-inscription/export') ) )
         {
             $event->action->controller->layout = 'excelLayout.php';
         };

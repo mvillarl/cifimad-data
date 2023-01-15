@@ -38,6 +38,10 @@ class VolunteerInscriptionController extends Controller
      */
     public function actionIndex()
     {
+	    $idEvent = Yii::$app->request->get('VolunteerInscriptionSearch')['idEvent'];
+	    if (!strlen ($idEvent)) $idEvent = $this->_getEventId (false);
+	    Yii::$app->session->set('Attendee.idEvent', $idEvent);
+
         $searchModel = new VolunteerInscriptionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -194,4 +198,19 @@ class VolunteerInscriptionController extends Controller
     public function getSignupTitle() {
         return '¡Colabora con nosotros! - CifiMad';
     }
+
+	public function actionExport($consent = '1') {
+		$idEvent = Yii::$app->request->get('VolunteerInscriptionSearch')['idEvent'];
+		if (!strlen ($idEvent)) $idEvent = $this->_getEventId (false);
+		Yii::$app->session->set('Attendee.idEvent', $idEvent);
+
+		$inscriptionsq = VolunteerInscription::find()->andFilterEvent( $idEvent )->active()->orderByName();
+		$inscriptions  = $inscriptionsq->all();
+
+		$filename = "VoluntariosCifimad".date("Ymd").".xls";
+		Yii::$app->response->setDownloadHeaders($filename, "application/vnd.ms-excel");
+		return $this->render( 'export',[
+			'volunteers' => $inscriptions,
+		] );
+	}
 }

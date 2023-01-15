@@ -21,7 +21,8 @@ $rowsperpage = 40;
 		<tr>
 			<th>Nombre y apellidos</th>
 			<th>Email</th>
-			<th>Nombre Facebook</th>
+			<th>Teléfono</th>
+			<th>Nombre redes sociales</th>
 			<th>Informática</th>
 			<?php foreach ($functions as $code => $name) { ?>
                 <th><a href="#" class="showrows" data-row="<?= $code ?>"><?= $name ?></a> <span class="showrowsind">v</span></th>
@@ -34,6 +35,7 @@ $rowsperpage = 40;
 			<tr class="rowshow <?php foreach ($functions as $code => $name) { if ($inscription->hasFunction ($code) ) { ?><?= $code ?> <?php } } ?>">
 				<td><?= $inscription->name ?></td>
 				<td><?= $inscription->email ?></td>
+                <td><?= $inscription->phone ?></td>
 				<td><?= $inscription->nameFacebook ?></td>
 				<td><?= $inscription->computersLevelValue ?></td>
 				<?php foreach ($functions as $code => $name) { ?>
@@ -53,7 +55,8 @@ $rowsperpage = 40;
 		<tr>
 			<th>Nombre y apellidos</th>
 			<th>Email</th>
-			<th>Nombre Facebook</th>
+            <th>Teléfono</th>
+			<th>Nombre redes sociales</th>
 			<?php foreach ($shifts as $code => $name) { ?>
                 <th><a href="#" class="showrows" data-row="<?= $code ?>" title="<?= $name ?>"><?= \app\models\VolunteerInscriptionShift::shortShiftName ($name) ?></a> <span class="showrowsind">v</span></th>
 			<?php } ?>
@@ -65,6 +68,7 @@ $rowsperpage = 40;
 			<tr class="rowshow <?php foreach ($shifts as $code => $name) { if ($inscription->hasShift ($code) ) { ?><?= $code ?> <?php } } ?>">
 				<td><?= $inscription->name ?></td>
 				<td><?= $inscription->email ?></td>
+				<td><?= $inscription->phone ?></td>
 				<td><?= $inscription->nameFacebook ?></td>
 				<?php foreach ($shifts as $code => $name) { ?>
                     <td class="mark"><?php if ($inscription->hasShift ($code) ) { ?> X <?php } ?></td>

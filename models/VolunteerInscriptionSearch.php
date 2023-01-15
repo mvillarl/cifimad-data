@@ -51,6 +51,7 @@ class VolunteerInscriptionSearch extends VolunteerInscription
         ]);
 
         $this->load($params);
+	    if (!strlen ($this->idEvent)) $this->idEvent = Yii::$app->session->get('Attendee.idEvent');
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
