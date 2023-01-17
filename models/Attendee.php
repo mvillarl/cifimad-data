@@ -630,6 +630,7 @@ class Attendee extends \yii\db\ActiveRecord
         return [
             'P' => 'Enchufe',
             'H' => 'Discapacidad',
+            'M' => 'Moto',
         ];
     }
 
