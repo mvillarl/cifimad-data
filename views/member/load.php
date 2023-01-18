@@ -25,8 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
 	</div>
 	<?php } ?>
 	<p>Introduce un socio en cada línea, con cada campo separado por tabuladores</p>
+    <?php if ($isPandemic) { ?>
 	<p>El orden de las columnas debe ser: Nombre - Apellidos - E-mail - DNI - Teléfono - Vacuna</p>
     <p>Los valores para Vacuna deben ser: P (parcial), C (completa), N (no tiene), R (prefiere no decirlo)</p>
+    <?php } else { ?>
+        <p>El orden de las columnas debe ser: Nombre - Apellidos - E-mail - DNI</p>
+    <?php } ?>
 	<p>Se puede copiar y pegar directamente de un Excel</p>
 	<?php $form = ActiveForm::begin(); ?>
 

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Event;
 use Yii;
 use app\models\Member;
 use app\models\MemberSearch;
@@ -143,6 +144,10 @@ class MemberController extends BaseController
         $tickettypes = Attendee::getTicketTypes();
         $tickettypes[''] = '-- Tipo de entrada --';
 
+        $idCurrentEvent = $this->getCurrentEvent();
+        $event = Event::findOne($idCurrentEvent);
+        $isPandemic = $event->isPandemic;
+
         $memberdata = Yii::$app->request->post( 'memberdata' );
         if ( strlen( $memberdata ) ) {
             //echo ord($sources[24]).'<pre>'.str_replace ('\n', '<br>', $sources); die;
@@ -158,8 +163,10 @@ class MemberController extends BaseController
                     $model->surname = $fieldvalues[1];
                     $model->email   = $fieldvalues[2];
                     $model->nif     = $fieldvalues[3];
-                    $model->phone   = $fieldvalues[4];
-                    $model->vaccine = $fieldvalues[5];
+                    if ($isPandemic) {
+                        $model->phone = $fieldvalues[4];
+                        $model->vaccine = $fieldvalues[5];
+                    }
 	                $model->consent = true;
 	                $model->setKey();
 	                // Comprobamos si ya existe; en ese caso, no grabamos
@@ -198,11 +205,18 @@ class MemberController extends BaseController
             if ( $ok ) {
                 return $this->redirect( [ 'index' ] );
             } else {
-                return $this->render( 'load', ['events' => $events, 'sources' => $sources, 'tickettypes' => $tickettypes, 'model' => $model,  'error' => $model->getErrors()] );
+                return $this->render( 'load', ['events' => $events, 'sources' => $sources, 'tickettypes' => $tickettypes, 'isPandemic' => $isPandemic, 'model' => $model,  'error' => $model->getErrors()] );
             }
         } else {
-            return $this->render( 'load', ['events' => $events, 'sources' => $sources, 'tickettypes' => $tickettypes] );
+            return $this->render( 'load', ['events' => $events, 'sources' => $sources, 'tickettypes' => $tickettypes, 'isPandemic' => $isPandemic] );
         }
+    }
+
+    protected function getCurrentEvent() {
+        $idEvent = Yii::$app->session->get('Attendee.idEvent');
+        if (!strlen ($idEvent)) $idEvent = Event::getIdNextEvent();
+        if (!strlen ($idEvent)) $idEvent = Event::getIdLastEvent();
+        return $idEvent;
     }
 
     public function actionLoadfromwp ($filter = '') {
