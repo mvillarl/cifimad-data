@@ -771,7 +771,7 @@ class AttendeeController extends BaseController
 	    $path = 'img/makebadges';
 	    $files = FileHelper::findFiles($path);
 	    foreach ($files as $file) {
-            FileHelper::unlink($path . '/' . $file);
+            $ret = FileHelper::unlink($file);
         }
 	    return 'OK';
     }
@@ -802,20 +802,31 @@ class AttendeeController extends BaseController
     protected function _makeZip() {
         $path = 'img/makebadges';
         $zip = new \ZipArchive();
-        $zipname = $path . '/CifimadImagenesAcreditaciones.zip';
-        $zip->open ($zipname, \ZipArchive::CREATE);
-        $files = FileHelper::findFiles($path);
-        foreach ($files as $file) {
-            $zip->addFile($path . '/' . $file);
+        $zipname = Yii::$app->basePath . '/web/' . $path . '/CifimadImagenesAcreditaciones.zip';
+        if (DIRECTORY_SEPARATOR != '/') $zipname = str_replace ('/', DIRECTORY_SEPARATOR, $zipname);
+        $ok = $zip->open ($zipname, \ZipArchive::CREATE);
+        if ($ok === true) {
+	        $files = FileHelper::findFiles( $path );
+	        foreach ( $files as $file ) {
+	        	$file = Yii::$app->basePath . '/web/' . $file;
+		        if (DIRECTORY_SEPARATOR != '/') $file = str_replace ('/', DIRECTORY_SEPARATOR, $file);
+		        if (preg_match ('/\.jpg$/', $file)) {
+			        $ok = $zip->addFile( $file, basename( $file ) );
+			        if ( ! $ok ) {
+				        break;
+			        }
+		        }
+	        }
+	        if ($ok) $ok = $zip->close();
         }
-        $zip->close();
 
-        if (is_file ($zipname) ) {
+        if ($ok === true) $ok = is_file ($zipname);
+        if ($ok) {
             Yii::$app->response->setDownloadHeaders (basename($zipname), "application/zip");
             $zipcontent = file_get_contents($zipname);
             return $zipcontent;
         } else {
-            return 'Error - no hay imágenes?';
+            return 'Error - no hay imágenes? - ' . $ok;
         }
     }
     /*

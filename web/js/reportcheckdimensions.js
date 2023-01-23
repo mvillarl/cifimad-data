@@ -75,18 +75,17 @@ function generateImages() {
 
 function step1(index) {
     if (index == undefined) index = 0;
-    var count = index;
+    var count = 0;
     var max = 40 + index;
+    var last = max + count;
     var total = $('.generateJpg').size();
-    //max = total;
     var promises = [];
     var data = {};
     $('.generateJpg').each (function() {
-        if (count < max) {
+        if ( (count >= index) && (count < max) ) {
             $('#progress').text ('Preprocesando ' + (count + 1) + ' de ' + total + ' imágenes...');
             var prom = html2canvas(this);
             promises[count - index] = prom;
-            count++;
             prom.then(canvas => {
                 var countinside = Object.keys (data).length / 2;
 
@@ -97,6 +96,7 @@ function step1(index) {
                 data['img' + countinside] = img;
             });
         }
+        count++;
     });
     Promise.all (promises).then (function() {
         data['step'] = '1';
@@ -109,8 +109,8 @@ function step1(index) {
             dataType: 'text',
             success: function (txt) {
                 if (txt == 'OK') {
-                    if (count < total) {
-                        step1 (count);
+                    if (last < total) {
+                        step1 (last);
                     } else {
                         step2();
                     }
