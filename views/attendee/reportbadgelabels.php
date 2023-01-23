@@ -4,6 +4,8 @@ use app\models\Attendee;
 
 /* @var $this yii\web\View */
 /* @var $attendees app\models\Attendee[] */
+/* @var $afterprint boolean */
+/* @var $showinfotickets string */
 /* @var $blankBadges app\models\Source[] */
 /* @var $badgesCifiKids app\models\Attendee[] */
 /* @var $verticalBadges boolean */

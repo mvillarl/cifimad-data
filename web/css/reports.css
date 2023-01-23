@@ -465,14 +465,14 @@ html, body {
     width: 11cm;
     height: 7cm;
     margin: 0.2cm;
-    float: right;
+    float: left;
     position: relative;
 }
 .badgelabelbcontvertical {
     width: 7cm;
     height: 11cm;
     margin: 0.2cm;
-    float: right;
+    float: left;
     position: relative;
 }
 .badgelabelb {
@@ -551,4 +551,35 @@ html, body {
     /*height: 1.5cm;*/
     border-bottom: darkgray solid 1px;
     clear: both;
+}
+
+.button {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    /*.button-size(5; 5; 12; 12; 3);*/
+    user-select: none;
+}
+
+.button:hover {
+    background-color: #2e6da4;
+}
+
+.generateJpg {
+    position: relative;
+    float: left;
 }

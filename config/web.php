@@ -93,7 +93,7 @@ $config = [
         {
             $event->action->controller->layout = 'publicLayout.php';
         };
-        if ( in_array ($event->action->uniqueId, array ('member/ajaxSearch', 'attendee/ajaxSearch') ) )
+        if ( in_array ($event->action->uniqueId, array ('member/ajaxSearch', 'attendee/ajaxSearch', 'attendee/generateimgs') ) )
         {
             $event->action->controller->layout = null;
         };

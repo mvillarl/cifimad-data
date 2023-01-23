@@ -1,3 +1,5 @@
+-- Si un campo BIT da problemas en producción: comparar así
+-- ($this->field == 1) || (bin2hex($this->field) == '01')
 create table cif_events (
 	id INT(11) NOT NULL AUTO_INCREMENT,
 	year INT(4) NOT NULL,

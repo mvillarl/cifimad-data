@@ -4,10 +4,14 @@ use app\models\Attendee;
 
 /* @var $this yii\web\View */
 /* @var $attendees app\models\Attendee[] */
+/* @var $afterprint boolean */
+/* @var $showinfotickets string */
 /* @var $blankBadges app\models\Source[] */
 /* @var $badgesCifiKids app\models\Attendee[] */
 /* @var $verticalBadges boolean */
 /* @var $acadiBadges integer */
+/* @var $csrfName string */
+/* @var $csrfValue string */
 
 $this->title = 'Informe - acreditaciones completas';
 $this->params['breadcrumbs'][] = ['label' => 'Asistentes', 'url' => ['index']];
@@ -18,10 +22,14 @@ $classcontmap = [
         'V' => 'fridaycont',
         'S' => 'saturdaycont',
         'D' => 'sundaycont',
-]
+];
+$titlesunday = false;
 ?>
 <div class="attendee-reportbadgelabels beauty">
-	<div id="warnings"></div>
+    <div style="text-align: center;">
+	<div id="progress"></div>
+    <input type="button" value="Generar imágenes" class="button" id="generateImgs" disabled="true"/>
+    </div>
 <?php $type = ''; $long = 0; $isEspecial = false; $isVolunteer = false; $isCompanion = false; $cifikidsShown = false; foreach ($attendees as $attendee) { ?>
 	<?php
 	$longd = 1.5;
@@ -73,6 +81,7 @@ $classcontmap = [
     <?php if (!$isEspecial && !$isVolunteer && ($attendee->ticketType != $type) ) { ?>
         <?php $type = $attendee->ticketType; ?>
         <p class="btitle tit<?= $type ?>"><?= $attendee->getTicketTypeValue() ?></p>
+    <?php if ($type == 'D') {$titlesunday = true;} ?>
     <?php } ?>
     <?php
     $classcont = '';
@@ -130,6 +139,7 @@ $classcontmap = [
 	}
 
     ?>
+        <div id="att<?= $attendee->id ?>" class="generateJpg" data-name="<?= $attendee->imgFileName . ($double? '1': '') . '.jpg' ?>">
     <div class="<?= $contclass ?> <?= $classcont ?>">
         <div class="<?= $mainclass ?> <?= $class ?> <?= $insideclass ?>">
         <span class="<?= $mainclassIn ?>">
@@ -137,7 +147,9 @@ $classcontmap = [
 	        <?= $attendee->memberName ?></span>
         </div>
     </div>
+        </div>
     <?php if ($double) { ?>
+        <div id="att<?= $attendee->id ?>-2" class="generateJpg" data-name="<?= $attendee->imgFileName . '2.jpg' ?>">
         <div class="<?= $contclass ?> <?= $classcont ?>">
             <div class="<?= $mainclass ?> <?= $class ?> <?= $insideclass ?>">
         <span class="<?= $mainclassIn ?>">
@@ -145,8 +157,42 @@ $classcontmap = [
 	        <?= $attendee->memberName ?></span>
             </div>
         </div>
+        </div>
     <?php } ?>
 <?php } ?>
+<?php if (!$afterprint) { ?>
+    <?php if ( ($acadiBadges > 0) && !$titlesunday) { ?>
+        <p class="btitle titD">Domingo</p>
+        <?php } ?>
+    <?php for ($i = 0; $i < $acadiBadges; $i++) { ?>
+    <div id="attACADI<?= $i ?>" class="generateJpg" data-name="ACADI<?= $i ?>.jpg">
+    <div class="badgelabelbcont sundaycont">
+        <div class="badgelabel insideb">
+        <span class="badgelabelinb">ACADI  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </div>
+    </div>
+    </div>
+    <?php } ?>
+    <?php foreach ($blankBadges as $source) { ?>
+        <?php for ($i = 0; $i < $source->blankBadges; $i++) { ?>
+            <div id="attBlank<?= $source->id . '-' . $i ?>" class="generateJpg" data-name="Blank<?= $source->id . ' - ' . $i ?>.jpg">
+            <div class="badgelabelbcont weekendcont">
+                <div class="badgelabel insideb">
+        <span class="badgelabelinb">
+					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $source->imageFile ?>" class="sourceimage"/><?php }?>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </div>
+            </div>
+            </div>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
+
 </div>
+<form method="post" action="/attendee/generateimgs" name="frmGenerateJpg" id="frmGenerateJpg">
+    <input type="hidden" id="csrfField" name="<?= $csrfName ?>" value="<?= $csrfValue ?>"/>
+    <input type="hidden" name="step" value="2"/>
+</form>
 <script src="/assets/a9a1902f/jquery.js"></script>
+<script src="/js/html2canvas.min.js"></script>
 <script type="text/javascript" src="/js/reportcheckdimensions.js?v1.3"></script>

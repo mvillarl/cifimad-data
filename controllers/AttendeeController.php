@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Event;
+use Faker\Provider\File;
 use Yii;
 use app\models\Attendee;
 use app\models\AttendeeSearch;
@@ -11,6 +12,7 @@ use app\models\Member;
 use webvimark\components\BaseController;
 use webvimark\modules\UserManagement\models\User;
 use yii\console\Application;
+use yii\helpers\FileHelper;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
@@ -48,6 +50,7 @@ class AttendeeController extends BaseController
 		    'class' => VerbFilter::className(),
 		    'actions' => [
 			    'delete' => ['POST'],
+			    'generateimgs' => ['POST'],
 		    ]
 	    ];
 	    return $b;
@@ -299,6 +302,7 @@ class AttendeeController extends BaseController
 				    $compatt             = new \stdClass();
 				    $compatt->idSource   = 'C';
 				    $compatt->memberName = $companion->fullBadgeName;
+                    $compatt->imgFileName = Attendee::getImgFileNameFromName ($companion->fullBadgeName);
 				    array_unshift( $attendees, $compatt );
 			    }
 		    }
@@ -331,6 +335,8 @@ class AttendeeController extends BaseController
             'badgesCifiKids' => $badgesCifiKids,
             'verticalBadges' => $event->verticalBadges,
             'acadiBadges' => $event->acadiBadges,
+            'csrfName' => $this->request->csrfParam,
+            'csrfValue' => $this->request->getCsrfToken(),
         ]);
         
     }
@@ -744,4 +750,100 @@ class AttendeeController extends BaseController
 		if ($ret == 0) $ret = strcasecmp ($att1->badgeSurname, $att2->badgeSurname);
 		return $ret;
 	}
+
+	public function actionGenerateimgs() {
+        $step = Yii::$app->request->getBodyParam('step');
+        switch ($step) {
+            case '0':
+                $ret = $this->_initImgDirectory();
+                break;
+            case '1':
+                $ret = $this->_saveImages();
+                break;
+            case '2':
+                $ret = $this->_makeZip();
+                break;
+        }
+        return $ret;
+    }
+
+    protected function _initImgDirectory() {
+	    $path = 'img/makebadges';
+	    $files = FileHelper::findFiles($path);
+	    foreach ($files as $file) {
+            FileHelper::unlink($path . '/' . $file);
+        }
+	    return 'OK';
+    }
+
+    protected function _saveImages() {
+        $path = 'img/makebadges';
+        $count = 0;
+        $name = Yii::$app->request->getBodyParam('name' . $count);
+        $zip = new \ZipArchive();
+        $zipname = tempnam(sys_get_temp_dir(), "CIFIMAD");
+        $zip->open ($zipname, \ZipArchive::CREATE);
+        $ok = true;
+        while (!empty ($name) ) {
+            $name = Yii::$app->request->getBodyParam('name' . $count);
+            $img = Yii::$app->request->getBodyParam('img' . $count);
+            if (!empty ($img)) {
+                $img = base64_decode(str_replace('data:image/jpeg;base64,', '', $img));
+            }
+            if (!empty ($name) && !empty ($img)) {
+                $ok = file_put_contents($path . '/' . $name, $img);
+                if (!$ok) break;
+            }
+            $count++;
+        }
+        return $ok? "OK": 'Error al guardar fichero imagen: ' . $php_errormsg;
+    }
+
+    protected function _makeZip() {
+        $path = 'img/makebadges';
+        $zip = new \ZipArchive();
+        $zipname = $path . '/CifimadImagenesAcreditaciones.zip';
+        $zip->open ($zipname, \ZipArchive::CREATE);
+        $files = FileHelper::findFiles($path);
+        foreach ($files as $file) {
+            $zip->addFile($path . '/' . $file);
+        }
+        $zip->close();
+
+        if (is_file ($zipname) ) {
+            Yii::$app->response->setDownloadHeaders (basename($zipname), "application/zip");
+            $zipcontent = file_get_contents($zipname);
+            return $zipcontent;
+        } else {
+            return 'Error - no hay imágenes?';
+        }
+    }
+    /*
+	    $count = 0;
+	    $name = Yii::$app->request->getBodyParam('name' . $count);
+	    $zip = new \ZipArchive();
+        $zipname = tempnam(sys_get_temp_dir(), "CIFIMAD");
+        $zip->open ($zipname, \ZipArchive::CREATE);
+	    while (!empty ($name) ) {
+	        $name = Yii::$app->request->getBodyParam('name' . $count);
+	        $img = Yii::$app->request->getBodyParam('img' . $count);
+	        if (!empty ($img)) {
+                $img = base64_decode(str_replace('data:image/jpeg;base64,', '', $img));
+            }
+            if (!empty ($name) && !empty ($img)) {
+                $zip->addFromString($name, $img);
+            }
+	        $count++;
+        }
+        $zip->close();
+
+        Yii::$app->response->setDownloadHeaders('CifimadImagenesAcreditaciones.zip', "application/zip");
+        if (is_file ($zipname) ) {
+            $zipcontent = file_get_contents($zipname);
+            return $zipcontent;
+        } else {
+            return 'Error - no hay imágenes?';
+        }
+    }
+*/
 }

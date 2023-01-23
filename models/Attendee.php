@@ -962,4 +962,13 @@ class Attendee extends \yii\db\ActiveRecord
 		}
 		return $errors;
 	}
+
+	public static function getImgFileNameFromName ($name) {
+	    $name = str_replace(' ', '-', $name);
+	    return $name;
+    }
+
+    public function getImgFileName() {
+	    return Attendee::getImgFileNameFromName($this->getMemberName() );
+    }
 }
