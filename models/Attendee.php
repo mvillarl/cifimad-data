@@ -503,7 +503,8 @@ class Attendee extends \yii\db\ActiveRecord
     }
 
     public function getSourceIsVolunteer() {
-        return $this->sourceIsVolunteer == 1? '1': '';
+    	$isVolunteer = ($this->sourceIsVolunteer == 1) || (bin2hex($this->sourceIsVolunteer) == '01');
+        return $isVolunteer? '1': '';
     }
 
 /*    public function getRoommate1BadgeName() {

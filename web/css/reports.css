@@ -12,6 +12,7 @@ html, body {
 
 .attendee-reportbadgelabels tr    { page-break-inside:avoid; page-break-after:auto }
 .attendee-reportbadgelabels td    { page-break-inside:avoid; page-break-after:auto }
+.attendee-reportbadgelabels div    { page-break-inside:avoid; page-break-after:auto }
 
 .attendee-reportbadges {
     margin: auto;
@@ -110,6 +111,7 @@ html, body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     height: 1.5cm;
     border-bottom: darkgray solid 1px;
+    clear: both;
 }
 
 .titV {
@@ -455,4 +457,98 @@ html, body {
     font-family: "Calibri", Helvetica, Arial, sans-serif;
     font-size: 12pt;
     -webkit-print-color-adjust: exact;
+}
+
+/* labels beauty */
+
+.badgelabelbcont {
+    width: 11cm;
+    height: 7cm;
+    margin: 0.2cm;
+    float: right;
+    position: relative;
+}
+.badgelabelbcontvertical {
+    width: 7cm;
+    height: 11cm;
+    margin: 0.2cm;
+    float: right;
+    position: relative;
+}
+.badgelabelb {
+    text-align: center;
+    font-family: Bitsumishi;
+    font-size: 23pt;
+    width: 10.25cm;
+    height: 1.50cm;
+    border-right: solid black 1px;
+}
+
+.volunteerb {
+    color: white;
+    background-color: black;
+}
+
+.volunteercont {
+    background: url(/img/badges/staff.jpg);
+}
+
+.volunteerspecialcont {
+    background: url(/img/badges/staffspecial.jpg);
+}
+
+.weekendcont {
+    background: url(/img/badges/weekend.jpg);
+}
+
+.fridaycont {
+    background: url(/img/badges/friday.jpg);
+}
+
+.saturdaycont {
+    background: url(/img/badges/saturday.jpg);
+}
+
+.sundaycont {
+    background: url(/img/badges/sunday.jpg);
+}
+
+.badgelabelverticalinb {
+    width: 6.75cm;
+    height: 1cm;
+    white-space: nowrap;
+}
+
+.badgelabelinb {
+    width: 10.25cm;
+    height: 1cm;
+    white-space: nowrap;
+}
+
+.insidebvertical {
+    height: 1cm;
+    position: absolute;
+    top: 8cm;
+}
+
+.insideb {
+    height: 1cm;
+    position: absolute;
+    top: 5.60cm;
+    left: 1cm;
+    width: 9cm;
+}
+
+/*.beauty {
+    position: relative;
+}*/
+
+.btitle {
+    text-align: center;
+    font-size: 10pt;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*height: 1.5cm;*/
+    border-bottom: darkgray solid 1px;
+    clear: both;
 }

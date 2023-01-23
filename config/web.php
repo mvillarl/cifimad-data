@@ -62,6 +62,7 @@ $config = [
                 '/attendee/ajaxsearch/<term>' => 'attendee/ajaxsearch',
                 '/attendee/reportbadgelabels/<afterprint>' => 'attendee/reportbadgelabels',
                 '/attendee/reportbadgelabels/<afterprint>/<showinfotickets>' => 'attendee/reportbadgelabels',
+                '/attendee/reportbadgelabels//<showinfotickets>' => 'attendee/reportbadgelabels',
                 '/attendee/reporttickets/<afterprint>' => 'attendee/reporttickets',
                 '/attendee/reporthotel/<aftersend>' => 'attendee/reporthotel',
                 '/attendee/reportbadges/<detailed>' => 'attendee/reportbadges',

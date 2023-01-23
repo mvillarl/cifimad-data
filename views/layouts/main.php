@@ -63,6 +63,7 @@ AppAsset::register($this);
                 ['label' => 'Informe - etiquetas', 'url' => '/attendee/reportbadgelabels', 'linkOptions' => ['target' => 'blank']],
                 ['label' => 'Informe - etiquetas - después de primera impresión', 'url' => '/attendee/reportbadgelabels/A', 'linkOptions' => ['target' => 'blank']],
                 ['label' => 'Informe - etiquetas - después de primera impresión - info tickets', 'url' => '/attendee/reportbadgelabels/A/T', 'linkOptions' => ['target' => 'blank']],
+                ['label' => 'Informe - etiquetas - con tarjetas', 'url' => '/attendee/reportbadgelabels/0/B', 'linkOptions' => ['target' => 'blank']],
                 ['label' => 'Informe - acreditaciones', 'url' => '/attendee/reportbadges', 'linkOptions' => ['target' => 'blank']],
                 ['label' => 'Informe - acreditaciones - fotos, firmas, cartones', 'url' => '/attendee/reportbadges/D', 'linkOptions' => ['target' => 'blank']],
                 ['label' => 'Informe - acreditaciones - asociaciones', 'url' => '/attendee/reportbadges/A', 'linkOptions' => ['target' => 'blank']],

@@ -284,7 +284,7 @@ class AttendeeController extends BaseController
 	    $attq->notCanceled();
 	    $attq->orderBadgeLabelReport();
         if ($afterprint) {
-        	$part = $showinfotickets? 'BadgesTickets': 'Badges';
+        	$part = $showinfotickets == 'T'? 'BadgesTickets': 'Badges';
             $event   = Event::findOne( $idEvent );
             $attq->afterDate( $event->dateBadgesPrinted, $part);
         }
@@ -318,7 +318,9 @@ class AttendeeController extends BaseController
 
 	    $this->_reportTitle = 'Informe asistentes - Etiquetas para acreditaciones';
 
-        return $this->render('reportbadgelabels', [
+	    $template = ($showinfotickets == 'B')? 'reportbadgelabelsbeauty': 'reportbadgelabels';
+
+        return $this->render($template, [
             'attendees' => $attendees,
             'afterprint' => $afterprint,
             'showinfotickets' => $showinfotickets,

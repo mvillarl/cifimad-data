@@ -20,10 +20,20 @@ $this->params['breadcrumbs'][] = $this->title;
 		<?php $type = ''; $long = 0; $isEspecial = false; $isVolunteer = false; $isCompanion = false; $cifikidsShown = false; foreach ($attendees as $attendee) { ?>
 			<?php
 			$longd = 1.5;
-			if ($attendee->isSpecial || $attendee->getSourceIsVolunteer() ) $longd += 1.5;
-			if (!$isEspecial && ($attendee->isSpecial || $attendee->getSourceIsVolunteer() ) ) $longd += 1.5;
-			if ($isEspecial && !$attendee->isSpecial && (!$attendee->getSourceIsVolunteer() ) && ($attendee->ticketType != $type) ) $longd += 1.5;
-			if (strlen (trim ($attendee->parentName) ) ) $longd += 4.5;
+			if ($attendee->idSource != 'C') {
+				if ( $attendee->isSpecial || $attendee->getSourceIsVolunteer() ) {
+					$longd += 1.5;
+				}
+				if ( ! $isEspecial && ( $attendee->isSpecial || $attendee->getSourceIsVolunteer() ) ) {
+					$longd += 1.5;
+				}
+				if ( $isEspecial && ! $attendee->isSpecial && ( ! $attendee->getSourceIsVolunteer() ) && ( $attendee->ticketType != $type ) ) {
+					$longd += 1.5;
+				}
+				if ( strlen( trim( $attendee->parentName ) ) ) {
+					$longd += 4.5;
+				}
+			}
 		if (false && ($long + $longd > 26) ) {
 				$long = $longd; ?>
 				</table>
@@ -113,6 +123,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 $addclass = 'small';
             }
         }
+        $sourceIsVolunteer = false;
+        if (!$isCompanion && $attendee->getSourceIsVolunteer() ) {
+            $sourceIsVolunteer = true;
+        }
         ?>
 			<tr>
 				<td class="badgelabelhint<?= $hint; ?>"> </td>
@@ -137,9 +151,9 @@ $this->params['breadcrumbs'][] = $this->title;
 					<?php } ?>
 				</td>
 			</tr>
-			<?php if ( ($attendee->isSpecial || ($attendee->getSourceIsVolunteer() ) || ($attendee->idSource == 'C') ) && !strlen (trim ($attendee->parentName) ) ) { ?>
+			<?php if ( ($attendee->isSpecial || $isCompanion || $sourceIsVolunteer) && !strlen (trim ($attendee->parentName) ) ) { ?>
 				<tr>
-					<td class="badgelabelhint<?= $hint; ?> repeat<?= $attendee->isSpecial . '-' . $attendee->getSourceIsVolunteer() . '-' . $attendee->idSource ?>"> </td>
+					<td class="badgelabelhint<?= $hint; ?> repeat<?= $attendee->isSpecial . '-' . $sourceIsVolunteer . '-' . $attendee->idSource ?>"> </td>
 					<td class="<?= $mainclass ?> <?= $class; ?><?php if ($attendee->idSource == 'C') { ?> companion<?php } ?><?php if ($attendee->memberSmall == 1 || bin2hex ($attendee->memberSmall) == '01') { ?> small<?php } ?>">
                     <span class="<?= $mainclassIn ?>">
 					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
@@ -200,5 +214,5 @@ $this->params['breadcrumbs'][] = $this->title;
 		<?php } ?>
 	</table>
 </div>
-<script src="/assets/96b38976/jquery.js"></script>
-<script type="text/javascript" src="/js/reportcheckdimensions.js?v1.2"></script>
+<script src="/assets/a9a1902f/jquery.js"></script>
+<script type="text/javascript" src="/js/reportcheckdimensions.js?v1.3"></script>
