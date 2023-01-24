@@ -462,16 +462,16 @@ html, body {
 /* labels beauty */
 
 .badgelabelbcont {
-    width: 11cm;
-    height: 7cm;
-    margin: 0.2cm;
+    width: 33cm;
+    height: 21cm;
+    /*margin: 0.2cm;*/
     float: left;
     position: relative;
 }
 .badgelabelbcontvertical {
-    width: 7cm;
-    height: 11cm;
-    margin: 0.2cm;
+    width: 21cm;
+    height: 33cm;
+    /*margin: 0.2cm;*/
     float: left;
     position: relative;
 }
@@ -479,8 +479,8 @@ html, body {
     text-align: center;
     font-family: Bitsumishi;
     font-size: 23pt;
-    width: 10.25cm;
-    height: 1.50cm;
+    width: 30.75cm;
+    height: 4.50cm;
     border-right: solid black 1px;
 }
 
@@ -495,6 +495,10 @@ html, body {
 
 .volunteerspecialcont {
     background: url(/img/badges/staffspecial.jpg);
+}
+
+.volunteerantishcont {
+    background: url(/img/badges/staffantiacoso.jpg);
 }
 
 .weekendcont {
@@ -514,29 +518,31 @@ html, body {
 }
 
 .badgelabelverticalinb {
-    width: 6.75cm;
-    height: 1cm;
+    width: 20.25cm;
+    height: 3cm;
     white-space: nowrap;
 }
 
 .badgelabelinb {
-    width: 10.25cm;
-    height: 1cm;
+    width: 30.75cm;
+    height: 3cm;
     white-space: nowrap;
 }
 
 .insidebvertical {
-    height: 1cm;
+    height: 3cm;
     position: absolute;
-    top: 8cm;
+    top: 24cm;
+    font-size: 48pt;
 }
 
 .insideb {
-    height: 1cm;
+    height: 3cm;
     position: absolute;
-    top: 5.60cm;
-    left: 1cm;
-    width: 9cm;
+    top: 16.80cm;
+    left: 3cm;
+    width: 27cm;
+    font-size: 69pt;
 }
 
 /*.beauty {
@@ -582,4 +588,9 @@ html, body {
 .generateJpg {
     position: relative;
     float: left;
+}
+
+.sourceimageb {
+    vertical-align: text-bottom;
+    width: 72px;
 }

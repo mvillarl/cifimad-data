@@ -291,24 +291,31 @@ class AttendeeController extends BaseController
             $event   = Event::findOne( $idEvent );
             $attq->afterDate( $event->dateBadgesPrinted, $part);
         }
+        if ($showinfotickets == 'C') {
+            $attq->onlyChildren();
+        }
         $attendees = $attq->all();
         $guests = Attendee::getGuests($idEvent);
         $extraproducts = Attendee::getProducts($idEvent);
 
-	    if (!$afterprint) {
-		    foreach ( $guests as $guest ) {
-			    $companions = $guest->getCompanions();
-			    foreach ( $companions as $companion ) {
-				    $compatt             = new \stdClass();
-				    $compatt->idSource   = 'C';
-				    $compatt->memberName = $companion->fullBadgeName;
-                    $compatt->imgFileName = Attendee::getImgFileNameFromName ($companion->fullBadgeName);
-				    array_unshift( $attendees, $compatt );
-			    }
-		    }
-	    }
+        if ($showinfotickets != 'C') {
+            if (!$afterprint) {
+                foreach ($guests as $guest) {
+                    $companions = $guest->getCompanions();
+                    foreach ($companions as $companion) {
+                        $compatt = new \stdClass();
+                        $compatt->idSource = 'C';
+                        $compatt->memberName = $companion->fullBadgeName;
+                        $compatt->imgFileName = Attendee::getImgFileNameFromName($companion->fullBadgeName);
+                        array_unshift($attendees, $compatt);
+                    }
+                }
+            }
 
-	    $blankBadges = Source::find()->andWhere ('blankBadges > 0')->all();
+            $blankBadges = Source::find()->andWhere('blankBadges > 0')->all();
+        } else {
+            $blankBadges = [];
+        }
 
         $event = Event::findOne( $idEvent );
 	    $badgesCifiKidsq = Attendee::find()->andFilterEvent($idEvent);

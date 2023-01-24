@@ -21,10 +21,11 @@ $(document).ready(function(){
     $('.badgelabelinb,.badgelabelverticalinb').each(function() {
         var width = this.offsetWidth;
         var height = this.offsetHeight;
-        var maxw = maxwidthb;
-        if ($(this).hasClass('badgelabelverticalinb')) maxw = maxwidthvertical;
+        var maxw = maxwidthb * 3;
+        var maxh = maxheight * 3;
+        if ($(this).hasClass('badgelabelverticalinb')) maxw = maxwidthvertical * 3;
 
-        if ( (width > maxw) || (height > maxheight) ) {
+        if ( (width > maxw) || (height > maxh) ) {
             var fontsize = $(this).css ('font-size');
             var fontsizepart = '';
             if (fontsize.indexOf ('pt') != -1) {
@@ -40,7 +41,7 @@ $(document).ready(function(){
                 $(this).css ('font-size', fontsize + fontsizepart);
                 width = this.offsetWidth;
                 height = this.offsetHeight;
-            } while ( (fontsize > 8) && ( (width > maxw) || (height > maxheight) ) );
+            } while ( (fontsize > 8) && ( (width > maxw) || (height > maxh) ) );
         }
     });
 
@@ -76,7 +77,7 @@ function generateImages() {
 function step1(index) {
     if (index == undefined) index = 0;
     var count = 0;
-    var max = 40 + index;
+    var max = 10 + index;
     var last = max + count;
     var total = $('.generateJpg').size();
     var promises = [];

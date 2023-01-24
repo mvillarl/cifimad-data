@@ -193,7 +193,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			<td class="badgetype"></td>
 		</tr>
 		<?php } ?>
-		<?php if (!$afterprint) { ?>
+		<?php if (!$afterprint && ($showinfotickets != 'C') ) { ?>
 			<?php for ($i = 0; $i < $acadiBadges; $i++) { ?>
 			<tr>
 			<td class="badgelabelhintD"> </td>

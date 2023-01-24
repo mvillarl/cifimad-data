@@ -142,6 +142,11 @@ class AttendeeQuery extends \yii\db\ActiveQuery
         return $this;
     }
 
+    public function onlyChildren() {
+        $this->andWhere("cif_attendees.idAttendeeParent IS NOT NULL");
+        return $this;
+    }
+
     public function orderBadgeLabelReport() {
         return $this->addSelect ("cif_sources.isVolunteer")->addSelect (new Expression ("CASE cif_attendees.ticketType WHEN 'V' THEN 1 WHEN 'S' THEN 2 WHEN 'D' THEN 3 WHEN 'F' THEN 4 END ticketTypeOrder") )
 	        ->addSelect ('cif_sources.imageFile sourceImageFile, cif_sources.isVolunteer sourceIsVolunteer')

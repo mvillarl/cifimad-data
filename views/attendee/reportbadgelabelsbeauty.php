@@ -134,6 +134,9 @@ $titlesunday = false;
 		$class = '';
 		$classcont = '';
 	}
+    if ($isVolunteer && ($attendee->sourceName == 'Staff - antiacoso') ) {
+        $classcont = 'volunteerantishcont';
+    }
 	if (empty ($classcont)) {
 		$classcont = $classcontmap[$attendee->ticketType];
 	}
@@ -143,7 +146,7 @@ $titlesunday = false;
     <div class="<?= $contclass ?> <?= $classcont ?>">
         <div class="<?= $mainclass ?> <?= $class ?> <?= $insideclass ?>">
         <span class="<?= $mainclassIn ?>">
-					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
+					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimageb"/><?php }?>
 	        <?= $attendee->memberName ?></span>
         </div>
     </div>
@@ -153,7 +156,7 @@ $titlesunday = false;
         <div class="<?= $contclass ?> <?= $classcont ?>">
             <div class="<?= $mainclass ?> <?= $class ?> <?= $insideclass ?>">
         <span class="<?= $mainclassIn ?>">
-					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimage"/><?php }?>
+					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $attendee->sourceImageFile ?>" class="sourceimageb"/><?php }?>
 	        <?= $attendee->memberName ?></span>
             </div>
         </div>
@@ -179,7 +182,7 @@ $titlesunday = false;
             <div class="badgelabelbcont weekendcont">
                 <div class="badgelabel insideb">
         <span class="badgelabelinb">
-					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $source->imageFile ?>" class="sourceimage"/><?php }?>
+					<?php if (strlen ($attendee->sourceImageFile) ) { ?><img src="/img/logos/<?= $source->imageFile ?>" class="sourceimageb"/><?php }?>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 </div>
             </div>
@@ -195,4 +198,4 @@ $titlesunday = false;
 </form>
 <script src="/assets/a9a1902f/jquery.js"></script>
 <script src="/js/html2canvas.min.js"></script>
-<script type="text/javascript" src="/js/reportcheckdimensions.js?v1.3"></script>
+<script type="text/javascript" src="/js/reportcheckdimensions.js?v1.4"></script>
