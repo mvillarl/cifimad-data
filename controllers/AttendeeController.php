@@ -256,6 +256,15 @@ class AttendeeController extends BaseController
                     $compatt             = new \stdClass();
                     $compatt->idSource   = 'C';
                     $compatt->memberName = $companion->fullBadgeName;
+                    // Acompañante tiene ticket para todas las comidas
+                    if (!$companion->excludeFridayDinner) {
+                        $compatt->mealFridayDinner = true;
+                    }
+                    $compatt->mealSaturdayLunch = true;
+                    $compatt->mealSaturdayDinner = true;
+                    $compatt->mealSundayLunch = true;
+                    $compatt->mealSundayDinner = true;
+                    $compatt->remarksMealSaturday = $companion->remarksMealsSaturday;
                     array_unshift( $attendees, $compatt );
                 }
             }
