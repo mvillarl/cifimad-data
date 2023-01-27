@@ -1,63 +1,63 @@
-$(document).ready (function(){
-    $('#attendee-tickettype').change (updateBadgesCB);
-    $('#attendee-idsource').change (updateBadgesCB);
-    $('#attendee-isspecial').change (updateBadgesCB);
-    $('#attendee-idattendeeparent').change (updateBadgesCB);
+jQuery(document).ready (function(){
+    jQuery('#attendee-tickettype').change (updateBadgesCB);
+    jQuery('#attendee-idsource').change (updateBadgesCB);
+    jQuery('#attendee-isspecial').change (updateBadgesCB);
+    jQuery('#attendee-idattendeeparent').change (updateBadgesCB);
 
-    $('#attendee-mealfridaydinner').change (updateBadgesTicketsCB);
-    $('#attendee-mealsaturdaylunch').change (updateBadgesTicketsCB);
-    $('#attendee-mealsaturdaydinner').change (updateBadgesTicketsCB);
-    $('#attendee-mealsundaylunch').change (updateBadgesTicketsCB);
-    $('#attendee-mealsundaydinner').change (updateBadgesTicketsCB);
+    jQuery('#attendee-mealfridaydinner').change (updateBadgesTicketsCB);
+    jQuery('#attendee-mealsaturdaylunch').change (updateBadgesTicketsCB);
+    jQuery('#attendee-mealsaturdaydinner').change (updateBadgesTicketsCB);
+    jQuery('#attendee-mealsundaylunch').change (updateBadgesTicketsCB);
+    jQuery('#attendee-mealsundaydinner').change (updateBadgesTicketsCB);
 
-    $('#attendee-guest1photoshoot').change (updateBadgesTicketsCB);
-    $('#attendee-guest1photoshootspecial').change (updateBadgesTicketsCB);
-    $('#attendee-guest1autograph').change (updateBadgesTicketsCB);
-    $('#attendee-guest1autographspecial').change (updateBadgesTicketsCB);
-    $('#attendee-guest1vintage').change (updateBadgesTicketsCB);
-    $('#attendee-guest2photoshoot').change (updateBadgesTicketsCB);
-    $('#attendee-guest2photoshootspecial').change (updateBadgesTicketsCB);
-    $('#attendee-guest2autograph').change (updateBadgesTicketsCB);
-    $('#attendee-guest2autographspecial').change (updateBadgesTicketsCB);
-    $('#attendee-guest2vintage').change (updateBadgesTicketsCB);
-    $('#attendee-guest3photoshoot').change (updateBadgesTicketsCB);
-    $('#attendee-guest3photoshootspecial').change (updateBadgesTicketsCB);
-    $('#attendee-guest3autograph').change (updateBadgesTicketsCB);
-    $('#attendee-guest3autographspecial').change (updateBadgesTicketsCB);
-    $('#attendee-guest3vintage').change (updateBadgesTicketsCB);
-    $('#attendee-guest4photoshoot').change (updateBadgesTicketsCB);
-    $('#attendee-guest4photoshootspecial').change (updateBadgesTicketsCB);
-    $('#attendee-guest4autograph').change (updateBadgesTicketsCB);
-    $('#attendee-guest4autographspecial').change (updateBadgesTicketsCB);
-    $('#attendee-guest4vintage').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest1photoshoot').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest1photoshootspecial').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest1autograph').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest1autographspecial').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest1vintage').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest2photoshoot').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest2photoshootspecial').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest2autograph').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest2autographspecial').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest2vintage').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest3photoshoot').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest3photoshootspecial').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest3autograph').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest3autographspecial').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest3vintage').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest4photoshoot').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest4photoshootspecial').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest4autograph').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest4autographspecial').change (updateBadgesTicketsCB);
+    jQuery('#attendee-guest4vintage').change (updateBadgesTicketsCB);
 
-    $('#attendee-extraproduct1').change (updateBadgesTicketsCB);
-    $('#attendee-extraproduct2').change (updateBadgesTicketsCB);
-    $('#attendee-extraproduct3').change (updateBadgesTicketsCB);
-    $('#attendee-extraproduct4').change (updateBadgesTicketsCB);
+    jQuery('#attendee-extraproduct1').change (updateBadgesTicketsCB);
+    jQuery('#attendee-extraproduct2').change (updateBadgesTicketsCB);
+    jQuery('#attendee-extraproduct3').change (updateBadgesTicketsCB);
+    jQuery('#attendee-extraproduct4').change (updateBadgesTicketsCB);
 
-    $('#attendee-roomtype').change (updateHotelCB);
-    $('#attendee-datestartlodging').change (updateHotelCB);
-    $('#attendee-dateendlodging').change (updateHotelCB);
-    $('#attendee-idattendeeroommate1').change (updateHotelCB);
-    $('#attendee-idattendeeroommate2').change (updateHotelCB);
-    $('#attendee-idattendeeroommate3').change (updateHotelCB);
-    $('#attendee-remarkshotel').change (updateHotelCB);
+    jQuery('#attendee-roomtype').change (updateHotelCB);
+    jQuery('#attendee-datestartlodging').change (updateHotelCB);
+    jQuery('#attendee-dateendlodging').change (updateHotelCB);
+    jQuery('#attendee-idattendeeroommate1').change (updateHotelCB);
+    jQuery('#attendee-idattendeeroommate2').change (updateHotelCB);
+    jQuery('#attendee-idattendeeroommate3').change (updateHotelCB);
+    jQuery('#attendee-remarkshotel').change (updateHotelCB);
 
 });
 
 function updateHotelCB() {
-    if ($('#updateHotelFlag').size() > 0) {
-        $('#updateHotelFlag').get(0).checked = true;
+    if (jQuery('#updateHotelFlag').length > 0) {
+        jQuery('#updateHotelFlag').get(0).checked = true;
     }
 }
 function updateBadgesCB() {
-    if ($('#updateBadgesFlag').size() > 0) {
-        $('#updateBadgesFlag').get(0).checked = true;
+    if (jQuery('#updateBadgesFlag').length > 0) {
+        jQuery('#updateBadgesFlag').get(0).checked = true;
     }
 }
 function updateBadgesTicketsCB() {
-    if ($('#updateBadgesTicketsFlag').size() > 0) {
-        $('#updateBadgesTicketsFlag').get(0).checked = true;
+    if (jQuery('#updateBadgesTicketsFlag').size() > 0) {
+        jQuery('#updateBadgesTicketsFlag').get(0).checked = true;
     }
 }
