@@ -57,6 +57,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'hasVintage')->checkbox() ?>
 
+    <?= $form->field($model, 'normalRoom')->checkbox() ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Modificar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

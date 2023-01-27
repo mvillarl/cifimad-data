@@ -40,6 +40,7 @@ create table cif_guests (
 	remarks TEXT NULL,
 	remarksMeals TEXT NULL,
 	remarksMealsSaturday TEXT NULL,
+    normalRoom BIT DEFAULT false,
 	PRIMARY KEY (`id`),
 	CONSTRAINT event FOREIGN KEY (idEvent) REFERENCES cif_events (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

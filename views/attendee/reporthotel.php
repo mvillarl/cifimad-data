@@ -49,6 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		</thead>
 		<tbody>
 		<?php foreach ($guests as $guest) { ?>
+			<?php if (!$guest->normalRoom) { ?>
 			<?php $companions = $guest->getCompanions(); ?>
 			<tr>
 				<td><?= strlen ($guest->pseudonym)? $guest->pseudonym: $guest->name ?>
@@ -69,9 +70,32 @@ $this->params['breadcrumbs'][] = $this->title;
 				</td>
 			</tr>
 		<?php } ?>
-		<?php // Habitaciones para acompañantes con habitación separada ?>
+		<?php } ?>
+		<?php // Habitaciones para invitados con habitación normal o acompañantes con habitación separada ?>
 		<?php foreach ($guests as $guest) { ?>
-		<?php $companions = $guest->getCompanions(); ?>
+			<?php $companions = $guest->getCompanions(); ?>
+		    <?php if ($guest->normalRoom) { ?>
+                <tr>
+                    <td><?= strlen ($guest->pseudonym)? $guest->pseudonym: $guest->name ?>
+		                <?php foreach ($companions as $companion) { if (!$companion->excludeLodging && !$companion->separateRoom) { ?><br/><?= $companion->name ?><?php } } ?>
+                    </td>
+                    <td><?= strlen ($guest->pseudonym)? '': $guest->surname ?>
+		                <?php foreach ($companions as $companion) { if (!$companion->excludeLodging && !$companion->separateRoom) { ?><br/><?= $companion->surname ?><?php } } ?>
+                    </td>
+                    <td><?= $guest->nif_passport ?>
+		                <?php foreach ($companions as $companion) { if (!$companion->excludeLodging && !$companion->separateRoom) { ?><br/><?= $companion->nif_passport ?><?php } } ?>
+                    </td>
+                    <td>
+                        <?php if (empty ($companions)) { ?>Individual<?php } else { ?>Doble matrimonio<?php } ?>
+                    </td>
+	                <?php for ($date = $guestsmindate; $date < $guestsmaxdate; $date = DateFunctions::dateAdd ($date ,1)) { ?>
+                        <td class="c"><?php if ( ($date >= $guest->dateArrival) && ($date < $guest->dateDeparture) ) { ?>X<?php } ?></td>
+	                <?php } ?>
+                    <td><?= nl2br ($guest->remarks) ?>
+		                <?php foreach ($companions as $companion) { if (!$companion->excludeLodging && !$companion->separateRoom) { ?><br/><?= nl2br ($companion->remarks) ?><?php } } ?>
+                    </td>
+                </tr>
+			<?php } ?>
 		<?php foreach ($companions as $companion) { if (!$companion->excludeLodging && $companion->separateRoom) { ?>
 		<tr>
 		<td><?= $companion->name ?></td>

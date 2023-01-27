@@ -23,11 +23,12 @@ use yii\helpers\ArrayHelper;
  * @property boolean $hasSelfie
  * @property boolean $hasAutographSelfieCombo
  * @property boolean $hasVintage
- * @property boolean $nif_passport
+ * @property string $nif_passport
  * @property string $remarks
  * @property string $remarksMeals
  * @property string $remarksMealsSaturday
- * @property string pseudonym
+ * @property string $pseudonym
+ * @property sbooleantring $normalRoom
  *
  * @property Event $idEvent0
  */
@@ -51,7 +52,7 @@ class Guest extends \yii\db\ActiveRecord
             [['idEvent', 'name', 'surname', 'order', 'dateArrival', 'dateDeparture'], 'required'],
             [['idEvent', 'order'], 'integer'],
             [['dateArrival', 'dateDeparture'], 'safe'],
-            [['hasAutograph', 'hasPhotoshoot','hasPhotoshootSpecial', 'hasAutographSpecial', 'hasSelfie', 'hasAutographSelfieCombo', 'hasVintage'], 'boolean'],
+            [['hasAutograph', 'hasPhotoshoot','hasPhotoshootSpecial', 'hasAutographSpecial', 'hasSelfie', 'hasAutographSelfieCombo', 'hasVintage', 'normalRoom'], 'boolean'],
             [['name', 'surname'], 'string', 'max' => 60],
             [['characterName', 'pseudonym'], 'string', 'max' => 100],
             [['nif_passport'], 'string', 'max' => 25],
@@ -90,6 +91,7 @@ class Guest extends \yii\db\ActiveRecord
             'remarksMeals' => 'Observaciones comidas',
             'remarksMealsSaturday' => 'Opción menú cena de gala',
             'pseudonym' => 'Seudónimo',
+	        'normalRoom' => '¿Habitación normal?',
         ];
     }
 
