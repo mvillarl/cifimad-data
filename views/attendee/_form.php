@@ -221,5 +221,5 @@ use app\models\Attendee;
 <?php
 $this->registerJsFile('/js/datepickerinterval.js', ['depends' => [\yii\jui\DatePickerLanguageAsset::className()]]);
 $this->registerJsFile('/js/autocomplete.js?v1', ['depends' => [\yii\jui\JuiAsset::className()]]);
-$this->registerJsFile('/js/checkboxes.js?v1.1', ['depends' => [\yii\jui\JuiAsset::className()]]);
+$this->registerJsFile('/js/checkboxes.js?v1.2', ['depends' => [\yii\jui\JuiAsset::className()]]);
 ?>

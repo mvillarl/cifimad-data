@@ -57,7 +57,7 @@ function updateBadgesCB() {
     }
 }
 function updateBadgesTicketsCB() {
-    if (jQuery('#updateBadgesTicketsFlag').size() > 0) {
+    if (jQuery('#updateBadgesTicketsFlag').length > 0) {
         jQuery('#updateBadgesTicketsFlag').get(0).checked = true;
     }
 }
