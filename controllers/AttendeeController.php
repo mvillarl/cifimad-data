@@ -555,7 +555,15 @@ class AttendeeController extends BaseController
             }
             if ($guestFridayDinner) $fridayDinner++;
             if ($guestSaturdayDinner) $saturdayDinner++;
-            $lodgingSuites++;
+            if ($guest->normalRoom) {
+                if (empty ($companions)) {
+                    $lodgingSingles++;
+                } else {
+                    $lodgingDoubles++;
+                }
+            } else {
+                $lodgingSuites++;
+            }
         }
 
         $this->_reportTitle = 'Informe reservas a ' . date('d/m/Y');
