@@ -16,6 +16,7 @@ create table cif_events (
     imgLogo VARCHAR(100) DEFAULT NULL,
     verticalBadges BIT default false,
     acadiBadges INT default 15,
+    showInTickets CHAR(1) NULL DEFAULT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

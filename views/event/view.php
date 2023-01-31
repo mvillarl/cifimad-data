@@ -39,6 +39,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'hasVIPAttendees:boolean',
             'verticalBadges:boolean',
             'acadiBadges',
+            [
+                'attribute' => 'showInTickets',
+                'value' => $model->getShowInTicketsValue(),
+            ],
             'dateSentInfoHotel:datetime',
             'dateBadgesPrinted:datetime',
             'dateEndCosplaySignup:date',

@@ -1,2 +1,2 @@
-ALTER table cif_guests
-ADD normalRoom BIT DEFAULT false;
+ALTER table cif_events
+ADD showInTickets CHAR(1) NULL DEFAULT NULL;

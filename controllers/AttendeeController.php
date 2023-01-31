@@ -241,8 +241,8 @@ class AttendeeController extends BaseController
         $attq = Attendee::find()->andFilterEvent($idEvent);
         $attq->notCanceled();
         $attq->orderBadgeReport('T');
+        $event = Event::findOne( $idEvent );
         if ($afterprint) {
-            $event   = Event::findOne( $idEvent );
             $attq->afterDate( $event->dateBadgesPrinted, 'BadgesTickets');
         }
 
@@ -285,6 +285,7 @@ class AttendeeController extends BaseController
             'fields' => $fields,
             'pfields' => $pfields,
             'model' => $model,
+            'showInTickets' => $event->showInTickets,
         ]);
     }
 

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Event;
 //use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
@@ -36,6 +37,8 @@ use yii\widgets\ActiveForm;
 	<?= $form->field($model, 'acadiBadges')->textInput() ?>
 
     <?= $form->field($model, 'imgLogo')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'showInTickets')->dropDownList(Event::getShowInTicketsValues() ) ?>
 
     <?= $form->field($model, 'deskHelp')->widget(\yii\redactor\widgets\Redactor::className(),
     ['clientOptions' => ['lang' => 'es', 'minHeight' => '500px'] ]) ?>

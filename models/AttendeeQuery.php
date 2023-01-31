@@ -157,6 +157,7 @@ class AttendeeQuery extends \yii\db\ActiveQuery
 
 	public function orderBadgeReport($detailed) {
 		//return $this->andWhere("cif_attendees.ticketType <> '-'")->orderBy('cif_members.badgeSurname, cif_members.badgeName');
+        $this->addSelect ( ', cif_sources.isVolunteer sourceIsVolunteer');
 		$this->andWhere("cif_attendees.ticketType <> '-'");
         $order = 'cif_members.surname, cif_members.name';
         $whereProds = $this->_getProductsCondition();

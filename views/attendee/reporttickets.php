@@ -7,6 +7,7 @@ use app\models\Attendee;
 /* @var $fields string[] */
 /* @var $pfields string[] */
 /* @var $model app\models\Attendee */
+/* @var $showInTickets string */
 
 $this->title = 'Informe - tickets';
 $this->params['breadcrumbs'][] = ['label' => 'Asistentes', 'url' => ['index']];
@@ -58,9 +59,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         </tr>
                     <?php } ?>
                 <?php } ?>
-                <?php if ($attendee->isVIP) { ?>
+                <?php if ($attendee->isVIP && (in_array($showInTickets, ['V', 'B']))) { ?>
                     <tr>
                         <td style="background-color: #FFF701;">Regalo VIP</td>
+                    </tr>
+                <?php } ?>
+                <?php if ($attendee->sourceIsVolunteer && (in_array($showInTickets, ['S', 'B']))) { ?>
+                    <tr>
+                        <td style="background-color: #e0705a;">Regalo staff</td>
                     </tr>
                 <?php } ?>
                 </table></td>

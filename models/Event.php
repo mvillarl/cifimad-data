@@ -21,6 +21,7 @@ use Yii;
  * @property string $imgLogo
  * @property boolean $verticalBadges
  * @property integer $acadiBadges
+ * @property string $showInTickets
  *
  * @property CifAttendees[] $cifAttendees
  * @property CifGuests[] $cifGuests
@@ -43,7 +44,7 @@ class Event extends \yii\db\ActiveRecord
         return [
             [['year', 'name', 'dateStart', 'dateEnd'], 'required'],
             [['year', 'acadiBadges'], 'integer'],
-            [['dateStart', 'dateEnd', 'dateSentInfoHotel', 'dateBadgesPrinted', 'dateEndCosplaySignup', 'isPandemic', 'hasVIPAttendees', 'verticalBadges'], 'safe'],
+            [['dateStart', 'dateEnd', 'dateSentInfoHotel', 'dateBadgesPrinted', 'dateEndCosplaySignup', 'isPandemic', 'hasVIPAttendees', 'verticalBadges', 'showInTickets'], 'safe'],
 	        [['isPandemic', 'hasVIPAttendees', 'verticalBadges'], 'boolean'],
             [['name'], 'string', 'max' => 60],
             [['imgLogo'], 'string', 'max' => 100],
@@ -54,6 +55,7 @@ class Event extends \yii\db\ActiveRecord
             ['dateEndCosplaySignup', 'date', 'format' => 'dd/MM/yyyy', 'timestampAttribute' => 'dateEndCosplaySignup', 'timestampAttributeFormat' => 'yyyy-MM-dd'],
             [['dateSentInfoHotel', 'dateBadgesPrinted'], 'date', 'format' => 'dd/MM/yyyy', 'format' => 'yyyy-MM-dd HH:mm:ss'],
             [['dateStart'], 'compare', 'compareAttribute' => 'dateEnd', 'operator' => '<', 'enableClientValidation' => false],
+            [['showInTickets'], 'string', 'max' => 1],
         ];
     }
 
@@ -77,6 +79,7 @@ class Event extends \yii\db\ActiveRecord
             'acadiBadges' => 'Acreditaciones para ACADI',
             'deskHelp' => 'Ayuda para acreditaciones',
             'imgLogo' => 'Logo especial en informes',
+            'showInTickets' => 'Mostrar en tickets',
         ];
     }
 
@@ -127,5 +130,19 @@ class Event extends \yii\db\ActiveRecord
     public static function getIdLastEvent() {
         $evdata = Event::find()->where(['<', 'dateStart', date ("Y-m-d")])->orderBy('dateStart DESC')->limit(1)->one();
         return $evdata->id;
+    }
+
+    public static function getShowInTicketsValues() {
+        return [
+            '' => '(nada)',
+            'S' => 'Regalo staff',
+            'V' => 'Regalo VIP',
+            'B' => 'Ambos',
+        ];
+    }
+
+    public function getShowInTicketsValue() {
+        $values = $this->getShowInTicketsValues();
+        return $values[$this->showInTickets];
     }
 }
