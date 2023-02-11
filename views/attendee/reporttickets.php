@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td style="background-color: #FFF701;">Regalo VIP</td>
                     </tr>
                 <?php } ?>
-                <?php if ($attendee->sourceIsVolunteer && (in_array($showInTickets, ['S', 'B']))) { ?>
+                <?php if ( ( ($attendee->sourceIsVolunteer == 1) || (bin2hex($attendee->sourceIsVolunteer) == '01') ) && (in_array($showInTickets, ['S', 'B']))) { ?>
                     <tr>
                         <td style="background-color: #e0705a;">Regalo staff</td>
                     </tr>
