@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php } ?>
                 <?php foreach ($pfields as $field) { ?>
                     <?php if ($attendee->{$field}) { ?>
-                        <td style="background-color: <?= $model->getExtraProductFieldColor ($field) ?>;"><?= str_replace (' ', '<br/>', $model->getShortAttributeLabel($field) ) ?></td>
+                        <td style="background-color: <?= $model->getExtraProductFieldColor ($field) ?>;"><?= $model->getShortAttributeLabel($field) ?></td>
                         </tr>
                     <?php } ?>
                 <?php } ?>
