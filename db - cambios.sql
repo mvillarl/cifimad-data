@@ -1,2 +1,2 @@
-ALTER table cif_events
-ADD showInTickets CHAR(1) NULL DEFAULT NULL;
+ALTER table cif_attendee_sales
+    MODIFY `phone` varchar(50) NULL DEFAULT NULL;

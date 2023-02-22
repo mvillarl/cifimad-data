@@ -37,8 +37,8 @@ class AttendeeSale extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
-            [['idEvent', 'name', 'phone', 'ticketType'], 'required'],
+        $rules = [
+            [['idEvent', 'name', 'ticketType'], 'required'],
             [['idEvent'], 'integer'],
             ['idEvent', 'default', 'value' => $this->_idEvent],
             [['name'], 'string', 'max' => 100],
@@ -47,6 +47,11 @@ class AttendeeSale extends \yii\db\ActiveRecord
             [['authorizedReason'], 'string', 'max' => 2000],
             [['authorizedBy', 'authorizedReason'], 'checkAuthorization'], // Función de validación personalizada
         ];
+	    $isPandemic = Event::findOne($this->_idEvent)->isPandemic;
+	    if ($isPandemic) {
+		    $rules[] = [['phone'], 'required'];
+	    }
+        return $rules;
     }
 
     public function checkAuthorization ($attribute, $params) {
