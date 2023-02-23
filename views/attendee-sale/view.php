@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Registrar venta', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php $attributes = [
         'id',
