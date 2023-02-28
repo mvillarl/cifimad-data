@@ -35,6 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone',
             'nameFacebook',
 	        'computersLevelValue',
+	        'activitiesRequired',
+	        'activitiesDesired',
 	        [
 		        'attribute' => 'volunteerInscriptionFunctions',
 		        'value' => $model->getFunctionsValue(),

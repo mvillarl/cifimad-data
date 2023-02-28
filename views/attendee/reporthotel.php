@@ -76,10 +76,10 @@ $this->params['breadcrumbs'][] = $this->title;
 			<?php $companions = $guest->getCompanions(); ?>
 		    <?php if ($guest->normalRoom) { ?>
                 <tr>
-                    <td><?= strlen ($guest->pseudonym)? $guest->pseudonym: $guest->name ?>
+                    <td class="name"><?= strlen ($guest->pseudonym)? $guest->pseudonym: $guest->name ?>
 		                <?php foreach ($companions as $companion) { if (!$companion->excludeLodging && !$companion->separateRoom) { ?><br/><?= $companion->name ?><?php } } ?>
                     </td>
-                    <td><?= strlen ($guest->pseudonym)? '': $guest->surname ?>
+                    <td class="name"><?= strlen ($guest->pseudonym)? '': $guest->surname ?>
 		                <?php foreach ($companions as $companion) { if (!$companion->excludeLodging && !$companion->separateRoom) { ?><br/><?= $companion->surname ?><?php } } ?>
                     </td>
                     <td><?= $guest->nif_passport ?>
@@ -98,8 +98,8 @@ $this->params['breadcrumbs'][] = $this->title;
 			<?php } ?>
 		<?php foreach ($companions as $companion) { if (!$companion->excludeLodging && $companion->separateRoom) { ?>
 		<tr>
-		<td><?= $companion->name ?></td>
-		<td><?= $companion->surname ?></td>
+		<td class="name"><?= $companion->name ?></td>
+		<td class="name"><?= $companion->surname ?></td>
 		<td><?= $companion->nif_passport ?></td>
 		<td>Individual</td>
 		<?php for ($date = $guestsmindate; $date < $guestsmaxdate; $date = DateFunctions::dateAdd ($date ,1)) { ?>
@@ -135,10 +135,10 @@ $this->params['breadcrumbs'][] = $this->title;
 		<tbody>
 		<?php foreach ($attendeerooms as $attendeeroom) { ?>
 		<tr <?php if ($attendeeroom->status == '2') {echo 'class="cancelled"'; } else if ($attendeeroom->status == '4') {echo 'class="modified"'; }  else if ($attendeeroom->status == '0') {echo 'class="notconfirmed"'; } ?>>
-			<td><?php $first = true; foreach ($attendeeroom->names as $name) { ?>
+			<td class="name"><?php $first = true; foreach ($attendeeroom->names as $name) { ?>
 					<?php if ($first) $first = false; else echo '<br/><hr/>'; ?><?= $name ?>
 			<?php } ?></td>
-			<td><?php $first = true; foreach ($attendeeroom->surnames as $surname) { ?>
+			<td class="name"><?php $first = true; foreach ($attendeeroom->surnames as $surname) { ?>
 					<?php if ($first) $first = false; else echo '<br/><hr/>'; ?><?= $surname ?>
 				<?php } ?></td>
 			<td><?php $first = true; foreach ($attendeeroom->nifs as $nif) { ?>

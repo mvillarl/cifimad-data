@@ -61,6 +61,8 @@ $rowsperpage = 40;
                 <th><a href="#" class="showrows" data-row="<?= $code ?>" title="<?= $name ?>"><?= \app\models\VolunteerInscriptionShift::shortShiftName ($name) ?></a> <span class="showrowsind">v</span></th>
 			<?php } ?>
             <th>Otra</th>
+            <th>Actividades a las que no puede faltar</th>
+            <th>Actividades a las que le gustaría no faltar</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -73,7 +75,9 @@ $rowsperpage = 40;
 				<?php foreach ($shifts as $code => $name) { ?>
                     <td class="mark"><?php if ($inscription->hasShift ($code) ) { ?> X <?php } ?></td>
 				<?php } ?>
-                <td><?= $inscription->functionOther ?></td>
+                <td><?= $inscription->shiftOther ?></td>
+                <td><?= $inscription->activitiesRequired ?></td>
+                <td><?= $inscription->activitiesDesired ?></td>
 			</tr>
 		<?php } ?>
 		</tbody>

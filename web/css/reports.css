@@ -301,10 +301,18 @@ html, body {
     -webkit-print-color-adjust: exact;
 }
 
+.reporthoteltable tbody tr {
+    page-break-inside: avoid;
+}
+
 .reporthoteltable tbody tr td {
     font-family: "Calibri", Helvetica, Arial, sans-serif;
     font-size: 11pt;
     -webkit-print-color-adjust: exact;
+}
+
+.reporthoteltable tbody tr td.name {
+    white-space: nowrap;
 }
 
 .sourceimage {

@@ -13,7 +13,7 @@
         <div id="d-form-volunteer-1">
         <p>Hola a todos.</p>
 
-        <p>¡Vamos allá una vez más! Después de un par de años difíciles, 2023 vuelve a ser CifiMad sin pandemia y con invitados internacionales.
+        <p>¡Vamos allá una vez más! Queremos que 2024 sea la mejor CifiMad hasta ahora.<br/>
         Como siempre necesitamos vuestra ayuda para hacer que sea posible.</p>
         <p class="labelReq">* Obligatorio</p>
         <p>(Necesitamos e-mail o teléfono, no hacen falta los dos pero sí uno de ellos)</p>
@@ -55,6 +55,14 @@
             <?php } ?>
                 <li><input type="checkbox" name="shifts[]" class="shifts required requiresOther" data-other="shiftOther" value="OT"/> Otra: <span><input type="text" name="shiftOther" id="shiftOther" size="40" maxlength="100" /></span></li>
             </ul></div>
+            <p><label>Dinos las actividades que organizas o en las que vas a participar.</label>
+                <br/><span>Consideraremos que no estás disponible ese tiempo.</span>
+                <textarea name="activitiesRequired" cols="80" rows="6"></textarea>
+            </p>
+            <p><label>Dinos las actividades que no te quieres perder.</label>
+                <br/><span>Intentaremos no asignarte tareas que coincidan.</span>
+                <textarea name="activitiesDesired" cols="80" rows="6"></textarea>
+            </p>
             <p><label>¿Conoces a alguien que quiera colaborar como voluntario?</label><br>
             En caso afirmativo, por favor necesitamos su nombre, apellidos, correo electrónico y teléfono para mantenernos en contacto.<br>
                 <span><input type="text" name="otherVolunteer" size="40" maxlength="500" /></span></p>

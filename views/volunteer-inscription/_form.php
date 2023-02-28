@@ -30,6 +30,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->checkbox() ?>
 
+    <?= $form->field($model, 'activitiesRequired')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'activitiesDesired')->textarea(['rows' => 6]) ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Modificar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

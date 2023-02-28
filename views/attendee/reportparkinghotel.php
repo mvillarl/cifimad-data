@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th></th>
             <th>Nombre</th>
             <th>Apellidos</th>
+            <th>Teléfono</th>
             <th>Coche</th>
             <th>Matrícula</th>
             <th>Especial</th>
@@ -29,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?= $i ?></td>
                     <td><?= $attendee->name ?></td>
                     <td><?= $attendee->surname ?></td>
+                    <td><?= $attendee->memberPhone ?></td>
                     <td><?= $parkingparts[0] ?></td>
                     <td><?= $parkingparts[1] ?></td>
                     <td><?php if ($attendee->getParkingOptionsValue() != '') { ?><?= $attendee->getParkingOptionsValue() ?><?php } ?></td>

@@ -8,6 +8,7 @@ use Yii;
 use app\models\Attendee;
 use app\models\AttendeeSearch;
 use app\models\Source;
+use app\models\Guest;
 use app\models\Member;
 use webvimark\components\BaseController;
 use webvimark\modules\UserManagement\models\User;
@@ -615,6 +616,7 @@ class AttendeeController extends BaseController
         $parkingReservations = Attendee::getParkingReservations ($idEvent);
 
         $numattendees += count ($guests);
+        $numrooms = count ($attendeerooms) + count ($guests);
 
 	    $fridayDinner = Attendee::find()->andFilterEvent($idEvent)->andCocktail()->notCanceled()->all();
 	    $saturdayDinner = Attendee::find()->andFilterEvent($idEvent)->andGala()->notCanceled()->all();
@@ -622,11 +624,14 @@ class AttendeeController extends BaseController
 	    $event   = Event::findOne( $idEvent );
 	    $friday = $event->dateStart;
 	    $saturday = DateFunctions::dateAdd($friday, 1);
+
+        Guest::addRoomDays ($roomdays, $guests, $friday);
 	    foreach ($guests as $guest) {
 		    $companions = $guest->getCompanions();
 		    /*if (count ($companions)) {
 		    	echo "<pre>"; print_r($companions); die;
 		    }*/
+            $numattendees += count ($companions);
 		    foreach ($companions as $companion) {
 		    	$attComp = new \stdClass();
 			    $attComp->attendeeName = $companion->fullname;
@@ -641,6 +646,9 @@ class AttendeeController extends BaseController
 				    $attComp->remarksMealSaturday = $companion->remarksMealsSaturday;
 				    array_unshift( $saturdayDinner, $attComp );
 			    }
+			    if ($companion->separateRoom) {
+                    $numrooms++;
+                }
 		    }
 		    $attGuest = new \stdClass();
 		    $attGuest->attendeeName = $guest->fullname;
@@ -701,7 +709,7 @@ class AttendeeController extends BaseController
 		    'guestsmindate' => $mindate,
 		    'guestsmaxdate' => $maxdate,
 		    'totallodged' => $numattendees,
-		    'totalrooms' => count ($attendeerooms),
+		    'totalrooms' => $numrooms,
 		    'fridayDinner' => $fridayDinner,
 		    'saturdayDinner' => $saturdayDinner,
 		    'saturdayLunch' => $saturdayLunch,

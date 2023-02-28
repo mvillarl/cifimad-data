@@ -232,6 +232,8 @@ CREATE TABLE cif_volunteer_inscriptions (
 	`otherVolunteer` varchar(500) NULL,
 	`computersLevel` char(1) NULL,
     `status` bit DEFAULT true,
+    `activitiesRequired` text,
+    `activitiesDesired` text,
     PRIMARY KEY id (`id`),
     KEY `eventVI` (`idEvent`),
     CONSTRAINT `eventVI` FOREIGN KEY (`idEvent`) REFERENCES `cif_events` (`id`)    

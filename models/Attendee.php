@@ -934,7 +934,8 @@ class Attendee extends \yii\db\ActiveRecord
 			if (strlen ($attendee->idAttendeeParent) && !strlen ($attendee->parentPhone)) {
 				$errors[] = 'Padre no tiene teléfono: <a href="'.Url::to(['member/update', 'id' => $attendee->memberParentId]).'">' . $attendee->getParentName() . '</a>';
 			}
-			$badgename = $attendee->getMemberName();
+			$badgename = trim($attendee->getMemberName() );
+			$badgename = preg_replace ('/[ \t]+/', ' ', $badgename);
 			if (isset ($badgenames[$badgename])) {
 				$errors[] = 'Nombre de asistente duplicado: <a href="'.Url::to(['attendee/update', 'id' => $attendee->id]).'">' . $badgename . '</a>';
 			} else {

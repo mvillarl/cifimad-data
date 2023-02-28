@@ -20,6 +20,8 @@ use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
  * @property string $otherVolunteer
  * @property string $computersLevel
  * @property boolean $status
+ * @property string $activitiesRequired
+ * @property string $activitiesDesired
  *
  * @property Event $idEvent0
  * @property VolunteerInscriptionFunction[] $volunteerInscriptionFunctions
@@ -59,6 +61,7 @@ class VolunteerInscription extends \yii\db\ActiveRecord
             [['idEvent', 'computersLevel'], 'integer'],
             [['name', 'email', 'phone', 'nameFacebook', 'functionOther', 'shiftOther'], 'string', 'max' => 100],
             [['otherVolunteer'], 'string', 'max' => 500],
+            [['activitiesRequired', 'activitiesDesired'], 'string', 'max' => 65536],
             [['idEvent'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['idEvent' => 'id']],
 	        [['volunteerInscriptionFunctions', 'volunteerInscriptionShifts'], 'safe'],
             [['status'], 'boolean'],
@@ -92,6 +95,8 @@ class VolunteerInscription extends \yii\db\ActiveRecord
 	        'computersLevel' => 'Conocimientos de informática',
 	        'computersLevelValue' => 'Conocimientos de informática',
             'status' => 'Activo',
+            'activitiesRequired' => 'Actividades en las que participa',
+            'activitiesDesired' => 'Actividades que no se quiere perder',
             'volunteerInscriptionFunctions' => '¿Dónde podría colaborar?',
             'volunteerInscriptionShifts' => 'Disponibilidad',
         ];

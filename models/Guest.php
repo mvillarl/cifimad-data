@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\DateFunctions;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -118,4 +119,38 @@ class Guest extends \yii\db\ActiveRecord
 	{
 		return $this->hasMany(Companion::className(), ['idGuest' => 'id'])->all();
 	}
+
+	public static function addRoomDays (&$roomdays, $guests, $friday) {
+        $thursday = DateFunctions::dateAdd($friday, -1);
+        $wednesday = DateFunctions::dateAdd($thursday, -1);
+        $saturday = DateFunctions::dateAdd($friday, 1);
+        $sunday = DateFunctions::dateAdd($saturday, 1);
+        $monday = DateFunctions::dateAdd($sunday, 1);
+        $tuesday = DateFunctions::dateAdd($monday, 1);
+
+        foreach ($guests as $guest) {
+            if ($guest->dateArrival <= $wednesday) {
+                $roomdays->wednesday++;
+            }
+            if ($guest->dateArrival <= $thursday) {
+                $roomdays->thursday++;
+            }
+            if ($guest->dateArrival <= $friday) {
+                $roomdays->friday++;
+            }
+            if ($guest->dateDeparture >= $saturday) {
+                $roomdays->saturday++;
+            }
+            if ($guest->dateDeparture >= $sunday) {
+                $roomdays->sunday++;
+            }
+            if ($guest->dateDeparture >= $monday) {
+                $roomdays->monday++;
+            }
+            if ($guest->dateDeparture >= $tuesday) {
+                $roomdays->tuesday++;
+            }
+        }
+
+    }
 }
