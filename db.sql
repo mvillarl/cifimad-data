@@ -213,7 +213,8 @@ CREATE TABLE cif_cosplay_inscriptions (
     `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
     `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 	hasPerformance BIT default false,
-	hasSoundtrack BIT default false,
+	hasSoundtrack CHAR(1) DEFAULT NULL,
+	soundtrack varchar(150) DEFAULT NULL,
    
     PRIMARY KEY (`id`),
     KEY `event` (`idEvent`),

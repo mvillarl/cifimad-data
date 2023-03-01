@@ -43,7 +43,10 @@ $rowsperpage = 40;
             <td><?= htmlspecialchars($inscriptions[$i]->characterName) ?></td>
             <td class="med"><?= htmlspecialchars($inscriptions[$i]->remarks) ?></td>
             <td><?= $inscriptions[$i]->hasPerformance? 'Sí': '' ?></td>
-            <td><?= $inscriptions[$i]->hasSoundtrack? 'Sí': '' ?></td>
+            <td><?= $inscriptions[$i]->getSoundtrackValue() ?>
+                <?php if (!empty ($inscriptions[$i]->soundtrack) ) { ?>
+                    - <?= $inscriptions[$i]->soundtrack ?>
+                <?php } ?></td>
         </tr>
         <?php } ?>
         </tbody>

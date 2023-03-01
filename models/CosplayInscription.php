@@ -22,7 +22,8 @@ use yii\helpers\ArrayHelper;
  * @property string $createdAt
  * @property string $updatedAt
  * @property boolean $hasPerformance
- * @property boolean $hasSoundtrack
+ * @property string $hasSoundtrack
+ * @property string $soundtrack
  * @property boolean $status
  *
  * @property Event $idEvent0
@@ -63,9 +64,11 @@ class CosplayInscription extends \yii\db\ActiveRecord
             [['createdAt', 'updatedAt'], 'safe'],
             [['idEvent'], 'integer'],
             [['remarks'], 'string'],
-            [['hasPerformance', 'hasSoundtrack', 'status'], 'boolean'],
+            [['hasPerformance', 'status'], 'boolean'],
             [['name', 'surname', 'email', 'characterName'], 'string', 'max' => 100],
             [['category'], 'string', 'max' => 2],
+            [['hasSoundtrack'], 'string', 'max' => 1],
+            [['soundtrack'], 'string', 'max' => 150],
             [['idEvent'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['idEvent' => 'id']],
             [['createdAt', 'updatedAt'], 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
         ];
@@ -90,6 +93,7 @@ class CosplayInscription extends \yii\db\ActiveRecord
             'updatedAt' => 'Fecha de modificación',
             'hasPerformance' => '¿Actuación?',
             'hasSoundtrack' => '¿Banda sonora?',
+            'soundtrack' => 'Tema a buscar',
 	        'status' => 'Estado',
         ];
     }
@@ -131,6 +135,11 @@ class CosplayInscription extends \yii\db\ActiveRecord
 		return $this->status? 'Sí': 'No';
 	}
 
+    public function getSoundtrackValue() {
+        $soundtrackvalues = $this->getSoundtrackValues();
+        return $soundtrackvalues[$this->hasSoundtrack];
+    }
+
     public static function getCategories ($old = false) {
         if ($old) {
             $cats = [
@@ -156,5 +165,15 @@ class CosplayInscription extends \yii\db\ActiveRecord
             ];
         }
         return $cats;
+    }
+
+    public static function getSoundtrackValues() {
+        $values = [
+            '' => 'Nada',
+            'P' => 'Pendrive',
+            'C' => 'Tema elegido por Control',
+            'S' => 'Buscar tema',
+        ];
+        return $values;
     }
 }

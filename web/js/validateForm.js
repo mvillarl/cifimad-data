@@ -6,6 +6,8 @@ jQuery(document).ready (function () {
     jQuery('#d-form-volunteer-2').hide();
     jQuery('#volunteerNext').click (volunteerNext);
     jQuery('#volunteerPrev').click (volunteerPrev);
+    jQuery('#hasSoundtrack').change (toggleSoundtrack);
+    toggleSoundtrack();
 });
 
 var validating = false;
@@ -117,4 +119,13 @@ function fieldValue (fld) {
 function isValidEmail (text) {
     var reEmail = new RegExp ("^([-!\#$%&'*+./0-9=?A-Z^_`a-zÑñ{|}~])+@([-!#\$%&'*+/0-9=?A-Z^_`a-z{|}~]+\.)+[a-zA-Z]{2,6}\$", "i");
     return reEmail.test (text) ;
+}
+
+function toggleSoundtrack() {
+    var st = jQuery('#hasSoundtrack').val();
+    if (st == 'S') {
+        jQuery('#soundtrack').show();
+    } else {
+        jQuery('#soundtrack').hide();
+    }
 }

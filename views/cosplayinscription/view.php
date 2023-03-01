@@ -41,7 +41,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'characterName',
             'remarks:ntext',
             'hasPerformance:boolean',
-            'hasSoundtrack:boolean',
+            [
+                'attribute' => 'hasSoundtrack',
+                'value' => $model->getSoundtrackValue(),
+            ],
+            'soundtrack',
             'status:boolean',
         ],
     ]) ?>

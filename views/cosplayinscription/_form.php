@@ -8,6 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 /* @var $events array */
 /* @var $categories array */
+/* @var $soundtrackvalues array */
 
 ?>
 
@@ -31,7 +32,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'hasPerformance')->checkbox() ?>
 
-    <?= $form->field($model, 'hasSoundtrack')->checkbox() ?>
+    <?= $form->field($model, 'hasSoundtrack')->dropDownList($soundtrackvalues) ?>
+
+    <?= $form->field($model, 'soundtrack')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->checkbox() ?>
 

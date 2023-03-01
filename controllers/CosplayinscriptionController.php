@@ -77,6 +77,7 @@ class CosplayinscriptionController extends Controller
             'model' => $model,
             'events' => CosplayInscription::getEvents(true),
             'categories' => CosplayInscription::getCategories(),
+            'soundtrackvalues' => CosplayInscription::getSoundtrackValues(),
         ]);
     }
 
@@ -99,6 +100,7 @@ class CosplayinscriptionController extends Controller
             'model' => $model,
             'events' => CosplayInscription::getEvents(true),
             'categories' => CosplayInscription::getCategories(),
+            'soundtrackvalues' => CosplayInscription::getSoundtrackValues(),
         ]);
     }
 
@@ -153,6 +155,7 @@ class CosplayinscriptionController extends Controller
             'show' => $show,
             'created' => $created,
             'categories' => CosplayInscription::getCategories(),
+            'soundtrackvalues' => CosplayInscription::getSoundtrackValues(),
             'csrfName' => Yii::$app->request->csrfParam,
             'csrfValue' => Yii::$app->request->getCsrfToken(),
             ]);

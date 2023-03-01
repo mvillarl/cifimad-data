@@ -68,7 +68,7 @@ $this->title = $this->context->getSignupTitle();
     <link rel='stylesheet' id='google-fonts-1-css'  href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7COpen+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CBebas+Neue%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Condensed%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=auto&#038;ver=5.7.7' media='all' />
 
 
-    <link rel='stylesheet' href="/css/public.css?v=1.23"/>
+    <link rel='stylesheet' href="/css/public.css?v=1.24"/>
 
 
     <!--[if IE]>
@@ -150,8 +150,7 @@ $this->title = $this->context->getSignupTitle();
     <link rel="icon" href="https://www.cifimad.es/wp-content/uploads/2021/07/faviconV2.jpg" sizes="192x192" />
     <link rel="apple-touch-icon" href="https://www.cifimad.es/wp-content/uploads/2021/07/faviconV2.jpg" />
     <meta name="msapplication-TileImage" content="https://www.cifimad.es/wp-content/uploads/2021/07/faviconV2.jpg" />
-    <link rel="stylesheet" href="/css/public.css?v1.2"/>
-    <script type='text/javascript' src='/js/validateForm.js?v1.3'></script>
+    <script type='text/javascript' src='/js/validateForm.js?v1.4'></script>
 </head>
 
 <body data-cmplz=1 itemtype='https://schema.org/WebPage' itemscope='itemscope' class="page-template-default page page-id-10897 theme-astra woocommerce-no-js ehf-header ehf-footer ehf-template-astra ehf-stylesheet-astra group-blog ast-single-post ast-inherit-site-logo-transparent ast-theme-transparent-header ast-hfb-header ast-desktop ast-plain-container ast-no-sidebar astra-3.6.2 elementor-default elementor-kit-6281 elementor-page elementor-page-10897 astra-addon-3.5.3">
