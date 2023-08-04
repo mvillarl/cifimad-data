@@ -136,7 +136,7 @@ class PollController extends Controller
     }
 
     public function getFreeAccessActions() {
-        return ['vote'];
+        return ['vote', 'result'];
     }
 
     public function getSignupTitle() {

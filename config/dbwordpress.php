@@ -14,6 +14,6 @@ return [
 	'class' => 'yii\db\Connection',
 	'dsn' => 'mysql:host='.$_dbhost.';dbname=dbs2637510',
 	'username' => 'dbu2416116',
-	'password' => '3KLupBDn7qX7y2m',
+	'password' => 'XKEgFDet*xf7YVF', // Antigua 3KLupBDn7qX7y2m
 	'charset' => 'utf8',
 ];
