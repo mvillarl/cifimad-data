@@ -82,7 +82,7 @@ class Press extends \yii\db\ActiveRecord
 		return $this->hasOne(Source::className(), ['id' => 'idSource']);
 	}
 
-	public function getSources($map = false) {
+	public static function getSources($map = false) {
 		$sources = Source::find()->where("name LIKE 'Prensa%'")->orderBy('name')->all();
 		if ($map) {
 			$sources = ArrayHelper::map($sources, 'id', 'name');

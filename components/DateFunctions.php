@@ -35,7 +35,7 @@ class DateFunctions {
 		return date ("Y-m-d", $date);
 	}
 
-	public function dateText ($date) {
+	public static function dateText ($date) {
 		$dateparts = explode ("-", $date);
 		return $dateparts[2] . ' ' . self::$_shortmonths[$dateparts[1] ];
 	}

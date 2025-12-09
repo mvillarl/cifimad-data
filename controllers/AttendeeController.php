@@ -65,7 +65,8 @@ class AttendeeController extends BaseController
     {
         // id evento: de form búsqueda, si no sesión, si no el primero a futuro
         // guardar en sesión
-        $idEvent = Yii::$app->request->get('AttendeeSearch')['idEvent'];
+        $searchData = Yii::$app->request->get('AttendeeSearch');
+        $idEvent = isset ($searchData['idEvent'])? $searchData['idEvent']: null;
         if (!strlen ($idEvent)) $idEvent = $this->getCurrentEvent();
         Yii::$app->session->set('Attendee.idEvent', $idEvent);
 
@@ -165,16 +166,16 @@ class AttendeeController extends BaseController
         $model->setEvent($idEvent, $guests, $products);
 
 	    $post = Yii::$app->request->post();
-	    if ($post['updateFlag']) {
+	    if (!empty($post['updateFlag']) ) {
 		    $model->setUpdatedFlag();
 	    }
-	    if ($post['updateHotelFlag']) {
+	    if (!empty($post['updateHotelFlag'])) {
 		    $model->setUpdatedHotelFlag();
 	    }
-	    if ($post['updateBadgesFlag']) {
+	    if (!empty($post['updateBadgesFlag'])) {
 		    $model->setUpdatedBadgesFlag();
 	    }
-	    if ($post['updateBadgesTicketsFlag']) {
+	    if (!empty($post['updateBadgesTicketsFlag'])) {
 		    $model->setUpdatedBadgesTicketsFlag();
 	    }
 
@@ -428,6 +429,7 @@ class AttendeeController extends BaseController
             'model' => $model,
             'fields' => $fields,
             'pfields' => $pfields,
+            'subtitle' => $subtitle,
         ]);
     }
 
@@ -603,12 +605,16 @@ class AttendeeController extends BaseController
 	    $idEvent = $this->getCurrentEvent();
 	    $guests = Attendee::getGuests($idEvent);
 
-	    $mindate = $guests[0]->dateArrival;
-	    $maxdate = $guests[0]->dateDeparture;
-	    foreach ($guests as $guest) {
-	        if ($guest->dateArrival < $mindate) $mindate = $guest->dateArrival;
-	        if ($guest->dateDeparture > $maxdate) $maxdate = $guest->dateDeparture;
-	    }
+        $mindate = null;
+        $maxdate = null;
+        if (!empty ($guests)) {
+            $mindate = $guests[0]->dateArrival;
+            $maxdate = $guests[0]->dateDeparture;
+            foreach ($guests as $guest) {
+                if ($guest->dateArrival < $mindate) $mindate = $guest->dateArrival;
+                if ($guest->dateDeparture > $maxdate) $maxdate = $guest->dateDeparture;
+            }
+        }
 
 	    $attendeerooms = Attendee::getAttendeeRooms( $idEvent, $aftersend, $numattendees);
 	    $roomdays = Attendee::getRoomDays( $attendeerooms );
@@ -624,6 +630,8 @@ class AttendeeController extends BaseController
 	    $event   = Event::findOne( $idEvent );
 	    $friday = $event->dateStart;
 	    $saturday = DateFunctions::dateAdd($friday, 1);
+        if (empty ($mindate)) $mindate = $event->dateStart;
+        if (empty ($maxdate)) $maxdate = $event->dateEnd;
 
         Guest::addRoomDays ($roomdays, $guests, $friday);
 	    foreach ($guests as $guest) {
@@ -800,8 +808,17 @@ class AttendeeController extends BaseController
         return $ret;
     }
 
-    protected function _initImgDirectory() {
-	    $path = 'img/makebadges';
+    protected function _makeImgDirectoryPath() {
+        $path = 'img/makebadges';
+        if (!is_dir($path) && is_dir('web/' . $path)) {
+            $path = 'web/' . $path;
+        }
+        return $path;
+    }
+
+    protected function _initImgDirectory()
+    {
+        $path = $this->_makeImgDirectoryPath();
 	    $files = FileHelper::findFiles($path);
 	    foreach ($files as $file) {
             $ret = FileHelper::unlink($file);
@@ -810,7 +827,7 @@ class AttendeeController extends BaseController
     }
 
     protected function _saveImages() {
-        $path = 'img/makebadges';
+        $path = $this->_makeImgDirectoryPath();
         $count = 0;
         $name = Yii::$app->request->getBodyParam('name' . $count);
         $zip = new \ZipArchive();
@@ -833,15 +850,16 @@ class AttendeeController extends BaseController
     }
 
     protected function _makeZip() {
-        $path = 'img/makebadges';
+        $path = $this->_makeImgDirectoryPath();
+        $basepart = strpos($path, 'web/') === false? '/web/': '/';
         $zip = new \ZipArchive();
-        $zipname = Yii::$app->basePath . '/web/' . $path . '/CifimadImagenesAcreditaciones.zip';
+        $zipname = Yii::$app->basePath . $basepart . $path . '/CifimadImagenesAcreditaciones.zip';
         if (DIRECTORY_SEPARATOR != '/') $zipname = str_replace ('/', DIRECTORY_SEPARATOR, $zipname);
         $ok = $zip->open ($zipname, \ZipArchive::CREATE);
         if ($ok === true) {
 	        $files = FileHelper::findFiles( $path );
 	        foreach ( $files as $file ) {
-	        	$file = Yii::$app->basePath . '/web/' . $file;
+	        	$file = Yii::$app->basePath . $basepart . $file;
 		        if (DIRECTORY_SEPARATOR != '/') $file = str_replace ('/', DIRECTORY_SEPARATOR, $file);
 		        if (preg_match ('/\.jpg$/', $file)) {
 			        $ok = $zip->addFile( $file, basename( $file ) );

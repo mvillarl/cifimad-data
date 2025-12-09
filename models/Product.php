@@ -58,7 +58,7 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasOne(Event::className(), ['id' => 'idEvent']);
     }
 
-	public function getEvents($map = false) {
+	public static function getEvents($map = false) {
 		$events = Event::find()->all();
 		if ($map) $events = ArrayHelper::map($events, 'id', 'name');
 

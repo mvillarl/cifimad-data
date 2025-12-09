@@ -1,8 +1,17 @@
 <?php
 
-$_dbhost = $_prod || $_ppe? 'rdbms.strato.de': 'localhost';
-$_dbname = $_ppe? 'DB1438945': 'DB2627984';
-$_dbuser = $_ppe? 'U1438945': 'U2627984';
+$_dbhost ='localhost'; // $_prod || $_ppe? 'rdbms.strato.de': 'localhost';
+if ($_ppe) {
+    $_dbname = 'DB1438945';
+    $_dbuser = 'U1438945';
+
+} elseif ($_prod) {
+    $_dbname = 'u912014495_DB2627984';
+    $_dbuser = 'u912014495_U2627984';
+} else {
+    $_dbname = 'DB2627984';
+    $_dbuser = 'U2627984';
+}
 
 return [
     'class' => 'yii\db\Connection',

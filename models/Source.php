@@ -74,7 +74,7 @@ class Source extends \yii\db\ActiveRecord
 
 	public function upload()
 	{
-		$hasFile = strlen ($this->imageFileObj->baseName);
+		$hasFile = is_object ($this->imageFileObj) && strlen ($this->imageFileObj->baseName);
 		if ($hasFile) $this->imageFile = $this->imageFileObj->baseName . '.' . $this->imageFileObj->extension;
 		if ($hasFile && $this->validate() )
 			$this->imageFileObj->saveAs('img/logos/' . $this->imageFile);

@@ -38,7 +38,8 @@ class VolunteerInscriptionController extends Controller
      */
     public function actionIndex()
     {
-	    $idEvent = Yii::$app->request->get('VolunteerInscriptionSearch')['idEvent'];
+        $searchData = Yii::$app->request->get('VolunteerInscriptionSearch');
+        $idEvent = isset ($searchData['idEvent'])? $searchData['idEvent']: null;
 	    if (!strlen ($idEvent)) $idEvent = $this->_getEventId (false);
 	    Yii::$app->session->set('Attendee.idEvent', $idEvent);
 

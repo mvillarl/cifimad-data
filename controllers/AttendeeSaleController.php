@@ -41,7 +41,8 @@ class AttendeeSaleController extends Controller
      */
     public function actionIndex()
     {
-        $idEvent = Yii::$app->request->get('AttendeeSaleSearch')['idEvent'];
+        $searchData = Yii::$app->request->get('AttendeeSaleSearch');
+        $idEvent = isset ($searchData['idEvent'])? $searchData['idEvent']: null;
         if (!strlen ($idEvent)) $idEvent = $this->getCurrentEvent();
         Yii::$app->session->set('Attendee.idEvent', $idEvent);
 

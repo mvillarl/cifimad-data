@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	</tr>
 	</thead>
 	<tbody>
-	<?php for ($i = 0; $i < $maxChildrenCifiKids; $i++) { $child = $table['children'][$i]; ?>
+	<?php for ($i = 0, $st = count ($table['children']); $i < $maxChildrenCifiKids; $i++) { $child = ($i < $st)? $table['children'][$i]: null; ?>
 		<tr>
             <td><?= $i + 1 ?></td>
 			<td><?= is_object($child)? $child->badgeName: '' ?></td>

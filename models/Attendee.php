@@ -184,37 +184,37 @@ class Attendee extends \yii\db\ActiveRecord
             if ($guest->hasPhotoshoot) {
                 $this->_guestFields['guest'.$gpos.'Photoshoot'] = 'Foto/s con ' . $guest->fullname;
                 $this->_shortLabels['guest'.$gpos.'Photoshoot'] = 'Foto ' . $guest->name;
-	            $this->_guestFieldColors['guest'.$gpos.'Photoshoot'] = static::$_colors[$gpos][0];
+	            $this->_guestFieldColors['guest'.$gpos.'Photoshoot'] = static::_getColor($gpos, 0);
             }
             if ($guest->hasPhotoshootSpecial) {
                 $this->_guestFields['guest'.$gpos.'PhotoshootSpecial'] = 'Foto/s especial/es con ' . $guest->fullname;
                 $this->_shortLabels['guest'.$gpos.'PhotoshootSpecial'] = 'Foto especial ' . $guest->name;
-	            $this->_guestFieldColors['guest'.$gpos.'PhotoshootSpecial'] = static::$_colors[$gpos][3];
+	            $this->_guestFieldColors['guest'.$gpos.'PhotoshootSpecial'] = static::_getColor($gpos, 3);
             }
             if ($guest->hasAutograph) {
                 $this->_guestFields['guest'.$gpos.'Autograph'] = 'Firma/s de ' . $guest->fullname;
                 $this->_shortLabels['guest'.$gpos.'Autograph'] = 'Firma ' . $guest->name;
-	            $this->_guestFieldColors['guest'.$gpos.'Autograph'] = static::$_colors[$gpos][1];
+	            $this->_guestFieldColors['guest'.$gpos.'Autograph'] = static::_getColor($gpos, 1);
             }
 	        if ($guest->hasAutographSpecial) {
 		        $this->_guestFields['guest'.$gpos.'AutographSpecial'] = 'Firma/s especial/es de ' . $guest->fullname;
 		        $this->_shortLabels['guest'.$gpos.'AutographSpecial'] = 'Firma especial ' . $guest->name;
-		        $this->_guestFieldColors['guest'.$gpos.'AutographSpecial'] = static::$_colors[$gpos][4];
+		        $this->_guestFieldColors['guest'.$gpos.'AutographSpecial'] = static::_getColor($gpos, 4);
 	        }
 	        if ($guest->hasSelfie) {
 		        $this->_guestFields['guest'.$gpos.'Selfie'] = 'Selfie/s de ' . $guest->fullname;
 		        $this->_shortLabels['guest'.$gpos.'Selfie'] = 'Selfie ' . $guest->name;
-		        $this->_guestFieldColors['guest'.$gpos.'Selfie'] = static::$_colors[$gpos][5];
+		        $this->_guestFieldColors['guest'.$gpos.'Selfie'] = static::_getColor($gpos, 5);
 	        }
 	        if ($guest->hasAutographSelfieCombo) {
 		        $this->_guestFields['guest'.$gpos.'ComboAutographSelfie'] = 'Combo firma/selfie de ' . $guest->fullname;
 		        $this->_shortLabels['guest'.$gpos.'ComboAutographSelfie'] = 'Combo ' . $guest->name;
-		        $this->_guestFieldColors['guest'.$gpos.'ComboAutographSelfie'] = static::$_colors[$gpos][6];
+		        $this->_guestFieldColors['guest'.$gpos.'ComboAutographSelfie'] = static::_getColor($gpos, 6);
 	        }
             if ($guest->hasVintage) {
                 $this->_guestFields['guest'.$gpos.'Vintage'] = 'Cartón/es vintage de ' . $guest->characterName;
                 $this->_shortLabels['guest'.$gpos.'Vintage'] = 'Cartón ' . $guest->characterName;
-	            $this->_guestFieldColors['guest'.$gpos.'Vintage'] = static::$_colors[$gpos][2];
+	            $this->_guestFieldColors['guest'.$gpos.'Vintage'] = static::_getColor($gpos, 2);
             }
             $gpos++;
         }
@@ -223,7 +223,7 @@ class Attendee extends \yii\db\ActiveRecord
 	    if (is_array ($this->_products) ) foreach ($this->_products as $product) {
 		    $this->_extraProductFields['extraProduct'.$gpos] = $product->name;
 		    $this->_shortLabels['extraProduct'.$gpos] = $product->name;
-		    $this->_extraProductFieldColors['extraProduct'.$gpos] = static::$_colors[$guests + $gpos][0];
+		    $this->_extraProductFieldColors['extraProduct'.$gpos] = static::_getColor($guests + $gpos, 0);
 		    $gpos++;
 	    }
     }
@@ -553,7 +553,7 @@ class Attendee extends \yii\db\ActiveRecord
 
     public function getTicketTypeValue() {
         $types = $this->getTicketTypes();
-        return $types[$this->ticketType];
+        return isset ($types[$this->ticketType])? $types[$this->ticketType]: '';
     }
 
     public static function getCifiKidsDays() {
@@ -567,7 +567,7 @@ class Attendee extends \yii\db\ActiveRecord
 
     public function getCifiKidsDayValue() {
         $days = $this->getCifiKidsDays();
-        return $days[$this->cifiKidsDay];
+        return isset ($days[$this->cifiKidsDay])? $days[$this->cifiKidsDay]: '';
     }
 
     public static function getStatusMap() {
@@ -583,7 +583,7 @@ class Attendee extends \yii\db\ActiveRecord
 
     public function getStatusValue() {
         $status = $this->getStatusMap();
-        return $status[$this->status];
+        return isset ($status[$this->status])? $status[$this->status]: '';
     }
 
 	public function getIsSpecialValue() {
@@ -624,7 +624,7 @@ class Attendee extends \yii\db\ActiveRecord
 
     public function getRoomTypeValue() {
         $types = Attendee::getRoomTypes();
-        return $types[$this->roomType];
+        return isset ($types[$this->roomType])? $types[$this->roomType]: '';
     }
 
     public static function getParkingOptions() {
@@ -637,7 +637,7 @@ class Attendee extends \yii\db\ActiveRecord
 
     public function getParkingOptionsValue() {
         $options = Attendee::getParkingOptions();
-        return $options[$this->parkingOptions];
+        return isset ($options[$this->parkingOptions])? $options[$this->parkingOptions]: '';
     }
 
     public static function getEvents($map = false) {
@@ -971,5 +971,13 @@ class Attendee extends \yii\db\ActiveRecord
 
     public function getImgFileName() {
 	    return Attendee::getImgFileNameFromName($this->getMemberName() );
+    }
+
+    protected static function _getColor ($dim1, $dim2) {
+        $color = null;
+        if (isset (static::$_colors[$dim1]) && isset (static::$_colors[$dim1][$dim2])) {
+            $color = static::$_colors[$dim1][$dim2];
+        }
+        return $color;
     }
 }

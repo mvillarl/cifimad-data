@@ -110,7 +110,7 @@ class VolunteerInscription extends \yii\db\ActiveRecord
         return $this->hasOne(Event::className(), ['id' => 'idEvent']);
     }
 
-	public function getEvents($map = false) {
+	public static function getEvents($map = false) {
 		$events = Event::find()->all();
 		if ($map) $events = ArrayHelper::map($events, 'id', 'name');
 
@@ -146,11 +146,11 @@ class VolunteerInscription extends \yii\db\ActiveRecord
 	public function load($request, $formName = null) {
 		//print_r($request);die;
 		$ret = parent::load($request, $formName);
-		if($ret && $request['functions']) {
+		if($ret && isset ($request['functions']) ) {
 			$ret = $this->_populateFunctions ($request['functions']);
 			//$this->dateSentInfoHotel = date ('Y-m-d H:i:s');
 		}
-		if($ret && $request['shifts']) {
+		if($ret && isset ($request['shifts']) ) {
 			$ret = $this->_populateShifts ($request['shifts']);
 			//$this->dateBadgesPrinted = date ('Y-m-d H:i:s');
 		}
@@ -235,7 +235,7 @@ class VolunteerInscription extends \yii\db\ActiveRecord
 
 	public function getComputersLevelValue() {
 		$levels = $this->getComputersLevels();
-		return $levels[$this->computersLevel];
+		return isset ($levels[$this->computersLevel])? $levels[$this->computersLevel]: '';
 	}
 
 	public function getStatusValue() {

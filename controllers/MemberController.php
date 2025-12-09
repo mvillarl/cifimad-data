@@ -253,6 +253,13 @@ class MemberController extends BaseController
         $matchingDP = new PS2CustomerDP($matching);
         $numberNoMatch = count ($nomatch);
 
+        $stats = [
+            'total' => 0,
+            'inserted' => 0,
+            'modified' => 0,
+            'witherrors' => 0,
+        ];
+        $errors = [];
         if ( ($filter == 'n') || ($filter == 'a') ) {
             $customerstoupsert = ($filter == 'n')? $nomatch: $customers;
 	        /*echo "<li>".$customerstoupsert[0]->dni;

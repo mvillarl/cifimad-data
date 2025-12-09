@@ -238,7 +238,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <tr>
                 <td><?= $parkingReservations['total'] ?></td>
                 <?php foreach ($parkingOptions as $poValue => $poName) { ?>
-                    <td><?= $parkingReservations[$poValue] ?></td>
+                    <td><?= isset ($parkingReservations[$poValue])? $parkingReservations[$poValue]: '' ?></td>
                 <?php } ?>
             </tr>
         </tbody>
